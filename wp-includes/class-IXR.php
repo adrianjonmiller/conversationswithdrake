@@ -30,7 +30,11 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @copyright  Incutio Ltd 2010 (http://www.incutio.com)
  * @version    1.7.4 7th September 2010
@@ -43,7 +47,11 @@
  * IXR_Value
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_Value {
     var $data;
@@ -171,7 +179,11 @@ class IXR_Value {
  * IXR_MESSAGE
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  */
 class IXR_Message
@@ -344,7 +356,11 @@ class IXR_Message
  * IXR_Server
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_Server
 {
@@ -555,7 +571,11 @@ EOD;
  * IXR_Request
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_Request
 {
@@ -598,7 +618,11 @@ EOD;
  * IXR_Client
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  */
 class IXR_Client
@@ -629,6 +653,13 @@ class IXR_Client
             if (!$this->path) {
                 $this->path = '/';
             }
+<<<<<<< HEAD
+=======
+
+            if ( ! empty( $bits['query'] ) ) {
+                $this->path .= '?' . $bits['query'];
+            }
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
         } else {
             $this->server = $server;
             $this->path = $path;
@@ -750,7 +781,11 @@ class IXR_Client
  * IXR_Error
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_Error
 {
@@ -792,7 +827,11 @@ EOD;
  * IXR_Date
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_Date {
     var $year;
@@ -855,7 +894,11 @@ class IXR_Date {
  * IXR_Base64
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_Base64
 {
@@ -876,7 +919,11 @@ class IXR_Base64
  * IXR_IntrospectionServer
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_IntrospectionServer extends IXR_Server
 {
@@ -1039,7 +1086,11 @@ class IXR_IntrospectionServer extends IXR_Server
  * IXR_ClientMulticall
  *
  * @package IXR
+<<<<<<< HEAD
  * @since 1.5
+=======
+ * @since 1.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class IXR_ClientMulticall extends IXR_Client
 {

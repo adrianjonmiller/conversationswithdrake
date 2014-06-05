@@ -5,7 +5,11 @@
 	background: #fff;
 	border: 1px solid #dfdfdf;
 	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.075);
+<<<<<<< HEAD
 	box-shadow:         0 3px 6px rgba(0,0,0,0.075);
+=======
+	box-shadow: 0 3px 6px rgba(0,0,0,0.075);
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .wp-pointer-content h3 {
@@ -22,6 +26,10 @@
 
 .wp-pointer-content h3:before {
 	background: #fff;
+<<<<<<< HEAD
+=======
+	-webkit-border-radius: 50%;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	border-radius: 50%;
 	color: #2ea2cc;
 	content: '\f227';
@@ -59,11 +67,20 @@
 }
 
 .wp-pointer-buttons a.close:before {
+<<<<<<< HEAD
+=======
+	background: none;
+	color: #bbb;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	content: '\f153';
 	display: block !important;
 	font: normal 13px/1 'dashicons';
 	speak: none;
+<<<<<<< HEAD
 	margin: 2px 0;
+=======
+	margin: 1px 0;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	text-align: center;
 	-webkit-font-smoothing: antialiased !important;
 	width: 10px;
@@ -73,6 +90,13 @@
 	top: 1px;
 }
 
+<<<<<<< HEAD
+=======
+.wp-pointer-buttons a.close:hover:before {
+	color: #c00;
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 /* The arrow base class must take up no space, even with transparent borders. */
 .wp-pointer-arrow,
 .wp-pointer-arrow-inner {
@@ -181,7 +205,11 @@
 }
 
 .wp-pointer-right .wp-pointer-arrow:before {
+<<<<<<< HEAD
 	margin-right: -14px;
+=======
+	margin-right: -12px;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	margin-top: -13px;
 	border: 13px solid transparent;
 	border-right-color: #fff;
@@ -189,6 +217,15 @@
 	content: ' ';
 }
 
+<<<<<<< HEAD
+=======
+.rtl .wp-pointer-arrow:before {
+	-webkit-transform: rotateY(180deg);
+	-ms-transform:     rotateY(180deg);
+	transform:         rotateY(180deg);
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 /* Disable pointers at responsive sizes */
 @media screen and ( max-width: 782px ) {
 	.wp-pointer {

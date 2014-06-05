@@ -12,7 +12,21 @@ echo '<?xml version="1.0" encoding="' . get_option('blog_charset') . '" ?' . '>'
 	xmlns="http://www.w3.org/2005/Atom"
 	xml:lang="<?php bloginfo_rss( 'language' ); ?>"
 	xmlns:thr="http://purl.org/syndication/thread/1.0"
+<<<<<<< HEAD
 	<?php do_action('atom_ns'); do_action('atom_comments_ns'); ?>
+=======
+	<?php 
+		/** This action is documented in wp-includes/feed-atom.php */
+		do_action( 'atom_ns' ); 
+		
+		/**
+		 * Fires inside the feed tag in the Atom comment feed.
+		 *
+		 * @since 2.8.0
+		 */
+		do_action( 'atom_comments_ns' );
+	?>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 >
 	<title type="text"><?php
 		if ( is_singular() )
@@ -39,7 +53,18 @@ echo '<?xml version="1.0" encoding="' . get_option('blog_charset') . '" ?' . '>'
 	<link rel="self" type="application/atom+xml" href="<?php bloginfo_rss('comments_atom_url'); ?>" />
 	<id><?php bloginfo_rss('comments_atom_url'); ?></id>
 <?php } ?>
+<<<<<<< HEAD
 <?php do_action('comments_atom_head'); ?>
+=======
+<?php 
+	/**
+	 * Fires at the end of the Atom comment feed header.
+	 *
+	 * @since 2.8.0
+	 */
+	do_action( 'comments_atom_head' );
+?>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <?php
 if ( have_comments() ) : while ( have_comments() ) : the_comment();
 	$comment_post = $GLOBALS['post'] = get_post( $comment->comment_post_ID );
@@ -80,7 +105,19 @@ if ( have_comments() ) : while ( have_comments() ) : the_comment();
 ?>
 		<thr:in-reply-to ref="<?php comment_guid($parent_comment) ?>" href="<?php echo get_comment_link($parent_comment) ?>" type="<?php bloginfo_rss('html_type'); ?>" />
 <?php endif;
+<<<<<<< HEAD
 	do_action('comment_atom_entry', $comment->comment_ID, $comment_post->ID);
+=======
+	/**
+	 * Fires at the end of each Atom comment feed item.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param int $comment_id      ID of the current comment.
+	 * @param int $comment_post_id ID of the post the current comment is connected to.
+	 */
+	do_action( 'comment_atom_entry', $comment->comment_ID, $comment_post->ID );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 ?>
 	</entry>
 <?php endwhile; endif; ?>

@@ -197,7 +197,11 @@ if ( 'post' == $post_type ) {
 	get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
 	'<p>' . __('<a href="http://codex.wordpress.org/Posts_Screen" target="_blank">Documentation on Managing Posts</a>') . '</p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+=======
+	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	);
 
 } elseif ( 'page' == $post_type ) {
@@ -218,7 +222,11 @@ if ( 'post' == $post_type ) {
 	get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
 	'<p>' . __('<a href="http://codex.wordpress.org/Pages_Screen" target="_blank">Documentation on Managing Pages</a>') . '</p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+=======
+	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	);
 }
 

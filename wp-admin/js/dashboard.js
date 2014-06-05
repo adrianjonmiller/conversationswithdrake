@@ -123,6 +123,7 @@ jQuery(document).ready( function($) {
 
 	$( '.meta-box-sortables' ).sortable( 'option', 'containment', 'document' );
 
+<<<<<<< HEAD
 	// Activity Widget
 	$( '.show-more a' ).on( 'click', function(e) {
 		$( this ).fadeOut().closest('.activity-block').find( 'li.hidden' ).fadeIn().removeClass( 'hidden' );
@@ -130,6 +131,13 @@ jQuery(document).ready( function($) {
 	});
 
 	function autoResizeTextarea() {
+=======
+	function autoResizeTextarea() {
+		if ( document.documentMode && document.documentMode < 9 ) {
+			return;
+		}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		// Add a hidden div. We'll copy over the text from the textarea to measure its height.
 		$('body').append( '<div class="quick-draft-textarea-clone" style="display: none;"></div>' );
 
@@ -179,8 +187,13 @@ jQuery(document).ready( function($) {
 				editorHeight = cloneHeight;
 			}
 
+<<<<<<< HEAD
 			// No scrollbars as we change height
 			editor.css('overflow-y', 'hidden');
+=======
+			// No scrollbars as we change height, not for IE < 9
+			editor.css('overflow', 'hidden');
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			$this.css('height', editorHeight + 'px');
 		});

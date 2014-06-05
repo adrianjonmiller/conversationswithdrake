@@ -39,19 +39,31 @@ class WP_Customize_Control {
 	 * @access public
 	 * @var int
 	 */
+<<<<<<< HEAD
 	public $priority          = 10;
+=======
+	public $priority = 10;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @access public
 	 * @var string
 	 */
+<<<<<<< HEAD
 	public $section           = '';
+=======
+	public $section = '';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @access public
 	 * @var string
 	 */
+<<<<<<< HEAD
 	public $label             = '';
+=======
+	public $label = '';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @todo: Remove choices
@@ -59,7 +71,11 @@ class WP_Customize_Control {
 	 * @access public
 	 * @var array
 	 */
+<<<<<<< HEAD
 	public $choices           = array();
+=======
+	public $choices = array();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @access public
@@ -77,6 +93,11 @@ class WP_Customize_Control {
 	/**
 	 * Constructor.
 	 *
+<<<<<<< HEAD
+=======
+	 * Supplied $args override class property defaults.
+	 *
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * If $args['settings'] is not defined, use the $id as the setting ID.
 	 *
 	 * @since 3.4.0
@@ -95,7 +116,10 @@ class WP_Customize_Control {
 		$this->manager = $manager;
 		$this->id = $id;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		// Process settings.
 		if ( empty( $this->settings ) )
 			$this->settings = $id;
@@ -178,14 +202,40 @@ class WP_Customize_Control {
 		if ( ! $this->check_capabilities() )
 			return;
 
+<<<<<<< HEAD
 		do_action( 'customize_render_control', $this );
+=======
+		/**
+		 * Fires just before the current Customizer control is rendered.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Control $this WP_Customize_Control instance.
+		 */
+		do_action( 'customize_render_control', $this );
+
+		/**
+		 * Fires just before a specific Customizer control is rendered.
+		 *
+		 * The dynamic portion of the hook name, $this->id, refers to
+		 * the control ID.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Control $this WP_Customize_Control instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_render_control_' . $this->id, $this );
 
 		$this->render();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Render the control. Renders the control wrapper, then calls $this->render_content().
+=======
+	 * Renders the control wrapper and calls $this->render_content() for the internals.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -199,7 +249,11 @@ class WP_Customize_Control {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Get the data link parameter for a setting.
+=======
+	 * Get the data link attribute for a setting.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -214,7 +268,11 @@ class WP_Customize_Control {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Render the data link parameter for a setting
+=======
+	 * Render the data link attribute for the control's input element.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 * @uses WP_Customize_Control::get_link()
@@ -228,7 +286,13 @@ class WP_Customize_Control {
 	/**
 	 * Render the control's content.
 	 *
+<<<<<<< HEAD
 	 * Allows the content to be overriden without having to rewrite the wrapper.
+=======
+	 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
+	 *
+	 * Supports basic input types `text`, `checkbox`, `radio`, `select` and `dropdown-pages`.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -331,8 +395,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	/**
 	 * Constructor.
 	 *
+<<<<<<< HEAD
 	 * If $args['settings'] is not defined, use the $id as the setting ID.
 	 *
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @since 3.4.0
 	 * @uses WP_Customize_Control::__construct()
 	 *
@@ -346,7 +413,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Enqueue control related scripts/styles.
+=======
+	 * Enqueue scripts/styles for the color picker.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -467,8 +538,11 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	/**
 	 * Constructor.
 	 *
+<<<<<<< HEAD
 	 * If $args['settings'] is not defined, use the $id as the setting ID.
 	 *
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @since 3.4.0
 	 * @uses WP_Customize_Upload_Control::__construct()
 	 *
@@ -593,7 +667,11 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 */
 	public function tab_upload_new() {
 		if ( ! _device_can_upload() ) {
+<<<<<<< HEAD
 			echo '<p>' . sprintf( __('The web browser on your device cannot be used to upload files. You may be able to use the <a href="%s">native app for your device</a> instead.'), 'http://wordpress.org/mobile/' ) . '</p>';
+=======
+			echo '<p>' . sprintf( __('The web browser on your device cannot be used to upload files. You may be able to use the <a href="%s">native app for your device</a> instead.'), 'https://wordpress.org/mobile/' ) . '</p>';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		} else {
 			?>
 			<div class="upload-dropzone">
@@ -691,6 +769,7 @@ class WP_Customize_Background_Image_Control extends WP_Customize_Image_Control {
 	}
 }
 
+<<<<<<< HEAD
 /**
  * Customize Header Image Control Class
  *
@@ -722,6 +801,11 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 	 *
 	 * @param WP_Customize_Manager $manager
 	 */
+=======
+class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
+	public $type = 'header';
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	public function __construct( $manager ) {
 		parent::__construct( $manager, 'header_image', array(
 			'label'    => __( 'Header Image' ),
@@ -733,6 +817,7 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 			'context'  => 'custom-header',
 			'removed'  => 'remove-header',
 			'get_url'  => 'get_header_image',
+<<<<<<< HEAD
 			'statuses' => array(
 				''                      => __('Default'),
 				'remove-header'         => __('No Image'),
@@ -815,3 +900,249 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 			$this->print_header_image( $choice, $header );
 	}
 }
+=======
+		) );
+
+	}
+
+	public function to_json() {
+		parent::to_json();
+	}
+
+	public function enqueue() {
+		wp_enqueue_media();
+		wp_enqueue_script( 'customize-views' );
+
+		$this->prepare_control();
+
+		wp_localize_script( 'customize-views', '_wpCustomizeHeader', array(
+			'data' => array(
+				'width' => absint( get_theme_support( 'custom-header', 'width' ) ),
+				'height' => absint( get_theme_support( 'custom-header', 'height' ) ),
+				'flex-width' => absint( get_theme_support( 'custom-header', 'flex-width' ) ),
+				'flex-height' => absint( get_theme_support( 'custom-header', 'flex-height' ) ),
+				'currentImgSrc' => $this->get_current_image_src(),
+			),
+			'nonces' => array(
+				'add' => wp_create_nonce( 'header-add' ),
+				'remove' => wp_create_nonce( 'header-remove' ),
+			),
+			'uploads' => $this->uploaded_headers,
+			'defaults' => $this->default_headers
+		) );
+
+		parent::enqueue();
+	}
+
+	public function prepare_control() {
+		global $custom_image_header;
+		if ( empty( $custom_image_header ) ) {
+			return;
+		}
+
+		// Process default headers and uploaded headers.
+		$custom_image_header->process_default_headers();
+		$this->default_headers = $custom_image_header->get_default_header_images();
+		$this->uploaded_headers = $custom_image_header->get_uploaded_header_images();
+	}
+
+	function print_header_image_template() {
+		?>
+		<script type="text/template" id="tmpl-header-choice">
+			<# if (data.random) { #>
+					<button type="button" class="button display-options random">
+						<span class="dashicons dashicons-randomize dice"></span>
+						<# if ( data.type === 'uploaded' ) { #>
+							<?php _e( 'Randomize uploaded headers' ); ?>
+						<# } else if ( data.type === 'default' ) { #>
+							<?php _e( 'Randomize suggested headers' ); ?>
+						<# } #>
+					</button>
+
+			<# } else { #>
+
+			<# if (data.type === 'uploaded') { #>
+				<div class="dashicons dashicons-no close"></div>
+			<# } #>
+
+			<button type="button" class="choice thumbnail"
+				data-customize-image-value="{{{data.header.url}}}"
+				data-customize-header-image-data="{{JSON.stringify(data.header)}}">
+				<span class="screen-reader-text"><?php _e( 'Set image' ); ?></span>
+				<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}">
+			</button>
+
+			<# } #>
+		</script>
+
+		<script type="text/template" id="tmpl-header-current">
+			<# if (data.choice) { #>
+				<# if (data.random) { #>
+
+			<div class="placeholder">
+				<div class="inner">
+					<span><span class="dashicons dashicons-randomize dice"></span>
+					<# if ( data.type === 'uploaded' ) { #>
+						<?php _e( 'Randomizing uploaded headers' ); ?>
+					<# } else if ( data.type === 'default' ) { #>
+						<?php _e( 'Randomizing suggested headers' ); ?>
+					<# } #>
+					</span>
+				</div>
+			</div>
+
+				<# } else { #>
+
+			<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}" tabindex="0"/>
+
+				<# } #>
+			<# } else { #>
+
+			<div class="placeholder">
+				<div class="inner">
+					<span>
+						<?php _e( 'No image set' ); ?>
+					</span>
+				</div>
+			</div>
+
+			<# } #>
+		</script>
+		<?php
+	}
+
+	public function get_current_image_src() {
+		$src = $this->value();
+		if ( isset( $this->get_url ) ) {
+			$src = call_user_func( $this->get_url, $src );
+			return $src;
+		}
+		return null;
+	}
+
+	public function render_content() {
+		$this->print_header_image_template();
+		$visibility = $this->get_current_image_src() ? '' : ' style="display:none" ';
+		$width = absint( get_theme_support( 'custom-header', 'width' ) );
+		$height = absint( get_theme_support( 'custom-header', 'height' ) );
+		?>
+
+
+		<div class="customize-control-content">
+			<p class="customizer-section-intro">
+				<?php
+				if ( $width && $height ) {
+					printf( __( 'While you can crop images to your liking after clicking <strong>Add new</strong>, your theme recommends a header size of <strong>%s &times; %s</strong> pixels.' ), $width, $height );
+				} elseif ( $width ) {
+					printf( __( 'While you can crop images to your liking after clicking <strong>Add new</strong>, your theme recommends a header width of <strong>%s</strong> pixels.' ), $width );
+				} else {
+					printf( __( 'While you can crop images to your liking after clicking <strong>Add new</strong>, your theme recommends a header height of <strong>%s</strong> pixels.' ), $height );
+				}
+				?>
+			</p>
+			<div class="current">
+				<span class="customize-control-title">
+					<?php _e( 'Current header' ); ?>
+				</span>
+				<div class="container">
+				</div>
+			</div>
+			<div class="actions">
+				<?php /* translators: Hide as in hide header image via the Customizer */ ?>
+				<button type="button"<?php echo $visibility ?> class="button remove"><?php _ex( 'Hide image', 'custom header' ); ?></button>
+				<?php /* translators: New as in add new header image via the Customizer */ ?>
+				<button type="button" class="button new"><?php _ex( 'Add new image', 'header image' ); ?></button>
+				<div style="clear:both"></div>
+			</div>
+			<div class="choices">
+				<span class="customize-control-title header-previously-uploaded">
+					<?php _ex( 'Previously uploaded', 'custom headers' ); ?>
+				</span>
+				<div class="uploaded">
+					<div class="list">
+					</div>
+				</div>
+				<span class="customize-control-title header-default">
+					<?php _ex( 'Suggested', 'custom headers' ); ?>
+				</span>
+				<div class="default">
+					<div class="list">
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+}
+
+/**
+ * Widget Area Customize Control Class
+ *
+ */
+class WP_Widget_Area_Customize_Control extends WP_Customize_Control {
+	public $type = 'sidebar_widgets';
+	public $sidebar_id;
+
+	public function to_json() {
+		parent::to_json();
+		$exported_properties = array( 'sidebar_id' );
+		foreach ( $exported_properties as $key ) {
+			$this->json[ $key ] = $this->$key;
+		}
+	}
+
+	public function render_content() {
+		?>
+		<span class="button-secondary add-new-widget" tabindex="0">
+			<?php _e( 'Add a Widget' ); ?>
+		</span>
+
+		<span class="reorder-toggle" tabindex="0">
+			<span class="reorder"><?php _ex( 'Reorder', 'Reorder widgets in Customizer' ); ?></span>
+			<span class="reorder-done"><?php _ex( 'Done', 'Cancel reordering widgets in Customizer'  ); ?></span>
+		</span>
+		<?php
+	}
+}
+
+/**
+ * Widget Form Customize Control Class
+ */
+class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
+	public $type = 'widget_form';
+	public $widget_id;
+	public $widget_id_base;
+	public $sidebar_id;
+	public $is_new = false;
+	public $width;
+	public $height;
+	public $is_wide = false;
+
+	public function to_json() {
+		parent::to_json();
+		$exported_properties = array( 'widget_id', 'widget_id_base', 'sidebar_id', 'width', 'height', 'is_wide' );
+		foreach ( $exported_properties as $key ) {
+			$this->json[ $key ] = $this->$key;
+		}
+	}
+
+	public function render_content() {
+		global $wp_registered_widgets;
+		require_once ABSPATH . '/wp-admin/includes/widgets.php';
+
+		$widget = $wp_registered_widgets[ $this->widget_id ];
+		if ( ! isset( $widget['params'][0] ) ) {
+			$widget['params'][0] = array();
+		}
+
+		$args = array(
+			'widget_id' => $widget['id'],
+			'widget_name' => $widget['name'],
+		);
+
+		$args = wp_list_widget_controls_dynamic_sidebar( array( 0 => $args, 1 => $widget['params'][0] ) );
+		echo $this->manager->widgets->get_widget_control( $args );
+	}
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

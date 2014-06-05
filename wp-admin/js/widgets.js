@@ -170,6 +170,10 @@ wpWidgets = {
 
 					wpWidgets.save( $widget, 0, 0, 1 );
 					$widget.find('input.add_new').val('');
+<<<<<<< HEAD
+=======
+					$( document ).trigger( 'widget-added', [ $widget ] );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				}
 
 				$sidebar = $widget.parent();
@@ -374,8 +378,14 @@ wpWidgets = {
 			} else {
 				$('.spinner').hide();
 				if ( r && r.length > 2 ) {
+<<<<<<< HEAD
 					$( 'div.widget-content', widget ).html(r);
 					wpWidgets.appendTitle( widget );
+=======
+					$( 'div.widget-content', widget ).html( r );
+					wpWidgets.appendTitle( widget );
+					$( document ).trigger( 'widget-updated', [ widget ] );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				}
 			}
 			if ( order ) {
@@ -440,6 +450,11 @@ wpWidgets = {
 		// No longer "new" widget
 		widget.find( 'input.add_new' ).val('');
 
+<<<<<<< HEAD
+=======
+		$( document ).trigger( 'widget-added', [ widget ] );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		/*
 		 * Check if any part of the sidebar is visible in the viewport. If it is, don't scroll.
 		 * Otherwise, scroll up to so the sidebar is in view.

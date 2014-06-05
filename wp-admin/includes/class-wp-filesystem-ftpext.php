@@ -9,7 +9,11 @@
 /**
  * WordPress Filesystem Class for implementing FTP.
  *
+<<<<<<< HEAD
  * @since 2.5
+=======
+ * @since 2.5.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @package WordPress
  * @subpackage Filesystem
  * @uses WP_Filesystem_Base Extends class

@@ -65,7 +65,11 @@ class WP_Upgrader_Skin {
 		} elseif ( is_wp_error($errors) && $errors->get_error_code() ) {
 			foreach ( $errors->get_error_messages() as $message ) {
 				if ( $errors->get_error_data() && is_string( $errors->get_error_data() ) )
+<<<<<<< HEAD
 					$this->feedback($message . ' ' . esc_html( $errors->get_error_data() ) );
+=======
+					$this->feedback($message . ' ' . esc_html( strip_tags( $errors->get_error_data() ) ) );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				else
 					$this->feedback($message);
 			}
@@ -92,6 +96,29 @@ class WP_Upgrader_Skin {
 	function before() {}
 	function after() {}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Output JavaScript that calls function to decrement the update counts.
+	 *
+	 * @since 3.9.0
+	 *
+	 * @param string $type Type of update count to decrement. Likely values include 'plugin',
+	 *                     'theme', 'translation', etc.
+	 */
+	protected function decrement_update_count( $type ) {
+		if ( ! $this->result || is_wp_error( $this->result ) || 'up_to_date' === $this->result ) {
+			return;
+		}
+		echo '<script type="text/javascript">
+				(function( wp ) {
+					if ( wp && wp.updates.decrementCount ) {
+						wp.updates.decrementCount( "' . $type . '" );
+					}
+				})( window.wp );
+			</script>';
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -124,6 +151,11 @@ class Plugin_Upgrader_Skin extends WP_Upgrader_Skin {
 			echo '<iframe style="border:0;overflow:hidden" width="100%" height="170px" src="' . wp_nonce_url('update.php?action=activate-plugin&networkwide=' . $this->plugin_network_active . '&plugin=' . urlencode( $this->plugin ), 'activate-plugin_' . $this->plugin) .'"></iframe>';
 		}
 
+<<<<<<< HEAD
+=======
+		$this->decrement_update_count( 'plugin' );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$update_actions =  array(
 			'activate_plugin' => '<a href="' . wp_nonce_url('plugins.php?action=activate&amp;plugin=' . urlencode( $this->plugin ), 'activate-plugin_' . $this->plugin) . '" title="' . esc_attr__('Activate this plugin') . '" target="_parent">' . __('Activate Plugin') . '</a>',
 			'plugins_page' => '<a href="' . self_admin_url('plugins.php') . '" title="' . esc_attr__('Go to plugins page') . '" target="_parent">' . __('Return to Plugins page') . '</a>'
@@ -131,7 +163,20 @@ class Plugin_Upgrader_Skin extends WP_Upgrader_Skin {
 		if ( $this->plugin_active || ! $this->result || is_wp_error( $this->result ) || ! current_user_can( 'activate_plugins' ) )
 			unset( $update_actions['activate_plugin'] );
 
+<<<<<<< HEAD
 		$update_actions = apply_filters('update_plugin_complete_actions', $update_actions, $this->plugin);
+=======
+		/**
+		 * Filter the list of action links available following a single plugin update.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param array  $update_actions Array of plugin action links.
+		 * @param string $plugin         Path to the plugin file.
+		 */
+		$update_actions = apply_filters( 'update_plugin_complete_actions', $update_actions, $this->plugin );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty($update_actions) )
 			$this->feedback(implode(' | ', (array)$update_actions));
 	}
@@ -198,7 +243,11 @@ class Bulk_Upgrader_Skin extends WP_Upgrader_Skin {
 		if ( is_wp_error($error) ) {
 			foreach ( $error->get_error_messages() as $emessage ) {
 				if ( $error->get_error_data() && is_string( $error->get_error_data() ) )
+<<<<<<< HEAD
 					$messages[] = $emessage . ' ' . esc_html( $error->get_error_data() );
+=======
+					$messages[] = $emessage . ' ' . esc_html( strip_tags( $error->get_error_data() ) );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				else
 					$messages[] = $emessage;
 			}
@@ -252,6 +301,28 @@ class Bulk_Upgrader_Skin extends WP_Upgrader_Skin {
 		wp_ob_end_flush_all();
 		flush();
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Output JavaScript that sends message to parent window to decrement the update counts.
+	 *
+	 * @since 3.9.0
+	 *
+	 * @param string $type Type of update count to decrement. Likely values include 'plugin',
+	 *                     'theme', 'translation', etc.
+	 */
+	protected function decrement_update_count( $type ) {
+		if ( ! $this->result || is_wp_error( $this->result ) || 'up_to_date' === $this->result ) {
+			return;
+		}
+		echo '<script type="text/javascript">
+				if ( window.postMessage && JSON ) {
+					window.parent.postMessage( JSON.stringify( { action: "decrementUpdateCount", upgradeType: "' . $type . '" } ), window.location.protocol + "//" + window.location.hostname );
+				}
+			</script>';
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 class Bulk_Plugin_Upgrader_Skin extends Bulk_Upgrader_Skin {
@@ -272,6 +343,10 @@ class Bulk_Plugin_Upgrader_Skin extends Bulk_Upgrader_Skin {
 
 	function after($title = '') {
 		parent::after($this->plugin_info['Title']);
+<<<<<<< HEAD
+=======
+		$this->decrement_update_count( 'plugin' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 	function bulk_footer() {
 		parent::bulk_footer();
@@ -282,7 +357,20 @@ class Bulk_Plugin_Upgrader_Skin extends Bulk_Upgrader_Skin {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			unset( $update_actions['plugins_page'] );
 
+<<<<<<< HEAD
 		$update_actions = apply_filters('update_bulk_plugins_complete_actions', $update_actions, $this->plugin_info);
+=======
+		/**
+		 * Filter the list of action links available following bulk plugin updates.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array $update_actions Array of plugin action links.
+		 * @param array $plugin_info    Array of information for the last-updated plugin.
+		 */
+		$update_actions = apply_filters( 'update_bulk_plugins_complete_actions', $update_actions, $this->plugin_info );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty($update_actions) )
 			$this->feedback(implode(' | ', (array)$update_actions));
 	}
@@ -306,6 +394,10 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 
 	function after($title = '') {
 		parent::after( $this->theme_info->display('Name') );
+<<<<<<< HEAD
+=======
+		$this->decrement_update_count( 'theme' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	function bulk_footer() {
@@ -317,7 +409,20 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 		if ( ! current_user_can( 'switch_themes' ) && ! current_user_can( 'edit_theme_options' ) )
 			unset( $update_actions['themes_page'] );
 
+<<<<<<< HEAD
 		$update_actions = apply_filters('update_bulk_theme_complete_actions', $update_actions, $this->theme_info );
+=======
+		/**
+		 * Filter the list of action links available following bulk theme updates.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array $update_actions Array of theme action links.
+		 * @param array $theme_info     Array of information for the last-updated theme.
+		 */
+		$update_actions = apply_filters( 'update_bulk_theme_complete_actions', $update_actions, $this->theme_info );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty($update_actions) )
 			$this->feedback(implode(' | ', (array)$update_actions));
 	}
@@ -380,7 +485,23 @@ class Plugin_Installer_Skin extends WP_Upgrader_Skin {
 			unset( $install_actions['activate_plugin'] );
 		}
 
+<<<<<<< HEAD
 		$install_actions = apply_filters('install_plugin_complete_actions', $install_actions, $this->api, $plugin_file);
+=======
+		/**
+		 * Filter the list of action links available following a single plugin installation.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param array  $install_actions Array of plugin action links.
+		 * @param object $api             Object containing WordPress.org API plugin data. Empty
+		 *                                for non-API installs, such as when a plugin is installed
+		 *                                via upload.
+		 * @param string $plugin_file     Path to the plugin file.
+		 */
+		$install_actions = apply_filters( 'install_plugin_complete_actions', $install_actions, $this->api, $plugin_file );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty($install_actions) )
 			$this->feedback(implode(' | ', (array)$install_actions));
 	}
@@ -453,7 +574,21 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 		if ( ! $this->result || is_wp_error($this->result) || is_network_admin() || ! current_user_can( 'switch_themes' ) )
 			unset( $install_actions['activate'], $install_actions['preview'] );
 
+<<<<<<< HEAD
 		$install_actions = apply_filters('install_theme_complete_actions', $install_actions, $this->api, $stylesheet, $theme_info);
+=======
+		/**
+		 * Filter the list of action links available following a single theme installation.
+		 *
+		 * @since 2.8.0
+		 *
+		 * @param array    $install_actions Array of theme action links.
+		 * @param object   $api             Object containing WordPress.org API theme data.
+		 * @param string   $stylesheet      Theme directory name.
+		 * @param WP_Theme $theme_info      Theme object.
+		 */
+		$install_actions = apply_filters( 'install_theme_complete_actions', $install_actions, $this->api, $stylesheet, $theme_info );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty($install_actions) )
 			$this->feedback(implode(' | ', (array)$install_actions));
 	}
@@ -479,6 +614,10 @@ class Theme_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	function after() {
+<<<<<<< HEAD
+=======
+		$this->decrement_update_count( 'theme' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$update_actions = array();
 		if ( ! empty( $this->upgrader->result['destination_name'] ) && $theme_info = $this->upgrader->theme_info() ) {
@@ -514,7 +653,20 @@ class Theme_Upgrader_Skin extends WP_Upgrader_Skin {
 
 		$update_actions['themes_page'] = '<a href="' . self_admin_url('themes.php') . '" title="' . esc_attr__('Return to Themes page') . '" target="_parent">' . __('Return to Themes page') . '</a>';
 
+<<<<<<< HEAD
 		$update_actions = apply_filters('update_theme_complete_actions', $update_actions, $this->theme);
+=======
+		/**
+		 * Filter the list of action links available following a single theme update.
+		 *
+		 * @since 2.8.0
+		 *
+		 * @param array  $update_actions Array of theme action links.
+		 * @param string $theme          Theme directory name.
+		 */
+		$update_actions = apply_filters( 'update_theme_complete_actions', $update_actions, $this->theme );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty($update_actions) )
 			$this->feedback(implode(' | ', (array)$update_actions));
 	}
@@ -561,8 +713,22 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	function bulk_footer() {
+<<<<<<< HEAD
 		$update_actions = array();
 		$update_actions['updates_page'] = '<a href="' . self_admin_url( 'update-core.php' ) . '" title="' . esc_attr__( 'Go to WordPress Updates page' ) . '" target="_parent">' . __( 'Return to WordPress Updates' ) . '</a>';
+=======
+		$this->decrement_update_count( 'translation' );
+		$update_actions = array();
+		$update_actions['updates_page'] = '<a href="' . self_admin_url( 'update-core.php' ) . '" title="' . esc_attr__( 'Go to WordPress Updates page' ) . '" target="_parent">' . __( 'Return to WordPress Updates' ) . '</a>';
+
+		/**
+		 * Filter the list of action links available following a translations update.
+		 *
+		 * @since 3.7.0
+		 *
+		 * @param array $update_actions Array of translations update links.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$update_actions = apply_filters( 'update_translations_complete_actions', $update_actions );
 
 		if ( $update_actions && $this->display_footer_actions )

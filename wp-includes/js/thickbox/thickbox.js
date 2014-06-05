@@ -156,11 +156,16 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 			}
 
 			jQuery(document).bind('keydown.thickbox', function(e){
+<<<<<<< HEAD
 				e.stopImmediatePropagation();
 
 				if ( e.which == 27 ){ // close
 					if ( ! jQuery(document).triggerHandler( 'wp_CloseOnEscape', [{ event: e, what: 'thickbox', cb: tb_remove }] ) )
 						tb_remove();
+=======
+				if ( e.which == 27 ){ // close
+					tb_remove();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				} else if ( e.which == 190 ){ // display previous image
 					if(!(TB_NextHTML == "")){
@@ -244,6 +249,7 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 		}
 
 		if(!params['modal']){
+<<<<<<< HEAD
 			jQuery(document).bind('keyup.thickbox', function(e){
 
 				if ( e.which == 27 ){ // close
@@ -251,6 +257,11 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 					if ( ! jQuery(document).triggerHandler( 'wp_CloseOnEscape', [{ event: e, what: 'thickbox', cb: tb_remove }] ) )
 						tb_remove();
 
+=======
+			jQuery(document).bind('keydown.thickbox', function(e){
+				if ( e.which == 27 ){ // close
+					tb_remove();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					return false;
 				}
 			});

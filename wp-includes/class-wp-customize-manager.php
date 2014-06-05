@@ -2,16 +2,59 @@
 /**
  * Customize Manager.
  *
+<<<<<<< HEAD
+=======
+ * Bootstraps the Customize experience on the server-side.
+ *
+ * Sets up the theme-switching process if a theme other than the active one is
+ * being previewed and customized.
+ *
+ * Serves as a factory for Customize Controls and Settings, and
+ * instantiates default Customize Controls and Settings.
+ *
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @package WordPress
  * @subpackage Customize
  * @since 3.4.0
  */
 final class WP_Customize_Manager {
+<<<<<<< HEAD
 	protected $theme;
 	protected $original_stylesheet;
 
 	protected $previewing = false;
 
+=======
+	/**
+	 * An instance of the theme that is being customized.
+	 *
+	 * @var WP_Theme
+	 */
+	protected $theme;
+
+	/**
+	 * The directory name of the previously active theme (within the theme_root).
+	 *
+	 * @var string
+	 */
+	protected $original_stylesheet;
+
+	/**
+	 * Whether filters have been set to change the active theme to the theme being
+	 * customized.
+	 *
+	 * @var boolean
+	 */
+	protected $previewing = false;
+
+	/**
+	 * Methods and properties deailing with managing widgets in the customizer.
+	 *
+	 * @var WP_Customize_Widgets
+	 */
+	public $widgets;
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	protected $settings = array();
 	protected $sections = array();
 	protected $controls = array();
@@ -20,6 +63,14 @@ final class WP_Customize_Manager {
 
 	protected $customized;
 
+<<<<<<< HEAD
+=======
+	/**
+	 * $_POST values for Customize Settings.
+	 *
+	 * @var array
+	 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	private $_post_values;
 
 	/**
@@ -31,6 +82,12 @@ final class WP_Customize_Manager {
 		require( ABSPATH . WPINC . '/class-wp-customize-setting.php' );
 		require( ABSPATH . WPINC . '/class-wp-customize-section.php' );
 		require( ABSPATH . WPINC . '/class-wp-customize-control.php' );
+<<<<<<< HEAD
+=======
+		require( ABSPATH . WPINC . '/class-wp-customize-widgets.php' );
+
+		$this->widgets = new WP_Customize_Widgets( $this );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		add_filter( 'wp_die_handler', array( $this, 'wp_die_handler' ) );
 
@@ -127,6 +184,7 @@ final class WP_Customize_Manager {
 			// Once the theme is loaded, we'll validate it.
 			add_action( 'after_setup_theme', array( $this, 'after_setup_theme' ) );
 		} else {
+<<<<<<< HEAD
 			if ( ! current_user_can( 'switch_themes' ) )
 				$this->wp_die( -1 );
 
@@ -134,10 +192,26 @@ final class WP_Customize_Manager {
 			if ( $this->theme()->errors() )
 				$this->wp_die( -1 );
 
+=======
+			// If the requested theme is not the active theme and the user doesn't have the
+			// switch_themes cap, bail.
+			if ( ! current_user_can( 'switch_themes' ) )
+				$this->wp_die( -1 );
+
+			// If the theme has errors while loading, bail.
+			if ( $this->theme()->errors() )
+				$this->wp_die( -1 );
+
+			// If the theme isn't allowed per multisite settings, bail.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			if ( ! $this->theme()->is_allowed() )
 				$this->wp_die( -1 );
 		}
 
+<<<<<<< HEAD
+=======
+		// All good, let's do some internal business to preview the theme.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$this->start_previewing_theme();
 	}
 
@@ -154,9 +228,13 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Start previewing the selected theme.
 	 *
 	 * Adds filters to change the current theme.
+=======
+	 * Start previewing the selected theme by adding filters to change the current theme.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -181,6 +259,16 @@ final class WP_Customize_Manager {
 			add_filter( 'pre_option_template_root', array( $this, 'get_template_root' ) );
 		}
 
+<<<<<<< HEAD
+=======
+		/**
+		 * Fires once the Customizer theme preview has started.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'start_previewing_theme', $this );
 	}
 
@@ -211,6 +299,16 @@ final class WP_Customize_Manager {
 			remove_filter( 'pre_option_template_root', array( $this, 'get_template_root' ) );
 		}
 
+<<<<<<< HEAD
+=======
+		/**
+		 * Fires once the Customizer theme preview has stopped.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'stop_previewing_theme', $this );
 	}
 
@@ -275,6 +373,17 @@ final class WP_Customize_Manager {
 	 * @since 3.4.0
 	 */
 	public function wp_loaded() {
+<<<<<<< HEAD
+=======
+
+		/**
+		 * Fires once WordPress has loaded, allowing scripts and styles to be initialized.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_register', $this );
 
 		if ( $this->is_preview() && ! is_admin() )
@@ -300,12 +409,20 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Decode the $_POST attribute used to override the WP_Customize_Setting values.
+=======
+	 * Decode the $_POST['customized'] values for a specific Customize Setting.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
 	 * @param mixed $setting A WP_Customize_Setting derived object
+<<<<<<< HEAD
 	 * @return string Sanitized attribute
+=======
+	 * @return string $post_value Sanitized value
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function post_value( $setting ) {
 		if ( ! isset( $this->_post_values ) ) {
@@ -340,6 +457,17 @@ final class WP_Customize_Manager {
 			$setting->preview();
 		}
 
+<<<<<<< HEAD
+=======
+		/**
+		 * Fires once the Customizer preview has initialized and JavaScript
+		 * settings have been printed.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_preview_init', $this );
 	}
 
@@ -487,7 +615,11 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Switch the theme and trigger the save action of each setting.
+=======
+	 * Switch the theme and trigger the save() method on each setting.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -503,15 +635,40 @@ final class WP_Customize_Manager {
 			// to operate properly.
 			$this->stop_previewing_theme();
 			switch_theme( $this->get_stylesheet() );
+<<<<<<< HEAD
 			$this->start_previewing_theme();
 		}
 
+=======
+			update_option( 'theme_switched_via_customizer', true );
+			$this->start_previewing_theme();
+		}
+
+		/**
+		 * Fires once the theme has switched in the Customizer, but before settings
+		 * have been saved.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_save', $this );
 
 		foreach ( $this->settings as $setting ) {
 			$setting->save();
 		}
 
+<<<<<<< HEAD
+=======
+		/**
+		 * Fires after Customize settings have been saved.
+		 *
+		 * @since 3.6.0
+		 *
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_save_after', $this );
 
 		die;
@@ -522,9 +679,15 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the setting. Can be a
 	 *                   theme mod or option name.
 	 * @param array $args Setting arguments.
+=======
+	 * @param WP_Customize_Setting|string $id Customize Setting object, or ID.
+	 * @param array $args                     Setting arguments; passed to WP_Customize_Setting
+	 *                                        constructor.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function add_setting( $id, $args = array() ) {
 		if ( is_a( $id, 'WP_Customize_Setting' ) )
@@ -540,8 +703,13 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the setting.
 	 * @return object The settings object.
+=======
+	 * @param string $id Customize Setting ID.
+	 * @return WP_Customize_Setting
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function get_setting( $id ) {
 		if ( isset( $this->settings[ $id ] ) )
@@ -553,7 +721,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the setting.
+=======
+	 * @param string $id Customize Setting ID.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function remove_setting( $id ) {
 		unset( $this->settings[ $id ] );
@@ -564,8 +736,13 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the section.
 	 * @param array $args Section arguments.
+=======
+	 * @param WP_Customize_Section|string $id   Customize Section object, or Section ID.
+	 * @param array                       $args Section arguments.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function add_section( $id, $args = array() ) {
 		if ( is_a( $id, 'WP_Customize_Section' ) )
@@ -581,8 +758,13 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the section.
 	 * @return object The section object.
+=======
+	 * @param string $id Section ID.
+	 * @return WP_Customize_Section
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function get_section( $id ) {
 		if ( isset( $this->sections[ $id ] ) )
@@ -594,7 +776,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the section.
+=======
+	 * @param string $id Section ID.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function remove_section( $id ) {
 		unset( $this->sections[ $id ] );
@@ -605,8 +791,14 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the control.
 	 * @param array $args Setting arguments.
+=======
+	 * @param WP_Customize_Control|string $id   Customize Control object, or ID.
+	 * @param array                       $args Control arguments; passed to WP_Customize_Control
+	 *                                          constructor.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function add_control( $id, $args = array() ) {
 		if ( is_a( $id, 'WP_Customize_Control' ) )
@@ -622,8 +814,13 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param string $id A specific ID of the control.
 	 * @return object The settings object.
+=======
+	 * @param string $id ID of the control.
+	 * @return WP_Customize_Control $control The control object.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function get_control( $id ) {
 		if ( isset( $this->controls[ $id ] ) )
@@ -631,11 +828,19 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Remove a customize setting.
 	 *
 	 * @since 3.4.0
 	 *
 	 * @param string $id A specific ID of the control.
+=======
+	 * Remove a customize control.
+	 *
+	 * @since 3.4.0
+	 *
+	 * @param string $id ID of the control.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function remove_control( $id ) {
 		unset( $this->controls[ $id ] );
@@ -662,11 +867,21 @@ final class WP_Customize_Manager {
 	/**
 	 * Prepare settings and sections.
 	 *
+<<<<<<< HEAD
 	 * @since 3.4.0
 	 */
 	public function prepare_controls() {
 		// Prepare controls
 		// Reversing makes uasort sort by time added when conflicts occur.
+=======
+	 * For each, check if required related components exist,
+	 * whether the user has the necessary capabilities,
+	 * and sort by priority.
+	 *
+	 * @since 3.4.0
+	 */
+	public function prepare_controls() {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$this->controls = array_reverse( $this->controls );
 		$controls = array();
@@ -680,7 +895,12 @@ final class WP_Customize_Manager {
 		}
 		$this->controls = $controls;
 
+<<<<<<< HEAD
 		// Prepare sections
+=======
+		// Prepare sections.
+		// Reversing makes uasort sort by time added when conflicts occur.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$this->sections = array_reverse( $this->sections );
 		uasort( $this->sections, array( $this, '_cmp_priority' ) );
 		$sections = array();
@@ -995,10 +1215,17 @@ final class WP_Customize_Manager {
 };
 
 /**
+<<<<<<< HEAD
  * Validates a hex color.
  *
  * Returns either '', a 3 or 6 digit hex color (with #), or null.
  * For validating values without a #, see sanitize_hex_color_no_hash().
+=======
+ * Sanitizes a hex color.
+ *
+ * Returns either '', a 3 or 6 digit hex color (with #), or null.
+ * For sanitizing values without a #, see sanitize_hex_color_no_hash().
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @since 3.4.0
  *

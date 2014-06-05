@@ -230,7 +230,11 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 	}
 
 	function getchmod($file) {
+<<<<<<< HEAD
 		return substr(decoct(@fileperms( 'ssh2.sftp://' . $this->sftp_link . '/' . ltrim($file, '/') )),3);
+=======
+		return substr( decoct( @fileperms( 'ssh2.sftp://' . $this->sftp_link . '/' . ltrim( $file, '/' ) ) ), -3 );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	function group($file) {

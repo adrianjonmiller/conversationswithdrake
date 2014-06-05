@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /* ----------------------------------------------------------------------------------------------------------------*/
 /* ---------->>> thickbox specific link and font settings <<<------------------------------------------------------*/
@@ -52,10 +53,23 @@
 * html #TB_overlay { /* ie6 hack */
      position: absolute;
      height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+=======
+#TB_overlay {
+	background: #000;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100050; /* Above DFW. */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 #TB_window {
 	position: fixed;
+<<<<<<< HEAD
 	background: #ffffff;
 	z-index: 510; /* should overlap theme modal, which is 500 on mobile. */
 	color:#000000;
@@ -77,6 +91,20 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 
 #TB_window img#TB_Image {
 	display:block;
+=======
+	background: #fff;
+	z-index: 100050; /* Above DFW. */
+	visibility: hidden;
+	text-align: left;
+	top: 50%;
+	left: 50%;
+	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+}
+
+#TB_window img#TB_Image {
+	display: block;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	margin: 15px 0 0 15px;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -85,6 +113,7 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 }
 
 #TB_caption{
+<<<<<<< HEAD
 	height:25px;
 	padding:7px 30px 10px 25px;
 	float:left;
@@ -100,12 +129,28 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 	padding:6px 10px 0;
 	text-align:right;
 	float:right;
+=======
+	height: 25px;
+	padding: 7px 30px 10px 25px;
+	float: left;
+}
+
+#TB_closeWindow {
+	height: 25px;
+	padding: 11px 25px 10px 0;
+	float: right;
+}
+
+#TB_closeAjaxWindow {
+	float: right;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 #TB_closeAjaxWindow a {
 	text-decoration: none;
 }
 
+<<<<<<< HEAD
 #TB_ajaxWindowTitle{
 	float:left;
 	padding:6px 10px 0;
@@ -136,10 +181,50 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 	position: fixed;
 	display:none;
 	z-index:103;
+=======
+#TB_ajaxWindowTitle {
+	float: left;
+	font-weight: 600;
+	line-height: 29px;
+	overflow: hidden; 
+	padding: 0 29px 0 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc( 100% - 39px );
+}
+
+#TB_title {
+	background: #fcfcfc;
+	border-bottom: 1px solid #dfdfdf;
+	height: 29px;
+}
+
+#TB_ajaxContent {
+	clear: both;
+	padding: 2px 15px 15px 15px;
+	overflow: auto;
+	text-align: left;
+	line-height: 1.4em;
+}
+
+#TB_ajaxContent.TB_modal {
+	padding: 15px;
+}
+
+#TB_ajaxContent p {
+	padding: 5px 0px 5px 0px;
+}
+
+#TB_load {
+	position: fixed;
+	display: none;
+	z-index: 103;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	top: 50%;
 	left: 50%;
 	background-color: #E8E8E8;
 	border: 1px solid #555;
+<<<<<<< HEAD
 	margin: -45px 0pt 0pt -125px;
 	padding: 40px 15px 15px;
 }
@@ -179,18 +264,62 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 	height: 16px;
 	margin: -3px -3px 0 0;
 	width: 16px;
+=======
+	margin: -45px 0 0 -125px;
+	padding: 40px 15px 15px;
+}
+
+#TB_HideSelect {
+	z-index: 99;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	border: none;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#TB_iframeContent {
+	clear: both;
+	border: none;
+}
+
+.tb-close-icon {
+	color: #666;
+	text-align: center;
+	line-height: 29px;
+	width: 29px;
+	height: 29px;
+	position: absolute;
+	top: 0;
+	right: 0;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .tb-close-icon:before {
 	content: '\f158';
+<<<<<<< HEAD
 	color: #ccc;
 	font: normal 20px/1 'dashicons';
 	speak: none;
 	vertical-align: middle;
+=======
+	font: normal 20px/29px 'dashicons';
+	speak: none;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
 .tb-close-icon:hover:before {
 	color: #fff;
 }
+=======
+.tb-close-icon:hover {
+	color: #2ea2cc;
+}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

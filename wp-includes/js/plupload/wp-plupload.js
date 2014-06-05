@@ -2,11 +2,20 @@
 
 window.wp = window.wp || {};
 
+<<<<<<< HEAD
 (function( exports, $ ) {
 	var Uploader;
 
 	if ( typeof _wpPluploadSettings === 'undefined' )
 		return;
+=======
+( function( exports, $ ) {
+	var Uploader;
+
+	if ( typeof _wpPluploadSettings === 'undefined' ) {
+		return;
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * An object that helps create a WordPress uploader using plupload.
@@ -24,6 +33,10 @@ window.wp = window.wp || {};
 	 */
 	Uploader = function( options ) {
 		var self = this,
+<<<<<<< HEAD
+=======
+			isIE = navigator.userAgent.indexOf('Trident/') != -1 || navigator.userAgent.indexOf('MSIE ') != -1,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			elements = {
 				container: 'container',
 				browser:   'browse_button',
@@ -37,8 +50,14 @@ window.wp = window.wp || {};
 
 		this.supported = this.supports.upload;
 
+<<<<<<< HEAD
 		if ( ! this.supported )
 			return;
+=======
+		if ( ! this.supported ) {
+			return;
+		}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		// Use deep extend to ensure that multipart_params and other objects are cloned.
 		this.plupload = $.extend( true, { multipart_params: {} }, Uploader.defaults );
@@ -52,15 +71,27 @@ window.wp = window.wp || {};
 
 		// Proxy all methods so this always refers to the current instance.
 		for ( key in this ) {
+<<<<<<< HEAD
 			if ( $.isFunction( this[ key ] ) )
 				this[ key ] = $.proxy( this[ key ], this );
+=======
+			if ( $.isFunction( this[ key ] ) ) {
+				this[ key ] = $.proxy( this[ key ], this );
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 
 		// Ensure all elements are jQuery elements and have id attributes
 		// Then set the proper plupload arguments to the ids.
 		for ( key in elements ) {
+<<<<<<< HEAD
 			if ( ! this[ key ] )
 				continue;
+=======
+			if ( ! this[ key ] ) {
+				continue;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			this[ key ] = $( this[ key ] ).first();
 
@@ -69,14 +100,35 @@ window.wp = window.wp || {};
 				continue;
 			}
 
+<<<<<<< HEAD
 			if ( ! this[ key ].prop('id') )
 				this[ key ].prop( 'id', '__wp-uploader-id-' + Uploader.uuid++ );
+=======
+			if ( ! this[ key ].prop('id') ) {
+				this[ key ].prop( 'id', '__wp-uploader-id-' + Uploader.uuid++ );
+			}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			this.plupload[ elements[ key ] ] = this[ key ].prop('id');
 		}
 
 		// If the uploader has neither a browse button nor a dropzone, bail.
+<<<<<<< HEAD
 		if ( ! ( this.browser && this.browser.length ) && ! ( this.dropzone && this.dropzone.length ) )
 			return;
+=======
+		if ( ! ( this.browser && this.browser.length ) && ! ( this.dropzone && this.dropzone.length ) ) {
+			return;
+		}
+
+		// Make sure flash sends cookies (seems in IE it does without switching to urlstream mode)
+		if ( ! isIE && 'flash' === plupload.predictRuntime( this.plupload ) &&
+			( ! this.plupload.required_features || ! this.plupload.required_features.hasOwnProperty( 'send_binary_string' ) ) ) {
+
+			this.plupload.required_features = this.plupload.required_features || {};
+			this.plupload.required_features.send_binary_string = true;
+		}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		this.uploader = new plupload.Uploader( this.plupload );
 		delete this.plupload;
@@ -86,8 +138,14 @@ window.wp = window.wp || {};
 		delete this.params;
 
 		error = function( message, data, file ) {
+<<<<<<< HEAD
 			if ( file.attachment )
 				file.attachment.destroy();
+=======
+			if ( file.attachment ) {
+				file.attachment.destroy();
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			Uploader.errors.unshift({
 				message: message || pluploadL10n.default_error,
@@ -98,6 +156,7 @@ window.wp = window.wp || {};
 			self.error( message, data, file );
 		};
 
+<<<<<<< HEAD
 		this.uploader.init();
 
 		this.supports.dragdrop = this.uploader.features.dragdrop && ! Uploader.browser.mobile;
@@ -122,12 +181,45 @@ window.wp = window.wp || {};
 
 				if ( active )
 					return;
+=======
+		this.uploader.bind( 'init', function( uploader ) {
+			var timer, active, dragdrop,
+				dropzone = self.dropzone;
+
+			dragdrop = self.supports.dragdrop = uploader.features.dragdrop && ! Uploader.browser.mobile;
+
+			// Generate drag/drop helper classes.
+			if ( ! dropzone ) {
+				return;
+			}
+
+			dropzone.toggleClass( 'supports-drag-drop', !! dragdrop );
+
+			if ( ! dragdrop ) {
+				return dropzone.unbind('.wp-uploader');
+			}
+
+			// 'dragenter' doesn't fire correctly,
+			// simulate it with a limited 'dragover'
+			dropzone.bind( 'dragover.wp-uploader', function() {
+				if ( timer ) {
+					clearTimeout( timer );
+				}
+
+				if ( active ) {
+					return;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				dropzone.trigger('dropzone:enter').addClass('drag-over');
 				active = true;
 			});
 
+<<<<<<< HEAD
 			dropzone.bind('dragleave.wp-uploader, drop.wp-uploader', function(){
+=======
+			dropzone.bind('dragleave.wp-uploader, drop.wp-uploader', function() {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				// Using an instant timer prevents the drag-over class from
 				// being quickly removed and re-added when elements inside the
 				// dropzone are repositioned.
@@ -138,7 +230,15 @@ window.wp = window.wp || {};
 					dropzone.trigger('dropzone:leave').removeClass('drag-over');
 				}, 0 );
 			});
+<<<<<<< HEAD
 		}( this.dropzone, this.supports.dragdrop ));
+=======
+
+			$(self).trigger( 'uploader:ready' );
+		});
+
+		this.uploader.init();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		if ( this.browser ) {
 			this.browser.on( 'mouseenter', this.refresh );
@@ -153,8 +253,14 @@ window.wp = window.wp || {};
 				var attributes, image;
 
 				// Ignore failed uploads.
+<<<<<<< HEAD
 				if ( plupload.FAILED === file.status )
 					return;
+=======
+				if ( plupload.FAILED === file.status ) {
+					return;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				// Generate attributes for a new `Attachment` model.
 				attributes = _.extend({
@@ -234,8 +340,16 @@ window.wp = window.wp || {};
 			for ( key in Uploader.errorMap ) {
 				if ( pluploadError.code === plupload[ key ] ) {
 					message = Uploader.errorMap[ key ];
+<<<<<<< HEAD
 					if ( _.isFunction( message ) )
 						message = message( pluploadError.file, pluploadError );
+=======
+
+					if ( _.isFunction( message ) ) {
+						message = message( pluploadError.file, pluploadError );
+					}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					break;
 				}
 			}
@@ -244,7 +358,13 @@ window.wp = window.wp || {};
 			up.refresh();
 		});
 
+<<<<<<< HEAD
 		this.init();
+=======
+		this.uploader.bind( 'PostInit', function() {
+			self.init();
+		});
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	};
 
 	// Adds the 'defaults' and 'browser' properties.
@@ -282,8 +402,14 @@ window.wp = window.wp || {};
 		 *    Sets values for a map of data.
 		 */
 		param: function( key, value ) {
+<<<<<<< HEAD
 			if ( arguments.length === 1 && typeof key === 'string' )
 				return this.uploader.settings.multipart_params[ key ];
+=======
+			if ( arguments.length === 1 && typeof key === 'string' ) {
+				return this.uploader.settings.multipart_params[ key ];
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			if ( arguments.length > 1 ) {
 				this.uploader.settings.multipart_params[ key ] = value;

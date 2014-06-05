@@ -16,7 +16,11 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	function prepare_items() {
 		global $usersearch, $role, $wpdb, $mode;
 
+<<<<<<< HEAD
 		$usersearch = isset( $_REQUEST['s'] ) ? $_REQUEST['s'] : '';
+=======
+		$usersearch = isset( $_REQUEST['s'] ) ? wp_unslash( trim( $_REQUEST['s'] ) ) : '';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$users_per_page = $this->get_items_per_page( 'users_network_per_page' );
 

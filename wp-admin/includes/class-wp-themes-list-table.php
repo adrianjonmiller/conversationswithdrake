@@ -158,7 +158,14 @@ class WP_Themes_List_Table extends WP_List_Table {
 					. '" onclick="' . "return confirm( '" . esc_js( sprintf( __( "You are about to delete this theme '%s'\n  'Cancel' to stop, 'OK' to delete." ), $title ) )
 					. "' );" . '">' . __( 'Delete' ) . '</a>';
 
+<<<<<<< HEAD
 			$actions       = apply_filters( 'theme_action_links', $actions, $theme );
+=======
+			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
+			$actions       = apply_filters( 'theme_action_links', $actions, $theme );
+
+			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$actions       = apply_filters( "theme_action_links_$stylesheet", $actions, $theme );
 			$delete_action = isset( $actions['delete'] ) ? '<div class="delete-theme">' . $actions['delete'] . '</div>' : '';
 			unset( $actions['delete'] );
@@ -219,8 +226,14 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 			foreach ( array( 'Name', 'Description', 'Author', 'AuthorURI' ) as $header ) {
 				// Don't mark up; Do translate.
+<<<<<<< HEAD
 				if ( false !== stripos( $theme->display( $header, false, true ), $word ) )
 					continue 2;
+=======
+				if ( false !== stripos( strip_tags( $theme->display( $header, false, true ) ), $word ) ) {
+					continue 2;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 
 			if ( false !== stripos( $theme->get_stylesheet(), $word ) )
@@ -238,7 +251,11 @@ class WP_Themes_List_Table extends WP_List_Table {
 	/**
 	 * Send required variables to JavaScript land
 	 *
+<<<<<<< HEAD
 	 * @since 3.4
+=======
+	 * @since 3.4.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @access private
 	 *
 	 * @uses $this->features Array of all feature search terms.

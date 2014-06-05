@@ -19,8 +19,11 @@ if ( ! current_user_can( 'edit_posts' ) || ! current_user_can( get_post_type_obj
 /**
  * Press It form handler.
  *
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage Press_This
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.6.0
  *
  * @return int Post ID
@@ -146,7 +149,11 @@ if ( !empty($_REQUEST['ajax']) ) {
 			<h3 class="tb"><label for="tb_this_photo_description"><?php _e('Description') ?></label></h3>
 			<div class="titlediv">
 				<div class="titlewrap">
+<<<<<<< HEAD
 					<input id="tb_this_photo_description" name="photo_description" class="tb_this_photo_description tbtitle text" onkeypress="if(event.keyCode==13) image_selector(this);" value="<?php echo esc_attr($title);?>"/>
+=======
+					<input id="tb_this_photo_description" name="photo_description" class="tb_this_photo_description tbtitle text" type="text" onkeypress="if(event.keyCode==13) image_selector(this);" value="<?php echo esc_attr($title);?>"/>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				</div>
 			</div>
 
@@ -163,8 +170,11 @@ if ( !empty($_REQUEST['ajax']) ) {
 		/**
 		 * Retrieve all image URLs from given URI.
 		 *
+<<<<<<< HEAD
 		 * @package WordPress
 		 * @subpackage Press_This
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		 * @since 2.6.0
 		 *
 		 * @param string $uri
@@ -297,6 +307,10 @@ die;
 
 	wp_enqueue_style( 'colors' );
 	wp_enqueue_script( 'post' );
+<<<<<<< HEAD
+=======
+	add_thickbox();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	_wp_admin_html_begin();
 ?>
 <title><?php _e('Press This') ?></title>
@@ -311,28 +325,54 @@ var photostorage = false;
 <?php
 	/** This action is documented in wp-admin/admin-header.php */
 	do_action( 'admin_enqueue_scripts', 'press-this.php' );
+<<<<<<< HEAD
 	/**
 	 * Print styles for the Press This admin page.
+=======
+
+	/**
+	 * Fires when styles are printed for the Press This admin page.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.7.0
 	 */
 	do_action( 'admin_print_styles-press-this.php' );
+<<<<<<< HEAD
 	/** This action is documented in wp-admin/admin-header.php */
 	do_action( 'admin_print_styles' );
 	/**
 	 * Print scripts for the Press This admin page.
+=======
+
+	/** This action is documented in wp-admin/admin-header.php */
+	do_action( 'admin_print_styles' );
+
+	/**
+	 * Fires when scripts are printed for the Press This admin page.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.7.0
 	 */
 	do_action( 'admin_print_scripts-press-this.php' );
+<<<<<<< HEAD
 	/** This action is documented in wp-admin/admin-header.php */
 	do_action( 'admin_print_scripts' );
+=======
+
+	/** This action is documented in wp-admin/admin-header.php */
+	do_action( 'admin_print_scripts' );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	/**
 	 * Fires in the head tag on the Press This admin page.
 	 *
 	 * @since 3.7.0
 	 */
 	do_action( 'admin_head-press-this.php' );
+<<<<<<< HEAD
+=======
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	/** This action is documented in wp-admin/admin-header.php */
 	do_action( 'admin_head' );
 ?>
@@ -603,7 +643,11 @@ $admin_body_class .= ' locale-' . sanitize_html_class( strtolower( str_replace( 
 
 		<div id="titlediv">
 			<div class="titlewrap">
+<<<<<<< HEAD
 				<input name="title" id="title" class="text" value="<?php echo esc_attr($title);?>"/>
+=======
+				<input name="title" id="title" class="text" type="text" value="<?php echo esc_attr($title);?>"/>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			</div>
 		</div>
 

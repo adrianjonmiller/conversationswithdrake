@@ -510,7 +510,11 @@ function wp_http_validate_url( $url ) {
 	if ( 80 === $port || 443 === $port || 8080 === $port )
 		return $url;
 
+<<<<<<< HEAD
 	if ( $parsed_home && $same_host && $parsed_home['port'] === $port )
+=======
+	if ( $parsed_home && $same_host && isset( $parsed_home['port'] ) && $parsed_home['port'] === $port )
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return $url;
 
 	return false;

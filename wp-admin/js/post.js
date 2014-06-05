@@ -1,7 +1,18 @@
+<<<<<<< HEAD
 /* global postL10n, ajaxurl, wpAjax, setPostThumbnailL10n, postboxes, pagenow, tinymce, alert, deleteUserSetting, getUserSetting, setUserSetting */
 /* global theList:true, theExtraList:true, autosave:true */
 
 var tagBox, commentsBox, editPermalink, makeSlugeditClickable, WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail, wptitlehint;
+=======
+/* global postL10n, ajaxurl, wpAjax, setPostThumbnailL10n, postboxes, pagenow, tinymce, alert, deleteUserSetting */
+/* global theList:true, theExtraList:true, getUserSetting, setUserSetting */
+
+var tagBox, commentsBox, WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail, wptitlehint, makeSlugeditClickable, editPermalink;
+// Back-compat: prevent fatal errors
+makeSlugeditClickable = editPermalink = function(){};
+
+window.wp = window.wp || {};
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 // return an array with any duplicate, whitespace or values removed
 function array_unique_noempty(a) {
@@ -14,7 +25,12 @@ function array_unique_noempty(a) {
 	return out;
 }
 
+<<<<<<< HEAD
 (function($){
+=======
+( function($) {
+	var titleHasFocus = false;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 tagBox = {
 	clean : function(tags) {
@@ -268,10 +284,16 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 		send.lock = lock;
 
 	data['wp-refresh-post-lock'] = send;
+<<<<<<< HEAD
 });
 
 // Post locks: update the lock string or show the dialog if somebody has taken over editing
 $(document).on( 'heartbeat-tick.refresh-lock', function( e, data ) {
+=======
+
+}).on( 'heartbeat-tick.refresh-lock', function( e, data ) {
+	// Post locks: update the lock string or show the dialog if somebody has taken over editing
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	var received, wrap, avatar;
 
 	if ( data['wp-refresh-post-lock'] ) {
@@ -282,6 +304,7 @@ $(document).on( 'heartbeat-tick.refresh-lock', function( e, data ) {
 			wrap = $('#post-lock-dialog');
 
 			if ( wrap.length && ! wrap.is(':visible') ) {
+<<<<<<< HEAD
 				if ( typeof autosave == 'function' ) {
 					$(document).on('autosave-disable-buttons.post-lock', function() {
 						wrap.addClass('saving');
@@ -295,6 +318,18 @@ $(document).on( 'heartbeat-tick.refresh-lock', function( e, data ) {
 						window.onbeforeunload = null;
 
 					autosave = function(){};
+=======
+				if ( wp.autosave ) {
+					// Save the latest changes and disable
+					$(document).one( 'heartbeat-tick', function() {
+						wp.autosave.server.suspend();
+						wrap.removeClass('saving').addClass('saved');
+						$(window).off( 'beforeunload.edit-post' );
+					});
+
+					wrap.addClass('saving');
+					wp.autosave.server.triggerSave();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				}
 
 				if ( received.lock_error.avatar_src ) {
@@ -309,6 +344,28 @@ $(document).on( 'heartbeat-tick.refresh-lock', function( e, data ) {
 			$('#active_post_lock').val( received.new_lock );
 		}
 	}
+<<<<<<< HEAD
+=======
+}).on( 'before-autosave.update-post-slug', function() {
+	titleHasFocus = document.activeElement && document.activeElement.id === 'title';
+}).on( 'after-autosave.update-post-slug', function() {
+	// Create slug area only if not already there
+	// and the title field was not focused (user was not typing a title) when autosave ran
+	if ( ! $('#edit-slug-box > *').length && ! titleHasFocus ) {
+		$.post( ajaxurl, {
+				action: 'sample-permalink',
+				post_id: $('#post_ID').val(),
+				new_title: $('#title').val(),
+				samplepermalinknonce: $('#samplepermalinknonce').val()
+			},
+			function( data ) {
+				if ( data != '-1' ) {
+					$('#edit-slug-box').html(data);
+				}
+			}
+		);
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 });
 
 }(jQuery));
@@ -354,11 +411,33 @@ $(document).on( 'heartbeat-tick.refresh-lock', function( e, data ) {
 }(jQuery));
 
 jQuery(document).ready( function($) {
+<<<<<<< HEAD
 	var stamp, visibility, updateVisibility, updateText,
 		sticky = '', last = 0, co = $('#content');
 
 	postboxes.add_postbox_toggles(pagenow);
 
+=======
+	var stamp, visibility, $submitButtons, updateVisibility, updateText,
+		sticky = '',
+		last = 0,
+		co = $('#content'),
+		$document = $(document),
+		$editSlugWrap = $('#edit-slug-box'),
+		postId = $('#post_ID').val() || 0,
+		$submitpost = $('#submitpost'),
+		releaseLock = true,
+		$postVisibilitySelect = $('#post-visibility-select'),
+		$timestampdiv = $('#timestampdiv'),
+		$postStatusSelect = $('#post-status-select');
+
+	postboxes.add_postbox_toggles(pagenow);
+
+	// Clear the window name. Otherwise if this is a former preview window where the user navigated to edit another post,
+	// and the first post is still being edited, clicking Preview there will use this window to show the preview.
+	window.name = '';
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	// Post locks: contain focus inside the dialog. If the dialog is shown, focus the first item.
 	$('#post-lock-dialog .notification-dialog').on( 'keydown', function(e) {
 		if ( e.which != 9 )
@@ -376,10 +455,173 @@ jQuery(document).ready( function($) {
 	}).filter(':visible').find('.wp-tab-first').focus();
 
 	// Set the heartbeat interval to 15 sec. if post lock dialogs are enabled
+<<<<<<< HEAD
 	if ( typeof wp !== 'undefined' && wp.heartbeat && $('#post-lock-dialog').length ) {
 		wp.heartbeat.interval( 15 );
 	}
 
+=======
+	if ( wp.heartbeat && $('#post-lock-dialog').length ) {
+		wp.heartbeat.interval( 15 );
+	}
+
+	// The form is being submitted by the user
+	$submitButtons = $submitpost.find( ':button, :submit, a.submitdelete, #post-preview' ).on( 'click.edit-post', function( event ) {
+		var $button = $(this);
+
+		if ( $button.hasClass('disabled') ) {
+			event.preventDefault();
+			return;
+		}
+
+		if ( $button.hasClass('submitdelete') || $button.is( '#post-preview' ) ) {
+			return;
+		}
+
+		// The form submission can be blocked from JS or by using HTML 5.0 validation on some fields.
+		// Run this only on an actual 'submit'.
+		$('form#post').off( 'submit.edit-post' ).on( 'submit.edit-post', function( event ) {
+			if ( event.isDefaultPrevented() ) {
+				return;
+			}
+
+			// Stop autosave
+			if ( wp.autosave ) {
+				wp.autosave.server.suspend();
+			}
+
+			releaseLock = false;
+			$(window).off( 'beforeunload.edit-post' );
+
+			$submitButtons.addClass( 'disabled' );
+
+			if ( $button.attr('id') === 'publish' ) {
+				$submitpost.find('#major-publishing-actions .spinner').show();
+			} else {
+				$submitpost.find('#minor-publishing .spinner').show();
+			}
+		});
+	});
+
+	// Submit the form saving a draft or an autosave, and show a preview in a new tab
+	$('#post-preview').on( 'click.post-preview', function( event ) {
+		var $this = $(this),
+			$form = $('form#post'),
+			$previewField = $('input#wp-preview'),
+			target = $this.attr('target') || 'wp-preview',
+			ua = navigator.userAgent.toLowerCase();
+
+		event.preventDefault();
+
+		if ( $this.hasClass('disabled') ) {
+			return;
+		}
+
+		if ( wp.autosave ) {
+			wp.autosave.server.tempBlockSave();
+		}
+
+		$previewField.val('dopreview');
+		$form.attr( 'target', target ).submit().attr( 'target', '' );
+
+		// Workaround for WebKit bug preventing a form submitting twice to the same action.
+		// https://bugs.webkit.org/show_bug.cgi?id=28633
+		if ( ua.indexOf('safari') !== -1 && ua.indexOf('chrome') === -1 ) {
+			$form.attr( 'action', function( index, value ) {
+				return value + '?t=' + ( new Date() ).getTime();
+			});
+		}
+
+		$previewField.val('');
+	});
+
+	// This code is meant to allow tabbing from Title to Post content.
+	$('#title').on( 'keydown.editor-focus', function( event ) {
+		var editor, $textarea;
+
+		if ( event.keyCode === 9 && ! event.ctrlKey && ! event.altKey && ! event.shiftKey ) {
+			editor = typeof tinymce != 'undefined' && tinymce.get('content');
+			$textarea = $('#content');
+
+			if ( editor && ! editor.isHidden() ) {
+				editor.focus();
+			} else if ( $textarea.length ) {
+				$textarea.focus();
+			} else {
+				return;
+			}
+
+			event.preventDefault();
+		}
+	});
+
+	// Autosave new posts after a title is typed
+	if ( $( '#auto_draft' ).val() ) {
+		$( '#title' ).blur( function() {
+			var cancel;
+
+			if ( ! this.value || $('#edit-slug-box > *').length ) {
+				return;
+			}
+
+			// Cancel the autosave when the blur was triggered by the user submitting the form
+			$('form#post').one( 'submit', function() {
+				cancel = true;
+			});
+
+			window.setTimeout( function() {
+				if ( ! cancel && wp.autosave ) {
+					wp.autosave.server.triggerSave();
+				}
+			}, 200 );
+		});
+	}
+
+	$document.on( 'autosave-disable-buttons.edit-post', function() {
+		$submitButtons.addClass( 'disabled' );
+	}).on( 'autosave-enable-buttons.edit-post', function() {
+		if ( ! wp.heartbeat || ! wp.heartbeat.hasConnectionError() ) {
+			$submitButtons.removeClass( 'disabled' );
+		}
+	}).on( 'before-autosave.edit-post', function() {
+		$( '.autosave-message' ).text( postL10n.savingText );
+	}).on( 'after-autosave.edit-post', function( event, data ) {
+		$( '.autosave-message' ).text( data.message );
+	});
+
+	$(window).on( 'beforeunload.edit-post', function() {
+		var editor = typeof tinymce !== 'undefined' && tinymce.get('content');
+
+		if ( ( editor && ! editor.isHidden() && editor.isDirty() ) ||
+			( wp.autosave && wp.autosave.server.postChanged() ) ) {
+
+			return postL10n.saveAlert;
+		}
+	}).on( 'unload.edit-post', function( event ) {
+		if ( ! releaseLock ) {
+			return;
+		}
+
+		// Unload is triggered (by hand) on removing the Thickbox iframe.
+		// Make sure we process only the main document unload.
+		if ( event.target && event.target.nodeName != '#document' ) {
+			return;
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: ajaxurl,
+			async: false,
+			data: {
+				action: 'wp-remove-post-lock',
+				_wpnonce: $('#_wpnonce').val(),
+				post_ID: $('#post_ID').val(),
+				active_post_lock: $('#active_post_lock').val()
+			}
+		});
+	});
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	// multi-taxonomies
 	if ( $('#tagsdiv-post_tag').length ) {
 		tagBox.init();
@@ -487,14 +729,22 @@ jQuery(document).ready( function($) {
 		visibility = $('#post-visibility-display').html();
 
 		updateVisibility = function() {
+<<<<<<< HEAD
 			var pvSelect = $('#post-visibility-select');
 			if ( $('input:radio:checked', pvSelect).val() != 'public' ) {
+=======
+			if ( $postVisibilitySelect.find('input:radio:checked').val() != 'public' ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$('#sticky').prop('checked', false);
 				$('#sticky-span').hide();
 			} else {
 				$('#sticky-span').show();
 			}
+<<<<<<< HEAD
 			if ( $('input:radio:checked', pvSelect).val() != 'password' ) {
+=======
+			if ( $postVisibilitySelect.find('input:radio:checked').val() != 'password' ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$('#password-span').hide();
 			} else {
 				$('#password-span').show();
@@ -503,7 +753,11 @@ jQuery(document).ready( function($) {
 
 		updateText = function() {
 
+<<<<<<< HEAD
 			if ( ! $('#timestampdiv').length )
+=======
+			if ( ! $timestampdiv.length )
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				return true;
 
 			var attemptedDate, originalDate, currentDate, publishOn, postStatus = $('#post_status'),
@@ -515,10 +769,17 @@ jQuery(document).ready( function($) {
 			currentDate = new Date( $('#cur_aa').val(), $('#cur_mm').val() -1, $('#cur_jj').val(), $('#cur_hh').val(), $('#cur_mn').val() );
 
 			if ( attemptedDate.getFullYear() != aa || (1 + attemptedDate.getMonth()) != mm || attemptedDate.getDate() != jj || attemptedDate.getMinutes() != mn ) {
+<<<<<<< HEAD
 				$('.timestamp-wrap', '#timestampdiv').addClass('form-invalid');
 				return false;
 			} else {
 				$('.timestamp-wrap', '#timestampdiv').removeClass('form-invalid');
+=======
+				$timestampdiv.find('.timestamp-wrap').addClass('form-invalid');
+				return false;
+			} else {
+				$timestampdiv.find('.timestamp-wrap').removeClass('form-invalid');
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 
 			if ( attemptedDate > currentDate && $('#original_post_status').val() != 'future' ) {
@@ -545,7 +806,11 @@ jQuery(document).ready( function($) {
 				);
 			}
 
+<<<<<<< HEAD
 			if ( $('input:radio:checked', '#post-visibility-select').val() == 'private' ) {
+=======
+			if ( $postVisibilitySelect.find('input:radio:checked').val() == 'private' ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$('#publish').val( postL10n.update );
 				if ( 0 === optPublish.length ) {
 					postStatus.append('<option value="publish">' + postL10n.privatelyPublished + '</option>');
@@ -553,7 +818,11 @@ jQuery(document).ready( function($) {
 					optPublish.html( postL10n.privatelyPublished );
 				}
 				$('option[value="publish"]', postStatus).prop('selected', true);
+<<<<<<< HEAD
 				$('.edit-post-status', '#misc-publishing-actions').hide();
+=======
+				$('#misc-publishing-actions .edit-post-status').hide();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			} else {
 				if ( $('#original_post_status').val() == 'future' || $('#original_post_status').val() == 'draft' ) {
 					if ( optPublish.length ) {
@@ -564,7 +833,11 @@ jQuery(document).ready( function($) {
 					optPublish.html( postL10n.published );
 				}
 				if ( postStatus.is(':hidden') )
+<<<<<<< HEAD
 					$('.edit-post-status', '#misc-publishing-actions').show();
+=======
+					$('#misc-publishing-actions .edit-post-status').show();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 			$('#post-status-display').html($('option:selected', postStatus).text());
 			if ( $('option:selected', postStatus).val() == 'private' || $('option:selected', postStatus).val() == 'publish' ) {
@@ -580,21 +853,34 @@ jQuery(document).ready( function($) {
 			return true;
 		};
 
+<<<<<<< HEAD
 		$('.edit-visibility', '#visibility').click(function () {
 			if ( $( '#post-visibility-select' ).is( ':hidden' ) ) {
 				updateVisibility();
 				$('#post-visibility-select').slideDown('fast');
+=======
+		$( '#visibility .edit-visibility').click( function () {
+			if ( $postVisibilitySelect.is(':hidden') ) {
+				updateVisibility();
+				$postVisibilitySelect.slideDown('fast').find('input[type="radio"]').first().focus();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$(this).hide();
 			}
 			return false;
 		});
 
+<<<<<<< HEAD
 		$('.cancel-post-visibility', '#post-visibility-select').click(function () {
 			$('#post-visibility-select').slideUp('fast');
+=======
+		$postVisibilitySelect.find('.cancel-post-visibility').click( function( event ) {
+			$postVisibilitySelect.slideUp('fast');
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$('#visibility-radio-' + $('#hidden-post-visibility').val()).prop('checked', true);
 			$('#post_password').val($('#hidden-post-password').val());
 			$('#sticky').prop('checked', $('#hidden-post-sticky').prop('checked'));
 			$('#post-visibility-display').html(visibility);
+<<<<<<< HEAD
 			$('.edit-visibility', '#visibility').show();
 			updateText();
 			return false;
@@ -608,6 +894,19 @@ jQuery(document).ready( function($) {
 			updateText();
 
 			if ( $('input:radio:checked', pvSelect).val() != 'public' ) {
+=======
+			$('#visibility .edit-visibility').show().focus();
+			updateText();
+			event.preventDefault();
+		});
+
+		$postVisibilitySelect.find('.save-post-visibility').click( function( event ) { // crazyhorse - multiple ok cancels
+			$postVisibilitySelect.slideUp('fast');
+			$('#visibility .edit-visibility').show();
+			updateText();
+
+			if ( $postVisibilitySelect.find('input:radio:checked').val() != 'public' ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$('#sticky').prop('checked', false);
 			} // WEAPON LOCKED
 
@@ -617,6 +916,7 @@ jQuery(document).ready( function($) {
 				sticky = '';
 			}
 
+<<<<<<< HEAD
 			$('#post-visibility-display').html(	postL10n[$('input:radio:checked', pvSelect).val() + sticky]	);
 			return false;
 		});
@@ -636,11 +936,33 @@ jQuery(document).ready( function($) {
 
 		$('.cancel-timestamp', '#timestampdiv').click(function() {
 			$('#timestampdiv').slideUp('fast');
+=======
+			$('#post-visibility-display').html(	postL10n[ $postVisibilitySelect.find('input:radio:checked').val() + sticky ]	);
+			event.preventDefault();
+		});
+
+		$postVisibilitySelect.find('input:radio').change( function() {
+			updateVisibility();
+		});
+
+		$timestampdiv.siblings('a.edit-timestamp').click( function( event ) {
+			if ( $timestampdiv.is( ':hidden' ) ) {
+				$timestampdiv.slideDown('fast');
+				$('#mm').focus();
+				$(this).hide();
+			}
+			event.preventDefault();
+		});
+
+		$timestampdiv.find('.cancel-timestamp').click( function( event ) {
+			$timestampdiv.slideUp('fast').siblings('a.edit-timestamp').show().focus();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$('#mm').val($('#hidden_mm').val());
 			$('#jj').val($('#hidden_jj').val());
 			$('#aa').val($('#hidden_aa').val());
 			$('#hh').val($('#hidden_hh').val());
 			$('#mn').val($('#hidden_mn').val());
+<<<<<<< HEAD
 			$('#timestampdiv').siblings('a.edit-timestamp').show();
 			updateText();
 			return false;
@@ -685,10 +1007,57 @@ jQuery(document).ready( function($) {
 			$('#post-status-select').siblings('a.edit-post-status').show();
 			updateText();
 			return false;
+=======
+			updateText();
+			event.preventDefault();
+		});
+
+		$timestampdiv.find('.save-timestamp').click( function( event ) { // crazyhorse - multiple ok cancels
+			if ( updateText() ) {
+				$timestampdiv.slideUp('fast');
+				$timestampdiv.siblings('a.edit-timestamp').show();
+			}
+			event.preventDefault();
+		});
+
+		$('#post').on( 'submit', function( event ) {
+			if ( ! updateText() ) {
+				event.preventDefault();
+				$timestampdiv.show();
+
+				if ( wp.autosave ) {
+					wp.autosave.enableButtons();
+				}
+
+				$('#publishing-action .spinner').hide();
+			}
+		});
+
+		$postStatusSelect.siblings('a.edit-post-status').click( function( event ) {
+			if ( $postStatusSelect.is( ':hidden' ) ) {
+				$postStatusSelect.slideDown('fast').find('select').focus();
+				$(this).hide();
+			}
+			event.preventDefault();
+		});
+
+		$postStatusSelect.find('.save-post-status').click( function( event ) {
+			$postStatusSelect.slideUp('fast').siblings('a.edit-post-status').show();
+			updateText();
+			event.preventDefault();
+		});
+
+		$postStatusSelect.find('.cancel-post-status').click( function( event ) {
+			$('#post-status-select').slideUp('fast').siblings( 'a.edit-post-status' ).show().focus();
+			$('#post_status').val( $('#hidden_post_status').val() );
+			updateText();
+			event.preventDefault();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		});
 	} // end submitdiv
 
 	// permalink
+<<<<<<< HEAD
 	if ( $('#edit-slug-box').length ) {
 		editPermalink = function(post_id) {
 			var slug_value, i,
@@ -766,11 +1135,94 @@ jQuery(document).ready( function($) {
 			});
 		};
 		makeSlugeditClickable();
+=======
+	function editPermalink() {
+		var i, slug_value,
+			c = 0,
+			e = $('#editable-post-name'),
+			revert_e = e.html(),
+			real_slug = $('#post_name'),
+			revert_slug = real_slug.val(),
+			b = $('#edit-slug-buttons'),
+			revert_b = b.html(),
+			full = $('#editable-post-name-full').html();
+
+		$('#view-post-btn').hide();
+		b.html('<a href="#" class="save button button-small">'+postL10n.ok+'</a> <a class="cancel" href="#">'+postL10n.cancel+'</a>');
+		b.children('.save').click(function() {
+			var new_slug = e.children('input').val();
+			if ( new_slug == $('#editable-post-name-full').text() ) {
+				return $('#edit-slug-buttons .cancel').click();
+			}
+			$.post(ajaxurl, {
+				action: 'sample-permalink',
+				post_id: postId,
+				new_slug: new_slug,
+				new_title: $('#title').val(),
+				samplepermalinknonce: $('#samplepermalinknonce').val()
+			}, function(data) {
+				var box = $('#edit-slug-box');
+				box.html(data);
+				if (box.hasClass('hidden')) {
+					box.fadeIn('fast', function () {
+						box.removeClass('hidden');
+					});
+				}
+				b.html(revert_b);
+				real_slug.val(new_slug);
+				$('#view-post-btn').show();
+			});
+			return false;
+		});
+
+		$('#edit-slug-buttons .cancel').click(function() {
+			$('#view-post-btn').show();
+			e.html(revert_e);
+			b.html(revert_b);
+			real_slug.val(revert_slug);
+			return false;
+		});
+
+		for ( i = 0; i < full.length; ++i ) {
+			if ( '%' == full.charAt(i) )
+				c++;
+		}
+
+		slug_value = ( c > full.length / 4 ) ? '' : full;
+		e.html('<input type="text" id="new-post-slug" value="'+slug_value+'" />').children('input').keypress(function(e) {
+			var key = e.keyCode || 0;
+			// on enter, just save the new slug, don't save the post
+			if ( 13 == key ) {
+				b.children('.save').click();
+				return false;
+			}
+			if ( 27 == key ) {
+				b.children('.cancel').click();
+				return false;
+			}
+		} ).keyup( function() {
+			real_slug.val(this.value);
+		}).focus();
+	}
+
+	if ( $editSlugWrap.length ) {
+		$editSlugWrap.on( 'click', function( event ) {
+			var $target = $( event.target );
+
+			if ( $target.is('#editable-post-name') || $target.hasClass('edit-slug') ) {
+				editPermalink();
+			}
+		});
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	// word count
 	if ( typeof(wpWordCount) != 'undefined' ) {
+<<<<<<< HEAD
 		$(document).triggerHandler('wpcountwords', [ co.val() ]);
+=======
+		$document.triggerHandler('wpcountwords', [ co.val() ]);
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		co.keyup( function(e) {
 			var k = e.keyCode || e.charCode;
@@ -779,7 +1231,11 @@ jQuery(document).ready( function($) {
 				return true;
 
 			if ( 13 == k || 8 == last || 46 == last )
+<<<<<<< HEAD
 				$(document).triggerHandler('wpcountwords', [ co.val() ]);
+=======
+				$document.triggerHandler('wpcountwords', [ co.val() ]);
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			last = k;
 			return true;
@@ -812,6 +1268,7 @@ jQuery(document).ready( function($) {
 
 	wptitlehint();
 
+<<<<<<< HEAD
 	// resizable textarea#content
 	(function() {
 		var textarea = $('textarea#content'), offset = null, el;
@@ -920,6 +1377,78 @@ jQuery(document).ready( function($) {
 			});
 		});
 
+=======
+	// Resize the visual and text editors
+	( function() {
+		var editor, offset, mce,
+			$textarea = $('textarea#content'),
+			$handle = $('#post-status-info');
+
+		// No point for touch devices
+		if ( ! $textarea.length || 'ontouchstart' in window ) {
+			return;
+		}
+
+		function dragging( event ) {
+			if ( mce ) {
+				editor.theme.resizeTo( null, offset + event.pageY );
+			} else {
+				$textarea.height( Math.max( 50, offset + event.pageY ) );
+			}
+
+			event.preventDefault();
+		}
+
+		function endDrag() {
+			var height, toolbarHeight;
+
+			if ( mce ) {
+				editor.focus();
+				toolbarHeight = parseInt( $( '#wp-content-editor-container .mce-toolbar-grp' ).height(), 10 );
+
+				if ( toolbarHeight < 10 || toolbarHeight > 200 ) {
+					toolbarHeight = 30;
+				}
+
+				height = parseInt( $('#content_ifr').css('height'), 10 ) + toolbarHeight - 28;
+			} else {
+				$textarea.focus();
+				height = parseInt( $textarea.css('height'), 10 );
+			}
+
+			$document.off( '.wp-editor-resize' );
+
+			// sanity check
+			if ( height && height > 50 && height < 5000 ) {
+				setUserSetting( 'ed_size', height );
+			}
+		}
+
+		$textarea.css( 'resize', 'none' );
+
+		$handle.on( 'mousedown.wp-editor-resize', function( event ) {
+			if ( typeof tinymce !== 'undefined' ) {
+				editor = tinymce.get('content');
+			}
+
+			if ( editor && ! editor.isHidden() ) {
+				mce = true;
+				offset = $('#content_ifr').height() - event.pageY;
+			} else {
+				mce = false;
+				offset = $textarea.height() - event.pageY;
+				$textarea.blur();
+			}
+
+			$document.on( 'mousemove.wp-editor-resize', dragging )
+				.on( 'mouseup.wp-editor-resize mouseleave.wp-editor-resize', endDrag );
+
+			event.preventDefault();
+		}).on( 'mouseup.wp-editor-resize', endDrag );
+	})();
+
+	if ( typeof tinymce !== 'undefined' ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		// When changing post formats, change the editor body class
 		$( '#post-formats-select input.post-format' ).on( 'change.set-editor-class', function() {
 			var editor, body, format = this.id;

@@ -49,7 +49,11 @@
 			</div>
 
 			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+<<<<<<< HEAD
 				<h1 class="menu-toggle"><?php _e( 'Primary Menu', 'twentyfourteen' ); ?></h1>
+=======
+				<button class="menu-toggle"><?php _e( 'Primary Menu', 'twentyfourteen' ); ?></button>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				<a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentyfourteen' ); ?></a>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 			</nav>

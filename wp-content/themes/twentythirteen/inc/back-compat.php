@@ -17,8 +17,11 @@
  * Switches to the default theme.
  *
  * @since Twenty Thirteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentythirteen_switch_theme() {
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
@@ -34,8 +37,11 @@ add_action( 'after_switch_theme', 'twentythirteen_switch_theme' );
  * Twenty Thirteen on WordPress versions prior to 3.6.
  *
  * @since Twenty Thirteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentythirteen_upgrade_notice() {
 	$message = sprintf( __( 'Twenty Thirteen requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again.', 'twentythirteen' ), $GLOBALS['wp_version'] );
@@ -46,8 +52,11 @@ function twentythirteen_upgrade_notice() {
  * Prevent the Theme Customizer from being loaded on WordPress versions prior to 3.6.
  *
  * @since Twenty Thirteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentythirteen_customize() {
 	wp_die( sprintf( __( 'Twenty Thirteen requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again.', 'twentythirteen' ), $GLOBALS['wp_version'] ), '', array(
@@ -60,8 +69,11 @@ add_action( 'load-customize.php', 'twentythirteen_customize' );
  * Prevent the Theme Preview from being loaded on WordPress versions prior to 3.4.
  *
  * @since Twenty Thirteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentythirteen_preview() {
 	if ( isset( $_GET['preview'] ) ) {

@@ -66,6 +66,7 @@ if ( get_option('db_upgraded') ) {
 		if ( $c <= 50 || ( $c > 50 && mt_rand( 0, (int)( $c / 50 ) ) == 1 ) ) {
 			require_once( ABSPATH . WPINC . '/http.php' );
 			$response = wp_remote_get( admin_url( 'upgrade.php?step=1' ), array( 'timeout' => 120, 'httpversion' => '1.1' ) );
+<<<<<<< HEAD
 			/**
 			 * Fires after the multisite DB upgrade is complete.
 			 *
@@ -73,6 +74,9 @@ if ( get_option('db_upgraded') ) {
 			 *
 			 * @param array|WP_Error $response The upgrade response array or WP_Error on failure.
 			 */
+=======
+			/** This action is documented in wp-admin/network/upgrade.php */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			do_action( 'after_mu_upgrade', $response );
 			unset($response);
 		}

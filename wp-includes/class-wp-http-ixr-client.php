@@ -18,8 +18,18 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 			$this->path = !empty($bits['path']) ? $bits['path'] : '/';
 
 			// Make absolutely sure we have a path
+<<<<<<< HEAD
 			if ( ! $this->path )
 				$this->path = '/';
+=======
+			if ( ! $this->path ) {
+				$this->path = '/';
+			}
+				
+			if ( ! empty( $bits['query'] ) ) {
+				$this->path .= '?' . $bits['query'];
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		} else {
 			$this->scheme = 'http';
 			$this->server = $server;

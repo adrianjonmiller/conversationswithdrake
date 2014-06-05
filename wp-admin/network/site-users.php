@@ -33,12 +33,23 @@ get_current_screen()->add_help_tab( array(
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
 	'<p>' . __('<a href="http://codex.wordpress.org/Network_Admin_Sites_Screen" target="_blank">Documentation on Site Management</a>') . '</p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="http://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
+=======
+	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 );
 
 $_SERVER['REQUEST_URI'] = remove_query_arg( 'update', $_SERVER['REQUEST_URI'] );
 $referer = remove_query_arg( 'update', wp_get_referer() );
 
+<<<<<<< HEAD
+=======
+if ( ! empty( $_REQUEST['paged'] ) ) {
+	$referer = add_query_arg( 'paged', (int) $_REQUEST['paged'], $referer );
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 $id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
 
 if ( ! $id )
@@ -52,10 +63,13 @@ $is_main_site = is_main_site( $id );
 
 switch_to_blog( $id );
 
+<<<<<<< HEAD
 $editblog_roles = $wp_roles->roles;
 
 $default_role = get_option( 'default_role' );
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 $action = $wp_list_table->current_action();
 
 if ( $action ) {
@@ -270,6 +284,7 @@ if ( current_user_can( 'promote_users' ) && apply_filters( 'show_network_site_us
 		<tr>
 			<th scope="row"><?php _e( 'Role' ); ?></th>
 			<td><select name="new_role" id="new_role_0">
+<<<<<<< HEAD
 			<?php
 			reset( $editblog_roles );
 			foreach ( $editblog_roles as $role => $role_assoc ) {
@@ -277,6 +292,9 @@ if ( current_user_can( 'promote_users' ) && apply_filters( 'show_network_site_us
 				echo '<option ' . selected( $default_role, $role, false ) . ' value="' . esc_attr( $role ) . '">' . esc_html( $name ) . '</option>';
 			}
 			?>
+=======
+			<?php wp_dropdown_roles( get_option( 'default_role' ) ); ?>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			</select></td>
 		</tr>
 	</table>
@@ -309,6 +327,7 @@ if ( current_user_can( 'create_users' ) && apply_filters( 'show_network_site_use
 		<tr>
 			<th scope="row"><?php _e( 'Role' ); ?></th>
 			<td><select name="new_role" id="new_role_0">
+<<<<<<< HEAD
 			<?php
 			reset( $editblog_roles );
 			foreach ( $editblog_roles as $role => $role_assoc ) {
@@ -316,6 +335,9 @@ if ( current_user_can( 'create_users' ) && apply_filters( 'show_network_site_use
 				echo '<option ' . selected( $default_role, $role, false ) . ' value="' . esc_attr( $role ) . '">' . esc_html( $name ) . '</option>';
 			}
 			?>
+=======
+			<?php wp_dropdown_roles( get_option( 'default_role' ) ); ?>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			</select></td>
 		</tr>
 		<tr class="form-field">

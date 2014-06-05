@@ -5,6 +5,10 @@ var imageEdit = window.imageEdit = {
 	iasapi : {},
 	hold : {},
 	postid : '',
+<<<<<<< HEAD
+=======
+	_view : false,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	intval : function(f) {
 		return f | 0;
@@ -62,7 +66,11 @@ var imageEdit = window.imageEdit = {
 	},
 
 	toggleHelp : function(el) {
+<<<<<<< HEAD
 		$(el).siblings('.imgedit-help').slideToggle('fast');
+=======
+		$( el ).parents( '.imgedit-group-top' ).toggleClass( 'imgedit-help-toggled' ).find( '.imgedit-help' ).slideToggle( 'fast' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return false;
 	},
 
@@ -241,11 +249,25 @@ var imageEdit = window.imageEdit = {
 		$.post(ajaxurl, data, function(r) {
 			$('#image-editor-' + postid).empty().append(r);
 			t.toggleEditor(postid, 0);
+<<<<<<< HEAD
+=======
+			// refresh the attachment model so that changes propagate
+			if ( t._view ) {
+				t._view.refresh();
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		});
 	},
 
 	save : function(postid, nonce) {
+<<<<<<< HEAD
 		var data, target = this.getTarget(postid), history = this.filterHistory(postid, 0);
+=======
+		var data,
+			target = this.getTarget(postid),
+			history = this.filterHistory(postid, 0),
+			self = this;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		if ( '' === history ) {
 			return false;
@@ -283,11 +305,25 @@ var imageEdit = window.imageEdit = {
 				$('#imgedit-response-' + postid).html('<div class="updated"><p>' + ret.msg + '</p></div>');
 			}
 
+<<<<<<< HEAD
 			imageEdit.close(postid);
 		});
 	},
 
 	open : function(postid, nonce) {
+=======
+			if ( self._view ) {
+				self._view.save();
+			} else {
+				imageEdit.close(postid);
+			}
+		});
+	},
+
+	open : function( postid, nonce, view ) {
+		this._view = view;
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		var data, elem = $('#image-editor-' + postid), head = $('#media-head-' + postid),
 			btn = $('#imgedit-open-btn-' + postid), spin = btn.siblings('.spinner');
 
@@ -319,8 +355,15 @@ var imageEdit = window.imageEdit = {
 	},
 
 	initCrop : function(postid, image, parent) {
+<<<<<<< HEAD
 		var t = this, selW = $('#imgedit-sel-width-' + postid),
 			selH = $('#imgedit-sel-height-' + postid);
+=======
+		var t = this,
+			selW = $('#imgedit-sel-width-' + postid),
+			selH = $('#imgedit-sel-height-' + postid),
+			$img;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		t.iasapi = $(image).imgAreaSelect({
 			parent: parent,
@@ -330,7 +373,17 @@ var imageEdit = window.imageEdit = {
 			minWidth: 3,
 			minHeight: 3,
 
+<<<<<<< HEAD
 			onInit: function() {
+=======
+			onInit: function( img ) {
+				// Ensure that the imgareaselect wrapper elements are position:absolute
+				// (even if we're in a position:fixed modal)
+				$img = $( img );
+				$img.next().css( 'position', 'absolute' )
+					.nextAll( '.imgareaselect-outer' ).css( 'position', 'absolute' );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				parent.children().mousedown(function(e){
 					var ratio = false, sel, defRatio;
 
@@ -397,10 +450,29 @@ var imageEdit = window.imageEdit = {
 
 		this.iasapi = {};
 		this.hold = {};
+<<<<<<< HEAD
 		$('#image-editor-' + postid).fadeOut('fast', function() {
 			$('#media-head-' + postid).fadeIn('fast');
 			$(this).empty();
 		});
+=======
+
+		// If we've loaded the editor in the context of a Media Modal, then switch to the previous view,
+		// whatever that might have been.
+		if ( this._view ){
+			this._view.back();
+		}
+
+		// In case we are not accessing the image editor in the context of a View, close the editor the old-skool way
+		else {
+			$('#image-editor-' + postid).fadeOut('fast', function() {
+				$('#media-head-' + postid).fadeIn('fast');
+				$(this).empty();
+			});
+		}
+
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	},
 
 	notsaved : function(postid) {

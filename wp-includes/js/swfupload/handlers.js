@@ -32,7 +32,11 @@ function fileQueued(fileObj) {
 function uploadStart(fileObj) {
 	try {
 		if ( typeof topWin.tb_remove != 'undefined' )
+<<<<<<< HEAD
 			topWin.jQuery('#TB_overlay').unbind('click', topWin.tb_remove); 
+=======
+			topWin.jQuery('#TB_overlay').unbind('click', topWin.tb_remove);
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	} catch(e){}
 
 	return true;
@@ -212,11 +216,20 @@ function updateMediaForm() {
 	else
 		jQuery('.savebutton').hide();
 
+<<<<<<< HEAD
 	// Only show Gallery button when there are at least two files.
 	if ( items.length > 1 )
 		jQuery('.insert-gallery').show();
 	else
 		jQuery('.insert-gallery').hide();
+=======
+	// Only show Gallery buttons when there are at least two files.
+	if ( items.length > 1 ) {
+		jQuery('.insert-gallery').show();
+	} else {
+		jQuery('.insert-gallery').hide();
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 function uploadSuccess(fileObj, serverData) {

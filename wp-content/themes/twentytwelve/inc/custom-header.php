@@ -51,8 +51,11 @@ add_action( 'after_setup_theme', 'twentytwelve_custom_header_setup' );
  * Load our special font CSS file.
  *
  * @since Twenty Twelve 1.2
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentytwelve_custom_header_fonts() {
 	$font_url = twentytwelve_get_font_url();

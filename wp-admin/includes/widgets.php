@@ -237,5 +237,9 @@ function wp_widget_control( $sidebar_args ) {
 	</div>
 <?php
 	echo $sidebar_args['after_widget'];
+<<<<<<< HEAD
+=======
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $sidebar_args;
 }

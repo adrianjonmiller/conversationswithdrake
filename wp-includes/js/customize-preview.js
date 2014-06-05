@@ -108,11 +108,14 @@
 				style = $('#custom-background-css'),
 				update;
 
+<<<<<<< HEAD
 			// If custom backgrounds are active and we can't find the
 			// default output, bail.
 			if ( body.hasClass('custom-background') && ! style.length )
 				return;
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			update = function() {
 				var css = '';
 

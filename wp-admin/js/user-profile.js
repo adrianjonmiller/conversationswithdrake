@@ -95,7 +95,15 @@
 
 			// Set color scheme
 			if ( user_id === current_user_id ) {
+<<<<<<< HEAD
 				// Load the colors stylesheet
+=======
+				// Load the colors stylesheet.
+				// The default color scheme won't have one, so we'll need to create an element.
+				if ( 0 === $stylesheet.length ) {
+					$stylesheet = $( '<link rel="stylesheet" />' ).appendTo( 'head' );
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$stylesheet.attr( 'href', $this.children( '.css_url' ).val() );
 
 				// repaint icons

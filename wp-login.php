@@ -68,9 +68,13 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	<title><?php bloginfo('name'); ?> &rsaquo; <?php echo $title; ?></title>
 	<?php
 
+<<<<<<< HEAD
 	wp_admin_css( 'wp-admin', true );
 	wp_admin_css( 'colors-fresh', true );
 	wp_admin_css( 'ie', true );
+=======
+	wp_admin_css( 'login', true );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	// Remove all stored post data on logging out.
 	// This could be added by add_action('login_head'...) like wp_shake_js()
@@ -98,7 +102,11 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 		$login_header_url   = network_home_url();
 		$login_header_title = get_current_site()->site_name;
 	} else {
+<<<<<<< HEAD
 		$login_header_url   = __( 'http://wordpress.org/' );
+=======
+		$login_header_url   = __( 'https://wordpress.org/' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$login_header_title = __( 'Powered by WordPress' );
 	}
 
@@ -133,6 +141,10 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 		if ( 'success' ===  $interim_login )
 			$classes[] = 'interim-login-success';
 	}
+<<<<<<< HEAD
+=======
+	$classes[] =' locale-' . sanitize_html_class( strtolower( str_replace( '_', '-', get_locale() ) ) );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * Filter the login page body classes.
@@ -390,7 +402,11 @@ function retrieve_password() {
 	 */
 	$message = apply_filters( 'retrieve_password_message', $message, $key );
 
+<<<<<<< HEAD
 	if ( $message && !wp_mail($user_email, $title, $message) )
+=======
+	if ( $message && !wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) )
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function.') );
 
 	return true;
@@ -614,9 +630,26 @@ case 'rp' :
 	</p>
 
 	<div id="pass-strength-result" class="hide-if-no-js"><?php _e('Strength indicator'); ?></div>
+<<<<<<< HEAD
 	<p class="description indicator-hint"><?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! " ? $ % ^ &amp; ).'); ?></p>
 
 	<br class="clear" />
+=======
+	<p class="description indicator-hint"><?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; ).'); ?></p>
+
+	<br class="clear" />
+
+	<?php
+	/**
+	 * Fires following the 'Strength indicator' meter in the user password reset form.
+	 *
+	 * @since 3.9.0
+	 *
+	 * @param WP_User $user User object of the user whose password is being reset.
+	 */
+	do_action( 'resetpass_form', $user );
+	?>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<p class="submit"><input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e('Reset Password'); ?>" /></p>
 </form>
 
@@ -746,11 +779,26 @@ default:
 	if ( !$secure_cookie && is_ssl() && force_ssl_login() && !force_ssl_admin() && ( 0 !== strpos($redirect_to, 'https') ) && ( 0 === strpos($redirect_to, 'http') ) )
 		$secure_cookie = false;
 
+<<<<<<< HEAD
 	// If cookies are disabled we can't log in even with a valid user+pass
 	if ( isset($_POST['testcookie']) && empty($_COOKIE[TEST_COOKIE]) )
 		$user = new WP_Error('test_cookie', __("<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href='http://www.google.com/cookies.html'>enable cookies</a> to use WordPress."));
 	else
 		$user = wp_signon('', $secure_cookie);
+=======
+	$user = wp_signon( '', $secure_cookie );
+
+	if ( empty( $_COOKIE[ LOGGED_IN_COOKIE ] ) ) {
+		if ( headers_sent() ) {
+			$user = new WP_Error( 'test_cookie', sprintf( __( '<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href="%1$s">this documentation</a> or try the <a href="%2$s">support forums</a>.' ),
+				__( 'http://codex.wordpress.org/Cookies' ), __( 'https://wordpress.org/support/' ) ) );
+		} elseif ( isset( $_POST['testcookie'] ) && empty( $_COOKIE[ TEST_COOKIE ] ) ) {
+			// If cookies are disabled we can't log in even with a valid user+pass
+			$user = new WP_Error( 'test_cookie', sprintf( __( '<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href="%s">enable cookies</a> to use WordPress.' ),
+				__( 'http://codex.wordpress.org/Cookies' ) ) );
+		}
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	$requested_redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '';
 	/**

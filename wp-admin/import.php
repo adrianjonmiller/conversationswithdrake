@@ -26,7 +26,11 @@ get_current_screen()->add_help_tab( array(
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
 	'<p>' . __('<a href="http://codex.wordpress.org/Tools_Import_Screen" target="_blank">Documentation on Import</a>') . '</p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+=======
+	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 );
 
 if ( current_user_can( 'install_plugins' ) )
@@ -74,9 +78,15 @@ foreach ( $popular_importers as $pop_importer => $pop_data ) {
 if ( empty( $importers ) ) {
 	echo '<p>' . __('No importers are available.') . '</p>'; // TODO: make more helpful
 } else {
+<<<<<<< HEAD
 	uasort($importers, create_function('$a, $b', 'return strnatcasecmp($a[0], $b[0]);'));
 ?>
 <table class="widefat importers" cellspacing="0">
+=======
+	uasort( $importers, '_usort_by_first_member' );
+?>
+<table class="widefat importers">
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 <?php
 	$alt = '';

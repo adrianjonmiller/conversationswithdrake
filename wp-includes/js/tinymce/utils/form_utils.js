@@ -1,11 +1,19 @@
 /**
  * form_utils.js
  *
+<<<<<<< HEAD
  * Copyright 2009, Moxiecode Systems AB
  * Released under LGPL License.
  *
  * License: http://tinymce.moxiecode.com/license
  * Contributing: http://tinymce.moxiecode.com/contributing
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+ *
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 
 var themeBaseURL = tinyMCEPopup.editor.baseURI.toAbsolute('themes/' + tinyMCEPopup.getParam("theme"));
@@ -132,9 +140,15 @@ function addClassesToList(list_id, specific_option) {
 			}
 		}
 	} else {
+<<<<<<< HEAD
 		tinymce.each(tinyMCEPopup.editor.dom.getClasses(), function(o) {
 			styleSelectElm.options[styleSelectElm.length] = new Option(o.title || o['class'], o['class']);
 		});
+=======
+		/*tinymce.each(tinyMCEPopup.editor.dom.getClasses(), function(o) {
+			styleSelectElm.options[styleSelectElm.length] = new Option(o.title || o['class'], o['class']);
+		});*/
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 }
 

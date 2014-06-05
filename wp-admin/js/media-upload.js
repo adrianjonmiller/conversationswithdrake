@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 /* global tinymce, QTags, tb_remove */
+=======
+/* global tinymce, QTags */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 // send html to the post editor
 
 var wpActiveEditor, send_to_editor;
 
+<<<<<<< HEAD
 send_to_editor = function(h) {
 	var ed, mce = typeof(tinymce) != 'undefined', qt = typeof(QTags) != 'undefined';
 
@@ -44,6 +49,36 @@ send_to_editor = function(h) {
 	}
 
 	try{tb_remove();}catch(e){}
+=======
+send_to_editor = function( html ) {
+	var editor,
+		hasTinymce = typeof tinymce !== 'undefined',
+		hasQuicktags = typeof QTags !== 'undefined';
+
+	if ( ! wpActiveEditor ) {
+		if ( hasTinymce && tinymce.activeEditor ) {
+			editor = tinymce.activeEditor;
+			wpActiveEditor = editor.id;
+		} else if ( ! hasQuicktags ) {
+			return false;
+		}
+	} else if ( hasTinymce ) {
+		editor = tinymce.get( wpActiveEditor );
+	}
+
+	if ( editor && ! editor.isHidden() ) {
+		editor.execCommand( 'mceInsertContent', false, html );
+	} else if ( hasQuicktags ) {
+		QTags.insertContent( html );
+	} else {
+		document.getElementById( wpActiveEditor ).value += html;
+	}
+
+	// If the old thickbox remove function exists, call it
+	if ( window.tb_remove ) {
+		try { window.tb_remove(); } catch( e ) {}
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 };
 
 // thickbox settings
@@ -56,8 +91,13 @@ var tb_position;
 			W = ( 720 < width ) ? 720 : width,
 			adminbar_height = 0;
 
+<<<<<<< HEAD
 		if ( $('body.admin-bar').length ) {
 			adminbar_height = parseInt( jQuery('#wpadminbar').css('height'), 10 );
+=======
+		if ( $('#wpadminbar').length ) {
+			adminbar_height = parseInt( $('#wpadminbar').css('height'), 10 );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 
 		if ( tbWindow.size() ) {
@@ -79,6 +119,7 @@ var tb_position;
 
 	$(window).resize(function(){ tb_position(); });
 
+<<<<<<< HEAD
 	// store caret position in IE
 	$(document).ready(function($){
 		$('a.thickbox').click(function(){
@@ -91,4 +132,6 @@ var tb_position;
 		});
 	});
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 })(jQuery);

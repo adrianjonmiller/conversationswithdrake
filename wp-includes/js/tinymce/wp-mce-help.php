@@ -13,6 +13,7 @@ header('Content-Type: text/html; charset=' . get_bloginfo('charset'));
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head>
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php echo get_option('blog_charset'); ?>" />
+<<<<<<< HEAD
 <title><?php _e('Rich Editor Help'); ?></title>
 <script type="text/javascript" src="tiny_mce_popup.js?ver=358-20121205"></script>
 <?php
@@ -98,10 +99,44 @@ wp_admin_css( 'wp-admin', true );
 	.top th {
 		text-decoration: underline;
 	}
+=======
+<title><?php _e('Keyboard Shortcuts'); ?></title>
+
+<?php wp_admin_css( 'wp-admin', true ); ?>
+<style type="text/css">
+
+	html {
+		background: #fcfcfc;
+		overflow: hidden;
+	}
+
+	body {
+		min-width: 0;
+	}
+
+	.wrap {
+		background-color: #fff;
+		border-top: 1px solid #ddd;
+		height: 390px;
+		margin: 0;
+		overflow: auto;
+		padding: 10px 16px;
+	}
+
+	th {
+		text-align: center;
+	}
+
+	.top th {
+		text-decoration: underline;
+	}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	.top .key {
 		text-align: center;
 		width: 5em;
 	}
+<<<<<<< HEAD
 	.top .action {
 		text-align: left;
 	}
@@ -114,11 +149,21 @@ wp_admin_css( 'wp-admin', true );
 		width: 100%;
 		border: 0 none;
 	}
+=======
+
+	.keys {
+		border: 0 none;
+		margin-bottom: 15px;
+		width: 100%;
+	}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	.keys p {
 		display: inline-block;
 		margin: 0px;
 		padding: 0px;
 	}
+<<<<<<< HEAD
 	.keys .left { text-align: left; }
 	.keys .center { text-align: center; }
 	.keys .right { text-align: right; }
@@ -132,10 +177,26 @@ wp_admin_css( 'wp-admin', true );
 	#buttoncontainer a, #buttoncontainer a:hover {
 		border-bottom: 0px;
 	}
+=======
+
+	.keys .left {
+		text-align: left;
+	}
+
+	.keys .center {
+		text-align: center;
+	}
+
+	.keys .right {
+		text-align: right;
+	}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	.macos .win,
 	.windows .mac {
 		display: none;
 	}
+<<<<<<< HEAD
 </style>
 <?php if ( is_rtl() ) : ?>
 <style type="text/css">
@@ -149,11 +210,27 @@ wp_admin_css( 'wp-admin', true );
 	.keys .left, .top, .action { text-align: right; }
 	.keys .right { text-align: left; }
 	td b { font-family: Tahoma, "Times New Roman", Times, serif }
+=======
+
+</style>
+<?php if ( is_rtl() ) : ?>
+<style type="text/css">
+
+	.keys .left {
+		text-align: right;
+	}
+
+	.keys .right {
+		text-align: left;
+	}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 </style>
 <?php endif; ?>
 </head>
 <body class="windows wp-core-ui">
 <script type="text/javascript">
+<<<<<<< HEAD
 if ( tinymce.isMac )
 	document.body.className = document.body.className.replace(/windows/, 'macos');
 </script>
@@ -190,18 +267,38 @@ if ( tinymce.isMac )
 <div id="content3" class="hidden">
 	<h2><?php _e('Writing at Full Speed'); ?></h2>
     <p><?php _e('Rather than reaching for your mouse to click on the toolbar, use these access keys. Windows and Linux use Ctrl + letter. Macintosh uses Command + letter.'); ?></p>
+=======
+var win = window.dialogArguments || opener || parent || top;
+
+if ( win && win.tinymce && win.tinymce.isMac ) {
+	document.body.className = document.body.className.replace(/windows/, 'macos');
+}
+</script>
+
+<div class="wrap">
+
+<div>
+	<p><?php _e('Rather than reaching for your mouse to click on the toolbar, use these access keys. Windows and Linux use Ctrl + letter. Macintosh uses Command + letter.'); ?></p>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	<table class="keys">
 		<tr class="top"><th class="key center"><?php _e('Letter'); ?></th><th class="left"><?php _e('Action'); ?></th><th class="key center"><?php _e('Letter'); ?></th><th class="left"><?php _e('Action'); ?></th></tr>
 		<tr><th>c</th><td><?php _e('Copy'); ?></td><th>v</th><td><?php _e('Paste'); ?></td></tr>
 		<tr><th>a</th><td><?php _e('Select all'); ?></td><th>x</th><td><?php _e('Cut'); ?></td></tr>
 		<tr><th>z</th><td><?php _e('Undo'); ?></td><th>y</th><td><?php _e('Redo'); ?></td></tr>
+<<<<<<< HEAD
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		<tr><th>b</th><td><?php _e('Bold'); ?></td><th>i</th><td><?php _e('Italic'); ?></td></tr>
 		<tr><th>u</th><td><?php _e('Underline'); ?></td><th>1</th><td><?php _e('Heading 1'); ?></td></tr>
 		<tr><th>2</th><td><?php _e('Heading 2'); ?></td><th>3</th><td><?php _e('Heading 3'); ?></td></tr>
 		<tr><th>4</th><td><?php _e('Heading 4'); ?></td><th>5</th><td><?php _e('Heading 5'); ?></td></tr>
 		<tr><th>6</th><td><?php _e('Heading 6'); ?></td><th>9</th><td><?php _e('Address'); ?></td></tr>
+<<<<<<< HEAD
+=======
+		<tr><th>k</th><td><?php _e('Insert/edit link'); ?></td><th> </th><td>&nbsp;</td></tr>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	</table>
 
 	<p><?php _e('The following shortcuts use different access keys: Alt + Shift + letter.'); ?></p>
@@ -215,6 +312,10 @@ if ( tinymce.isMac )
 		<tr><th>q</th><td><?php _e('Quote'); ?></td><th>m</th><td><?php _e('Insert Image'); ?></td></tr>
 		<tr><th>w</th><td><?php _e('Distraction Free Writing mode'); ?></td><th>t</th><td><?php _e('Insert More Tag'); ?></td></tr>
 		<tr><th>p</th><td><?php _e('Insert Page Break tag'); ?></td><th>h</th><td><?php _e('Help'); ?></td></tr>
+<<<<<<< HEAD
+=======
+		<tr><th>x</th><td><?php _e('Add/remove code tag'); ?></td><th> </th><td>&nbsp;</td></tr>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	</table>
 
 	<p style="padding: 15px 10px 10px;"><?php _e('Editor width in Distraction Free Writing mode:'); ?></p>
@@ -225,6 +326,7 @@ if ( tinymce.isMac )
 	</table>
 </div>
 
+<<<<<<< HEAD
 <div id="content4" class="hidden">
 	<h2><?php _e('About TinyMCE'); ?></h2>
 
@@ -277,5 +379,8 @@ if ( tinymce.isMac )
 		}
     });
 </script>
+=======
+</div>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 </body>
 </html>

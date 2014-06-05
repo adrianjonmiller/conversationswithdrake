@@ -70,8 +70,11 @@ function startElement($parser, $tagName, $attrs) {
  *
  * @since 0.71
  * @access private
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage Dummy
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param mixed $parser XML Parser resource.
  * @param string $tagName XML tag name.

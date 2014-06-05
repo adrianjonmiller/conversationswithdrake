@@ -2,7 +2,11 @@
 window.wp = window.wp || {};
 
 (function($){
+<<<<<<< HEAD
 	var Attachment, Attachments, Query, compare, l10n, media;
+=======
+	var Attachment, Attachments, Query, PostImage, compare, l10n, media;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * wp.media( attributes )
@@ -12,19 +16,30 @@ window.wp = window.wp || {};
 	 * Does nothing if the controllers do not exist.
 	 *
 	 * @param  {object} attributes The properties passed to the main media controller.
+<<<<<<< HEAD
 	 * @return {object}            A media workflow.
+=======
+	 * @return {wp.media.view.MediaFrame} A media workflow.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	media = wp.media = function( attributes ) {
 		var MediaFrame = media.view.MediaFrame,
 			frame;
 
+<<<<<<< HEAD
 		if ( ! MediaFrame )
 			return;
+=======
+		if ( ! MediaFrame ) {
+			return;
+		}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		attributes = _.defaults( attributes || {}, {
 			frame: 'select'
 		});
 
+<<<<<<< HEAD
 		if ( 'select' === attributes.frame && MediaFrame.Select )
 			frame = new MediaFrame.Select( attributes );
 		else if ( 'post' === attributes.frame && MediaFrame.Post )
@@ -32,6 +47,24 @@ window.wp = window.wp || {};
 
 		delete attributes.frame;
 
+=======
+		if ( 'select' === attributes.frame && MediaFrame.Select ) {
+			frame = new MediaFrame.Select( attributes );
+		} else if ( 'post' === attributes.frame && MediaFrame.Post ) {
+			frame = new MediaFrame.Post( attributes );
+		} else if ( 'image' === attributes.frame && MediaFrame.ImageDetails ) {
+			frame = new MediaFrame.ImageDetails( attributes );
+		} else if ( 'audio' === attributes.frame && MediaFrame.AudioDetails ) {
+			frame = new MediaFrame.AudioDetails( attributes );
+		} else if ( 'video' === attributes.frame && MediaFrame.VideoDetails ) {
+			frame = new MediaFrame.VideoDetails( attributes );
+		}
+
+		delete attributes.frame;
+
+		media.frame = frame;
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return frame;
 	};
 
@@ -62,10 +95,18 @@ window.wp = window.wp || {};
 	 *                      1: b should come before a.
 	 */
 	compare = function( a, b, ac, bc ) {
+<<<<<<< HEAD
 		if ( _.isEqual( a, b ) )
 			return ac === bc ? 0 : (ac > bc ? -1 : 1);
 		else
 			return a > b ? -1 : 1;
+=======
+		if ( _.isEqual( a, b ) ) {
+			return ac === bc ? 0 : (ac > bc ? -1 : 1);
+		} else {
+			return a > b ? -1 : 1;
+		}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	};
 
 	_.extend( media, {
@@ -74,6 +115,11 @@ window.wp = window.wp || {};
 		 *
 		 * Fetches a template by id.
 		 * See wp.template() in `wp-includes/js/wp-util.js`.
+<<<<<<< HEAD
+=======
+		 *
+		 * @borrows wp.template as template
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		 */
 		template: wp.template,
 
@@ -82,6 +128,11 @@ window.wp = window.wp || {};
 		 *
 		 * Sends a POST request to WordPress.
 		 * See wp.ajax.post() in `wp-includes/js/wp-util.js`.
+<<<<<<< HEAD
+=======
+		 *
+		 * @borrows wp.ajax.post as post
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		 */
 		post: wp.ajax.post,
 
@@ -90,10 +141,24 @@ window.wp = window.wp || {};
 		 *
 		 * Sends an XHR request to WordPress.
 		 * See wp.ajax.send() in `wp-includes/js/wp-util.js`.
+<<<<<<< HEAD
 		 */
 		ajax: wp.ajax.send,
 
 		// Scales a set of dimensions to fit within bounding dimensions.
+=======
+		 *
+		 * @borrows wp.ajax.send as ajax
+		 */
+		ajax: wp.ajax.send,
+
+		/**
+		 * Scales a set of dimensions to fit within bounding dimensions.
+		 *
+		 * @param {Object} dimensions
+		 * @returns {Object}
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		fit: function( dimensions ) {
 			var width     = dimensions.width,
 				height    = dimensions.height,
@@ -131,29 +196,59 @@ window.wp = window.wp || {};
 				};
 			}
 		},
+<<<<<<< HEAD
 
 		// Truncates a string by injecting an ellipsis into the middle.
 		// Useful for filenames.
+=======
+		/**
+		 * Truncates a string by injecting an ellipsis into the middle.
+		 * Useful for filenames.
+		 *
+		 * @param {String} string
+		 * @param {Number} [length=30]
+		 * @param {String} [replacement=&hellip;]
+		 * @returns {String} The string, unless length is greater than string.length.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		truncate: function( string, length, replacement ) {
 			length = length || 30;
 			replacement = replacement || '&hellip;';
 
+<<<<<<< HEAD
 			if ( string.length <= length )
 				return string;
+=======
+			if ( string.length <= length ) {
+				return string;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			return string.substr( 0, length / 2 ) + replacement + string.substr( -1 * length / 2 );
 		}
 	});
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	/**
 	 * ========================================================================
 	 * MODELS
 	 * ========================================================================
 	 */
+<<<<<<< HEAD
 
 	/**
 	 * wp.media.attachment
+=======
+	/**
+	 * wp.media.attachment
+	 *
+	 * @static
+	 * @param {String} id A string used to identify a model.
+	 * @returns {wp.media.model.Attachment}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	media.attachment = function( id ) {
 		return Attachment.get( id );
@@ -161,6 +256,7 @@ window.wp = window.wp || {};
 
 	/**
 	 * wp.media.model.Attachment
+<<<<<<< HEAD
 	 */
 	Attachment = media.model.Attachment = Backbone.Model.extend({
 		sync: function( method, model, options ) {
@@ -168,6 +264,29 @@ window.wp = window.wp || {};
 			// rejected promise. Otherwise, all of our requests will fail.
 			if ( _.isUndefined( this.id ) )
 				return $.Deferred().rejectWith( this ).promise();
+=======
+	 *
+	 * @constructor
+	 * @augments Backbone.Model
+	 */
+	Attachment = media.model.Attachment = Backbone.Model.extend({
+		/**
+		 * Triggered when attachment details change
+		 * Overrides Backbone.Model.sync
+		 *
+		 * @param {string} method
+		 * @param {wp.media.model.Attachment} model
+		 * @param {Object} [options={}]
+		 *
+		 * @returns {Promise}
+		 */
+		sync: function( method, model, options ) {
+			// If the attachment does not yet have an `id`, return an instantly
+			// rejected promise. Otherwise, all of our requests will fail.
+			if ( _.isUndefined( this.id ) ) {
+				return $.Deferred().rejectWith( this ).promise();
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			// Overload the `read` request so Attachment.fetch() functions correctly.
 			if ( 'read' === method ) {
@@ -182,8 +301,14 @@ window.wp = window.wp || {};
 			// Overload the `update` request so properties can be saved.
 			} else if ( 'update' === method ) {
 				// If we do not have the necessary nonce, fail immeditately.
+<<<<<<< HEAD
 				if ( ! this.get('nonces') || ! this.get('nonces').update )
 					return $.Deferred().rejectWith( this ).promise();
+=======
+				if ( ! this.get('nonces') || ! this.get('nonces').update ) {
+					return $.Deferred().rejectWith( this ).promise();
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				options = options || {};
 				options.context = this;
@@ -212,8 +337,14 @@ window.wp = window.wp || {};
 			} else if ( 'delete' === method ) {
 				options = options || {};
 
+<<<<<<< HEAD
 				if ( ! options.wait )
 					this.destroyed = true;
+=======
+				if ( ! options.wait ) {
+					this.destroyed = true;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				options.context = this;
 				options.data = _.extend( options.data || {}, {
@@ -230,6 +361,7 @@ window.wp = window.wp || {};
 
 			// Otherwise, fall back to `Backbone.sync()`.
 			} else {
+<<<<<<< HEAD
 				return Backbone.Model.prototype.sync.apply( this, arguments );
 			}
 		},
@@ -239,17 +371,54 @@ window.wp = window.wp || {};
 				return resp;
 
 			// Convert date strings into Date objects.
+=======
+				/**
+				 * Call `sync` directly on Backbone.Model
+				 */
+				return Backbone.Model.prototype.sync.apply( this, arguments );
+			}
+		},
+		/**
+		 * Convert date strings into Date objects.
+		 *
+		 * @param {Object} resp The raw response object, typically returned by fetch()
+		 * @returns {Object} The modified response object, which is the attributes hash
+		 *    to be set on the model.
+		 */
+		parse: function( resp ) {
+			if ( ! resp ) {
+				return resp;
+			}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			resp.date = new Date( resp.date );
 			resp.modified = new Date( resp.modified );
 			return resp;
 		},
+<<<<<<< HEAD
 
+=======
+		/**
+		 * @param {Object} data The properties to be saved.
+		 * @param {Object} options Sync options. e.g. patch, wait, success, error.
+		 *
+		 * @this Backbone.Model
+		 *
+		 * @returns {Promise}
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		saveCompat: function( data, options ) {
 			var model = this;
 
 			// If we do not have the necessary nonce, fail immeditately.
+<<<<<<< HEAD
 			if ( ! this.get('nonces') || ! this.get('nonces').update )
 				return $.Deferred().rejectWith( this ).promise();
+=======
+			if ( ! this.get('nonces') || ! this.get('nonces').update ) {
+				return $.Deferred().rejectWith( this ).promise();
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			return media.post( 'save-attachment-compat', _.defaults({
 				id:      this.id,
@@ -260,21 +429,202 @@ window.wp = window.wp || {};
 			});
 		}
 	}, {
+<<<<<<< HEAD
 		create: function( attrs ) {
 			return Attachments.all.push( attrs );
 		},
 
+=======
+		/**
+		 * Add a model to the end of the static 'all' collection and return it.
+		 *
+		 * @static
+		 * @param {Object} attrs
+		 * @returns {wp.media.model.Attachment}
+		 */
+		create: function( attrs ) {
+			return Attachments.all.push( attrs );
+		},
+		/**
+		 * Retrieve a model, or add it to the end of the static 'all' collection before returning it.
+		 *
+		 * @static
+		 * @param {string} id A string used to identify a model.
+		 * @param {Backbone.Model|undefined} attachment
+		 * @returns {wp.media.model.Attachment}
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		get: _.memoize( function( id, attachment ) {
 			return Attachments.all.push( attachment || { id: id } );
 		})
 	});
 
 	/**
+<<<<<<< HEAD
 	 * wp.media.model.Attachments
 	 */
 	Attachments = media.model.Attachments = Backbone.Collection.extend({
 		model: Attachment,
 
+=======
+	 * wp.media.model.PostImage
+	 *
+	 * @constructor
+	 * @augments Backbone.Model
+	 **/
+	PostImage = media.model.PostImage = Backbone.Model.extend({
+
+		initialize: function( attributes ) {
+			this.attachment = false;
+
+			if ( attributes.attachment_id ) {
+				this.attachment = Attachment.get( attributes.attachment_id );
+				if ( this.attachment.get( 'url' ) ) {
+					this.dfd = $.Deferred();
+					this.dfd.resolve();
+				} else {
+					this.dfd = this.attachment.fetch();
+				}
+				this.bindAttachmentListeners();
+			}
+
+			// keep url in sync with changes to the type of link
+			this.on( 'change:link', this.updateLinkUrl, this );
+			this.on( 'change:size', this.updateSize, this );
+
+			this.setLinkTypeFromUrl();
+			this.setAspectRatio();
+
+			this.set( 'originalUrl', attributes.url );
+		},
+
+		bindAttachmentListeners: function() {
+			this.listenTo( this.attachment, 'sync', this.setLinkTypeFromUrl );
+			this.listenTo( this.attachment, 'sync', this.setAspectRatio );
+			this.listenTo( this.attachment, 'change', this.updateSize );
+		},
+
+		changeAttachment: function( attachment, props ) {
+			this.stopListening( this.attachment );
+			this.attachment = attachment;
+			this.bindAttachmentListeners();
+
+			this.set( 'attachment_id', this.attachment.get( 'id' ) );
+			this.set( 'caption', this.attachment.get( 'caption' ) );
+			this.set( 'alt', this.attachment.get( 'alt' ) );
+			this.set( 'size', props.get( 'size' ) );
+			this.set( 'align', props.get( 'align' ) );
+			this.set( 'link', props.get( 'link' ) );
+			this.updateLinkUrl();
+			this.updateSize();
+		},
+
+		setLinkTypeFromUrl: function() {
+			var linkUrl = this.get( 'linkUrl' ),
+				type;
+
+			if ( ! linkUrl ) {
+				this.set( 'link', 'none' );
+				return;
+			}
+
+			// default to custom if there is a linkUrl
+			type = 'custom';
+
+			if ( this.attachment ) {
+				if ( this.attachment.get( 'url' ) === linkUrl ) {
+					type = 'file';
+				} else if ( this.attachment.get( 'link' ) === linkUrl ) {
+					type = 'post';
+				}
+			} else {
+				if ( this.get( 'url' ) === linkUrl ) {
+					type = 'file';
+				}
+			}
+
+			this.set( 'link', type );
+		},
+
+		updateLinkUrl: function() {
+			var link = this.get( 'link' ),
+				url;
+
+			switch( link ) {
+				case 'file':
+					if ( this.attachment ) {
+						url = this.attachment.get( 'url' );
+					} else {
+						url = this.get( 'url' );
+					}
+					this.set( 'linkUrl', url );
+					break;
+				case 'post':
+					this.set( 'linkUrl', this.attachment.get( 'link' ) );
+					break;
+				case 'none':
+					this.set( 'linkUrl', '' );
+					break;
+			}
+		},
+
+		updateSize: function() {
+			var size;
+
+			if ( ! this.attachment ) {
+				return;
+			}
+
+			if ( this.get( 'size' ) === 'custom' ) {
+				this.set( 'width', this.get( 'customWidth' ) );
+				this.set( 'height', this.get( 'customHeight' ) );
+				this.set( 'url', this.get( 'originalUrl' ) );
+				return;
+			}
+
+			size = this.attachment.get( 'sizes' )[ this.get( 'size' ) ];
+
+			if ( ! size ) {
+				return;
+			}
+
+			this.set( 'url', size.url );
+			this.set( 'width', size.width );
+			this.set( 'height', size.height );
+		},
+
+		setAspectRatio: function() {
+			var full;
+
+			if ( this.attachment && this.attachment.get( 'sizes' ) ) {
+				full = this.attachment.get( 'sizes' ).full;
+
+				if ( full ) {
+					this.set( 'aspectRatio', full.width / full.height );
+					return;
+				}
+			}
+
+			this.set( 'aspectRatio', this.get( 'customWidth' ) / this.get( 'customHeight' ) );
+		}
+	});
+
+	/**
+	 * wp.media.model.Attachments
+	 *
+	 * @constructor
+	 * @augments Backbone.Collection
+	 */
+	Attachments = media.model.Attachments = Backbone.Collection.extend({
+		/**
+		 * @type {wp.media.model.Attachment}
+		 */
+		model: Attachment,
+		/**
+		 * @param {Array} [models=[]] Array of models used to populate the collection.
+		 * @param {Object} [options={}]
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		initialize: function( models, options ) {
 			options = options || {};
 
@@ -292,6 +642,7 @@ window.wp = window.wp || {};
 			this.props.set( _.defaults( options.props || {} ) );
 
 			// Observe another `Attachments` collection if one is provided.
+<<<<<<< HEAD
 			if ( options.observe )
 				this.observe( options.observe );
 		},
@@ -316,6 +667,51 @@ window.wp = window.wp || {};
 
 		// If the `query` property is set to true, query the server using
 		// the `props` values, and sync the results to this collection.
+=======
+			if ( options.observe ) {
+				this.observe( options.observe );
+			}
+		},
+		/**
+		 * Automatically sort the collection when the order changes.
+		 *
+		 * @access private
+		 */
+		_changeOrder: function() {
+			if ( this.comparator ) {
+				this.sort();
+			}
+		},
+		/**
+		 * Set the default comparator only when the `orderby` property is set.
+		 *
+		 * @access private
+		 *
+		 * @param {Backbone.Model} model
+		 * @param {string} orderby
+		 */
+		_changeOrderby: function( model, orderby ) {
+			// If a different comparator is defined, bail.
+			if ( this.comparator && this.comparator !== Attachments.comparator ) {
+				return;
+			}
+
+			if ( orderby && 'post__in' !== orderby ) {
+				this.comparator = Attachments.comparator;
+			} else {
+				delete this.comparator;
+			}
+		},
+		/**
+		 * If the `query` property is set to true, query the server using
+		 * the `props` values, and sync the results to this collection.
+		 *
+		 * @access private
+		 *
+		 * @param {Backbone.Model} model
+		 * @param {Boolean} query
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		_changeQuery: function( model, query ) {
 			if ( query ) {
 				this.props.on( 'change', this._requery, this );
@@ -324,17 +720,32 @@ window.wp = window.wp || {};
 				this.props.off( 'change', this._requery, this );
 			}
 		},
+<<<<<<< HEAD
 
 		_changeFilteredProps: function( model ) {
 			// If this is a query, updating the collection will be handled by
 			// `this._requery()`.
 			if ( this.props.get('query') )
 				return;
+=======
+		/**
+		 * @access private
+		 *
+		 * @param {Backbone.Model} model
+		 */
+		_changeFilteredProps: function( model ) {
+			// If this is a query, updating the collection will be handled by
+			// `this._requery()`.
+			if ( this.props.get('query') ) {
+				return;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			var changed = _.chain( model.changed ).map( function( t, prop ) {
 				var filter = Attachments.filters[ prop ],
 					term = model.get( prop );
 
+<<<<<<< HEAD
 				if ( ! filter )
 					return;
 
@@ -344,45 +755,108 @@ window.wp = window.wp || {};
 					delete this.filters[ prop ];
 				else
 					return;
+=======
+				if ( ! filter ) {
+					return;
+				}
+
+				if ( term && ! this.filters[ prop ] ) {
+					this.filters[ prop ] = filter;
+				} else if ( ! term && this.filters[ prop ] === filter ) {
+					delete this.filters[ prop ];
+				} else {
+					return;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				// Record the change.
 				return true;
 			}, this ).any().value();
 
+<<<<<<< HEAD
 			if ( ! changed )
 				return;
+=======
+			if ( ! changed ) {
+				return;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			// If no `Attachments` model is provided to source the searches
 			// from, then automatically generate a source from the existing
 			// models.
+<<<<<<< HEAD
 			if ( ! this._source )
 				this._source = new Attachments( this.models );
+=======
+			if ( ! this._source ) {
+				this._source = new Attachments( this.models );
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			this.reset( this._source.filter( this.validator, this ) );
 		},
 
 		validateDestroyed: false,
+<<<<<<< HEAD
 
 		validator: function( attachment ) {
 			if ( ! this.validateDestroyed && attachment.destroyed )
 				return false;
+=======
+		/**
+		 * @param {wp.media.model.Attachment} attachment
+		 * @returns {Boolean}
+		 */
+		validator: function( attachment ) {
+			if ( ! this.validateDestroyed && attachment.destroyed ) {
+				return false;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return _.all( this.filters, function( filter ) {
 				return !! filter.call( this, attachment );
 			}, this );
 		},
+<<<<<<< HEAD
 
+=======
+		/**
+		 * @param {wp.media.model.Attachment} attachment
+		 * @param {Object} options
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		validate: function( attachment, options ) {
 			var valid = this.validator( attachment ),
 				hasAttachment = !! this.get( attachment.cid );
 
+<<<<<<< HEAD
 			if ( ! valid && hasAttachment )
 				this.remove( attachment, options );
 			else if ( valid && ! hasAttachment )
 				this.add( attachment, options );
+=======
+			if ( ! valid && hasAttachment ) {
+				this.remove( attachment, options );
+			} else if ( valid && ! hasAttachment ) {
+				this.add( attachment, options );
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			return this;
 		},
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @param {wp.media.model.Attachments} attachments
+		 * @param {object} [options={}]
+		 *
+		 * @fires wp.media.model.Attachments#reset
+		 *
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		validateAll: function( attachments, options ) {
 			options = options || {};
 
@@ -390,12 +864,24 @@ window.wp = window.wp || {};
 				this.validate( attachment, { silent: true });
 			}, this );
 
+<<<<<<< HEAD
 			if ( ! options.silent )
 				this.trigger( 'reset', this, options );
 
 			return this;
 		},
 
+=======
+			if ( ! options.silent ) {
+				this.trigger( 'reset', this, options );
+			}
+			return this;
+		},
+		/**
+		 * @param {wp.media.model.Attachments} attachments
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		observe: function( attachments ) {
 			this.observers = this.observers || [];
 			this.observers.push( attachments );
@@ -405,7 +891,14 @@ window.wp = window.wp || {};
 			this.validateAll( attachments );
 			return this;
 		},
+<<<<<<< HEAD
 
+=======
+		/**
+		 * @param {wp.media.model.Attachments} attachments
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		unobserve: function( attachments ) {
 			if ( attachments ) {
 				attachments.off( null, null, this );
@@ -420,7 +913,19 @@ window.wp = window.wp || {};
 
 			return this;
 		},
+<<<<<<< HEAD
 
+=======
+		/**
+		 * @access private
+		 *
+		 * @param {wp.media.model.Attachments} attachment
+		 * @param {wp.media.model.Attachments} attachments
+		 * @param {Object} options
+		 *
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		_validateHandler: function( attachment, attachments, options ) {
 			// If we're not mirroring this `attachments` collection,
 			// only retain the `silent` option.
@@ -430,6 +935,7 @@ window.wp = window.wp || {};
 
 			return this.validate( attachment, options );
 		},
+<<<<<<< HEAD
 
 		_validateAllHandler: function( attachments, options ) {
 			return this.validateAll( attachments, options );
@@ -438,6 +944,26 @@ window.wp = window.wp || {};
 		mirror: function( attachments ) {
 			if ( this.mirroring && this.mirroring === attachments )
 				return this;
+=======
+		/**
+		 * @access private
+		 *
+		 * @param {wp.media.model.Attachments} attachments
+		 * @param {Object} options
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+		_validateAllHandler: function( attachments, options ) {
+			return this.validateAll( attachments, options );
+		},
+		/**
+		 * @param {wp.media.model.Attachments} attachments
+		 * @returns {wp.media.model.Attachments} Returns itself to allow chaining
+		 */
+		mirror: function( attachments ) {
+			if ( this.mirroring && this.mirroring === attachments ) {
+				return this;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			this.unmirror();
 			this.mirroring = attachments;
@@ -449,23 +975,43 @@ window.wp = window.wp || {};
 
 			return this;
 		},
+<<<<<<< HEAD
 
 		unmirror: function() {
 			if ( ! this.mirroring )
 				return;
+=======
+		unmirror: function() {
+			if ( ! this.mirroring ) {
+				return;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			this.unobserve( this.mirroring );
 			delete this.mirroring;
 		},
+<<<<<<< HEAD
 
+=======
+		/**
+		 * @param {Object} options
+		 * @returns {Promise}
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		more: function( options ) {
 			var deferred = $.Deferred(),
 				mirroring = this.mirroring,
 				attachments = this;
 
+<<<<<<< HEAD
 			if ( ! mirroring || ! mirroring.more )
 				return deferred.resolveWith( this ).promise();
 
+=======
+			if ( ! mirroring || ! mirroring.more ) {
+				return deferred.resolveWith( this ).promise();
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			// If we're mirroring another collection, forward `more` to
 			// the mirrored collection. Account for a race condition by
 			// checking if we're still mirroring that collection when
@@ -477,6 +1023,7 @@ window.wp = window.wp || {};
 
 			return deferred.promise();
 		},
+<<<<<<< HEAD
 
 		hasMore: function() {
 			return this.mirroring ? this.mirroring.hasMore() : false;
@@ -485,6 +1032,25 @@ window.wp = window.wp || {};
 		parse: function( resp, xhr ) {
 			if ( ! _.isArray( resp ) )
 				resp = [resp];
+=======
+		/**
+		 * @returns {Boolean}
+		 */
+		hasMore: function() {
+			return this.mirroring ? this.mirroring.hasMore() : false;
+		},
+		/**
+		 * Overrides Backbone.Collection.parse
+		 *
+		 * @param {Object|Array} resp The raw response Object/Array.
+		 * @param {Object} xhr
+		 * @returns {Array} The array of model attributes to be added to the collection
+		 */
+		parse: function( resp, xhr ) {
+			if ( ! _.isArray( resp ) ) {
+				resp = [resp];
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			return _.map( resp, function( attrs ) {
 				var id, attachment, newAttributes;
@@ -499,12 +1065,19 @@ window.wp = window.wp || {};
 				attachment = Attachment.get( id );
 				newAttributes = attachment.parse( attrs, xhr );
 
+<<<<<<< HEAD
 				if ( ! _.isEqual( attachment.attributes, newAttributes ) )
 					attachment.set( newAttributes );
+=======
+				if ( ! _.isEqual( attachment.attributes, newAttributes ) ) {
+					attachment.set( newAttributes );
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				return attachment;
 			});
 		},
+<<<<<<< HEAD
 
 		_requery: function() {
 			if ( this.props.get('query') )
@@ -516,6 +1089,26 @@ window.wp = window.wp || {};
 		saveMenuOrder: function() {
 			if ( 'menuOrder' !== this.props.get('orderby') )
 				return;
+=======
+		/**
+		 * @access private
+		 */
+		_requery: function() {
+			if ( this.props.get('query') ) {
+				this.mirror( Query.get( this.props.toJSON() ) );
+			}
+		},
+		/**
+		 * If this collection is sorted by `menuOrder`, recalculates and saves
+		 * the menu order to the database.
+		 *
+		 * @returns {undefined|Promise}
+		 */
+		saveMenuOrder: function() {
+			if ( 'menuOrder' !== this.props.get('orderby') ) {
+				return;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			// Removes any uploading attachments, updates each attachment's
 			// menu order, and returns an object with an { id: menuOrder }
@@ -529,8 +1122,14 @@ window.wp = window.wp || {};
 				return [ attachment.id, index ];
 			}).object().value();
 
+<<<<<<< HEAD
 			if ( _.isEmpty( attachments ) )
 				return;
+=======
+			if ( _.isEmpty( attachments ) ) {
+				return;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			return media.post( 'save-attachment-order', {
 				nonce:       media.model.settings.post.nonce,
@@ -539,6 +1138,20 @@ window.wp = window.wp || {};
 			});
 		}
 	}, {
+<<<<<<< HEAD
+=======
+		/**
+		 * @static
+		 * Overrides Backbone.Collection.comparator
+		 *
+		 * @param {Backbone.Model} a
+		 * @param {Backbone.Model} b
+		 * @param {Object} options
+		 * @returns {Number} -1 if the first model should come before the second,
+		 *    0 if they are of the same rank and
+		 *    1 if the first model should come after.
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		comparator: function( a, b, options ) {
 			var key   = this.props.get('orderby'),
 				order = this.props.get('order') || 'DESC',
@@ -554,6 +1167,7 @@ window.wp = window.wp || {};
 			}
 
 			// If `options.ties` is set, don't enforce the `cid` tiebreaker.
+<<<<<<< HEAD
 			if ( options && options.ties )
 				ac = bc = null;
 
@@ -566,32 +1180,99 @@ window.wp = window.wp || {};
 			search: function( attachment ) {
 				if ( ! this.props.get('search') )
 					return true;
+=======
+			if ( options && options.ties ) {
+				ac = bc = null;
+			}
+
+			return ( 'DESC' === order ) ? compare( a, b, ac, bc ) : compare( b, a, bc, ac );
+		},
+		/**
+		 * @namespace
+		 */
+		filters: {
+			/**
+			 * @static
+			 * Note that this client-side searching is *not* equivalent
+			 * to our server-side searching.
+			 *
+			 * @param {wp.media.model.Attachment} attachment
+			 *
+			 * @this wp.media.model.Attachments
+			 *
+			 * @returns {Boolean}
+			 */
+			search: function( attachment ) {
+				if ( ! this.props.get('search') ) {
+					return true;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				return _.any(['title','filename','description','caption','name'], function( key ) {
 					var value = attachment.get( key );
 					return value && -1 !== value.search( this.props.get('search') );
 				}, this );
 			},
+<<<<<<< HEAD
 
+=======
+			/**
+			 * @static
+			 * @param {wp.media.model.Attachment} attachment
+			 *
+			 * @this wp.media.model.Attachments
+			 *
+			 * @returns {Boolean}
+			 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			type: function( attachment ) {
 				var type = this.props.get('type');
 				return ! type || -1 !== type.indexOf( attachment.get('type') );
 			},
+<<<<<<< HEAD
 
 			uploadedTo: function( attachment ) {
 				var uploadedTo = this.props.get('uploadedTo');
 				if ( _.isUndefined( uploadedTo ) )
 					return true;
+=======
+			/**
+			 * @static
+			 * @param {wp.media.model.Attachment} attachment
+			 *
+			 * @this wp.media.model.Attachments
+			 *
+			 * @returns {Boolean}
+			 */
+			uploadedTo: function( attachment ) {
+				var uploadedTo = this.props.get('uploadedTo');
+				if ( _.isUndefined( uploadedTo ) ) {
+					return true;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				return uploadedTo === attachment.get('uploadedTo');
 			}
 		}
 	});
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @static
+	 * @member {wp.media.model.Attachments}
+	 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	Attachments.all = new Attachments();
 
 	/**
 	 * wp.media.query
+<<<<<<< HEAD
+=======
+	 *
+	 * @static
+	 * @returns {wp.media.model.Attachments}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	media.query = function( props ) {
 		return new Attachments( null, {
@@ -607,8 +1288,23 @@ window.wp = window.wp || {};
 	 *
 	 * Note: Do NOT change this.args after the query has been initialized.
 	 *       Things will break.
+<<<<<<< HEAD
 	 */
 	Query = media.model.Query = Attachments.extend({
+=======
+	 *
+	 * @constructor
+	 * @augments wp.media.model.Attachments
+	 * @augments Backbone.Collection
+	 */
+	Query = media.model.Query = Attachments.extend({
+		/**
+		 * @global wp.Uploader
+		 *
+		 * @param {Array} [models=[]] Array of models used to populate the collection.
+		 * @param {Object} [options={}]
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		initialize: function( models, options ) {
 			var allowed;
 
@@ -623,8 +1319,14 @@ window.wp = window.wp || {};
 				var orderby = this.props.get('orderby'),
 					order = this.props.get('order');
 
+<<<<<<< HEAD
 				if ( ! this.comparator )
 					return true;
+=======
+				if ( ! this.comparator ) {
+					return true;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				// We want any items that can be placed before the last
 				// item in the set. If we add any items after the last
@@ -655,6 +1357,7 @@ window.wp = window.wp || {};
 			// are no filters for other properties, so observing will result in
 			// false positives in those queries.
 			allowed = [ 's', 'order', 'orderby', 'posts_per_page', 'post_mime_type', 'post_parent' ];
+<<<<<<< HEAD
 			if ( wp.Uploader && _( this.args ).chain().keys().difference( allowed ).isEmpty().value() )
 				this.observe( wp.Uploader.queue );
 		},
@@ -671,16 +1374,59 @@ window.wp = window.wp || {};
 
 			if ( ! this.hasMore() )
 				return $.Deferred().resolveWith( this ).promise();
+=======
+			if ( wp.Uploader && _( this.args ).chain().keys().difference( allowed ).isEmpty().value() ) {
+				this.observe( wp.Uploader.queue );
+			}
+		},
+		/**
+		 * @returns {Boolean}
+		 */
+		hasMore: function() {
+			return this._hasMore;
+		},
+		/**
+		 * @param {Object} [options={}]
+		 * @returns {Promise}
+		 */
+		more: function( options ) {
+			var query = this;
+
+			if ( this._more && 'pending' === this._more.state() ) {
+				return this._more;
+			}
+
+			if ( ! this.hasMore() ) {
+				return $.Deferred().resolveWith( this ).promise();
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			options = options || {};
 			options.remove = false;
 
 			return this._more = this.fetch( options ).done( function( resp ) {
+<<<<<<< HEAD
 				if ( _.isEmpty( resp ) || -1 === this.args.posts_per_page || resp.length < this.args.posts_per_page )
 					query._hasMore = false;
 			});
 		},
 
+=======
+				if ( _.isEmpty( resp ) || -1 === this.args.posts_per_page || resp.length < this.args.posts_per_page ) {
+					query._hasMore = false;
+				}
+			});
+		},
+		/**
+		 * Overrides Backbone.Collection.sync
+		 * Overrides wp.media.model.Attachments.sync
+		 *
+		 * @param {String} method
+		 * @param {Backbone.Model} model
+		 * @param {Object} [options={}]
+		 * @returns {Promise}
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		sync: function( method, model, options ) {
 			var args, fallback;
 
@@ -697,28 +1443,58 @@ window.wp = window.wp || {};
 				args = _.clone( this.args );
 
 				// Determine which page to query.
+<<<<<<< HEAD
 				if ( -1 !== args.posts_per_page )
 					args.paged = Math.floor( this.length / args.posts_per_page ) + 1;
+=======
+				if ( -1 !== args.posts_per_page ) {
+					args.paged = Math.floor( this.length / args.posts_per_page ) + 1;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				options.data.query = args;
 				return media.ajax( options );
 
 			// Otherwise, fall back to Backbone.sync()
 			} else {
+<<<<<<< HEAD
+=======
+				/**
+				 * Call wp.media.model.Attachments.sync or Backbone.sync
+				 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				fallback = Attachments.prototype.sync ? Attachments.prototype : Backbone;
 				return fallback.sync.apply( this, arguments );
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
+		/**
+		 * @readonly
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		defaultProps: {
 			orderby: 'date',
 			order:   'DESC'
 		},
+<<<<<<< HEAD
 
 		defaultArgs: {
 			posts_per_page: 40
 		},
 
+=======
+		/**
+		 * @readonly
+		 */
+		defaultArgs: {
+			posts_per_page: 40
+		},
+		/**
+		 * @readonly
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		orderby: {
 			allowed:  [ 'name', 'author', 'date', 'title', 'modified', 'uploadedTo', 'id', 'post__in', 'menuOrder' ],
 			valuemap: {
@@ -727,7 +1503,13 @@ window.wp = window.wp || {};
 				'menuOrder':  'menu_order ID'
 			}
 		},
+<<<<<<< HEAD
 
+=======
+		/**
+		 * @readonly
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		propmap: {
 			'search':    's',
 			'type':      'post_mime_type',
@@ -735,11 +1517,33 @@ window.wp = window.wp || {};
 			'menuOrder': 'menu_order',
 			'uploadedTo': 'post_parent'
 		},
+<<<<<<< HEAD
 
 		// Caches query objects so queries can be easily reused.
 		get: (function(){
 			var queries = [];
 
+=======
+		/**
+		 * @static
+		 * @method
+		 *
+		 * @returns {wp.media.model.Query} A new query.
+		 */
+		// Caches query objects so queries can be easily reused.
+		get: (function(){
+			/**
+			 * @static
+			 * @type Array
+			 */
+			var queries = [];
+
+			/**
+			 * @param {Object} props
+			 * @param {Object} options
+			 * @returns {Query}
+			 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return function( props, options ) {
 				var args     = {},
 					orderby  = Query.orderby,
@@ -755,18 +1559,35 @@ window.wp = window.wp || {};
 
 				// Normalize the order.
 				props.order = props.order.toUpperCase();
+<<<<<<< HEAD
 				if ( 'DESC' !== props.order && 'ASC' !== props.order )
 					props.order = defaults.order.toUpperCase();
 
 				// Ensure we have a valid orderby value.
 				if ( ! _.contains( orderby.allowed, props.orderby ) )
 					props.orderby = defaults.orderby;
+=======
+				if ( 'DESC' !== props.order && 'ASC' !== props.order ) {
+					props.order = defaults.order.toUpperCase();
+				}
+
+				// Ensure we have a valid orderby value.
+				if ( ! _.contains( orderby.allowed, props.orderby ) ) {
+					props.orderby = defaults.orderby;
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				// Generate the query `args` object.
 				// Correct any differing property names.
 				_.each( props, function( value, prop ) {
+<<<<<<< HEAD
 					if ( _.isNull( value ) )
 						return;
+=======
+					if ( _.isNull( value ) ) {
+						return;
+					}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 					args[ Query.propmap[ prop ] || prop ] = value;
 				});
@@ -801,6 +1622,7 @@ window.wp = window.wp || {};
 	 * wp.media.model.Selection
 	 *
 	 * Used to manage a selection of attachments in the views.
+<<<<<<< HEAD
 	 */
 	media.model.Selection = Attachments.extend({
 		initialize: function( models, options ) {
@@ -823,16 +1645,84 @@ window.wp = window.wp || {};
 			return Attachments.prototype.add.call( this, models, options );
 		},
 
+=======
+	 *
+	 * @constructor
+	 * @augments wp.media.model.Attachments
+	 * @augments Backbone.Collection
+	 */
+	media.model.Selection = Attachments.extend({
+		/**
+		 * Refresh the `single` model whenever the selection changes.
+		 * Binds `single` instead of using the context argument to ensure
+		 * it receives no parameters.
+		 *
+		 * @param {Array} [models=[]] Array of models used to populate the collection.
+		 * @param {Object} [options={}]
+		 */
+		initialize: function( models, options ) {
+			/**
+			 * call 'initialize' directly on the parent class
+			 */
+			Attachments.prototype.initialize.apply( this, arguments );
+			this.multiple = options && options.multiple;
+
+			this.on( 'add remove reset', _.bind( this.single, this, false ) );
+		},
+
+		/**
+		 * Override the selection's add method.
+		 * If the workflow does not support multiple
+		 * selected attachments, reset the selection.
+		 *
+		 * Overrides Backbone.Collection.add
+		 * Overrides wp.media.model.Attachments.add
+		 *
+		 * @param {Array} models
+		 * @param {Object} options
+		 * @returns {wp.media.model.Attachment[]}
+		 */
+		add: function( models, options ) {
+			if ( ! this.multiple ) {
+				this.remove( this.models );
+			}
+			/**
+			 * call 'add' directly on the parent class
+			 */
+			return Attachments.prototype.add.call( this, models, options );
+		},
+
+		/**
+		 * Triggered when toggling (clicking on) an attachment in the modal
+		 *
+		 * @param {undefined|boolean|wp.media.model.Attachment} model
+		 *
+		 * @fires wp.media.model.Selection#selection:single
+		 * @fires wp.media.model.Selection#selection:unsingle
+		 *
+		 * @returns {Backbone.Model}
+		 */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		single: function( model ) {
 			var previous = this._single;
 
 			// If a `model` is provided, use it as the single model.
+<<<<<<< HEAD
 			if ( model )
 				this._single = model;
 
 			// If the single model isn't in the selection, remove it.
 			if ( this._single && ! this.get( this._single.cid ) )
 				delete this._single;
+=======
+			if ( model ) {
+				this._single = model;
+			}
+			// If the single model isn't in the selection, remove it.
+			if ( this._single && ! this.get( this._single.cid ) ) {
+				delete this._single;
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			this._single = this._single || this.last();
 
@@ -843,11 +1733,21 @@ window.wp = window.wp || {};
 
 					// If the model was already removed, trigger the collection
 					// event manually.
+<<<<<<< HEAD
 					if ( ! this.get( previous.cid ) )
 						this.trigger( 'selection:unsingle', previous, this );
 				}
 				if ( this._single )
 					this._single.trigger( 'selection:single', this._single, this );
+=======
+					if ( ! this.get( previous.cid ) ) {
+						this.trigger( 'selection:unsingle', previous, this );
+					}
+				}
+				if ( this._single ) {
+					this._single.trigger( 'selection:single', this._single, this );
+				}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 
 			// Return the single model, or the last model as a fallback.
@@ -860,4 +1760,8 @@ window.wp = window.wp || {};
 		window.wp = null;
 	});
 
+<<<<<<< HEAD
 }(jQuery));
+=======
+}(jQuery));
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

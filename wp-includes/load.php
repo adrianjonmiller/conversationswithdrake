@@ -104,11 +104,21 @@ function wp_check_php_mysql_versions() {
 	$php_version = phpversion();
 	if ( version_compare( $required_php_version, $php_version, '>' ) ) {
 		wp_load_translations_early();
+<<<<<<< HEAD
 		die( sprintf( __( 'Your server is running PHP version %1$s but WordPress %2$s requires at least %3$s.' ), $php_version, $wp_version, $required_php_version ) );
 	}
 
 	if ( ! extension_loaded( 'mysql' ) && ! file_exists( WP_CONTENT_DIR . '/db.php' ) ) {
 		wp_load_translations_early();
+=======
+		header( 'Content-Type: text/html; charset=utf-8' );
+		die( sprintf( __( 'Your server is running PHP version %1$s but WordPress %2$s requires at least %3$s.' ), $php_version, $wp_version, $required_php_version ) );
+	}
+
+	if ( ! extension_loaded( 'mysql' ) && ! extension_loaded( 'mysqli' ) && ! file_exists( WP_CONTENT_DIR . '/db.php' ) ) {
+		wp_load_translations_early();
+		 header( 'Content-Type: text/html; charset=utf-8' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		die( __( 'Your PHP installation appears to be missing the MySQL extension which is required by WordPress.' ) );
 	}
 }
@@ -196,6 +206,7 @@ function timer_start() {
 }
 
 /**
+<<<<<<< HEAD
  * Return and/or display the time from the page start to when function is called.
  *
  * You can get the results and print them by doing:
@@ -220,6 +231,23 @@ function timer_start() {
  * @return float The "second.microsecond" finished time calculation
  */
 function timer_stop( $display = 0, $precision = 3 ) { // if called like timer_stop(1), will echo $timetotal
+=======
+ * Retrieve or display the time from the page start to when function is called.
+ *
+ * @since 0.71
+ *
+ * @global float $timestart Seconds from when timer_start() is called.
+ * @global float $timeend   Seconds from when function is called.
+ *
+ * @param int $display   Whether to echo or return the results. Accepts 0|false for return,
+ *                       1|true for echo. Default 0|false.
+ * @param int $precision The number of digits from the right of the decimal to display.
+ *                       Default 3.
+ * @return string The "second.microsecond" finished time calculation. The number is formatted
+ *                for human consumption, both localized and rounded.
+ */
+function timer_stop( $display = 0, $precision = 3 ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	global $timestart, $timeend;
 	$timeend = microtime( true );
 	$timetotal = $timeend - $timestart;

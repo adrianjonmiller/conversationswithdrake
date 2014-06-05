@@ -103,6 +103,7 @@
 		} );
 	} );
 
+<<<<<<< HEAD
 	// Arrange footer widgets vertically.
 	if ( $.isFunction( $.fn.masonry ) ) {
 		$( '#footer-sidebar' ).masonry( {
@@ -118,6 +119,23 @@
 
 	// Initialize Featured Content slider.
 	_window.load( function() {
+=======
+	_window.load( function() {
+		// Arrange footer widgets vertically.
+		if ( $.isFunction( $.fn.masonry ) ) {
+			$( '#footer-sidebar' ).masonry( {
+				itemSelector: '.widget',
+				columnWidth: function( containerWidth ) {
+					return containerWidth / 4;
+				},
+				gutterWidth: 0,
+				isResizable: true,
+				isRTL: $( 'body' ).is( '.rtl' )
+			} );
+		}
+
+		// Initialize Featured Content slider.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( body.is( '.slider' ) ) {
 			$( '.featured-content' ).featuredslider( {
 				selector: '.featured-content-inner > article',

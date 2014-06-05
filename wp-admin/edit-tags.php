@@ -240,7 +240,11 @@ if ( 'category' == $taxonomy || 'link_category' == $taxonomy || 'post_tag' == $t
 	else
 		$help .= '<p>' . __( '<a href="http://codex.wordpress.org/Posts_Tags_Screen" target="_blank">Documentation on Tags</a>' ) . '</p>';
 
+<<<<<<< HEAD
 	$help .= '<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>';
+=======
+	$help .= '<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	get_current_screen()->set_help_sidebar( $help );
 
@@ -370,7 +374,11 @@ do_action( "after-{$taxonomy}-table", $taxonomy );
 
 if ( !is_null( $tax->labels->popular_items ) ) {
 	if ( current_user_can( $tax->cap->edit_terms ) )
+<<<<<<< HEAD
 		$tag_cloud = wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'echo' => false, 'link' => 'edit' ) );
+=======
+		$tag_cloud = wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'post_type' => $post_type, 'echo' => false, 'link' => 'edit' ) );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	else
 		$tag_cloud = wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'echo' => false ) );
 

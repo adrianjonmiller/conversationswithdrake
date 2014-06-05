@@ -1,9 +1,16 @@
 /* global adminCommentsL10n, thousandsSeparator, list_args, QTags, ajaxurl, wpAjax */
+<<<<<<< HEAD
 var setCommentsList, theList, theExtraList, commentReply,
 	toggleWithKeyboard = false;
 
 (function($) {
 var getCount, updateCount, updatePending, dashboardTotals;
+=======
+var setCommentsList, theList, theExtraList, commentReply;
+
+(function($) {
+var getCount, updateCount, updatePending;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 setCommentsList = function() {
 	var totalInput, perPageInput, pageInput, dimAfter, delBefore, updateTotalCount, delAfter, refillTheExtraList, diff,
@@ -80,7 +87,11 @@ setCommentsList = function() {
 			a.attr('href', 'comment.php?action=un' + action + 'comment&c=' + id + '&_wpnonce=' + settings.data._ajax_nonce);
 			a.attr('data-wp-lists', 'delete:the-comment-list:comment-' + id + '::un' + action + '=1');
 			a.attr('class', 'vim-z vim-destructive');
+<<<<<<< HEAD
 			$('.avatar', el).clone().prependTo('#undo-' + id + ' .' + action + '-undo-inside');
+=======
+			$('.avatar', el).first().clone().prependTo('#undo-' + id + ' .' + action + '-undo-inside');
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			a.click(function(){
 				list.wpList.del(this);
@@ -106,6 +117,7 @@ setCommentsList = function() {
 		totalInput.val( total.toString() );
 	};
 
+<<<<<<< HEAD
 	dashboardTotals = function(n) {
 		var total, appr, totalN, apprN,
 			dash = $('#dashboard_right_now');
@@ -124,6 +136,8 @@ setCommentsList = function() {
 		updateCount(appr, apprN);
 	};
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	getCount = function(el) {
 		var n = parseInt( el.html().replace(/[^0-9]+/g, ''), 10 );
 		if ( isNaN(n) )
@@ -154,13 +168,20 @@ setCommentsList = function() {
 			a.closest('.awaiting-mod')[ 0 === n ? 'addClass' : 'removeClass' ]('count-0');
 			updateCount( a, n );
 		});
+<<<<<<< HEAD
 
 		dashboardTotals();
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	};
 
 	// In admin-ajax.php, we send back the unix time stamp instead of 1 on success
 	delAfter = function( r, settings ) {
+<<<<<<< HEAD
 		var total_items_i18n, total, N, spam, trash, pending,
+=======
+		var total_items_i18n, total, spam, trash, pending,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			untrash = $(settings.target).parent().is('span.untrash'),
 			unspam = $(settings.target).parent().is('span.unspam'),
 			unapproved = $('#' + settings.element).is('.unapproved');
@@ -206,10 +227,14 @@ setCommentsList = function() {
 			updateCount(a, n);
 		});
 
+<<<<<<< HEAD
 		if ( $('#dashboard_right_now').length ) {
 			N = trash ? -1 * trash : 0;
 			dashboardTotals(N);
 		} else {
+=======
+		if ( ! $('#dashboard_right_now').length ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			total = totalInput.val() ? parseInt( totalInput.val(), 10 ) : 0;
 			if ( $(settings.target).parent().is('span.undo') )
 				total++;
@@ -594,9 +619,13 @@ $(document).ready(function(){
 		};
 
 		toggle_all = function() {
+<<<<<<< HEAD
 			toggleWithKeyboard = true;
 			$('input:checkbox', '#cb').click().prop('checked', false);
 			toggleWithKeyboard = false;
+=======
+			$('#cb-select-all-1').data( 'wp-toggle', 1 ).trigger( 'click' ).removeData( 'wp-toggle' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		};
 
 		make_bulk = function(value) {
@@ -609,12 +638,37 @@ $(document).ready(function(){
 
 		$.table_hotkeys(
 			$('table.widefat'),
+<<<<<<< HEAD
 			['a', 'u', 's', 'd', 'r', 'q', 'z', ['e', edit_comment], ['shift+x', toggle_all],
 			['shift+a', make_bulk('approve')], ['shift+s', make_bulk('spam')],
 			['shift+d', make_bulk('delete')], ['shift+t', make_bulk('trash')],
 			['shift+z', make_bulk('untrash')], ['shift+u', make_bulk('unapprove')]],
 			{ highlight_first: adminCommentsL10n.hotkeys_highlight_first, highlight_last: adminCommentsL10n.hotkeys_highlight_last,
 			prev_page_link_cb: make_hotkeys_redirect('prev'), next_page_link_cb: make_hotkeys_redirect('next') }
+=======
+			[
+				'a', 'u', 's', 'd', 'r', 'q', 'z',
+				['e', edit_comment],
+				['shift+x', toggle_all],
+				['shift+a', make_bulk('approve')],
+				['shift+s', make_bulk('spam')],
+				['shift+d', make_bulk('delete')],
+				['shift+t', make_bulk('trash')],
+				['shift+z', make_bulk('untrash')],
+				['shift+u', make_bulk('unapprove')]
+			],
+			{
+				highlight_first: adminCommentsL10n.hotkeys_highlight_first,
+				highlight_last: adminCommentsL10n.hotkeys_highlight_last,
+				prev_page_link_cb: make_hotkeys_redirect('prev'),
+				next_page_link_cb: make_hotkeys_redirect('next'),
+				hotkeys_opts: {
+					disableInInput: true,
+					type: 'keypress',
+					noDisable: '.check-column input[type="checkbox"]'
+				}
+			}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		);
 	}
 });

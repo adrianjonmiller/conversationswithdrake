@@ -17,7 +17,14 @@
 		</div>
 		<?php endif; ?>
 		<header class="entry-header">
+<<<<<<< HEAD
 			<?php the_post_thumbnail(); ?>
+=======
+			<?php if ( ! post_password_required() && ! is_attachment() ) :
+				the_post_thumbnail();
+			endif; ?>
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			<?php if ( is_single() ) : ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<?php else : ?>

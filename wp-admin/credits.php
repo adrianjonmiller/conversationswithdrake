@@ -27,6 +27,10 @@ function wp_credits() {
 	$results = get_site_transient( 'wordpress_credits_' . $locale );
 
 	if ( ! is_array( $results )
+<<<<<<< HEAD
+=======
+		|| false !== strpos( $wp_version, '-' )
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		|| ( isset( $results['data']['version'] ) && strpos( $wp_version, $results['data']['version'] ) !== 0 )
 	) {
 		$response = wp_remote_get( "http://api.wordpress.org/core/credits/1.1/?version=$wp_version&locale=$locale" );
@@ -81,7 +85,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 
 <h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
 
+<<<<<<< HEAD
 <div class="about-text"><?php printf( __( 'Thank you for updating to WordPress %s, the most beautiful WordPress&nbsp;yet.' ), $display_version ); ?></div>
+=======
+<div class="about-text"><?php printf( __( 'Thank you for updating! WordPress %s has lots of refinements we think you&#8217;ll love.' ), $display_version ); ?></div>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
@@ -101,7 +109,11 @@ $credits = wp_credits();
 
 if ( ! $credits ) {
 	echo '<p class="about-description">' . sprintf( __( 'WordPress is created by a <a href="%1$s">worldwide team</a> of passionate individuals. <a href="%2$s">Get involved in WordPress</a>.' ),
+<<<<<<< HEAD
 		'http://wordpress.org/about/',
+=======
+		'https://wordpress.org/about/',
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		/* translators: Url to the codex documentation on contributing to WordPress used on the credits page */
 		__( 'http://codex.wordpress.org/Contributing_to_WordPress' ) ) . '</p>';
 	include( ABSPATH . 'wp-admin/admin-footer.php' );
@@ -160,7 +172,11 @@ foreach ( $credits['groups'] as $group_slug => $group_data ) {
 ?>
 <p class="clear"><?php printf( __( 'Want to see your name in lights on this page? <a href="%s">Get involved in WordPress</a>.' ),
 	/* translators: URL to the Make WordPress 'Get Involved' landing page used on the credits page */
+<<<<<<< HEAD
 	__( 'http://make.wordpress.org/' ) ); ?></p>
+=======
+	__( 'https://make.wordpress.org/' ) ); ?></p>
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 </div>
 <?php

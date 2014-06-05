@@ -13,15 +13,24 @@ window.switchEditors = {
 
 	// mode can be 'html', 'tmce', or 'toggle'; 'html' is used for the 'Text' editor tab.
 	go: function( id, mode ) {
+<<<<<<< HEAD
 		var t = this, ed, wrap_id, txtarea_el,
 			dom = tinymce.DOM;
+=======
+		var t = this, ed, wrap_id, txtarea_el, iframe, editorHeight, toolbarHeight,
+			DOM = tinymce.DOM; //DOMUtils outside the editor iframe
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		id = id || 'content';
 		mode = mode || 'toggle';
 
 		ed = tinymce.get( id );
 		wrap_id = 'wp-' + id + '-wrap';
+<<<<<<< HEAD
 		txtarea_el = dom.get( id );
+=======
+		txtarea_el = DOM.get( id );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		if ( 'toggle' === mode ) {
 			if ( ed && ! ed.isHidden() ) {
@@ -31,6 +40,20 @@ window.switchEditors = {
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		function getToolbarHeight() {
+			var node = DOM.select( '.mce-toolbar-grp', ed.getContainer() )[0],
+				height = node && node.clientHeight;
+
+			if ( height && height > 10 && height < 200 ) {
+				return parseInt( height, 10 );
+			}
+
+			return 30;
+		}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( 'tmce' === mode || 'tinymce' === mode ) {
 			if ( ed && ! ed.isHidden() ) {
 				return false;
@@ -40,12 +63,18 @@ window.switchEditors = {
 				QTags.closeAllTags( id );
 			}
 
+<<<<<<< HEAD
+=======
+			editorHeight = txtarea_el ? parseInt( txtarea_el.style.height, 10 ) : 0;
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			if ( tinyMCEPreInit.mceInit[ id ] && tinyMCEPreInit.mceInit[ id ].wpautop ) {
 				txtarea_el.value = t.wpautop( txtarea_el.value );
 			}
 
 			if ( ed ) {
 				ed.show();
+<<<<<<< HEAD
 			} else {
 				ed = new tinymce.Editor( id, tinyMCEPreInit.mceInit[ id ] );
 				ed.render();
@@ -53,6 +82,24 @@ window.switchEditors = {
 
 			dom.removeClass( wrap_id, 'html-active' );
 			dom.addClass( wrap_id, 'tmce-active' );
+=======
+
+				if ( editorHeight ) {
+					toolbarHeight = getToolbarHeight();
+					editorHeight = editorHeight - toolbarHeight + 14;
+
+					// height cannot be under 50 or over 5000
+					if ( editorHeight > 50 && editorHeight < 5000 ) {
+						ed.theme.resizeTo( null, editorHeight );
+					}
+				}
+			} else {
+				tinymce.init( tinyMCEPreInit.mceInit[id] );
+			}
+
+			DOM.removeClass( wrap_id, 'html-active' );
+			DOM.addClass( wrap_id, 'tmce-active' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			setUserSetting( 'editor', 'tinymce' );
 
 		} else if ( 'html' === mode ) {
@@ -62,6 +109,22 @@ window.switchEditors = {
 			}
 
 			if ( ed ) {
+<<<<<<< HEAD
+=======
+				iframe = DOM.get( id + '_ifr' );
+				editorHeight = iframe ? parseInt( iframe.style.height, 10 ) : 0;
+
+				if ( editorHeight ) {
+					toolbarHeight = getToolbarHeight();
+					editorHeight = editorHeight + toolbarHeight - 14;
+
+					// height cannot be under 50 or over 5000
+					if ( editorHeight > 50 && editorHeight < 5000 ) {
+						txtarea_el.style.height = editorHeight + 'px';
+					}
+				}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				ed.hide();
 			} else {
 				// The TinyMCE instance doesn't exist, run the content through 'pre_wpautop()' and show the textarea
@@ -69,11 +132,19 @@ window.switchEditors = {
 					txtarea_el.value = t.pre_wpautop( txtarea_el.value );
 				}
 
+<<<<<<< HEAD
 				dom.setStyles( txtarea_el, {'display': '', 'visibility': ''} );
 			}
 
 			dom.removeClass( wrap_id, 'tmce-active' );
 			dom.addClass( wrap_id, 'html-active' );
+=======
+				DOM.setStyles( txtarea_el, {'display': '', 'visibility': ''} );
+			}
+
+			DOM.removeClass( wrap_id, 'tmce-active' );
+			DOM.addClass( wrap_id, 'html-active' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			setUserSetting( 'editor', 'html' );
 		}
 		return false;
@@ -88,8 +159,14 @@ window.switchEditors = {
 		if ( content.indexOf( '<pre' ) !== -1 || content.indexOf( '<script' ) !== -1 ) {
 			preserve_linebreaks = true;
 			content = content.replace( /<(pre|script)[^>]*>[\s\S]+?<\/\1>/g, function( a ) {
+<<<<<<< HEAD
 				a = a.replace( /<br ?\/?>(\r\n|\n)?/g, '<wp-temp-lb>' );
 				return a.replace( /<\/?p( [^>]*)?>(\r\n|\n)?/g, '<wp-temp-lb>' );
+=======
+				a = a.replace( /<br ?\/?>(\r\n|\n)?/g, '<wp-line-break>' );
+				a = a.replace( /<\/?p( [^>]*)?>(\r\n|\n)?/g, '<wp-line-break>' );
+				return a.replace( /\r?\n/g, '<wp-line-break>' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			});
 		}
 
@@ -149,7 +226,11 @@ window.switchEditors = {
 
 		// put back the line breaks in pre|script
 		if ( preserve_linebreaks ) {
+<<<<<<< HEAD
 			content = content.replace( /<wp-temp-lb>/g, '\n' );
+=======
+			content = content.replace( /<wp-line-break>/g, '\n' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 
 		// and the <br> tags in captions
@@ -163,9 +244,15 @@ window.switchEditors = {
 	_wp_Autop: function(pee) {
 		var preserve_linebreaks = false,
 			preserve_br = false,
+<<<<<<< HEAD
 			blocklist = 'table|thead|tfoot|caption|col|colgroup|tbody|tr|td|th|div|dl|dd|dt|ul|ol|li|pre|select' +
 				'|option|form|map|area|blockquote|address|math|style|p|h[1-6]|hr|fieldset|noscript|legend|section' +
 				'|article|aside|hgroup|header|footer|nav|figure|figcaption|details|menu|summary';
+=======
+			blocklist = 'table|thead|tfoot|caption|col|colgroup|tbody|tr|td|th|div|dl|dd|dt|ul|ol|li|pre' +
+				'|form|map|area|blockquote|address|math|style|p|h[1-6]|hr|fieldset|noscript|legend|section' +
+				'|article|aside|hgroup|header|footer|nav|figure|details|menu|summary';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		if ( pee.indexOf( '<object' ) !== -1 ) {
 			pee = pee.replace( /<object[\s\S]+?<\/object>/g, function( a ) {
@@ -181,7 +268,11 @@ window.switchEditors = {
 		if ( pee.indexOf( '<pre' ) !== -1 || pee.indexOf( '<script' ) !== -1 ) {
 			preserve_linebreaks = true;
 			pee = pee.replace( /<(pre|script)[^>]*>[\s\S]+?<\/\1>/g, function( a ) {
+<<<<<<< HEAD
 				return a.replace( /(\r\n|\n)/g, '<wp-temp-lb>' );
+=======
+				return a.replace( /(\r\n|\n)/g, '<wp-line-break>' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			});
 		}
 
@@ -230,7 +321,11 @@ window.switchEditors = {
 
 		// put back the line breaks in pre|script
 		if ( preserve_linebreaks ) {
+<<<<<<< HEAD
 			pee = pee.replace( /<wp-temp-lb>/g, '\n' );
+=======
+			pee = pee.replace( /<wp-line-break>/g, '\n' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 
 		if ( preserve_br ) {

@@ -37,13 +37,21 @@ window.wp = window.wp || {};
 			// If we matched a leading `[`, strip it from the match
 			// and increment the index accordingly.
 			if ( match[1] ) {
+<<<<<<< HEAD
 				result.match = result.match.slice( 1 );
+=======
+				result.content = result.content.slice( 1 );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				result.index++;
 			}
 
 			// If we matched a trailing `]`, strip it from the match.
 			if ( match[7] ) {
+<<<<<<< HEAD
 				result.match = result.match.slice( 0, -1 );
+=======
+				result.content = result.content.slice( 0, -1 );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 
 			return result;

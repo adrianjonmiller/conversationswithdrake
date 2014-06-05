@@ -4,12 +4,22 @@
  */
 /*
 Plugin Name: Akismet
+<<<<<<< HEAD
 Plugin URI: http://akismet.com/?return=true
 Description: Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from comment and trackback spam</strong>. It keeps your site protected from spam even while you sleep. To get started: 1) Click the "Activate" link to the left of this description, 2) <a href="http://akismet.com/get/?return=true">Sign up for an Akismet API key</a>, and 3) Go to your Akismet configuration page, and save your API key.
 Version: 2.5.9
 Author: Automattic
 Author URI: http://automattic.com/wordpress-plugins/
 License: GPLv2 or later
+=======
+Plugin URI: http://akismet.com/
+Description: Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from comment and trackback spam</strong>. It keeps your site protected from spam even while you sleep. To get started: 1) Click the "Activate" link to the left of this description, 2) <a href="http://akismet.com/get/">Sign up for an Akismet API key</a>, and 3) Go to your Akismet configuration page, and save your API key.
+Version: 3.0.0
+Author: Automattic
+Author URI: http://automattic.com/wordpress-plugins/
+License: GPLv2 or later
+Text Domain: akismet
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 */
 
 /*
@@ -34,6 +44,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+<<<<<<< HEAD
 define('AKISMET_VERSION', '2.5.9');
 define('AKISMET_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 
@@ -611,3 +622,27 @@ function akismet_fix_scheduled_recheck() {
 		wp_schedule_single_event( time() + 300, 'akismet_schedule_cron_recheck' );
 	}
 }
+=======
+define( 'AKISMET_VERSION', '3.0.0' );
+define( 'AKISMET__MINIMUM_WP_VERSION', '3.0' );
+define( 'AKISMET__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'AKISMET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'AKISMET_DELETE_LIMIT', 100000 );
+
+register_activation_hook( __FILE__, array( 'Akismet', 'plugin_activation' ) );
+register_deactivation_hook( __FILE__, array( 'Akismet', 'plugin_deactivation' ) );
+
+require_once( AKISMET__PLUGIN_DIR . 'class.akismet.php' );
+require_once( AKISMET__PLUGIN_DIR . 'class.akismet-widget.php' );
+
+add_action( 'init', array( 'Akismet', 'init' ) );
+
+if ( is_admin() ) {
+	require_once( AKISMET__PLUGIN_DIR . 'class.akismet-admin.php' );
+	add_action( 'init', array( 'Akismet_Admin', 'init' ) );
+}
+
+//add wrapper class around deprecated akismet functions that are referenced elsewhere
+require_once( AKISMET__PLUGIN_DIR . 'wrapper.php' );
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

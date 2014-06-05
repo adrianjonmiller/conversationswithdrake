@@ -197,6 +197,7 @@ function wp_ajax_autocomplete_user() {
 	$return = array();
 
 	// Check the type of request
+<<<<<<< HEAD
 	if ( isset( $_REQUEST['autocomplete_type'] ) )
 		$type = $_REQUEST['autocomplete_type'];
 	else
@@ -207,6 +208,29 @@ function wp_ajax_autocomplete_user() {
 		$id = absint( $_REQUEST['site_id'] );
 	else
 		$id = get_current_blog_id();
+=======
+	// Current allowed values are `add` and `search`
+	if ( isset( $_REQUEST['autocomplete_type'] ) && 'search' === $_REQUEST['autocomplete_type'] ) {
+		$type = $_REQUEST['autocomplete_type'];
+	} else {
+		$type = 'add';
+	}
+
+	// Check the desired field for value
+	// Current allowed values are `user_email` and `user_login`
+	if ( isset( $_REQUEST['autocomplete_field'] ) && 'user_email' === $_REQUEST['autocomplete_field'] ) {
+		$field = $_REQUEST['autocomplete_field'];
+	} else {
+		$field = 'user_login';
+	}
+
+	// Exclude current users of this blog
+	if ( isset( $_REQUEST['site_id'] ) ) {
+		$id = absint( $_REQUEST['site_id'] );
+	} else {
+		$id = get_current_blog_id();
+	}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	$include_blog_users = ( $type == 'search' ? get_users( array( 'blog_id' => $id, 'fields' => 'ID' ) ) : array() );
 	$exclude_blog_users = ( $type == 'add' ? get_users( array( 'blog_id' => $id, 'fields' => 'ID' ) ) : array() );
@@ -223,7 +247,11 @@ function wp_ajax_autocomplete_user() {
 		$return[] = array(
 			/* translators: 1: user_login, 2: user_email */
 			'label' => sprintf( __( '%1$s (%2$s)' ), $user->user_login, $user->user_email ),
+<<<<<<< HEAD
 			'value' => $user->user_login,
+=======
+			'value' => $user->$field,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		);
 	}
 
@@ -259,7 +287,11 @@ function wp_ajax_logged_in() {
  *
  * Contrary to normal success AJAX response ("1"), die with time() on success.
  *
+<<<<<<< HEAD
  * @since 2.7
+=======
+ * @since 2.7.0
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param int $comment_id
  * @return die
@@ -1089,6 +1121,7 @@ function wp_ajax_add_user( $action ) {
 	$x->send();
 }
 
+<<<<<<< HEAD
 function wp_ajax_autosave() {
 	define( 'DOING_AUTOSAVE', true );
 
@@ -1151,6 +1184,8 @@ function wp_ajax_autosave() {
 	$x->send();
 }
 
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 function wp_ajax_closed_postboxes() {
 	check_ajax_referer( 'closedpostboxes', 'closedpostboxesnonce' );
 	$closed = isset( $_POST['closed'] ) ? explode( ',', $_POST['closed']) : array();
@@ -1230,7 +1265,12 @@ function wp_ajax_menu_get_metabox() {
 		 *
 		 * @since 3.0.0
 		 *
+<<<<<<< HEAD
 		 * @param object $menus_meta_box_object A nav menu meta box object, such as Page, Post, Category, Tag, etc.
+=======
+		 * @param object $menus_meta_box_object A nav menu meta box object, such as Page,
+		 *                                      Post, Category, Tag, etc.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		 */
 		$item = apply_filters( 'nav_menu_meta_box_object', $menus_meta_box_object );
 		ob_start();
@@ -1480,9 +1520,17 @@ function wp_ajax_find_posts() {
 	if ( ! $posts )
 		wp_die( __('No items found.') );
 
+<<<<<<< HEAD
 	$html = '<table class="widefat" cellspacing="0"><thead><tr><th class="found-radio"><br /></th><th>'.__('Title').'</th><th class="no-break">'.__('Type').'</th><th class="no-break">'.__('Date').'</th><th class="no-break">'.__('Status').'</th></tr></thead><tbody>';
 	foreach ( $posts as $post ) {
 		$title = trim( $post->post_title ) ? $post->post_title : __( '(no title)' );
+=======
+	$html = '<table class="widefat"><thead><tr><th class="found-radio"><br /></th><th>'.__('Title').'</th><th class="no-break">'.__('Type').'</th><th class="no-break">'.__('Date').'</th><th class="no-break">'.__('Status').'</th></tr></thead><tbody>';
+	$alt = '';
+	foreach ( $posts as $post ) {
+		$title = trim( $post->post_title ) ? $post->post_title : __( '(no title)' );
+		$alt = ( 'alternate' == $alt ) ? '' : 'alternate';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		switch ( $post->post_status ) {
 			case 'publish' :
@@ -1507,17 +1555,25 @@ function wp_ajax_find_posts() {
 			$time = mysql2date(__('Y/m/d'), $post->post_date);
 		}
 
+<<<<<<< HEAD
 		$html .= '<tr class="found-posts"><td class="found-radio"><input type="radio" id="found-'.$post->ID.'" name="found_post_id" value="' . esc_attr($post->ID) . '"></td>';
+=======
+		$html .= '<tr class="' . trim( 'found-posts ' . $alt ) . '"><td class="found-radio"><input type="radio" id="found-'.$post->ID.'" name="found_post_id" value="' . esc_attr($post->ID) . '"></td>';
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$html .= '<td><label for="found-'.$post->ID.'">' . esc_html( $title ) . '</label></td><td class="no-break">' . esc_html( $post_types[$post->post_type]->labels->singular_name ) . '</td><td class="no-break">'.esc_html( $time ) . '</td><td class="no-break">' . esc_html( $stat ). ' </td></tr>' . "\n\n";
 	}
 
 	$html .= '</tbody></table>';
 
+<<<<<<< HEAD
 	$x = new WP_Ajax_Response();
 	$x->add( array(
 		'data' => $html
 	));
 	$x->send();
+=======
+	wp_send_json_success( $html );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 function wp_ajax_widgets_order() {
@@ -1575,11 +1631,15 @@ function wp_ajax_save_widget() {
 	 */
 	do_action( 'widgets.php' );
 
+<<<<<<< HEAD
 	/**
 	 * Fires early when editing the widgets displayed in sidebars.
 	 *
 	 * @since 2.2.0
 	 */
+=======
+	/** This action is documented in wp-admin/widgets.php */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'sidebar_admin_setup' );
 
 	$id_base = $_POST['id_base'];
@@ -1639,6 +1699,14 @@ function wp_ajax_save_widget() {
 	wp_die();
 }
 
+<<<<<<< HEAD
+=======
+function wp_ajax_update_widget() {
+	global $wp_customize;
+	$wp_customize->widgets->wp_ajax_update_widget();
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 function wp_ajax_upload_attachment() {
 	check_ajax_referer( 'media-form' );
 
@@ -1763,11 +1831,19 @@ function wp_ajax_set_post_thumbnail() {
 }
 
 function wp_ajax_date_format() {
+<<<<<<< HEAD
 	wp_die( date_i18n( sanitize_option( 'date_format', $_POST['date'] ) ) );
 }
 
 function wp_ajax_time_format() {
 	wp_die( date_i18n( sanitize_option( 'time_format', $_POST['date'] ) ) );
+=======
+	wp_die( date_i18n( sanitize_option( 'date_format', wp_unslash( $_POST['date'] ) ) ) );
+}
+
+function wp_ajax_time_format() {
+	wp_die( date_i18n( sanitize_option( 'time_format', wp_unslash( $_POST['date'] ) ) ) );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 function wp_ajax_wp_fullscreen_save_post() {
@@ -1787,6 +1863,7 @@ function wp_ajax_wp_fullscreen_save_post() {
 
 	$post_id = edit_post();
 
+<<<<<<< HEAD
 	if ( is_wp_error($post_id) ) {
 		if ( $post_id->get_error_message() )
 			$message = $post_id->get_error_message();
@@ -1797,6 +1874,10 @@ function wp_ajax_wp_fullscreen_save_post() {
 		wp_die();
 	} else {
 		$message = __('Saved.');
+=======
+	if ( is_wp_error( $post_id ) ) {
+		wp_send_json_error();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	if ( $post ) {
@@ -1807,15 +1888,24 @@ function wp_ajax_wp_fullscreen_save_post() {
 		$last_time = date_i18n( get_option('time_format') );
 	}
 
+<<<<<<< HEAD
 	if ( $last_id = get_post_meta($post_id, '_edit_last', true) ) {
 		$last_user = get_userdata($last_id);
+=======
+	if ( $last_id = get_post_meta( $post_id, '_edit_last', true ) ) {
+		$last_user = get_userdata( $last_id );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$last_edited = sprintf( __('Last edited by %1$s on %2$s at %3$s'), esc_html( $last_user->display_name ), $last_date, $last_time );
 	} else {
 		$last_edited = sprintf( __('Last edited on %1$s at %2$s'), $last_date, $last_time );
 	}
 
+<<<<<<< HEAD
 	echo json_encode( array( 'message' => $message, 'last_edited' => $last_edited ) );
 	wp_die();
+=======
+	wp_send_json_success( array( 'last_edited' => $last_edited ) );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 function wp_ajax_wp_remove_post_lock() {
@@ -1839,9 +1929,16 @@ function wp_ajax_wp_remove_post_lock() {
 	 *
 	 * @since 3.3.0
 	 *
+<<<<<<< HEAD
 	 * @param int $interval The interval in seconds the post lock duration should last, plus 5 seconds. Default 120.
 	 */
 	$new_lock = ( time() - apply_filters( 'wp_check_post_lock_window', 120 ) + 5 ) . ':' . $active_lock[1];
+=======
+	 * @param int $interval The interval in seconds the post lock duration
+	 *                      should last, plus 5 seconds. Default 150.
+	 */
+	$new_lock = ( time() - apply_filters( 'wp_check_post_lock_window', 150 ) + 5 ) . ':' . $active_lock[1];
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	update_post_meta( $post_id, '_edit_lock', $new_lock, implode( ':', $active_lock ) );
 	wp_die( 1 );
 }
@@ -1913,11 +2010,22 @@ function wp_ajax_query_attachments() {
 		$query['post_status'] .= ',private';
 
 	/**
+<<<<<<< HEAD
 	 * Filter the arguments passed to WP_Query during an AJAX call for querying attachments.
 	 *
 	 * @since 3.7.0
 	 *
 	 * @param array $query An array of query variables. @see WP_Query::parse_query()
+=======
+	 * Filter the arguments passed to WP_Query during an AJAX
+	 * call for querying attachments.
+	 *
+	 * @since 3.7.0
+	 *
+	 * @see WP_Query::parse_query()
+	 *
+	 * @param array $query An array of query variables.
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	$query = apply_filters( 'ajax_query_attachments_args', $query );
 	$query = new WP_Query( $query );
@@ -2172,7 +2280,11 @@ function wp_ajax_heartbeat() {
 		$screen_id = 'front';
 
 	if ( ! empty($_POST['data']) ) {
+<<<<<<< HEAD
 		$data = (array) $_POST['data'];
+=======
+		$data = wp_unslash( (array) $_POST['data'] );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		/**
 		 * Filter the Heartbeat response received.
@@ -2260,3 +2372,51 @@ function wp_ajax_save_user_color_scheme() {
 	update_user_meta( get_current_user_id(), 'admin_color', $color_scheme );
 	wp_send_json_success();
 }
+<<<<<<< HEAD
+=======
+
+/**
+ * Get themes from themes_api().
+ *
+ * @since 3.9.0
+ */
+function wp_ajax_query_themes() {
+	global $themes_allowedtags, $theme_field_defaults;
+
+	if ( ! current_user_can( 'install_themes' ) ) {
+		wp_send_json_error();
+	}
+
+	$args = wp_parse_args( wp_unslash( $_REQUEST['request'] ), array(
+		'per_page' => 20,
+		'fields'   => $theme_field_defaults
+	) );
+
+	$old_filter = isset( $args['browse'] ) ? $args['browse'] : 'search';
+
+	/** This filter is documented in wp-admin/includes/class-wp-theme-install-list-table.php */
+	$args = apply_filters( 'install_themes_table_api_args_' . $old_filter, $args );
+
+	$api = themes_api( 'query_themes', $args );
+
+	if ( is_wp_error( $api ) ) {
+		wp_send_json_error();
+	}
+
+	$update_php = network_admin_url( 'update.php?action=install-theme' );
+	foreach ( $api->themes as &$theme ) {
+		$theme->install_url = add_query_arg( array(
+			'theme'    => $theme->slug,
+			'_wpnonce' => wp_create_nonce( 'install-theme_' . $theme->slug )
+		), $update_php );
+
+		$theme->name        = wp_kses( $theme->name, $themes_allowedtags );
+		$theme->author      = wp_kses( $theme->author, $themes_allowedtags );
+		$theme->version     = wp_kses( $theme->version, $themes_allowedtags );
+		$theme->description = wp_kses( $theme->description, $themes_allowedtags );
+		$theme->num_ratings = sprintf( _n( '(based on %s rating)', '(based on %s ratings)', $theme->num_ratings ), number_format_i18n( $theme->num_ratings ) );
+	}
+
+	wp_send_json_success( $api );
+}
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

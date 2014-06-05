@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* global ajaxurl, wpAjax */
 
 var findPosts;
@@ -6,6 +7,15 @@ var findPosts;
 		open : function(af_name, af_val) {
 			var st = document.documentElement.scrollTop || $(document).scrollTop(),
 				overlay = $( '.ui-find-overlay' );
+=======
+/* global ajaxurl, attachMediaBoxL10n */
+
+var findPosts;
+( function( $ ){
+	findPosts = {
+		open: function( af_name, af_val ) {
+			var overlay = $( '.ui-find-overlay' );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			if ( overlay.length === 0 ) {
 				$( 'body' ).append( '<div class="ui-find-overlay"></div>' );
@@ -15,6 +25,7 @@ var findPosts;
 			overlay.show();
 
 			if ( af_name && af_val ) {
+<<<<<<< HEAD
 				$('#affected').attr('name', af_name).val(af_val);
 			}
 			$('#find-posts').show().draggable({
@@ -23,6 +34,17 @@ var findPosts;
 
 			$('#find-posts-input').focus().keyup(function(e){
 				if (e.which == 27) { findPosts.close(); } // close on Escape
+=======
+				$( '#affected' ).attr( 'name', af_name ).val( af_val );
+			}
+
+			$( '#find-posts' ).show();
+
+			$('#find-posts-input').focus().keyup( function( event ){
+				if ( event.which == 27 ) {
+					findPosts.close();
+				} // close on Escape
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			});
 
 			// Pull some results up by default
@@ -31,6 +53,7 @@ var findPosts;
 			return false;
 		},
 
+<<<<<<< HEAD
 		close : function() {
 			$('#find-posts-response').html('');
 			$('#find-posts').draggable('destroy').hide();
@@ -41,13 +64,29 @@ var findPosts;
 			$( '.ui-find-overlay' ).css(
 				{ 'z-index': '999', 'width': $( document ).width() + 'px', 'height': $( document ).height() + 'px' }
 			).on('click', function () {
+=======
+		close: function() {
+			$('#find-posts-response').html('');
+			$('#find-posts').hide();
+			$( '.ui-find-overlay' ).hide();
+		},
+
+		overlay: function() {
+			$( '.ui-find-overlay' ).on( 'click', function () {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				findPosts.close();
 			});
 		},
 
+<<<<<<< HEAD
 		send : function() {
 			var post = {
 					ps: $('#find-posts-input').val(),
+=======
+		send: function() {
+			var post = {
+					ps: $( '#find-posts-input' ).val(),
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					action: 'find_posts',
 					_ajax_nonce: $('#_ajax_nonce').val()
 				},
@@ -55,6 +94,7 @@ var findPosts;
 
 			spinner.show();
 
+<<<<<<< HEAD
 			$.ajax({
 				type : 'POST',
 				url : ajaxurl,
@@ -101,12 +141,37 @@ var findPosts;
 		$('#find-posts-submit').click(function(e) {
 			if ( '' === $('#find-posts-response').html() )
 				e.preventDefault();
+=======
+			$.ajax( ajaxurl, {
+				type: 'POST',
+				data: post,
+				dataType: 'json'
+			}).always( function() {
+				spinner.hide();
+			}).done( function( x ) {
+				if ( ! x.success ) {
+					$( '#find-posts-response' ).text( attachMediaBoxL10n.error );
+				}
+
+				$( '#find-posts-response' ).html( x.data );
+			}).fail( function() {
+				$( '#find-posts-response' ).text( attachMediaBoxL10n.error );
+			});
+		}
+	};
+
+	$( document ).ready( function() {
+		$( '#find-posts-submit' ).click( function( event ) {
+			if ( ! $( '#find-posts-response input[type="radio"]:checked' ).length )
+				event.preventDefault();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		});
 		$( '#find-posts .find-box-search :input' ).keypress( function( event ) {
 			if ( 13 == event.which ) {
 				findPosts.send();
 				return false;
 			}
+<<<<<<< HEAD
 		} );
 		$( '#find-posts-search' ).click( findPosts.send );
 		$( '#find-posts-close' ).click( findPosts.close );
@@ -114,12 +179,31 @@ var findPosts;
 			$('select[name^="action"]').each(function(){
 				if ( $(this).val() == 'attach' ) {
 					e.preventDefault();
+=======
+		});
+		$( '#find-posts-search' ).click( findPosts.send );
+		$( '#find-posts-close' ).click( findPosts.close );
+		$( '#doaction, #doaction2' ).click( function( event ) {
+			$( 'select[name^="action"]' ).each( function() {
+				if ( $(this).val() === 'attach' ) {
+					event.preventDefault();
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					findPosts.open();
 				}
 			});
 		});
+<<<<<<< HEAD
 	});
 	$(window).resize(function() {
 		findPosts.overlay();
 	});
 })(jQuery);
+=======
+
+		// Enable whole row to be clicked
+		$( '.find-box-inside' ).on( 'click', 'tr', function() {
+			$( this ).find( '.found-radio input' ).prop( 'checked', true );
+		});
+	});
+})( jQuery );
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

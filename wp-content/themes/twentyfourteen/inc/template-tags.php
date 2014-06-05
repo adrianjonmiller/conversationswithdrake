@@ -12,8 +12,11 @@ if ( ! function_exists( 'twentyfourteen_paging_nav' ) ) :
  * Display navigation to next/previous set of posts when applicable.
  *
  * @since Twenty Fourteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_paging_nav() {
 	// Don't print empty markup if there's only one page.
@@ -67,8 +70,11 @@ if ( ! function_exists( 'twentyfourteen_post_nav' ) ) :
  * Display navigation to next/previous post when applicable.
  *
  * @since Twenty Fourteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_post_nav() {
 	// Don't print empty markup if there's nowhere to navigate.
@@ -102,8 +108,11 @@ if ( ! function_exists( 'twentyfourteen_posted_on' ) ) :
  * Print HTML with meta information for the current post-date/time and author.
  *
  * @since Twenty Fourteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_posted_on() {
 	if ( is_sticky() && is_home() && ! is_paged() ) {
@@ -154,8 +163,11 @@ function twentyfourteen_categorized_blog() {
  * Flush out the transients used in twentyfourteen_categorized_blog.
  *
  * @since Twenty Fourteen 1.0
+<<<<<<< HEAD
  *
  * @return void
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_category_transient_flusher() {
 	// Like, beat it. Dig?
@@ -171,11 +183,17 @@ add_action( 'save_post',     'twentyfourteen_category_transient_flusher' );
  * views, or a div element when on single views.
  *
  * @since Twenty Fourteen 1.0
+<<<<<<< HEAD
  *
  * @return void
 */
 function twentyfourteen_post_thumbnail() {
 	if ( post_password_required() || ! has_post_thumbnail() ) {
+=======
+ */
+function twentyfourteen_post_thumbnail() {
+	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return;
 	}
 

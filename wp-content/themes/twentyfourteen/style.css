@@ -4,11 +4,19 @@ Theme URI: http://wordpress.org/themes/twentyfourteen
 Author: the WordPress team
 Author URI: http://wordpress.org/
 Description: In 2014, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
+<<<<<<< HEAD
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
 Text Domain: twentyfourteen 
+=======
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
+Text Domain: twentyfourteen
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -502,7 +510,11 @@ textarea:focus {
 /* Buttons */
 
 button,
+<<<<<<< HEAD
 .contributor-posts-link,
+=======
+.button,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -519,7 +531,12 @@ input[type="submit"] {
 
 button:hover,
 button:focus,
+<<<<<<< HEAD
 .contributor-posts-link:hover,
+=======
+.button:hover,
+.button:focus,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 input[type="button"]:hover,
 input[type="button"]:focus,
 input[type="reset"]:hover,
@@ -531,7 +548,11 @@ input[type="submit"]:focus {
 }
 
 button:active,
+<<<<<<< HEAD
 .contributor-posts-link:active,
+=======
+.button:active,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
@@ -635,6 +656,10 @@ span > object {
 }
 
 blockquote.alignleft,
+<<<<<<< HEAD
+=======
+figure.wp-caption.alignleft,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 img.alignleft {
 	margin: 7px 24px 7px 0;
 }
@@ -644,6 +669,10 @@ img.alignleft {
 }
 
 blockquote.alignright,
+<<<<<<< HEAD
+=======
+figure.wp-caption.alignright,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 img.alignright {
 	margin: 7px 0 7px 24px;
 }
@@ -693,9 +722,24 @@ img.aligncenter,
 	font-style: italic;
 	line-height: 1.5;
 	margin: 9px 0;
+<<<<<<< HEAD
 	padding-right: 10px;
 }
 
+=======
+}
+
+div.wp-caption .wp-caption-text {
+	padding-right: 10px;
+}
+
+div.wp-caption.alignright img[class*="wp-image-"],
+div.wp-caption.alignright .wp-caption-text {
+	padding-left: 10px;
+	padding-right: 0;
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-smiley {
 	border: 0;
 	margin-bottom: 0;
@@ -741,6 +785,11 @@ img.aligncenter,
 .footer-sidebar:after,
 .hentry:before,
 .hentry:after,
+<<<<<<< HEAD
+=======
+.gallery:before,
+.gallery:after,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .slider-direction-nav:before,
 .slider-direction-nav:after,
 .contributor-info:before,
@@ -757,6 +806,10 @@ img.aligncenter,
 
 .footer-sidebar:after,
 .hentry:after,
+<<<<<<< HEAD
+=======
+.gallery:after,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .slider-direction-nav:after,
 .contributor-info:after,
 .search-box:after,
@@ -819,7 +872,11 @@ span + .edit-link:before,
  */
 
 /* Ensure that there is no gap between the header and
+<<<<<<< HEAD
    the admin bar for WordPress versions before 3.8. */
+=======
+	 the admin bar for WordPress versions before 3.8. */
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 #wpadminbar {
 	min-height: 32px;
 }
@@ -985,11 +1042,20 @@ span + .edit-link:before,
 }
 
 .menu-toggle {
+<<<<<<< HEAD
+=======
+	background-color: #000;
+	border-radius: 0;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	cursor: pointer;
 	font-size: 0;
 	height: 48px;
 	margin: 0;
 	overflow: hidden;
+<<<<<<< HEAD
+=======
+	padding: 0;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1000,9 +1066,26 @@ span + .edit-link:before,
 .menu-toggle:before {
 	color: #fff;
 	content: "\f419";
+<<<<<<< HEAD
 	margin-top: 16px;
 }
 
+=======
+	display: inline;
+	margin-top: 16px;
+}
+
+.menu-toggle:active,
+.menu-toggle:focus,
+.menu-toggle:hover {
+	background-color: #444;
+}
+
+.menu-toggle:focus {
+	outline: 1px dotted;
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 /**
  * 6.0 Content
@@ -1256,7 +1339,15 @@ a.post-thumbnail:hover {
 .entry-content a:hover,
 .entry-summary a:hover,
 .page-content a:hover,
+<<<<<<< HEAD
 .comment-content a:hover {
+=======
+.comment-content a:hover,
+.entry-content a.button,
+.entry-summary a.button,
+.page-content a.button,
+.comment-content a.button {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	text-decoration: none;
 }
 
@@ -1319,7 +1410,11 @@ a.post-thumbnail:hover {
 
 .hentry .mejs-controls .mejs-time-rail .mejs-time-total,
 .hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+<<<<<<< HEAD
 	background: rgba(255,255,255,.33);
+=======
+	background: rgba(255, 255, 255, .33);
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .hentry .mejs-container .mejs-controls .mejs-time {
@@ -1459,6 +1554,16 @@ a.post-thumbnail:hover {
 	margin-right: 0;
 }
 
+<<<<<<< HEAD
+=======
+.gallery-columns-1.gallery-size-medium figure.gallery-item:nth-of-type(1n+1),
+.gallery-columns-1.gallery-size-thumbnail figure.gallery-item:nth-of-type(1n+1),
+.gallery-columns-2.gallery-size-thumbnail figure.gallery-item:nth-of-type(2n+1),
+.gallery-columns-3.gallery-size-thumbnail figure.gallery-item:nth-of-type(3n+1) {
+	clear: left;
+}
+
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .gallery-caption {
 	background-color: rgba(0, 0, 0, 0.7);
 	-webkit-box-sizing: border-box;
@@ -2223,6 +2328,10 @@ a.post-thumbnail:hover {
 }
 
 .widget button,
+<<<<<<< HEAD
+=======
+.widget .button,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .widget input[type="button"],
 .widget input[type="reset"],
 .widget input[type="submit"] {
@@ -2989,8 +3098,15 @@ a.post-thumbnail:hover {
 	}
 
 	.list-view .site-content .cat-links,
+<<<<<<< HEAD
 	.list-view .site-content .entry-content,
 	.list-view .site-content .entry-summary,
+=======
+	.list-view .site-content .type-post .entry-content,
+	.list-view .site-content .type-page .entry-content,
+	.list-view .site-content .type-post .entry-summary,
+	.list-view .site-content .type-page .entry-summary,
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	.list-view .site-content footer.entry-meta {
 		display: none;
 	}
@@ -3218,7 +3334,12 @@ a.post-thumbnail:hover {
 	}
 
 	.full-width .site-content .has-post-thumbnail .entry-header,
+<<<<<<< HEAD
 	.full-width.singular .site-content .hentry.has-post-thumbnail {
+=======
+	.full-width.singular .site-content .hentry.has-post-thumbnail,
+	.full-width.home .site-content .hentry.has-post-thumbnail {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		margin-top: -48px;
 	}
 
@@ -3232,6 +3353,10 @@ a.post-thumbnail:hover {
 		float: right;
 		margin-left: -33.33333333%;
 		padding: 48px 30px 24px;
+<<<<<<< HEAD
+=======
+		position: relative;
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		width: 33.33333333%;
 	}
 
@@ -3544,7 +3669,12 @@ a.post-thumbnail:hover {
 		margin-left: 20px;
 	}
 
+<<<<<<< HEAD
 	.full-width.singular .site-content .hentry.has-post-thumbnail {
+=======
+	.full-width.singular .site-content .hentry.has-post-thumbnail,
+	.full-width.home .site-content .hentry.has-post-thumbnail {
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		margin-top: -72px;
 	}
 

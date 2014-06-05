@@ -231,7 +231,10 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 /**
  * Create HTML list of nav menu input items.
  *
+<<<<<<< HEAD
  * @package WordPress
+=======
+>>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 3.0.0
  * @uses Walker_Nav_Menu
  */
