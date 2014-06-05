@@ -53,11 +53,7 @@ function get_locale() {
 	if ( empty( $locale ) )
 		$locale = 'en_US';
 
-<<<<<<< HEAD
-	// duplicate_hook
-=======
 	/** This filter is documented in wp-includes/l10n.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'locale', $locale );
 }
 
@@ -428,15 +424,9 @@ function load_textdomain( $domain, $mofile ) {
 	 *
 	 * @since 2.9.0
 	 *
-<<<<<<< HEAD
-	 * @param boolean        Whether to override the text domain. Default false.
-	 * @param string $domain Text domain. Unique identifier for retrieving translated strings.
-	 * @param string $mofile Path to the MO file.
-=======
 	 * @param bool   $override Whether to override the text domain. Default false.
 	 * @param string $domain   Text domain. Unique identifier for retrieving translated strings.
 	 * @param string $mofile   Path to the MO file.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	$plugin_override = apply_filters( 'override_load_textdomain', false, $domain, $mofile );
 
@@ -489,21 +479,12 @@ function unload_textdomain( $domain ) {
 	global $l10n;
 
 	/**
-<<<<<<< HEAD
-	 * Filter text text domain for loading translation.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param boolean        Whether to override unloading the text domain. Default false.
-	 * @param string $domain Text domain. Unique identifier for retrieving translated strings.
-=======
 	 * Filter the text domain for loading translation.
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param bool   $override Whether to override unloading the text domain. Default false.
 	 * @param string $domain   Text domain. Unique identifier for retrieving translated strings.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	$plugin_override = apply_filters( 'override_unload_textdomain', false, $domain );
 
@@ -610,11 +591,7 @@ function load_plugin_textdomain( $domain, $deprecated = false, $plugin_rel_path 
  * @return bool True when textdomain is successfully loaded, false otherwise.
  */
 function load_muplugin_textdomain( $domain, $mu_plugin_rel_path = '' ) {
-<<<<<<< HEAD
-	// duplicate_hook
-=======
 	/** This filter is documented in wp-includes/l10n.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 	$path = trailingslashit( WPMU_PLUGIN_DIR . '/' . ltrim( $mu_plugin_rel_path, '/' ) );
 

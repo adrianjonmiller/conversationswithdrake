@@ -30,8 +30,6 @@ function export_wp( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires at the beginning of an export, before any headers are sent.
 	 *
@@ -39,7 +37,6 @@ function export_wp( $args = array() ) {
 	 *
 	 * @param array $args An array of export arguments.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'export_wp', $args );
 
 	$sitename = sanitize_key( get_bloginfo( 'name' ) );
@@ -360,14 +357,10 @@ function export_wp( $args = array() ) {
 <?php endforeach; ?>
 <?php if ( 'all' == $args['content'] ) wxr_nav_menu_terms(); ?>
 
-<<<<<<< HEAD
-	<?php do_action( 'rss2_head' ); ?>
-=======
 	<?php
 	/** This action is documented in wp-includes/feed-rss2.php */
 	do_action( 'rss2_head' );
 	?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 <?php if ( $post_ids ) {
 	global $wp_query;
@@ -391,10 +384,6 @@ function export_wp( $args = array() ) {
 		<dc:creator><?php echo wxr_cdata( get_the_author_meta( 'login' ) ); ?></dc:creator>
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
 		<description></description>
-<<<<<<< HEAD
-		<content:encoded><?php echo wxr_cdata( apply_filters( 'the_content_export', $post->post_content ) ); ?></content:encoded>
-		<excerpt:encoded><?php echo wxr_cdata( apply_filters( 'the_excerpt_export', $post->post_excerpt ) ); ?></excerpt:encoded>
-=======
 		<content:encoded><?php
 			/**
 			 * Filter the post content used for WXR exports.
@@ -415,7 +404,6 @@ function export_wp( $args = array() ) {
 			 */
 			echo wxr_cdata( apply_filters( 'the_excerpt_export', $post->post_excerpt ) );
 		?></excerpt:encoded>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		<wp:post_id><?php echo $post->ID; ?></wp:post_id>
 		<wp:post_date><?php echo $post->post_date; ?></wp:post_date>
 		<wp:post_date_gmt><?php echo $post->post_date_gmt; ?></wp:post_date_gmt>
@@ -434,8 +422,6 @@ function export_wp( $args = array() ) {
 <?php 	wxr_post_taxonomy(); ?>
 <?php	$postmeta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d", $post->ID ) );
 		foreach ( $postmeta as $meta ) :
-<<<<<<< HEAD
-=======
 			/**
 			 * Filter whether to selectively skip post meta used for WXR exports.
 			 *
@@ -448,7 +434,6 @@ function export_wp( $args = array() ) {
 			 * @param string $meta_key Current meta key.
 			 * @param object $meta     Current meta object.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			if ( apply_filters( 'wxr_export_skip_postmeta', false, $meta->meta_key, $meta ) )
 				continue;
 		?>

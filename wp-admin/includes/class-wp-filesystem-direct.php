@@ -9,11 +9,7 @@
 /**
  * WordPress Filesystem Class for direct PHP file and folder manipulation.
  *
-<<<<<<< HEAD
- * @since 2.5
-=======
  * @since 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @package WordPress
  * @subpackage Filesystem
  * @uses WP_Filesystem_Base Extends class
@@ -198,17 +194,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	 * FIXME does not handle errors in fileperms()
 	 *
 	 * @param string $file Path to the file.
-<<<<<<< HEAD
-	 * @return string Mode of the file (last 4 digits).
-	 */
-	function getchmod($file) {
-		return substr(decoct(@fileperms($file)),3);
-=======
 	 * @return string Mode of the file (last 3 digits).
 	 */
 	function getchmod($file) {
 		return substr( decoct( @fileperms( $file ) ), -3 );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	function group($file) {

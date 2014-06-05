@@ -515,12 +515,8 @@ a.post-thumbnail:hover {
 	margin-right: auto;
 }
 
-<<<<<<< HEAD
-.ie8 .full-width.singular .hentry.has-post-thumbnail {
-=======
 .ie8 .full-width.singular .hentry.has-post-thumbnail,
 .ie8 .full-width.home .hentry.has-post-thumbnail {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	margin-top: -72px;
 }
 

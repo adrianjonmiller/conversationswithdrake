@@ -13,11 +13,6 @@
 
 /**
  * We are installing.
-<<<<<<< HEAD
- *
- * @package WordPress
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 define('WP_INSTALLING', true);
 
@@ -91,11 +86,6 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
  *
  * @ignore
  * @since 2.3.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Installer_WP_Config
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function setup_config_display_header() {
 	global $wp_version;
@@ -113,11 +103,7 @@ function setup_config_display_header() {
 
 </head>
 <body class="wp-core-ui<?php if ( is_rtl() ) echo ' rtl'; ?>">
-<<<<<<< HEAD
-<h1 id="logo"><a href="<?php esc_attr_e( 'http://wordpress.org/' ); ?>"><?php _e( 'WordPress' ); ?></a></h1>
-=======
 <h1 id="logo"><a href="<?php esc_attr_e( 'https://wordpress.org/' ); ?>"><?php _e( 'WordPress' ); ?></a></h1>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <?php
 } // end function setup_config_display_header();
 

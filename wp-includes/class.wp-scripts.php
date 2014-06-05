@@ -36,8 +36,6 @@ class WP_Scripts extends WP_Dependencies {
 	}
 
 	function init() {
-<<<<<<< HEAD
-=======
 		/**
 		 * Fires when the WP_Scripts instance is initialized.
 		 *
@@ -45,7 +43,6 @@ class WP_Scripts extends WP_Dependencies {
 		 *
 		 * @param WP_Scripts &$this WP_Scripts instance, passed by reference.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action_ref_array( 'wp_default_scripts', array(&$this) );
 	}
 
@@ -107,8 +104,6 @@ class WP_Scripts extends WP_Dependencies {
 		$src = $this->registered[$handle]->src;
 
 		if ( $this->do_concat ) {
-<<<<<<< HEAD
-=======
 			/**
 			 * Filter the script loader source.
 			 *
@@ -117,7 +112,6 @@ class WP_Scripts extends WP_Dependencies {
 			 * @param string $src    Script loader source path.
 			 * @param string $handle Script handle.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$srce = apply_filters( 'script_loader_src', $src, $handle );
 			if ( $this->in_default_dir($srce) ) {
 				$this->print_code .= $this->print_extra_script( $handle, false );
@@ -138,10 +132,7 @@ class WP_Scripts extends WP_Dependencies {
 		if ( !empty($ver) )
 			$src = add_query_arg('ver', $ver, $src);
 
-<<<<<<< HEAD
-=======
 		/** This filter is documented in wp-includes/class.wp-scripts.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$src = esc_url( apply_filters( 'script_loader_src', $src, $handle ) );
 
 		if ( ! $src )
@@ -204,10 +195,6 @@ class WP_Scripts extends WP_Dependencies {
 
 	function all_deps( $handles, $recursion = false, $group = false ) {
 		$r = parent::all_deps( $handles, $recursion );
-<<<<<<< HEAD
-		if ( !$recursion )
-			$this->to_do = apply_filters( 'print_scripts_array', $this->to_do );
-=======
 		if ( ! $recursion ) {
 			/**
 			 * Filter the list of script dependencies left to print.
@@ -218,7 +205,6 @@ class WP_Scripts extends WP_Dependencies {
 			 */
 			$this->to_do = apply_filters( 'print_scripts_array', $this->to_do );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return $r;
 	}
 

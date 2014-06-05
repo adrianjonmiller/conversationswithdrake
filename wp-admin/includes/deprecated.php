@@ -1174,8 +1174,6 @@ function wp_dashboard_recent_comments_control() {}
 function wp_dashboard_secondary() {}
 function wp_dashboard_secondary_control() {}
 /**#@-*/
-<<<<<<< HEAD
-=======
 
 /**
  * This was once used to move child posts to a new parent.
@@ -1190,4 +1188,3 @@ function wp_dashboard_secondary_control() {}
 function _relocate_children( $old_ID, $new_ID ) {
 	_deprecated_function( __FUNCTION__, '3.9' );
 }
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

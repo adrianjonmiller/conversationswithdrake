@@ -130,16 +130,12 @@ class WP_Embed {
 	 * @uses get_post_meta()
 	 * @uses update_post_meta()
 	 *
-<<<<<<< HEAD
-	 * @param array $attr Shortcode attributes.
-=======
 	 * @param array $attr {
 	 *     Shortcode attributes. Optional.
 	 *
 	 *     @type int $width  Width of the embed in pixels.
 	 *     @type int $height Height of the embed in pixels.
 	 * }
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @param string $url The URL attempting to be embedded.
 	 * @return string The embed HTML on success, otherwise the original URL.
 	 */
@@ -167,11 +163,8 @@ class WP_Embed {
 						 *
 						 * @since 2.9.0
 						 *
-<<<<<<< HEAD
-=======
 						 * @see WP_Embed::shortcode()
 						 *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 						 * @param mixed  $return The shortcode callback function to call.
 						 * @param string $url    The attempted embed URL.
 						 * @param array  $attr   An array of shortcode attributes.
@@ -203,11 +196,8 @@ class WP_Embed {
 					 *
 					 * @since 2.9.0
 					 *
-<<<<<<< HEAD
-=======
 					 * @see WP_Embed::shortcode()
 					 *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					 * @param mixed  $cache   The cached HTML result, stored in post meta.
 					 * @param string $url     The attempted embed URL.
 					 * @param array  $attr    An array of shortcode attributes.
@@ -219,11 +209,8 @@ class WP_Embed {
 			/**
 			 * Filter whether to inspect the given URL for discoverable <link> tags.
 			 *
-<<<<<<< HEAD
-=======
 			 * @since 2.9.0
 			 *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			 * @see WP_oEmbed::discover()
 			 *
 			 * @param bool false Whether to enable <link> tag discovery. Default false.

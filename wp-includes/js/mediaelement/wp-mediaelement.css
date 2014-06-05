@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-.mejs-container, .mejs-embed, .mejs-embed body {
-	background: #464646;
-=======
 .mejs-container * {
 	font-family: Helvetica, Arial;
 }
 
 .mejs-container, .mejs-embed, .mejs-embed body {
 	background: #000;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-loaded {
@@ -22,8 +17,6 @@
 .me-cannotplay {
 	width: auto !important;
 }
-<<<<<<< HEAD
-=======
 
 .media-embed-details .wp-audio-shortcode {
 	display: inline-block;
@@ -230,4 +223,3 @@
 .wp-audio-playlist .me-cannotplay span {
 	padding: 5px 15px;
 }
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

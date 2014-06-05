@@ -82,26 +82,17 @@ abstract class WP_Image_Editor {
 	/**
 	 * Resizes current image.
 	 *
-<<<<<<< HEAD
-=======
 	 * At minimum, either a height or width must be provided.
 	 * If one of the two is set to null, the resize will
 	 * maintain aspect ratio according to the provided dimension.
 	 *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @since 3.5.0
 	 * @access public
 	 * @abstract
 	 *
-<<<<<<< HEAD
-	 * @param int $max_w
-	 * @param int $max_h
-	 * @param boolean $crop
-=======
 	 * @param  int|null $max_w Image width.
 	 * @param  int|null $max_h Image height.
 	 * @param  boolean  $crop
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @return boolean|WP_Error
 	 */
 	abstract public function resize( $max_w, $max_h, $crop = false );

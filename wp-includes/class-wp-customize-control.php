@@ -39,31 +39,19 @@ class WP_Customize_Control {
 	 * @access public
 	 * @var int
 	 */
-<<<<<<< HEAD
-	public $priority          = 10;
-=======
 	public $priority = 10;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @access public
 	 * @var string
 	 */
-<<<<<<< HEAD
-	public $section           = '';
-=======
 	public $section = '';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @access public
 	 * @var string
 	 */
-<<<<<<< HEAD
-	public $label             = '';
-=======
 	public $label = '';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @todo: Remove choices
@@ -71,11 +59,7 @@ class WP_Customize_Control {
 	 * @access public
 	 * @var array
 	 */
-<<<<<<< HEAD
-	public $choices           = array();
-=======
 	public $choices = array();
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * @access public
@@ -93,11 +77,8 @@ class WP_Customize_Control {
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-=======
 	 * Supplied $args override class property defaults.
 	 *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * If $args['settings'] is not defined, use the $id as the setting ID.
 	 *
 	 * @since 3.4.0
@@ -116,10 +97,6 @@ class WP_Customize_Control {
 		$this->manager = $manager;
 		$this->id = $id;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		// Process settings.
 		if ( empty( $this->settings ) )
 			$this->settings = $id;
@@ -202,9 +179,6 @@ class WP_Customize_Control {
 		if ( ! $this->check_capabilities() )
 			return;
 
-<<<<<<< HEAD
-		do_action( 'customize_render_control', $this );
-=======
 		/**
 		 * Fires just before the current Customizer control is rendered.
 		 *
@@ -224,18 +198,13 @@ class WP_Customize_Control {
 		 *
 		 * @param WP_Customize_Control $this WP_Customize_Control instance.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_render_control_' . $this->id, $this );
 
 		$this->render();
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Render the control. Renders the control wrapper, then calls $this->render_content().
-=======
 	 * Renders the control wrapper and calls $this->render_content() for the internals.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -249,11 +218,7 @@ class WP_Customize_Control {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Get the data link parameter for a setting.
-=======
 	 * Get the data link attribute for a setting.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -268,11 +233,7 @@ class WP_Customize_Control {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Render the data link parameter for a setting
-=======
 	 * Render the data link attribute for the control's input element.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 * @uses WP_Customize_Control::get_link()
@@ -286,13 +247,9 @@ class WP_Customize_Control {
 	/**
 	 * Render the control's content.
 	 *
-<<<<<<< HEAD
-	 * Allows the content to be overriden without having to rewrite the wrapper.
-=======
 	 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
 	 *
 	 * Supports basic input types `text`, `checkbox`, `radio`, `select` and `dropdown-pages`.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -395,11 +352,6 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-	 * If $args['settings'] is not defined, use the $id as the setting ID.
-	 *
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @since 3.4.0
 	 * @uses WP_Customize_Control::__construct()
 	 *
@@ -413,11 +365,7 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Enqueue control related scripts/styles.
-=======
 	 * Enqueue scripts/styles for the color picker.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */
@@ -538,11 +486,6 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-	 * If $args['settings'] is not defined, use the $id as the setting ID.
-	 *
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @since 3.4.0
 	 * @uses WP_Customize_Upload_Control::__construct()
 	 *
@@ -667,11 +610,7 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 */
 	public function tab_upload_new() {
 		if ( ! _device_can_upload() ) {
-<<<<<<< HEAD
-			echo '<p>' . sprintf( __('The web browser on your device cannot be used to upload files. You may be able to use the <a href="%s">native app for your device</a> instead.'), 'http://wordpress.org/mobile/' ) . '</p>';
-=======
 			echo '<p>' . sprintf( __('The web browser on your device cannot be used to upload files. You may be able to use the <a href="%s">native app for your device</a> instead.'), 'https://wordpress.org/mobile/' ) . '</p>';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		} else {
 			?>
 			<div class="upload-dropzone">
@@ -769,43 +708,9 @@ class WP_Customize_Background_Image_Control extends WP_Customize_Image_Control {
 	}
 }
 
-<<<<<<< HEAD
-/**
- * Customize Header Image Control Class
- *
- * @package WordPress
- * @subpackage Customize
- * @since 3.4.0
- */
-class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
-	/**
-	 * The processed default headers.
-	 * @since 3.4.2
-	 * @var array
-	 */
-	protected $default_headers;
-
-	/**
-	 * The uploaded headers.
-	 * @since 3.4.2
-	 * @var array
-	 */
-	protected $uploaded_headers;
-
-	/**
-	 * Constructor.
-	 *
-	 * @since 3.4.0
-	 * @uses WP_Customize_Image_Control::__construct()
-	 * @uses WP_Customize_Image_Control::add_tab()
-	 *
-	 * @param WP_Customize_Manager $manager
-	 */
-=======
 class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 	public $type = 'header';
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	public function __construct( $manager ) {
 		parent::__construct( $manager, 'header_image', array(
 			'label'    => __( 'Header Image' ),
@@ -817,90 +722,6 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 			'context'  => 'custom-header',
 			'removed'  => 'remove-header',
 			'get_url'  => 'get_header_image',
-<<<<<<< HEAD
-			'statuses' => array(
-				''                      => __('Default'),
-				'remove-header'         => __('No Image'),
-				'random-default-image'  => __('Random Default Image'),
-				'random-uploaded-image' => __('Random Uploaded Image'),
-			)
-		) );
-
-		// Remove the upload tab.
-		$this->remove_tab( 'upload-new' );
-	}
-
-	/**
-	 * Prepares the control.
-	 *
-	 * If no tabs exist, removes the control from the manager.
-	 *
-	 * @since 3.4.2
-	 */
-	public function prepare_control() {
-		global $custom_image_header;
-		if ( empty( $custom_image_header ) )
-			return parent::prepare_control();
-
-		// Process default headers and uploaded headers.
-		$custom_image_header->process_default_headers();
-		$this->default_headers = $custom_image_header->default_headers;
-		$this->uploaded_headers = get_uploaded_header_images();
-
-		if ( $this->default_headers )
-			$this->add_tab( 'default',  __('Default'),  array( $this, 'tab_default_headers' ) );
-
-		if ( ! $this->uploaded_headers )
-			$this->remove_tab( 'uploaded' );
-
-		return parent::prepare_control();
-	}
-
-	/**
-	 * @since 3.4.0
-	 *
-	 * @param mixed $choice Which header image to select. (@see Custom_Image_Header::get_header_image() )
-	 * @param array $header
-	 */
-	public function print_header_image( $choice, $header ) {
-		$header['url']           = set_url_scheme( $header['url'] );
-		$header['thumbnail_url'] = set_url_scheme( $header['thumbnail_url'] );
-
-		$header_image_data = array( 'choice' => $choice );
-		foreach ( array( 'attachment_id', 'width', 'height', 'url', 'thumbnail_url' ) as $key ) {
-			if ( isset( $header[ $key ] ) )
-				$header_image_data[ $key ] = $header[ $key ];
-		}
-
-
-		?>
-		<a href="#" class="thumbnail"
-			data-customize-image-value="<?php echo esc_url( $header['url'] ); ?>"
-			data-customize-header-image-data="<?php echo esc_attr( json_encode( $header_image_data ) ); ?>">
-			<img src="<?php echo esc_url( $header['thumbnail_url'] ); ?>" />
-		</a>
-		<?php
-	}
-
-	/**
-	 * @since 3.4.0
-	 */
-	public function tab_uploaded() {
-		?><div class="uploaded-target"></div><?php
-
-		foreach ( $this->uploaded_headers as $choice => $header )
-			$this->print_header_image( $choice, $header );
-	}
-
-	/**
-	 * @since 3.4.0
-	 */
-	public function tab_default_headers() {
-		foreach ( $this->default_headers as $choice => $header )
-			$this->print_header_image( $choice, $header );
-	}
-}
-=======
 		) );
 
 	}
@@ -1145,4 +966,3 @@ class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
 	}
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

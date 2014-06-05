@@ -16,11 +16,6 @@
  *
  * @since 2.9.0
  * @uses $wpdb WordPress database object for queries.
-<<<<<<< HEAD
- * @uses do_action() Calls 'added_{$meta_type}_meta' with meta_id of added metadata entry,
- * 		object ID, meta key, and meta value
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $object_id ID of the object metadata is for
@@ -29,11 +24,7 @@
  * @param bool $unique Optional, default is false. Whether the specified metadata key should be
  * 		unique for the object. If true, and the object already has a value for the specified
  * 		metadata key, no change will be made
-<<<<<<< HEAD
- * @return int|bool The meta ID on successful update, false on failure.
-=======
  * @return int|bool The meta ID on success, false on failure.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = false) {
 	if ( !$meta_type || !$meta_key )
@@ -54,8 +45,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
 	$meta_value = wp_unslash($meta_value);
 	$meta_value = sanitize_meta( $meta_key, $meta_value, $meta_type );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter whether to add metadata of a specific type.
 	 *
@@ -72,7 +61,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
 	 * @param bool      $unique     Whether the specified meta key should be unique
 	 *                              for the object. Optional. Default false.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$check = apply_filters( "add_{$meta_type}_metadata", null, $object_id, $meta_key, $meta_value, $unique );
 	if ( null !== $check )
 		return $check;
@@ -85,8 +73,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
 	$_meta_value = $meta_value;
 	$meta_value = maybe_serialize( $meta_value );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires immediately before meta of a specific type is added.
 	 *
@@ -99,7 +85,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
 	 * @param string $meta_key   Meta key.
 	 * @param mixed  $meta_value Meta value.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( "add_{$meta_type}_meta", $object_id, $meta_key, $_meta_value );
 
 	$result = $wpdb->insert( $table, array(
@@ -115,8 +100,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
 
 	wp_cache_delete($object_id, $meta_type . '_meta');
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires immediately after meta of a specific type is added.
 	 *
@@ -130,7 +113,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
 	 * @param string $meta_key   Meta key.
 	 * @param mixed  $meta_value Meta value.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( "added_{$meta_type}_meta", $mid, $object_id, $meta_key, $_meta_value );
 
 	return $mid;
@@ -142,13 +124,6 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
  *
  * @since 2.9.0
  * @uses $wpdb WordPress database object for queries.
-<<<<<<< HEAD
- * @uses do_action() Calls 'update_{$meta_type}_meta' before updating metadata with meta_id of
- * 		metadata entry to update, object ID, meta key, and meta value
- * @uses do_action() Calls 'updated_{$meta_type}_meta' after updating metadata with meta_id of
- * 		updated metadata entry, object ID, meta key, and meta value
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $object_id ID of the object metadata is for
@@ -156,11 +131,7 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
  * @param mixed $meta_value Metadata value. Must be serializable if non-scalar.
  * @param mixed $prev_value Optional. If specified, only update existing metadata entries with
  * 		the specified value. Otherwise, update all entries.
-<<<<<<< HEAD
- * @return bool True on successful update, false on failure.
-=======
  * @return int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_value = '') {
 	if ( !$meta_type || !$meta_key )
@@ -183,8 +154,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
 	$meta_value = wp_unslash($meta_value);
 	$meta_value = sanitize_meta( $meta_key, $meta_value, $meta_type );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter whether to update metadata of a specific type.
 	 *
@@ -202,7 +171,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
 	 *                              metadata entries with the specified value.
 	 *                              Otherwise, update all entries.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$check = apply_filters( "update_{$meta_type}_metadata", null, $object_id, $meta_key, $meta_value, $prev_value );
 	if ( null !== $check )
 		return (bool) $check;
@@ -230,11 +198,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
 		$where['meta_value'] = $prev_value;
 	}
 
-<<<<<<< HEAD
-	do_action( "update_{$meta_type}_meta", $meta_id, $object_id, $meta_key, $_meta_value );
-
-	if ( 'post' == $meta_type )
-=======
 	/**
 	 * Fires immediately before updating metadata of a specific type.
 	 *
@@ -261,7 +224,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
 		 * @param string $meta_key   Meta key.
 		 * @param mixed  $meta_value Meta value.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'update_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
 
 	$result = $wpdb->update( $table, $data, $where );
@@ -270,12 +232,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
 
 	wp_cache_delete($object_id, $meta_type . '_meta');
 
-<<<<<<< HEAD
-	do_action( "updated_{$meta_type}_meta", $meta_id, $object_id, $meta_key, $_meta_value );
-
-	if ( 'post' == $meta_type )
-		do_action( 'updated_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
-=======
 	/**
 	 * Fires immediately after updating metadata of a specific type.
 	 *
@@ -304,7 +260,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
 		 */
 		do_action( 'updated_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return true;
 }
@@ -314,11 +269,6 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
  *
  * @since 2.9.0
  * @uses $wpdb WordPress database object for queries.
-<<<<<<< HEAD
- * @uses do_action() Calls 'deleted_{$meta_type}_meta' after deleting with meta_id of
- * 		deleted metadata entries, object ID, meta key, and meta value
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $object_id ID of the object metadata is for
@@ -348,8 +298,6 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 	$meta_key = wp_unslash($meta_key);
 	$meta_value = wp_unslash($meta_value);
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter whether to delete metadata of a specific type.
 	 *
@@ -367,7 +315,6 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 	 *                              for all objects, ignoring the specified $object_id.
 	 *                              Default false.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$check = apply_filters( "delete_{$meta_type}_metadata", null, $object_id, $meta_key, $meta_value, $delete_all );
 	if ( null !== $check )
 		return (bool) $check;
@@ -390,13 +337,6 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 	if ( $delete_all )
 		$object_ids = $wpdb->get_col( $wpdb->prepare( "SELECT $type_column FROM $table WHERE meta_key = %s", $meta_key ) );
 
-<<<<<<< HEAD
-	do_action( "delete_{$meta_type}_meta", $meta_ids, $object_id, $meta_key, $_meta_value );
-
-	// Old-style action.
-	if ( 'post' == $meta_type )
-		do_action( 'delete_postmeta', $meta_ids );
-=======
 	/**
 	 * Fires immediately before deleting metadata of a specific type.
 	 *
@@ -423,7 +363,6 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 		 */
 		do_action( 'delete_postmeta', $meta_ids );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	$query = "DELETE FROM $table WHERE $id_column IN( " . implode( ',', $meta_ids ) . " )";
 
@@ -440,13 +379,6 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 		wp_cache_delete($object_id, $meta_type . '_meta');
 	}
 
-<<<<<<< HEAD
-	do_action( "deleted_{$meta_type}_meta", $meta_ids, $object_id, $meta_key, $_meta_value );
-
-	// Old-style action.
-	if ( 'post' == $meta_type )
-		do_action( 'deleted_postmeta', $meta_ids );
-=======
 	/**
 	 * Fires immediately after deleting metadata of a specific type.
 	 *
@@ -473,7 +405,6 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 		 */
 		do_action( 'deleted_postmeta', $meta_ids );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return true;
 }
@@ -498,8 +429,6 @@ function get_metadata($meta_type, $object_id, $meta_key = '', $single = false) {
 	if ( !$object_id = absint($object_id) )
 		return false;
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter whether to retrieve metadata of a specific type.
 	 *
@@ -516,7 +445,6 @@ function get_metadata($meta_type, $object_id, $meta_key = '', $single = false) {
 	 * @param string            $meta_key  Meta key.
 	 * @param string|array      $single    Meta value, or an array of values.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$check = apply_filters( "get_{$meta_type}_metadata", null, $object_id, $meta_key, $single );
 	if ( null !== $check ) {
 		if ( $single && is_array( $check ) )
@@ -565,16 +493,10 @@ function metadata_exists( $meta_type, $object_id, $meta_key ) {
 	if ( ! $object_id = absint( $object_id ) )
 		return false;
 
-<<<<<<< HEAD
-	$check = apply_filters( "get_{$meta_type}_metadata", null, $object_id, $meta_key, true );
-	if ( null !== $check )
-		return true;
-=======
 	/** This filter is documented in wp-includes/meta.php */
 	$check = apply_filters( "get_{$meta_type}_metadata", null, $object_id, $meta_key, true );
 	if ( null !== $check )
 		return (bool) $check;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	$meta_cache = wp_cache_get( $object_id, $meta_type . '_meta' );
 
@@ -682,12 +604,6 @@ function update_metadata_by_mid( $meta_type, $meta_id, $meta_value, $meta_key = 
 		$where = array();
 		$where[$id_column] = $meta_id;
 
-<<<<<<< HEAD
-		do_action( "update_{$meta_type}_meta", $meta_id, $object_id, $meta_key, $_meta_value );
-
-		if ( 'post' == $meta_type )
-			do_action( 'update_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
-=======
 		/** This action is documented in wp-includes/meta.php */
 		do_action( "update_{$meta_type}_meta", $meta_id, $object_id, $meta_key, $_meta_value );
 
@@ -695,7 +611,6 @@ function update_metadata_by_mid( $meta_type, $meta_id, $meta_value, $meta_key = 
 			/** This action is documented in wp-includes/meta.php */
 			do_action( 'update_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		// Run the update query, all fields in $data are %s, $where is a %d.
 		$result = $wpdb->update( $table, $data, $where, '%s', '%d' );
@@ -705,12 +620,6 @@ function update_metadata_by_mid( $meta_type, $meta_id, $meta_value, $meta_key = 
 		// Clear the caches.
 		wp_cache_delete($object_id, $meta_type . '_meta');
 
-<<<<<<< HEAD
-		do_action( "updated_{$meta_type}_meta", $meta_id, $object_id, $meta_key, $_meta_value );
-
-		if ( 'post' == $meta_type )
-			do_action( 'updated_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
-=======
 		/** This action is documented in wp-includes/meta.php */
 		do_action( "updated_{$meta_type}_meta", $meta_id, $object_id, $meta_key, $_meta_value );
 
@@ -718,7 +627,6 @@ function update_metadata_by_mid( $meta_type, $meta_id, $meta_value, $meta_key = 
 			/** This action is documented in wp-includes/meta.php */
 			do_action( 'updated_postmeta', $meta_id, $object_id, $meta_key, $meta_value );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		return true;
 	}
@@ -760,13 +668,6 @@ function delete_metadata_by_mid( $meta_type, $meta_id ) {
 	if ( $meta = get_metadata_by_mid( $meta_type, $meta_id ) ) {
 		$object_id = $meta->{$column};
 
-<<<<<<< HEAD
-		do_action( "delete_{$meta_type}_meta", (array) $meta_id, $object_id, $meta->meta_key, $meta->meta_value );
-
-		// Old-style action.
-		if ( 'post' == $meta_type || 'comment' == $meta_type )
-			do_action( "delete_{$meta_type}meta", $meta_id );
-=======
 		/** This action is documented in wp-includes/meta.php */
 		do_action( "delete_{$meta_type}_meta", (array) $meta_id, $object_id, $meta->meta_key, $meta->meta_value );
 
@@ -784,7 +685,6 @@ function delete_metadata_by_mid( $meta_type, $meta_id ) {
 			 */
 			do_action( "delete_{$meta_type}meta", $meta_id );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		// Run the query, will return true if deleted, false otherwise
 		$result = (bool) $wpdb->delete( $table, array( $id_column => $meta_id ) );
@@ -792,13 +692,6 @@ function delete_metadata_by_mid( $meta_type, $meta_id ) {
 		// Clear the caches.
 		wp_cache_delete($object_id, $meta_type . '_meta');
 
-<<<<<<< HEAD
-		do_action( "deleted_{$meta_type}_meta", (array) $meta_id, $object_id, $meta->meta_key, $meta->meta_value );
-
-		// Old-style action.
-		if ( 'post' == $meta_type || 'comment' == $meta_type )
-			do_action( "deleted_{$meta_type}meta", $meta_id );
-=======
 		/** This action is documented in wp-includes/meta.php */
 		do_action( "deleted_{$meta_type}_meta", (array) $meta_id, $object_id, $meta->meta_key, $meta->meta_value );
 
@@ -816,7 +709,6 @@ function delete_metadata_by_mid( $meta_type, $meta_id ) {
 			 */
 			do_action( "deleted_{$meta_type}meta", $meta_id );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		return $result;
 
@@ -1064,11 +956,7 @@ class WP_Meta_Query {
 		// Split out the meta_key only queries (we can only do this for OR)
 		if ( 'OR' == $this->relation ) {
 			foreach ( $this->queries as $k => $q ) {
-<<<<<<< HEAD
-				if ( ! array_key_exists( 'value', $q ) && ! empty( $q['key'] ) )
-=======
 				if ( ( empty( $q['compare'] ) || 'NOT EXISTS' != $q['compare'] ) && ! array_key_exists( 'value', $q ) && ! empty( $q['key'] ) )
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					$key_only_queries[$k] = $q;
 				else
 					$queries[$k] = $q;
@@ -1177,8 +1065,6 @@ class WP_Meta_Query {
 		if ( ! empty( $join ) )
 			$join = ' ' . $join;
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the meta query's generated SQL.
 		 *
@@ -1195,7 +1081,6 @@ class WP_Meta_Query {
 		 *     @type object $context           The main query object.
 		 * }
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return apply_filters_ref_array( 'get_meta_sql', array( compact( 'join', 'where' ), $this->queries, $type, $primary_table, $primary_id_column, $context ) );
 	}
 }
@@ -1221,11 +1106,7 @@ function _get_meta_table($type) {
 }
 
 /**
-<<<<<<< HEAD
- * Determine whether a meta key is protected
-=======
  * Determine whether a meta key is protected.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @since 3.1.3
  *
@@ -1235,8 +1116,6 @@ function _get_meta_table($type) {
 function is_protected_meta( $meta_key, $meta_type = null ) {
 	$protected = ( '_' == $meta_key[0] );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter whether a meta key is protected.
 	 *
@@ -1246,16 +1125,11 @@ function is_protected_meta( $meta_key, $meta_type = null ) {
 	 * @param string $meta_key  Meta key.
 	 * @param string $meta_type Meta type.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'is_protected_meta', $protected, $meta_key, $meta_type );
 }
 
 /**
-<<<<<<< HEAD
- * Sanitize meta value
-=======
  * Sanitize meta value.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @since 3.1.3
  *
@@ -1265,8 +1139,6 @@ function is_protected_meta( $meta_key, $meta_type = null ) {
  * @return mixed Sanitized $meta_value
  */
 function sanitize_meta( $meta_key, $meta_value, $meta_type ) {
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the sanitization of a specific meta key of a specific meta type.
@@ -1281,7 +1153,6 @@ function sanitize_meta( $meta_key, $meta_value, $meta_type ) {
 	 * @param string $meta_key   Meta key.
 	 * @param string $meta_type  Meta type.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( "sanitize_{$meta_type}_meta_{$meta_key}", $meta_value, $meta_key, $meta_type );
 }
 

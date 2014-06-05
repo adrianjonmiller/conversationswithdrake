@@ -27,11 +27,7 @@ function got_mod_rewrite() {
 	 * @since 2.5.0
 	 * @param bool $got_rewrite Whether Apache and mod_rewrite are present.
 	 */
-<<<<<<< HEAD
-	return apply_filters('got_rewrite', $got_rewrite);
-=======
 	return apply_filters( 'got_rewrite', $got_rewrite );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -318,13 +314,6 @@ function wp_doc_link_parse( $content ) {
 		return array();
 
 	$tokens = token_get_all( $content );
-<<<<<<< HEAD
-	$functions = array();
-	$ignore_functions = array();
-	for ( $t = 0, $count = count( $tokens ); $t < $count; $t++ ) {
-		if ( !is_array( $tokens[$t] ) ) continue;
-		if ( T_STRING == $tokens[$t][0] && ( '(' == $tokens[ $t + 1 ] || '(' == $tokens[ $t + 2 ] ) ) {
-=======
 	$count = count( $tokens );
 	$functions = array();
 	$ignore_functions = array();
@@ -334,7 +323,6 @@ function wp_doc_link_parse( $content ) {
 		}
 
 		if ( T_STRING == $tokens[ $t ][0] && ( '(' == $tokens[ $t + 1 ] || '(' == $tokens[ $t + 2 ] ) ) {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			// If it's a function or class defined locally, there's not going to be any docs available
 			if ( ( isset( $tokens[ $t - 2 ][1] ) && in_array( $tokens[ $t - 2 ][1], array( 'function', 'class' ) ) ) || ( isset( $tokens[ $t - 2 ][0] ) && T_OBJECT_OPERATOR == $tokens[ $t - 1 ][0] ) ) {
 				$ignore_functions[] = $tokens[$t][1];
@@ -346,9 +334,6 @@ function wp_doc_link_parse( $content ) {
 
 	$functions = array_unique( $functions );
 	sort( $functions );
-<<<<<<< HEAD
-	$ignore_functions = apply_filters( 'documentation_ignore_functions', $ignore_functions );
-=======
 
 	/**
 	 * Filter the list of functions/classes to be ignored from the documentation lookup.
@@ -359,7 +344,6 @@ function wp_doc_link_parse( $content ) {
 	 */
 	$ignore_functions = apply_filters( 'documentation_ignore_functions', $ignore_functions );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$ignore_functions = array_unique( $ignore_functions );
 
 	$out = array();
@@ -375,13 +359,8 @@ function wp_doc_link_parse( $content ) {
 /**
  * Saves option for number of rows when listing posts, pages, comments, etc.
  *
-<<<<<<< HEAD
- * @since 2.8
-**/
-=======
  * @since 2.8.0
  */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 function set_screen_options() {
 
 	if ( isset($_POST['wp_screen_options']) && is_array($_POST['wp_screen_options']) ) {
@@ -424,9 +403,6 @@ function set_screen_options() {
 					return;
 				break;
 			default:
-<<<<<<< HEAD
-				$value = apply_filters('set-screen-option', false, $option, $value);
-=======
 
 				/**
 				 * Filter a screen option value before it is set.
@@ -446,7 +422,6 @@ function set_screen_options() {
 				 */
 				$value = apply_filters( 'set-screen-option', false, $option, $value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				if ( false === $value )
 					return;
 				break;
@@ -704,11 +679,7 @@ add_action('admin_head', '_ipad_meta');
 /**
  * Check lock status for posts displayed on the Posts screen
  *
-<<<<<<< HEAD
- * @since 3.6
-=======
  * @since 3.6.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function wp_check_locked_posts( $response, $data, $screen_id ) {
 	$checked = array();
@@ -739,11 +710,7 @@ add_filter( 'heartbeat_received', 'wp_check_locked_posts', 10, 3 );
 /**
  * Check lock status on the New/Edit Post screen and refresh the lock
  *
-<<<<<<< HEAD
- * @since 3.6
-=======
  * @since 3.6.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function wp_refresh_post_lock( $response, $data, $screen_id ) {
 	if ( array_key_exists( 'wp-refresh-post-lock', $data ) ) {
@@ -782,11 +749,7 @@ add_filter( 'heartbeat_received', 'wp_refresh_post_lock', 10, 3 );
 /**
  * Check nonce expiration on the New/Edit Post screen and refresh if needed
  *
-<<<<<<< HEAD
- * @since 3.6
-=======
  * @since 3.6.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 	if ( array_key_exists( 'wp-refresh-post-nonces', $data ) ) {
@@ -802,10 +765,6 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 		if ( 2 === wp_verify_nonce( $received['post_nonce'], 'update-post_' . $post_id ) ) {
 			$response['wp-refresh-post-nonces'] = array(
 				'replace' => array(
-<<<<<<< HEAD
-					'autosavenonce' => wp_create_nonce('autosave'),
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					'getpermalinknonce' => wp_create_nonce('getpermalink'),
 					'samplepermalinknonce' => wp_create_nonce('samplepermalink'),
 					'closedpostboxesnonce' => wp_create_nonce('closedpostboxes'),
@@ -839,8 +798,6 @@ function wp_heartbeat_set_suspension( $settings ) {
 	return $settings;
 }
 add_filter( 'heartbeat_settings', 'wp_heartbeat_set_suspension' );
-<<<<<<< HEAD
-=======
 
 /**
  * Autosave with heartbeat
@@ -867,4 +824,3 @@ function heartbeat_autosave( $response, $data ) {
 }
 // Run later as we have to set DOING_AUTOSAVE for back-compat
 add_filter( 'heartbeat_received', 'heartbeat_autosave', 500, 2 );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

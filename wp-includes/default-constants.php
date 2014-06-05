@@ -160,12 +160,8 @@ function wp_plugin_directory_constants() {
 function wp_cookie_constants() {
 	/**
 	 * Used to guarantee unique hash cookies
-<<<<<<< HEAD
-	 * @since 1.5
-=======
 	 *
 	 * @since 1.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	if ( !defined( 'COOKIEHASH' ) ) {
 		$siteurl = get_site_option( 'siteurl' );

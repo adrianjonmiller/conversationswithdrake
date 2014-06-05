@@ -84,13 +84,8 @@ body {
 }
 
 #customize-theme-controls {
-<<<<<<< HEAD
-	-webkit-box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.1);
-	box-shadow:         0px 1px 1px -1px rgba(0, 0, 0, 0.1);
-=======
 	-webkit-box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.1);
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 #customize-theme-controls .control-section {
@@ -175,13 +170,10 @@ body {
 	line-height: 28px;
 }
 
-<<<<<<< HEAD
-=======
 .customize-control select[multiple] {
 	height: auto;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .customize-control-title {
 	display: block;
 	font-size: 14px;
@@ -230,13 +222,9 @@ body {
 .collapse-sidebar {
 	background-color: transparent !important;
 	border: none !important;
-<<<<<<< HEAD
-	box-shadow: none !important;
-=======
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 	-webkit-border-radius: !important 0;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	border-radius: !important 0;
 }
 
@@ -274,10 +262,7 @@ body {
 	border: 2px solid #eeeeee;
 	-webkit-user-select: none;
 	-moz-user-select: none;
-<<<<<<< HEAD
-=======
 	-ms-user-select: none;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	user-select: none;
 }
 
@@ -445,14 +430,7 @@ body {
 .accordion-section .customize-control-image .upload-dropzone.supports-drag-drop {
 	display: block;
 	-webkit-transition: border-color 0.1s;
-<<<<<<< HEAD
-	-moz-transition:    border-color 0.1s;
-	-ms-transition:     border-color 0.1s;
-	-o-transition:      border-color 0.1s;
-	transition:         border-color 0.1s;
-=======
 	transition: border-color 0.1s;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .accordion-section .customize-control-upload .library ul li,
@@ -481,24 +459,6 @@ body {
 	-webkit-overflow-scrolling: touch;
 }
 
-<<<<<<< HEAD
-/** Handle cheaters. */
-body.cheatin {
-	min-width: 0;
-	background: #f9f9f9;
-	padding: 50px;
-}
-
-body.cheatin p {
-	max-width: 700px;
-	margin: 0 auto;
-	padding: 2em;
-	font-size: 14px;
-	background: #555555;
-	border: 1px solid #dfdfdf;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-=======
 /** Header control **/
 
 #customize-control-header_image .current {
@@ -721,5 +681,4 @@ body.cheatin p {
 	font-size: 14px;
 	line-height: 1.5;
 	margin: 25px 0 20px;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }

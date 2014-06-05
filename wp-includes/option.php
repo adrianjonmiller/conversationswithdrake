@@ -3,10 +3,7 @@
  * Option API
  *
  * @package WordPress
-<<<<<<< HEAD
-=======
  * @subpackage Option
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 
 /**
@@ -20,17 +17,6 @@
  * If the option was serialized then it will be unserialized when it is returned.
  *
  * @since 1.5.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
- * @uses apply_filters() Calls 'pre_option_$option' before checking the option.
- * 	Any value other than false will "short-circuit" the retrieval of the option
- *	and return the returned value. You should not try to override special options,
- * 	but you will not be prevented from doing so.
- * @uses apply_filters() Calls 'option_$option', after checking the option, with
- * 	the option value.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Name of option to retrieve. Expected to not be SQL-escaped.
  * @param mixed $default Optional. Default value to return if the option does not exist.
@@ -43,9 +29,6 @@ function get_option( $option, $default = false ) {
 	if ( empty( $option ) )
 		return false;
 
-<<<<<<< HEAD
-	// Allow plugins to short-circuit options.
-=======
 	/**
 	 * Filter the value of an existing option before it is retrieved.
 	 *
@@ -59,7 +42,6 @@ function get_option( $option, $default = false ) {
 	 * @param bool|mixed $pre_option Value to return instead of the option value.
 	 *                               Default false to skip it.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$pre = apply_filters( 'pre_option_' . $option, false );
 	if ( false !== $pre )
 		return $pre;
@@ -71,8 +53,6 @@ function get_option( $option, $default = false ) {
 		// prevent non-existent options from triggering multiple queries
 		$notoptions = wp_cache_get( 'notoptions', 'options' );
 		if ( isset( $notoptions[$option] ) )
-<<<<<<< HEAD
-=======
 
 			/**
 			 * Filter the default value for an option.
@@ -85,7 +65,6 @@ function get_option( $option, $default = false ) {
 			 * @param mixed $default The default value to return if the option
 			 *                       does not exist in the database.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return apply_filters( 'default_option_' . $option, $default );
 
 		$alloptions = wp_load_alloptions();
@@ -105,11 +84,8 @@ function get_option( $option, $default = false ) {
 				} else { // option does not exist, so we must cache its non-existence
 					$notoptions[$option] = true;
 					wp_cache_set( 'notoptions', $notoptions, 'options' );
-<<<<<<< HEAD
-=======
 
 					/** This filter is documented in wp-includes/option.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					return apply_filters( 'default_option_' . $option, $default );
 				}
 			}
@@ -118,19 +94,12 @@ function get_option( $option, $default = false ) {
 		$suppress = $wpdb->suppress_errors();
 		$row = $wpdb->get_row( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1", $option ) );
 		$wpdb->suppress_errors( $suppress );
-<<<<<<< HEAD
-		if ( is_object( $row ) )
-			$value = $row->option_value;
-		else
-			return apply_filters( 'default_option_' . $option, $default );
-=======
 		if ( is_object( $row ) ) {
 			$value = $row->option_value;
 		} else {
 			/** This filter is documented in wp-includes/option.php */
 			return apply_filters( 'default_option_' . $option, $default );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	// If home is not set use siteurl.
@@ -140,8 +109,6 @@ function get_option( $option, $default = false ) {
 	if ( in_array( $option, array('siteurl', 'home', 'category_base', 'tag_base') ) )
 		$value = untrailingslashit( $value );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the value of an existing option.
 	 *
@@ -153,7 +120,6 @@ function get_option( $option, $default = false ) {
 	 * @param mixed $value Value of the option. If stored serialized, it will be
 	 *                     unserialized prior to being returned.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'option_' . $option, maybe_unserialize( $value ) );
 }
 
@@ -164,11 +130,6 @@ function get_option( $option, $default = false ) {
  * and 'notoptions' options.
  *
  * @since 2.2.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Option name.
  */
@@ -182,11 +143,6 @@ function wp_protect_special_option( $option ) {
  *
  * @uses attr Sanitizes value.
  * @since 1.5.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Option name.
  */
@@ -198,11 +154,6 @@ function form_option( $option ) {
  * Loads and caches all autoloaded options, if available or all options.
  *
  * @since 2.2.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @return array List of all options.
  */
@@ -234,11 +185,6 @@ function wp_load_alloptions() {
  * Loads and caches certain often requested site options if is_multisite() and a persistent cache is not being used.
  *
  * @since 3.0.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param int $site_id Optional site ID for which to query the options. Defaults to the current site.
  */
@@ -277,16 +223,6 @@ function wp_load_core_site_options( $site_id = null ) {
  * to set whether an option is autoloaded, then you need to use the add_option().
  *
  * @since 1.0.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
- *
- * @uses apply_filters() Calls 'pre_update_option_$option' hook to allow overwriting the
- * 	option value to be stored.
- * @uses do_action() Calls 'update_option' hook before updating the option.
- * @uses do_action() Calls 'update_option_$option' and 'updated_option' hooks on success.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Option name. Expected to not be SQL-escaped.
  * @param mixed $value Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
@@ -306,10 +242,6 @@ function update_option( $option, $value ) {
 
 	$value = sanitize_option( $option, $value );
 	$old_value = get_option( $option );
-<<<<<<< HEAD
-	$value = apply_filters( 'pre_update_option_' . $option, $value, $old_value );
-
-=======
 
 	/**
 	 * Filter a specific option before its value is (maybe) serialized and updated.
@@ -334,7 +266,6 @@ function update_option( $option, $value ) {
 	 */
 	$value = apply_filters( 'pre_update_option', $value, $option, $old_value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	// If the new and old values are the same, no need to update.
 	if ( $value === $old_value )
 		return false;
@@ -344,9 +275,6 @@ function update_option( $option, $value ) {
 
 	$serialized_value = maybe_serialize( $value );
 
-<<<<<<< HEAD
-	do_action( 'update_option', $option, $old_value, $value );
-=======
 	/**
 	 * Fires immediately before an option value is updated.
 	 *
@@ -358,7 +286,6 @@ function update_option( $option, $value ) {
 	 */
 	do_action( 'update_option', $option, $old_value, $value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$result = $wpdb->update( $wpdb->options, array( 'option_value' => $serialized_value ), array( 'option_name' => $option ) );
 	if ( ! $result )
 		return false;
@@ -379,9 +306,6 @@ function update_option( $option, $value ) {
 		}
 	}
 
-<<<<<<< HEAD
-	do_action( "update_option_{$option}", $old_value, $value );
-=======
 	/**
 	 * Fires after the value of a specific option has been successfully updated.
 	 *
@@ -403,7 +327,6 @@ function update_option( $option, $value ) {
 	 * @param mixed  $old_value The old option value.
 	 * @param mixed  $value     The new option value.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'updated_option', $option, $old_value, $value );
 	return true;
 }
@@ -420,18 +343,8 @@ function update_option( $option, $value ) {
  * aren't adding a protected WordPress option. Care should be taken to not name
  * options the same as the ones which are protected.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
  * @since 1.0.0
  *
- * @uses do_action() Calls 'add_option' hook before adding the option.
- * @uses do_action() Calls 'add_option_$option' and 'added_option' hooks on success.
- *
-=======
- * @since 1.0.0
- *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @param string $option Name of option to add. Expected to not be SQL-escaped.
  * @param mixed $value Optional. Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
  * @param mixed $deprecated Optional. Description. Not used anymore.
@@ -463,8 +376,6 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 
 	$serialized_value = maybe_serialize( $value );
 	$autoload = ( 'no' === $autoload ) ? 'no' : 'yes';
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Fires before an option is added.
@@ -474,7 +385,6 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	 * @param string $option Name of the option to add.
 	 * @param mixed  $value  Value of the option.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'add_option', $option, $value );
 
 	$result = $wpdb->query( $wpdb->prepare( "INSERT INTO `$wpdb->options` (`option_name`, `option_value`, `autoload`) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE `option_name` = VALUES(`option_name`), `option_value` = VALUES(`option_value`), `autoload` = VALUES(`autoload`)", $option, $serialized_value, $autoload ) );
@@ -498,9 +408,6 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 		wp_cache_set( 'notoptions', $notoptions, 'options' );
 	}
 
-<<<<<<< HEAD
-	do_action( "add_option_{$option}", $option, $value );
-=======
 	/**
 	 * Fires after a specific option has been added.
 	 *
@@ -522,7 +429,6 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	 * @param string $option Name of the added option.
 	 * @param mixed  $value  Value of the option.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'added_option', $option, $value );
 	return true;
 }
@@ -530,18 +436,8 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 /**
  * Removes option by name. Prevents removal of protected WordPress options.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
  * @since 1.2.0
  *
- * @uses do_action() Calls 'delete_option' hook before option is deleted.
- * @uses do_action() Calls 'deleted_option' and 'delete_option_$option' hooks on success.
- *
-=======
- * @since 1.2.0
- *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @param string $option Name of option to remove. Expected to not be SQL-escaped.
  * @return bool True, if option is successfully deleted. False on failure.
  */
@@ -558,9 +454,6 @@ function delete_option( $option ) {
 	$row = $wpdb->get_row( $wpdb->prepare( "SELECT autoload FROM $wpdb->options WHERE option_name = %s", $option ) );
 	if ( is_null( $row ) )
 		return false;
-<<<<<<< HEAD
-	do_action( 'delete_option', $option );
-=======
 
 	/**
 	 * Fires immediately before an option is deleted.
@@ -571,7 +464,6 @@ function delete_option( $option ) {
 	 */
 	do_action( 'delete_option', $option );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$result = $wpdb->delete( $wpdb->options, array( 'option_name' => $option ) );
 	if ( ! defined( 'WP_INSTALLING' ) ) {
 		if ( 'yes' == $row->autoload ) {
@@ -585,9 +477,6 @@ function delete_option( $option ) {
 		}
 	}
 	if ( $result ) {
-<<<<<<< HEAD
-		do_action( "delete_option_$option", $option );
-=======
 
 		/**
 		 * Fires after a specific option has been deleted.
@@ -607,7 +496,6 @@ function delete_option( $option ) {
 		 *
 		 * @param string $option Name of the deleted option.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'deleted_option', $option );
 		return true;
 	}
@@ -618,21 +506,11 @@ function delete_option( $option ) {
  * Delete a transient.
  *
  * @since 2.8.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Transient
- *
- * @uses do_action() Calls 'delete_transient_$transient' hook before transient is deleted.
- * @uses do_action() Calls 'deleted_transient' hook on success.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $transient Transient name. Expected to not be SQL-escaped.
  * @return bool true if successful, false otherwise
  */
 function delete_transient( $transient ) {
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Fires immediately before a specific transient is deleted.
@@ -643,7 +521,6 @@ function delete_transient( $transient ) {
 	 *
 	 * @param string $transient Transient name.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'delete_transient_' . $transient, $transient );
 
 	if ( wp_using_ext_object_cache() ) {
@@ -656,10 +533,6 @@ function delete_transient( $transient ) {
 			delete_option( $option_timeout );
 	}
 
-<<<<<<< HEAD
-	if ( $result )
-		do_action( 'deleted_transient', $transient );
-=======
 	if ( $result ) {
 
 		/**
@@ -672,7 +545,6 @@ function delete_transient( $transient ) {
 		do_action( 'deleted_transient', $transient );
 	}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $result;
 }
 
@@ -682,26 +554,12 @@ function delete_transient( $transient ) {
  * If the transient does not exist or does not have a value, then the return value
  * will be false.
  *
-<<<<<<< HEAD
- * @uses apply_filters() Calls 'pre_transient_$transient' hook before checking the transient.
- * 	Any value other than false will "short-circuit" the retrieval of the transient
- *	and return the returned value.
- * @uses apply_filters() Calls 'transient_$option' hook, after checking the transient, with
- * 	the transient value.
- *
  * @since 2.8.0
- * @package WordPress
- * @subpackage Transient
-=======
- * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $transient Transient name. Expected to not be SQL-escaped
  * @return mixed Value of transient
  */
 function get_transient( $transient ) {
-<<<<<<< HEAD
-=======
 
  	/**
 	 * Filter the value of an existing transient.
@@ -717,7 +575,6 @@ function get_transient( $transient ) {
 	 *                             Any value other than false will short-circuit the retrieval
 	 *                             of the transient, and return the returned value.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$pre = apply_filters( 'pre_transient_' . $transient, false );
 	if ( false !== $pre )
 		return $pre;
@@ -743,8 +600,6 @@ function get_transient( $transient ) {
 			$value = get_option( $transient_option );
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter an existing transient's value.
 	 *
@@ -754,7 +609,6 @@ function get_transient( $transient ) {
 	 *
 	 * @param mixed $value Value of transient.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'transient_' . $transient, $value );
 }
 
@@ -765,15 +619,6 @@ function get_transient( $transient ) {
  * it will be serialized before it is set.
  *
  * @since 2.8.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Transient
- *
- * @uses apply_filters() Calls 'pre_set_transient_$transient' hook to allow overwriting the
- * 	transient value to be stored.
- * @uses do_action() Calls 'set_transient_$transient' and 'setted_transient' hooks on success.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $transient Transient name. Expected to not be SQL-escaped.
  * @param mixed $value Transient value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
@@ -781,9 +626,6 @@ function get_transient( $transient ) {
  * @return bool False if value was not set and true if value was set.
  */
 function set_transient( $transient, $value, $expiration = 0 ) {
-<<<<<<< HEAD
-	$value = apply_filters( 'pre_set_transient_' . $transient, $value );
-=======
 
 	/**
 	 * Filter a specific transient before its value is set.
@@ -796,7 +638,6 @@ function set_transient( $transient, $value, $expiration = 0 ) {
 	 */
 	$value = apply_filters( 'pre_set_transient_' . $transient, $value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$expiration = (int) $expiration;
 
 	if ( wp_using_ext_object_cache() ) {
@@ -812,15 +653,6 @@ function set_transient( $transient, $value, $expiration = 0 ) {
 			}
 			$result = add_option( $transient, $value, '', $autoload );
 		} else {
-<<<<<<< HEAD
-			if ( $expiration )
-				update_option( $transient_timeout, time() + $expiration );
-			$result = update_option( $transient, $value );
-		}
-	}
-	if ( $result ) {
-		do_action( 'set_transient_' . $transient, $value, $expiration );
-=======
 			// If expiration is requested, but the transient has no timeout option,
 			// delete, then re-create transient rather than update.
 			$update = true;
@@ -863,7 +695,6 @@ function set_transient( $transient, $value, $expiration = 0 ) {
 		 * @param mixed  $value      Transient value.
 		 * @param int    $expiration Time until expiration in seconds. Default 0.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'setted_transient', $transient, $value, $expiration );
 	}
 	return $result;
@@ -876,11 +707,6 @@ function set_transient( $transient, $value, $expiration = 0 ) {
  * cookie exists (different browser used), adds the last saved cookie restoring
  * the settings.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.7.0
  */
 function wp_user_settings() {
@@ -926,11 +752,6 @@ function wp_user_settings() {
 /**
  * Retrieve user interface setting value based on setting name.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.7.0
  *
  * @param string $name The name of the setting.
@@ -949,11 +770,6 @@ function get_user_setting( $name, $default = false ) {
  * Both $name and $value can contain only ASCII letters, numbers and underscores.
  * This function has to be used before any output has started as it calls setcookie().
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.8.0
  *
  * @param string $name The name of the setting.
@@ -977,11 +793,6 @@ function set_user_setting( $name, $value ) {
  * Deleting settings would reset them to the defaults.
  * This function has to be used before any output has started as it calls setcookie().
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.7.0
  *
  * @param mixed $names The name or array of names of the setting to be deleted.
@@ -1012,11 +823,6 @@ function delete_user_setting( $names ) {
 /**
  * Retrieve all user interface settings.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.7.0
  *
  * @return array the last saved user settings or empty array.
@@ -1050,11 +856,6 @@ function get_all_user_settings() {
 /**
  * Private. Set all user interface settings.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.8.0
  *
  * @param array $user_settings
@@ -1090,11 +891,6 @@ function wp_set_all_user_settings( $user_settings ) {
 /**
  * Delete the user settings of the current user.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Option
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.7.0
  */
 function delete_all_user_settings() {
@@ -1108,22 +904,9 @@ function delete_all_user_settings() {
 /**
  * Retrieve site option value based on name of option.
  *
-<<<<<<< HEAD
- * @see get_option()
- * @package WordPress
- * @subpackage Option
- * @since 2.8.0
- *
- * @uses apply_filters() Calls 'pre_site_option_$option' before checking the option.
- * 	Any value other than false will "short-circuit" the retrieval of the option
- *	and return the returned value.
- * @uses apply_filters() Calls 'site_option_$option', after checking the  option, with
- * 	the option value.
-=======
  * @since 2.8.0
  *
  * @see get_option()
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Name of option to retrieve. Expected to not be SQL-escaped.
  * @param mixed $default Optional value to return if option doesn't exist. Default false.
@@ -1133,10 +916,6 @@ function delete_all_user_settings() {
 function get_site_option( $option, $default = false, $use_cache = true ) {
 	global $wpdb;
 
-<<<<<<< HEAD
-	// Allow plugins to short-circuit site options.
- 	$pre = apply_filters( 'pre_site_option_' . $option, false );
-=======
 	/**
 	 * Filter an existing site option before it is retrieved.
 	 *
@@ -1152,19 +931,12 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 	 */
  	$pre = apply_filters( 'pre_site_option_' . $option, false );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  	if ( false !== $pre )
  		return $pre;
 
 	// prevent non-existent options from triggering multiple queries
 	$notoptions_key = "{$wpdb->siteid}:notoptions";
 	$notoptions = wp_cache_get( $notoptions_key, 'site-options' );
-<<<<<<< HEAD
-	if ( isset( $notoptions[$option] ) )
-		return apply_filters( 'default_site_option_' . $option, $default );
-
-	if ( ! is_multisite() ) {
-=======
 
 	if ( isset( $notoptions[$option] ) ) {
 
@@ -1184,7 +956,6 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 	if ( ! is_multisite() ) {
 
 		/** This filter is documented in wp-includes/option.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$default = apply_filters( 'default_site_option_' . $option, $default );
 		$value = get_option($option, $default);
 	} else {
@@ -1203,18 +974,13 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 			} else {
 				$notoptions[$option] = true;
 				wp_cache_set( $notoptions_key, $notoptions, 'site-options' );
-<<<<<<< HEAD
-=======
 
 				/** This filter is documented in wp-includes/option.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$value = apply_filters( 'default_site_option_' . $option, $default );
 			}
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the value of an existing site option.
 	 *
@@ -1225,7 +991,6 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 	 *
 	 * @param mixed $value Value of site option.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  	return apply_filters( 'site_option_' . $option, $value );
 }
 
@@ -1234,20 +999,9 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
  *
  * Existing options will not be updated. Note that prior to 3.3 this wasn't the case.
  *
-<<<<<<< HEAD
- * @see add_option()
- * @package WordPress
- * @subpackage Option
- * @since 2.8.0
- *
- * @uses apply_filters() Calls 'pre_add_site_option_$option' hook to allow overwriting the
- * 	option value to be stored.
- * @uses do_action() Calls 'add_site_option_$option' and 'add_site_option' hooks on success.
-=======
  * @since 2.8.0
  *
  * @see add_option()
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Name of option to add. Expected to not be SQL-escaped.
  * @param mixed $value Optional. Option value, can be anything. Expected to not be SQL-escaped.
@@ -1258,9 +1012,6 @@ function add_site_option( $option, $value ) {
 
 	wp_protect_special_option( $option );
 
-<<<<<<< HEAD
-	$value = apply_filters( 'pre_add_site_option_' . $option, $value );
-=======
 	/**
 	 * Filter the value of a specific site option before it is added.
 	 *
@@ -1273,7 +1024,6 @@ function add_site_option( $option, $value ) {
 	 */
 	$value = apply_filters( 'pre_add_site_option_' . $option, $value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$notoptions_key = "{$wpdb->siteid}:notoptions";
 
 	if ( !is_multisite() ) {
@@ -1306,10 +1056,6 @@ function add_site_option( $option, $value ) {
 	}
 
 	if ( $result ) {
-<<<<<<< HEAD
-		do_action( "add_site_option_{$option}", $option, $value );
-		do_action( "add_site_option", $option, $value );
-=======
 
 		/**
 		 * Fires after a specific site option has been successfully added.
@@ -1334,7 +1080,6 @@ function add_site_option( $option, $value ) {
 		 */
 		do_action( "add_site_option", $option, $value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return true;
 	}
 	return false;
@@ -1343,20 +1088,9 @@ function add_site_option( $option, $value ) {
 /**
  * Removes site option by name.
  *
-<<<<<<< HEAD
- * @see delete_option()
- * @package WordPress
- * @subpackage Option
- * @since 2.8.0
- *
- * @uses do_action() Calls 'pre_delete_site_option_$option' hook before option is deleted.
- * @uses do_action() Calls 'delete_site_option' and 'delete_site_option_$option'
- * 	hooks on success.
-=======
  * @since 2.8.0
  *
  * @see delete_option()
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Name of option to remove. Expected to not be SQL-escaped.
  * @return bool True, if succeed. False, if failure.
@@ -1366,8 +1100,6 @@ function delete_site_option( $option ) {
 
 	// ms_protect_special_option( $option ); @todo
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires immediately before a specific site option is deleted.
 	 *
@@ -1375,7 +1107,6 @@ function delete_site_option( $option ) {
 	 *
 	 * @since 3.0.0
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'pre_delete_site_option_' . $option );
 
 	if ( !is_multisite() ) {
@@ -1391,10 +1122,6 @@ function delete_site_option( $option ) {
 	}
 
 	if ( $result ) {
-<<<<<<< HEAD
-		do_action( "delete_site_option_{$option}", $option );
-		do_action( "delete_site_option", $option );
-=======
 
 		/**
 		 * Fires after a specific site option has been deleted.
@@ -1417,7 +1144,6 @@ function delete_site_option( $option ) {
 		 */
 		do_action( "delete_site_option", $option );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return true;
 	}
 	return false;
@@ -1426,20 +1152,9 @@ function delete_site_option( $option ) {
 /**
  * Update the value of a site option that was already added.
  *
-<<<<<<< HEAD
- * @see update_option()
- * @since 2.8.0
- * @package WordPress
- * @subpackage Option
- *
- * @uses apply_filters() Calls 'pre_update_site_option_$option' hook to allow overwriting the
- * 	option value to be stored.
- * @uses do_action() Calls 'update_site_option_$option' and 'update_site_option' hooks on success.
-=======
  * @since 2.8.0
  *
  * @see update_option()
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $option Name of option. Expected to not be SQL-escaped.
  * @param mixed $value Option value. Expected to not be SQL-escaped.
@@ -1451,8 +1166,6 @@ function update_site_option( $option, $value ) {
 	wp_protect_special_option( $option );
 
 	$old_value = get_site_option( $option );
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter a specific site option before its value is updated.
@@ -1465,7 +1178,6 @@ function update_site_option( $option, $value ) {
 	 * @param mixed $value     New value of site option.
 	 * @param mixed $old_value Old value of site option.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$value = apply_filters( 'pre_update_site_option_' . $option, $value, $old_value );
 
 	if ( $value === $old_value )
@@ -1496,10 +1208,6 @@ function update_site_option( $option, $value ) {
 	}
 
 	if ( $result ) {
-<<<<<<< HEAD
-		do_action( "update_site_option_{$option}", $option, $value, $old_value );
-		do_action( "update_site_option", $option, $value, $old_value );
-=======
 
 		/**
 		 * Fires after the value of a specific site option has been successfully updated.
@@ -1526,7 +1234,6 @@ function update_site_option( $option, $value ) {
 		 */
 		do_action( "update_site_option", $option, $value, $old_value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return true;
 	}
 	return false;
@@ -1536,22 +1243,11 @@ function update_site_option( $option, $value ) {
  * Delete a site transient.
  *
  * @since 2.9.0
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Transient
- *
- * @uses do_action() Calls 'delete_site_transient_$transient' hook before transient is deleted.
- * @uses do_action() Calls 'deleted_site_transient' hook on success.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $transient Transient name. Expected to not be SQL-escaped.
  * @return bool True if successful, false otherwise
  */
 function delete_site_transient( $transient ) {
-<<<<<<< HEAD
-	do_action( 'delete_site_transient_' . $transient, $transient );
-=======
 
 	/**
 	 * Fires immediately before a specific site transient is deleted.
@@ -1564,7 +1260,6 @@ function delete_site_transient( $transient ) {
 	 */
 	do_action( 'delete_site_transient_' . $transient, $transient );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	if ( wp_using_ext_object_cache() ) {
 		$result = wp_cache_delete( $transient, 'site-transient' );
 	} else {
@@ -1574,10 +1269,6 @@ function delete_site_transient( $transient ) {
 		if ( $result )
 			delete_site_option( $option_timeout );
 	}
-<<<<<<< HEAD
-	if ( $result )
-		do_action( 'deleted_site_transient', $transient );
-=======
 	if ( $result ) {
 
 		/**
@@ -1590,7 +1281,6 @@ function delete_site_transient( $transient ) {
 		do_action( 'deleted_site_transient', $transient );
 	}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $result;
 }
 
@@ -1600,30 +1290,14 @@ function delete_site_transient( $transient ) {
  * If the transient does not exist or does not have a value, then the return value
  * will be false.
  *
-<<<<<<< HEAD
- * @see get_transient()
- * @since 2.9.0
- * @package WordPress
- * @subpackage Transient
- *
- * @uses apply_filters() Calls 'pre_site_transient_$transient' hook before checking the transient.
- * 	Any value other than false will "short-circuit" the retrieval of the transient
- *	and return the returned value.
- * @uses apply_filters() Calls 'site_transient_$option' hook, after checking the transient, with
- * 	the transient value.
-=======
  * @since 2.9.0
  *
  * @see get_transient()
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $transient Transient name. Expected to not be SQL-escaped.
  * @return mixed Value of transient
  */
 function get_site_transient( $transient ) {
-<<<<<<< HEAD
-	$pre = apply_filters( 'pre_site_transient_' . $transient, false );
-=======
 
 	/**
 	 * Filter the value of an existing site transient.
@@ -1641,7 +1315,6 @@ function get_site_transient( $transient ) {
 	 */
 	$pre = apply_filters( 'pre_site_transient_' . $transient, false );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	if ( false !== $pre )
 		return $pre;
 
@@ -1665,8 +1338,6 @@ function get_site_transient( $transient ) {
 			$value = get_site_option( $transient_option );
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the value of an existing site transient.
 	 *
@@ -1676,7 +1347,6 @@ function get_site_transient( $transient ) {
 	 *
 	 * @param mixed $value Value of site transient.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'site_transient_' . $transient, $value );
 }
 
@@ -1686,20 +1356,9 @@ function get_site_transient( $transient ) {
  * You do not need to serialize values, if the value needs to be serialize, then
  * it will be serialized before it is set.
  *
-<<<<<<< HEAD
- * @see set_transient()
- * @since 2.9.0
- * @package WordPress
- * @subpackage Transient
- *
- * @uses apply_filters() Calls 'pre_set_site_transient_$transient' hook to allow overwriting the
- * 	transient value to be stored.
- * @uses do_action() Calls 'set_site_transient_$transient' and 'setted_site_transient' hooks on success.
-=======
  * @since 2.9.0
  *
  * @see set_transient()
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $transient Transient name. Expected to not be SQL-escaped.
  * @param mixed $value Transient value. Expected to not be SQL-escaped.
@@ -1707,9 +1366,6 @@ function get_site_transient( $transient ) {
  * @return bool False if value was not set and true if value was set.
  */
 function set_site_transient( $transient, $value, $expiration = 0 ) {
-<<<<<<< HEAD
-	$value = apply_filters( 'pre_set_site_transient_' . $transient, $value );
-=======
 
 	/**
 	 * Filter the value of a specific site transient before it is set.
@@ -1722,7 +1378,6 @@ function set_site_transient( $transient, $value, $expiration = 0 ) {
 	 */
 	$value = apply_filters( 'pre_set_site_transient_' . $transient, $value );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$expiration = (int) $expiration;
 
 	if ( wp_using_ext_object_cache() ) {
@@ -1741,9 +1396,6 @@ function set_site_transient( $transient, $value, $expiration = 0 ) {
 		}
 	}
 	if ( $result ) {
-<<<<<<< HEAD
-		do_action( 'set_site_transient_' . $transient, $value, $expiration );
-=======
 
 		/**
 		 * Fires after the value for a specific site transient has been set.
@@ -1766,7 +1418,6 @@ function set_site_transient( $transient, $value, $expiration = 0 ) {
 		 * @param mixed  $value      Site transient value.
 		 * @param int    $expiration Time until expiration in seconds. Default 0.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'setted_site_transient', $transient, $value, $expiration );
 	}
 	return $result;

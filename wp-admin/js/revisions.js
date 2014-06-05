@@ -1048,24 +1048,12 @@ window.wp = window.wp || {};
 		}
 	});
 
-<<<<<<< HEAD
-	// The revisions router
-	// takes URLs with #hash fragments and routes them
-	revisions.Router = Backbone.Router.extend({
-		initialize: function( options ) {
-			this.model = options.model;
-			this.routes = _.object([
-				[ this.baseUrl( '?from=:from&to=:to' ), 'handleRoute' ],
-				[ this.baseUrl( '?from=:from&to=:to' ), 'handleRoute' ]
-			]);
-=======
 	// The revisions router.
 	// Maintains the URL routes so browser URL matches state.
 	revisions.Router = Backbone.Router.extend({
 		initialize: function( options ) {
 			this.model = options.model;
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			// Maintain state and history when navigating
 			this.listenTo( this.model, 'update:diff', _.debounce( this.updateUrl, 250 ) );
 			this.listenTo( this.model, 'change:compareTwoMode', this.updateUrl );
@@ -1079,15 +1067,9 @@ window.wp = window.wp || {};
 			var from = this.model.has('from') ? this.model.get('from').id : 0,
 				to   = this.model.get('to').id;
 			if ( this.model.get('compareTwoMode' ) ) {
-<<<<<<< HEAD
-				this.navigate( this.baseUrl( '?from=' + from + '&to=' + to ) );
-			} else {
-				this.navigate( this.baseUrl( '?revision=' + to ) );
-=======
 				this.navigate( this.baseUrl( '?from=' + from + '&to=' + to ), { replace: true } );
 			} else {
 				this.navigate( this.baseUrl( '?revision=' + to ), { replace: true } );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 		},
 
@@ -1100,15 +1082,6 @@ window.wp = window.wp || {};
 				b = b ? b.id : 0;
 				a = a ? a.id : 0;
 			}
-<<<<<<< HEAD
-
-			this.model.set({
-				from: this.model.revisions.get( parseInt( a, 10 ) ),
-				to: this.model.revisions.get( parseInt( a, 10 ) ),
-				compareTwoMode: compareTwo
-			});
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 	});
 

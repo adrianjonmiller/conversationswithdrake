@@ -15,20 +15,13 @@
  */
 function get_importers() {
 	global $wp_importers;
-<<<<<<< HEAD
-	if ( is_array($wp_importers) )
-		uasort($wp_importers, create_function('$a, $b', 'return strcmp($a[0], $b[0]);'));
-=======
 	if ( is_array( $wp_importers ) ) {
 		uasort( $wp_importers, '_usort_by_first_member' );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $wp_importers;
 }
 
 /**
-<<<<<<< HEAD
-=======
  * Sorts a multidimensional array by first member of each top level member
  *
  * Used by uasort() as a callback, should not be used directly.
@@ -45,7 +38,6 @@ function _usort_by_first_member( $a, $b ) {
 }
 
 /**
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * Register importer for WordPress.
  *
  * @since 2.0.0

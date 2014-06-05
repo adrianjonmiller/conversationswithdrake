@@ -20,19 +20,10 @@ a {
 	}
 }
 
-<<<<<<< HEAD
-#rightnow a:hover,
-#media-upload a.del-link:hover,
-div.dashboard-widget-submit input:hover,
-.subsubsub a:hover,
-.subsubsub a.current:hover,
-.ui-tabs-nav a:hover {
-=======
 #media-upload a.del-link:hover,
 div.dashboard-widget-submit input:hover,
 .subsubsub a:hover,
 .subsubsub a.current:hover {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	color: $link-focus;
 }
 
@@ -40,19 +31,11 @@ div.dashboard-widget-submit input:hover,
 /* Forms */
 
 input[type=checkbox]:checked:before {
-<<<<<<< HEAD
-    color: $form-checked;
-}
-
-input[type=radio]:checked:before {
-    background: $form-checked;
-=======
 	color: $form-checked;
 }
 
 input[type=radio]:checked:before {
 	background: $form-checked;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .wp-core-ui input[type="reset"]:hover,
@@ -167,10 +150,7 @@ strong .post-com-count span {
 .about-wrap h2 .nav-tab-active,
 .nav-tab-active,
 .nav-tab-active:hover {
-<<<<<<< HEAD
-=======
 	background-color: $body-background;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	border-bottom-color: $body-background;
 }
 
@@ -407,10 +387,7 @@ ul#adminmenu > li.current > a.current:after {
 
 .wp-pointer .wp-pointer-content h3 {
 	background-color: $highlight-color;
-<<<<<<< HEAD
-=======
 	border-color: darken( $highlight-color, 5% );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .wp-pointer .wp-pointer-content h3:before {
@@ -457,8 +434,6 @@ ul#adminmenu > li.current > a.current:after {
 	background: $highlight-color;
 }
 
-<<<<<<< HEAD
-=======
 .theme-section.current,
 .theme-filter.current {
 	border-bottom-color: $menu-background;
@@ -498,7 +473,6 @@ body.more-filters-opened .more-filters:focus:before {
 }
 
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 /* jQuery UI Slider */
 
 .wp-slider .ui-slider-handle,
@@ -506,10 +480,6 @@ body.more-filters-opened .more-filters:focus:before {
 .wp-slider .ui-slider-handle.focus {
 	background: $button-color;
 	border-color: darken( $button-color, 10% );
-<<<<<<< HEAD
-	-webkit-box-shadow: inset 0 1px 0 lighten( $button-color, 15% ), 0 1px 0 rgba(0,0,0,.15);
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	box-shadow: inset 0 1px 0 lighten( $button-color, 15% ), 0 1px 0 rgba(0,0,0,.15);
 }
 

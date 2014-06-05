@@ -16,14 +16,7 @@
  * Everything will be stripped of tags and characters converted, when the values
  * are retrieved for use in the feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 1.5.1
- * @uses apply_filters() Calls 'get_bloginfo_rss' hook with two parameters.
-=======
- * @since 1.5.1
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @see get_bloginfo() For the list of possible values to display.
  *
  * @param string $show See get_bloginfo() for possible values.
@@ -31,9 +24,6 @@
  */
 function get_bloginfo_rss($show = '') {
 	$info = strip_tags(get_bloginfo($show));
-<<<<<<< HEAD
-	return apply_filters('get_bloginfo_rss', convert_chars($info), $show);
-=======
 	/**
 	 * Filter the bloginfo for use in RSS feeds.
 	 *
@@ -46,7 +36,6 @@ function get_bloginfo_rss($show = '') {
 	 * @param string $show The type of blog information to retrieve.
 	 */
 	return apply_filters( 'get_bloginfo_rss', convert_chars( $info ), $show );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -56,22 +45,12 @@ function get_bloginfo_rss($show = '') {
  * Everything will be stripped of tags and characters converted, when the values
  * are retrieved for use in the feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 0.71
- * @uses apply_filters() Calls 'bloginfo_rss' hook with two parameters.
-=======
- * @since 0.71
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @see get_bloginfo() For the list of possible values to display.
  *
  * @param string $show See get_bloginfo() for possible values.
  */
 function bloginfo_rss($show = '') {
-<<<<<<< HEAD
-	echo apply_filters('bloginfo_rss', get_bloginfo_rss($show), $show);
-=======
 	/**
 	 * Filter the bloginfo for display in RSS feeds.
 	 *
@@ -83,7 +62,6 @@ function bloginfo_rss($show = '') {
 	 * @param string $show          The type of blog information to retrieve.
 	 */
 	echo apply_filters( 'bloginfo_rss', get_bloginfo_rss( $show ), $show );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -92,21 +70,12 @@ function bloginfo_rss($show = '') {
  * The default feed is 'rss2', unless a plugin changes it through the
  * 'default_feed' filter.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
- * @since 2.5
-=======
  * @since 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @uses apply_filters() Calls 'default_feed' hook on the default feed string.
  *
  * @return string Default feed, or for example 'rss2', 'atom', etc.
  */
 function get_default_feed() {
-<<<<<<< HEAD
-	$default_feed = apply_filters('default_feed', 'rss2');
-=======
 	/**
 	 * Filter the default feed type.
 	 *
@@ -116,22 +85,13 @@ function get_default_feed() {
 	 *                          Default 'rss2'.
 	 */
 	$default_feed = apply_filters( 'default_feed', 'rss2' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return 'rss' == $default_feed ? 'rss2' : $default_feed;
 }
 
 /**
  * Retrieve the blog title for the feed title.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 2.2.0
- * @uses apply_filters() Calls 'get_wp_title_rss' hook on title.
- * @uses wp_title() See function for $sep parameter usage.
-=======
- * @since 2.2.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $sep Optional.How to separate the title. See wp_title() for more info.
  * @return string Error message on failure or blog title on success.
@@ -140,8 +100,6 @@ function get_wp_title_rss($sep = '&#187;') {
 	$title = wp_title($sep, false);
 	if ( is_wp_error( $title ) )
 		return $title->get_error_message();
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the blog title for use as the feed title.
 	 *
@@ -150,7 +108,6 @@ function get_wp_title_rss($sep = '&#187;') {
 	 * @param string $title The current blog title.
 	 * @param string $sep   Separator used by wp_title().
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$title = apply_filters( 'get_wp_title_rss', $title, $sep );
 	return $title;
 }
@@ -158,21 +115,12 @@ function get_wp_title_rss($sep = '&#187;') {
 /**
  * Display the blog title for display of the feed title.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 2.2.0
- * @uses apply_filters() Calls 'wp_title_rss' on the blog title.
-=======
- * @since 2.2.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @see wp_title() $sep parameter usage.
  *
  * @param string $sep Optional.
  */
 function wp_title_rss( $sep = '&#187;' ) {
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the blog title for display of the feed title.
 	 *
@@ -183,29 +131,18 @@ function wp_title_rss( $sep = '&#187;' ) {
 	 * @param string $wp_title The current blog title.
 	 * @param string $sep      Separator used by wp_title().
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	echo apply_filters( 'wp_title_rss', get_wp_title_rss( $sep ), $sep );
 }
 
 /**
  * Retrieve the current post title for the feed.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 2.0.0
- * @uses apply_filters() Calls 'the_title_rss' on the post title.
-=======
- * @since 2.0.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @return string Current post title.
  */
 function get_the_title_rss() {
 	$title = get_the_title();
-<<<<<<< HEAD
-	$title = apply_filters('the_title_rss', $title);
-=======
 	/**
 	 * Filter the post title for use in a feed.
 	 *
@@ -214,18 +151,12 @@ function get_the_title_rss() {
 	 * @param string $title The current post title.
 	 */
 	$title = apply_filters( 'the_title_rss', $title );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $title;
 }
 
 /**
  * Display the post title in the feed.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 0.71
  * @uses get_the_title_rss() Used to retrieve current post title.
  */
@@ -236,14 +167,7 @@ function the_title_rss() {
 /**
  * Retrieve the post content for feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 2.9.0
- * @uses apply_filters() Calls 'the_content_feed' on the content before processing.
-=======
- * @since 2.9.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @see get_the_content()
  *
  * @param string $feed_type The type of feed. rss2 | atom | rss | rdf
@@ -253,11 +177,6 @@ function get_the_content_feed($feed_type = null) {
 	if ( !$feed_type )
 		$feed_type = get_default_feed();
 
-<<<<<<< HEAD
-	$content = apply_filters('the_content', get_the_content());
-	$content = str_replace(']]>', ']]&gt;', $content);
-	return apply_filters('the_content_feed', $content, $feed_type);
-=======
 	/** This filter is documented in wp-admin/post-template.php */
 	$content = apply_filters( 'the_content', get_the_content() );
 	$content = str_replace(']]>', ']]&gt;', $content);
@@ -271,17 +190,11 @@ function get_the_content_feed($feed_type = null) {
 	 *                          Default 'rss2'.
 	 */
 	return apply_filters( 'the_content_feed', $content, $feed_type );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
  * Display the post content for feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.9.0
  * @uses apply_filters() Calls 'the_content_feed' on the content before processing.
  * @see get_the_content()
@@ -295,16 +208,6 @@ function the_content_feed($feed_type = null) {
 /**
  * Display the post excerpt for the feed.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
- * @since 0.71
- * @uses apply_filters() Calls 'the_excerpt_rss' hook on the excerpt.
- */
-function the_excerpt_rss() {
-	$output = get_the_excerpt();
-	echo apply_filters('the_excerpt_rss', $output);
-=======
  * @since 0.71
  */
 function the_excerpt_rss() {
@@ -317,21 +220,11 @@ function the_excerpt_rss() {
 	 * @param string $output The current post excerpt.
 	 */
 	echo apply_filters( 'the_excerpt_rss', $output );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
  * Display the permalink to the post for use in feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
- * @since 2.3.0
- * @uses apply_filters() Call 'the_permalink_rss' on the post permalink
- */
-function the_permalink_rss() {
-	echo esc_url( apply_filters('the_permalink_rss', get_permalink() ));
-=======
  * @since 2.3.0
  */
 function the_permalink_rss() {
@@ -343,7 +236,6 @@ function the_permalink_rss() {
 	 * @param string $post_permalink The current post permalink.
 	 */
 	echo esc_url( apply_filters( 'the_permalink_rss', get_permalink() ) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -353,8 +245,6 @@ function the_permalink_rss() {
  * @return none
  */
 function comments_link_feed() {
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the comments permalink for the current post.
 	 *
@@ -363,18 +253,12 @@ function comments_link_feed() {
 	 * @param string $comment_permalink The current comment permalink with
 	 *                                  '#comments' appended.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	echo esc_url( apply_filters( 'comments_link_feed', get_comments_link() ) );
 }
 
 /**
  * Display the feed GUID for the current comment.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.5.0
  *
  * @param int|object $comment_id Optional comment object or id. Defaults to global comment object.
@@ -386,11 +270,6 @@ function comment_guid($comment_id = null) {
 /**
  * Retrieve the feed GUID for the current comment.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.5.0
  *
  * @param int|object $comment_id Optional comment object or id. Defaults to global comment object.
@@ -411,8 +290,6 @@ function get_comment_guid($comment_id = null) {
  * @since 1.5.0
  */
 function comment_link() {
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the current comment's permalink.
 	 *
@@ -422,29 +299,18 @@ function comment_link() {
 	 *
 	 * @param string $comment_permalink The current comment permalink.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	echo esc_url( apply_filters( 'comment_link', get_comment_link() ) );
 }
 
 /**
  * Retrieve the current comment author for use in the feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 2.0.0
- * @uses apply_filters() Calls 'comment_author_rss' hook on comment author.
-=======
- * @since 2.0.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @uses get_comment_author()
  *
  * @return string Comment Author
  */
 function get_comment_author_rss() {
-<<<<<<< HEAD
-	return apply_filters('comment_author_rss', get_comment_author() );
-=======
 	/**
 	 * Filter the current comment author for use in a feed.
 	 *
@@ -455,17 +321,11 @@ function get_comment_author_rss() {
 	 * @param string $comment_author The current comment author.
 	 */
 	return apply_filters( 'comment_author_rss', get_comment_author() );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
  * Display the current comment author in the feed.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 1.0.0
  */
 function comment_author_rss() {
@@ -475,21 +335,11 @@ function comment_author_rss() {
 /**
  * Display the current comment content for use in the feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 1.0.0
- * @uses apply_filters() Calls 'comment_text_rss' filter on comment content.
-=======
- * @since 1.0.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @uses get_comment_text()
  */
 function comment_text_rss() {
 	$comment_text = get_comment_text();
-<<<<<<< HEAD
-	$comment_text = apply_filters('comment_text_rss', $comment_text);
-=======
 	/**
 	 * Filter the current comment content for use in a feed.
 	 *
@@ -498,7 +348,6 @@ function comment_text_rss() {
 	 * @param string $comment_text The content of the current comment.
 	 */
 	$comment_text = apply_filters( 'comment_text_rss', $comment_text );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	echo $comment_text;
 }
 
@@ -509,14 +358,7 @@ function comment_text_rss() {
  * retrieved and have feed markup added, so that they can easily be added to the
  * RSS2, Atom, or RSS1 and RSS0.91 RDF feeds.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
  * @since 2.1.0
- * @uses apply_filters()
-=======
- * @since 2.1.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $type Optional, default is the type returned by get_default_feed().
  * @return string All of the post categories for displaying in the feed.
@@ -547,18 +389,12 @@ function get_the_category_rss($type = null) {
 		if ( 'rdf' == $type )
 			$the_list .= "\t\t<dc:subject><![CDATA[$cat_name]]></dc:subject>\n";
 		elseif ( 'atom' == $type )
-<<<<<<< HEAD
-=======
 			/** This filter is documented in wp-includes/feed.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$the_list .= sprintf( '<category scheme="%1$s" term="%2$s" />', esc_attr( apply_filters( 'get_bloginfo_rss', get_bloginfo( 'url' ) ) ), esc_attr( $cat_name ) );
 		else
 			$the_list .= "\t\t<category><![CDATA[" . @html_entity_decode( $cat_name, ENT_COMPAT, get_option('blog_charset') ) . "]]></category>\n";
 	}
 
-<<<<<<< HEAD
-	return apply_filters('the_category_rss', $the_list, $type);
-=======
 	/**
 	 * Filter all of the post categories for display in a feed.
 	 *
@@ -569,17 +405,11 @@ function get_the_category_rss($type = null) {
 	 *                         Default 'rss2'.
 	 */
 	return apply_filters( 'the_category_rss', $the_list, $type );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
  * Display the post categories in the feed.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 0.71
  * @see get_the_category_rss() For better explanation.
  *
@@ -594,11 +424,6 @@ function the_category_rss($type = null) {
  *
  * The two possible values are either 'xhtml' or 'html'.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.2.0
  */
 function html_type_rss() {
@@ -622,14 +447,7 @@ function html_type_rss() {
  * enclosure(s) consist of enclosure HTML tag(s) with a URI and other
  * attributes.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Template
  * @since 1.5.0
- * @uses apply_filters() Calls 'rss_enclosure' hook on rss enclosure.
-=======
- * @since 1.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @uses get_post_custom() To get the current post enclosure metadata.
  */
 function rss_enclosure() {
@@ -645,9 +463,6 @@ function rss_enclosure() {
 				$t = preg_split('/[ \t]/', trim($enclosure[2]) );
 				$type = $t[0];
 
-<<<<<<< HEAD
-				echo apply_filters('rss_enclosure', '<enclosure url="' . trim(htmlspecialchars($enclosure[0])) . '" length="' . trim($enclosure[1]) . '" type="' . $type . '" />' . "\n");
-=======
 				/**
 				 * Filter the RSS enclosure HTML link tag for the current post.
 				 *
@@ -656,7 +471,6 @@ function rss_enclosure() {
 				 * @param string $html_link_tag The HTML link tag with a URI and other attributes.
 				 */
 				echo apply_filters( 'rss_enclosure', '<enclosure url="' . trim( htmlspecialchars( $enclosure[0] ) ) . '" length="' . trim( $enclosure[1] ) . '" type="' . $type . '" />' . "\n" );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 		}
 	}
@@ -673,14 +487,7 @@ function rss_enclosure() {
  * metadata field and parses the value to display the enclosure(s). The
  * enclosure(s) consist of link HTML tag(s) with a URI and other attributes.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Template
  * @since 2.2.0
- * @uses apply_filters() Calls 'atom_enclosure' hook on atom enclosure.
-=======
- * @since 2.2.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @uses get_post_custom() To get the current post enclosure metadata.
  */
 function atom_enclosure() {
@@ -691,9 +498,6 @@ function atom_enclosure() {
 		if ($key == 'enclosure') {
 			foreach ( (array) $val as $enc ) {
 				$enclosure = explode("\n", $enc);
-<<<<<<< HEAD
-				echo apply_filters('atom_enclosure', '<link href="' . trim(htmlspecialchars($enclosure[0])) . '" rel="enclosure" length="' . trim($enclosure[1]) . '" type="' . trim($enclosure[2]) . '" />' . "\n");
-=======
 				/**
 				 * Filter the atom enclosure HTML link tag for the current post.
 				 *
@@ -702,7 +506,6 @@ function atom_enclosure() {
 				 * @param string $html_link_tag The HTML link tag with a URI and other attributes.
 				 */
 				echo apply_filters( 'atom_enclosure', '<link href="' . trim( htmlspecialchars( $enclosure[0] ) ) . '" rel="enclosure" length="' . trim( $enclosure[1] ) . '" type="' . trim( $enclosure[2] ) . '" />' . "\n" );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 		}
 	}
@@ -720,13 +523,7 @@ function atom_enclosure() {
  *
  * @link http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rfc.section.3.1
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
- * @since 2.5
-=======
  * @since 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $data Input string
  * @return array array(type, value)
@@ -762,14 +559,6 @@ function prep_atom_text_construct($data) {
  *
  * Generate a correct link for the atom:self element.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
- * @since 2.5
- */
-function self_link() {
-	$host = @parse_url(home_url());
-=======
  * @since 2.5.0
  */
 function self_link() {
@@ -784,18 +573,12 @@ function self_link() {
 	 *
 	 * @param string $feed_link The link for the feed with set URL scheme.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	echo esc_url( apply_filters( 'self_link', set_url_scheme( 'http://' . $host['host'] . wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) );
 }
 
 /**
  * Return the content type for specified feed type.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Feed
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.8.0
  */
 function feed_content_type( $type = '' ) {
@@ -812,8 +595,6 @@ function feed_content_type( $type = '' ) {
 
 	$content_type = ( !empty($types[$type]) ) ? $types[$type] : 'application/octet-stream';
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the content type for a specific feed type.
 	 *
@@ -823,18 +604,13 @@ function feed_content_type( $type = '' ) {
 	 * @param string $type         Type of feed. Possible values include 'rss2', 'atom'.
 	 *                             Default 'rss2'.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'feed_content_type', $content_type, $type );
 }
 
 /**
  * Build SimplePie object based on RSS or Atom feed from URL.
  *
-<<<<<<< HEAD
- * @since 2.8
-=======
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param mixed $url URL of feed to retrieve. If an array of URLs, the feeds are merged
  * using SimplePie's multifeed feature.
@@ -856,9 +632,6 @@ function fetch_feed( $url ) {
 	$feed->set_file_class( 'WP_SimplePie_File' );
 
 	$feed->set_feed_url( $url );
-<<<<<<< HEAD
-	$feed->set_cache_duration( apply_filters( 'wp_feed_cache_transient_lifetime', 12 * HOUR_IN_SECONDS, $url ) );
-=======
 	/** This filter is documented in wp-includes/class-feed.php */
 	$feed->set_cache_duration( apply_filters( 'wp_feed_cache_transient_lifetime', 12 * HOUR_IN_SECONDS, $url ) );
 	/**
@@ -869,7 +642,6 @@ function fetch_feed( $url ) {
 	 * @param object &$feed SimplePie feed object, passed by reference.
 	 * @param mixed  $url   URL of feed to retrieve. If an array of URLs, the feeds are merged.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action_ref_array( 'wp_feed_options', array( &$feed, $url ) );
 	$feed->init();
 	$feed->handle_content_type();

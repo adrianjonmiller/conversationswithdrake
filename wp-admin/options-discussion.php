@@ -24,11 +24,7 @@ get_current_screen()->add_help_tab( array(
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
 	'<p>' . __('<a href="http://codex.wordpress.org/Settings_Discussion_Screen" target="_blank">Documentation on Discussion Settings</a>') . '</p>' .
-<<<<<<< HEAD
-	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
-=======
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 );
 
 include( ABSPATH . 'wp-admin/admin-header.php' );
@@ -41,11 +37,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <?php settings_fields('discussion'); ?>
 
 <table class="form-table">
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Default article settings'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Default article settings'); ?></span></legend>
 <label for="default_pingback_flag">
@@ -63,11 +55,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <p class="description"><?php echo '(' . __( 'These settings may be overridden for individual articles.' ) . ')'; ?></p>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Other comment settings'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Other comment settings'); ?></span></legend>
 <label for="require_name_email"><input type="checkbox" name="require_name_email" id="require_name_email" value="1" <?php checked('1', get_option('require_name_email')); ?> /> <?php _e('Comment author must fill out name and e-mail'); ?></label>
@@ -92,11 +80,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
  *
  * @since 2.7.0.
  *
-<<<<<<< HEAD
- * @param int $10 The maximum depth of threaded comments. Default 10.
-=======
  * @param int $max_depth The maximum depth of threaded comments. Default 10.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 $maxdeep = (int) apply_filters( 'thread_comments_depth_max', 10 );
 
@@ -139,11 +123,7 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 ?></label>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('E-mail me whenever'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('E-mail me whenever'); ?></span></legend>
 <label for="comments_notify">
@@ -155,11 +135,7 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 <?php _e('A comment is held for moderation'); ?> </label>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Before a comment appears'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Before a comment appears'); ?></span></legend>
 <label for="comment_moderation">
@@ -169,11 +145,7 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 <label for="comment_whitelist"><input type="checkbox" name="comment_whitelist" id="comment_whitelist" value="1" <?php checked('1', get_option('comment_whitelist')); ?> /> <?php _e('Comment author must have a previously approved comment'); ?></label>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Comment Moderation'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Comment Moderation'); ?></span></legend>
 <p><label for="comment_max_links"><?php printf(__('Hold a comment in the queue if it contains %s or more links. (A common characteristic of comment spam is a large number of hyperlinks.)'), '<input name="comment_max_links" type="number" step="1" min="0" id="comment_max_links" value="' . esc_attr(get_option('comment_max_links')) . '" class="small-text" />' ); ?></label></p>
@@ -184,11 +156,7 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 </p>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Comment Blacklist'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Comment Blacklist'); ?></span></legend>
 <p><label for="blacklist_keys"><?php _e('When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be marked as spam. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;.'); ?></label></p>
@@ -207,11 +175,7 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 <?php // the above would be a good place to link to codex documentation on the gravatar functions, for putting it in themes. anything like that? ?>
 
 <table class="form-table">
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Avatar Display'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Avatar Display'); ?></span></legend>
 	<label for="show_avatars">
@@ -220,11 +184,7 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 	</label>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Maximum Rating'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Maximum Rating'); ?></span></legend>
 
@@ -247,11 +207,7 @@ endforeach;
 
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e('Default Avatar'); ?></th>
 <td class="defaultavatarpicker"><fieldset><legend class="screen-reader-text"><span><?php _e('Default Avatar'); ?></span></legend>
 

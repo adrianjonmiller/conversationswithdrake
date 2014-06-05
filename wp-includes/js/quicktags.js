@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/* global adminpage, wpActiveEditor, quicktagsL10n, wpLink, fullscreen, prompt */
-=======
 /* global adminpage, wpActiveEditor, quicktagsL10n, wpLink, prompt */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 /*
  * Quicktags
  *
@@ -189,12 +185,9 @@ function edButton(id, display, tagStart, tagEnd, access) {
 		tb = document.createElement('div');
 		tb.id = toolbar_id;
 		tb.className = 'quicktags-toolbar';
-<<<<<<< HEAD
-=======
 		tb.onclick = function() {
 			window.wpActiveEditor = id;
 		};
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		canvas.parentNode.insertBefore(tb, canvas);
 		t.toolbar = tb;
@@ -413,14 +406,10 @@ function edButton(id, display, tagStart, tagEnd, access) {
 	};
 	qt.Button.prototype.html = function(idPrefix) {
 		var access = this.access ? ' accesskey="' + this.access + '"' : '';
-<<<<<<< HEAD
-		return '<input type="button" id="' + idPrefix + this.id + '"' + access + ' class="ed_button" title="' + this.title + '" value="' + this.display + '" />';
-=======
 		if ( this.id === 'fullscreen' ) {
 			return '<button type="button" id="' + idPrefix + this.id + '"' + access + ' class="ed_button qt-fullscreen" title="' + this.title + '"></button>';
 		}
 		return '<input type="button" id="' + idPrefix + this.id + '"' + access + ' class="ed_button button button-small" title="' + this.title + '" value="' + this.display + '" />';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	};
 	qt.Button.prototype.callback = function(){};
 
@@ -580,13 +569,8 @@ function edButton(id, display, tagStart, tagEnd, access) {
 	qt.LinkButton.prototype.callback = function(e, c, ed, defaultValue) {
 		var URL, t = this;
 
-<<<<<<< HEAD
-		if ( typeof(wpLink) !== 'undefined' ) {
-			wpLink.open();
-=======
 		if ( typeof wpLink !== 'undefined' ) {
 			wpLink.open( ed.id );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return;
 		}
 
@@ -627,19 +611,11 @@ function edButton(id, display, tagStart, tagEnd, access) {
 	};
 	qt.FullscreenButton.prototype = new qt.Button();
 	qt.FullscreenButton.prototype.callback = function(e, c) {
-<<<<<<< HEAD
-		if ( !c.id || typeof(fullscreen) === 'undefined' ) {
-			return;
-		}
-
-		fullscreen.on();
-=======
 		if ( ! c.id || typeof wp === 'undefined' || ! wp.editor || ! wp.editor.fullscreen ) {
 			return;
 		}
 
 		wp.editor.fullscreen.on();
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	};
 
 	qt.TextDirectionButton = function() {
@@ -670,11 +646,7 @@ function edButton(id, display, tagStart, tagEnd, access) {
 	edButtons[90] = new qt.TagButton('ol','ol','<ol>\n','</ol>\n\n','o'),
 	edButtons[100] = new qt.TagButton('li','li','\t<li>','</li>\n','l'),
 	edButtons[110] = new qt.TagButton('code','code','<code>','</code>','c'),
-<<<<<<< HEAD
-	edButtons[120] = new qt.TagButton('more','more','<!--more-->','','t'),
-=======
 	edButtons[120] = new qt.TagButton('more','more','<!--more-->\n\n','','t'),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	edButtons[140] = new qt.CloseButton();
 
 })();

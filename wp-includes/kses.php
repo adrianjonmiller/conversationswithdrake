@@ -119,10 +119,7 @@ if ( ! CUSTOM_TAGS ) {
 			'datetime' => true,
 		),
 		'dd' => array(),
-<<<<<<< HEAD
-=======
 		'dfn' => array(),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		'details' => array(
 			'align' => true,
 			'dir' => true,
@@ -239,10 +236,7 @@ if ( ! CUSTOM_TAGS ) {
 		'map' => array(
 			'name' => true,
 		),
-<<<<<<< HEAD
-=======
 		'mark' => array(),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		'menu' => array(
 			'type' => true,
 		),
@@ -265,10 +259,7 @@ if ( ! CUSTOM_TAGS ) {
 			'cite' => true,
 		),
 		's' => array(),
-<<<<<<< HEAD
-=======
 		'samp' => array(),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		'span' => array(
 			'dir' => true,
 			'align' => true,
@@ -510,13 +501,6 @@ function wp_kses( $string, $allowed_html, $allowed_protocols = array() ) {
 function wp_kses_allowed_html( $context = '' ) {
 	global $allowedposttags, $allowedtags, $allowedentitynames;
 
-<<<<<<< HEAD
-	if ( is_array( $context ) )
-		return apply_filters( 'wp_kses_allowed_html', $context, 'explicit' );
-
-	switch ( $context ) {
-		case 'post':
-=======
 	if ( is_array( $context ) ) {
 		/**
 		 * Filter HTML elements allowed for a given context.
@@ -533,21 +517,12 @@ function wp_kses_allowed_html( $context = '' ) {
 	switch ( $context ) {
 		case 'post':
 			/** This filter is documented in wp-includes/kses.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return apply_filters( 'wp_kses_allowed_html', $allowedposttags, $context );
 			break;
 		case 'user_description':
 		case 'pre_user_description':
 			$tags = $allowedtags;
 			$tags['a']['rel'] = true;
-<<<<<<< HEAD
-			return apply_filters( 'wp_kses_allowed_html', $tags, $context );
-			break;
-		case 'strip':
-			return apply_filters( 'wp_kses_allowed_html', array(), $context );
-			break;
-		case 'entities':
-=======
 			/** This filter is documented in wp-includes/kses.php */
 			return apply_filters( 'wp_kses_allowed_html', $tags, $context );
 			break;
@@ -557,15 +532,11 @@ function wp_kses_allowed_html( $context = '' ) {
 			break;
 		case 'entities':
 			/** This filter is documented in wp-includes/kses.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return apply_filters( 'wp_kses_allowed_html', $allowedentitynames, $context);
 			break;
 		case 'data':
 		default:
-<<<<<<< HEAD
-=======
 			/** This filter is documented in wp-includes/kses.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			return apply_filters( 'wp_kses_allowed_html', $allowedtags, $context );
 	}
 }
@@ -584,9 +555,6 @@ function wp_kses_allowed_html( $context = '' ) {
  * @return string Filtered content through 'pre_kses' hook
  */
 function wp_kses_hook( $string, $allowed_html, $allowed_protocols ) {
-<<<<<<< HEAD
-	$string = apply_filters('pre_kses', $string, $allowed_html, $allowed_protocols);
-=======
 	/**
 	 * Filter content to be run through kses.
 	 *
@@ -597,7 +565,6 @@ function wp_kses_hook( $string, $allowed_html, $allowed_protocols ) {
 	 * @param array  $allowed_protocols Allowed protocol in links.
 	 */
 	$string = apply_filters( 'pre_kses', $string, $allowed_html, $allowed_protocols );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $string;
 }
 
@@ -820,17 +787,10 @@ function wp_kses_hair($attr, $allowed_protocols) {
 		switch ($mode) {
 			case 0 : # attribute name, href for instance
 
-<<<<<<< HEAD
-				if (preg_match('/^([-a-zA-Z]+)/', $attr, $match)) {
-					$attrname = $match[1];
-					$working = $mode = 1;
-					$attr = preg_replace('/^[-a-zA-Z]+/', '', $attr);
-=======
 				if ( preg_match('/^([-a-zA-Z:]+)/', $attr, $match ) ) {
 					$attrname = $match[1];
 					$working = $mode = 1;
 					$attr = preg_replace( '/^[-a-zA-Z:]+/', '', $attr );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				}
 
 				break;
@@ -1478,8 +1438,6 @@ function safecss_filter_attr( $css, $deprecated = '' ) {
 		return '';
 
 	$css_array = explode( ';', trim( $css ) );
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter list of allowed CSS attributes.
@@ -1488,7 +1446,6 @@ function safecss_filter_attr( $css, $deprecated = '' ) {
 	 *
 	 * @param array $attr List of allowed CSS attributes.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$allowed_attr = apply_filters( 'safe_style_css', array( 'text-align', 'margin', 'color', 'float',
 	'border', 'background', 'background-color', 'border-bottom', 'border-bottom-color',
 	'border-bottom-style', 'border-bottom-width', 'border-collapse', 'border-color', 'border-left',
@@ -1542,10 +1499,7 @@ function _wp_add_global_attributes( $value ) {
 		'id' => true,
 		'style' => true,
 		'title' => true,
-<<<<<<< HEAD
-=======
 		'role' => true,
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	);
 
 	if ( true === $value )

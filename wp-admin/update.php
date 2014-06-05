@@ -37,11 +37,7 @@ if ( isset($_GET['action']) ) {
 		$url = 'update.php?action=update-selected&amp;plugins=' . urlencode(implode(',', $plugins));
 		$nonce = 'bulk-update-plugins';
 
-<<<<<<< HEAD
-		wp_enqueue_script('jquery');
-=======
 		wp_enqueue_script( 'updates' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		iframe_header();
 
 		$upgrader = new Plugin_Upgrader( new Bulk_Plugin_Upgrader_Skin( compact( 'nonce', 'url' ) ) );
@@ -58,11 +54,8 @@ if ( isset($_GET['action']) ) {
 		$title = __('Update Plugin');
 		$parent_file = 'plugins.php';
 		$submenu_file = 'plugins.php';
-<<<<<<< HEAD
-=======
 
 		wp_enqueue_script( 'updates' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		require_once(ABSPATH . 'wp-admin/admin-header.php');
 
 		$nonce = 'upgrade-plugin_' . $plugin;
@@ -93,12 +86,8 @@ if ( isset($_GET['action']) ) {
 
 			error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
 			@ini_set('display_errors', true); //Ensure that Fatal errors are displayed.
-<<<<<<< HEAD
-			include(WP_PLUGIN_DIR . '/' . $plugin);
-=======
 			wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $plugin );
 			include( WP_PLUGIN_DIR . '/' . $plugin );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 		iframe_footer();
 	} elseif ( 'install-plugin' == $action ) {
@@ -167,10 +156,7 @@ if ( isset($_GET['action']) ) {
 		check_admin_referer('upgrade-theme_' . $theme);
 
 		wp_enqueue_script( 'customize-loader' );
-<<<<<<< HEAD
-=======
 		wp_enqueue_script( 'updates' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$title = __('Update Theme');
 		$parent_file = 'themes.php';
@@ -202,11 +188,7 @@ if ( isset($_GET['action']) ) {
 		$url = 'update.php?action=update-selected-themes&amp;themes=' . urlencode(implode(',', $themes));
 		$nonce = 'bulk-update-themes';
 
-<<<<<<< HEAD
-		wp_enqueue_script('jquery');
-=======
 		wp_enqueue_script( 'updates' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		iframe_header();
 
 		$upgrader = new Theme_Upgrader( new Bulk_Theme_Upgrader_Skin( compact( 'nonce', 'url' ) ) );
@@ -220,11 +202,7 @@ if ( isset($_GET['action']) ) {
 
 		include_once ABSPATH . 'wp-admin/includes/theme-install.php'; //for themes_api..
 
-<<<<<<< HEAD
-		check_admin_referer('install-theme_' . $theme);
-=======
 		check_admin_referer( 'install-theme_' . $theme );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$api = themes_api('theme_information', array('slug' => $theme, 'fields' => array('sections' => false, 'tags' => false) ) ); //Save on a bit of bandwidth.
 
 		if ( is_wp_error($api) )

@@ -2,25 +2,13 @@
 /**
  * Customize Section Class.
  *
-<<<<<<< HEAD
-=======
  * A UI container for controls, managed by the WP_Customize_Manager.
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @package WordPress
  * @subpackage Customize
  * @since 3.4.0
  */
 class WP_Customize_Section {
-<<<<<<< HEAD
-	public $manager;
-	public $id;
-	public $priority       = 10;
-	public $capability     = 'edit_theme_options';
-	public $theme_supports = '';
-	public $title          = '';
-	public $description    = '';
-=======
 
 	/**
 	 * WP_Customize_Manager instance.
@@ -92,19 +80,11 @@ class WP_Customize_Section {
 	 * @access public
 	 * @var array
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	public $controls;
 
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-	 * @since 3.4.0
-	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param string $id An specific ID of the section.
-	 * @param array $args Section arguments.
-=======
 	 * Any supplied $args override class property defaults.
 	 *
 	 * @since 3.4.0
@@ -112,7 +92,6 @@ class WP_Customize_Section {
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      An specific ID of the section.
 	 * @param array                $args    Section arguments.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	function __construct( $manager, $id, $args = array() ) {
 		$keys = array_keys( get_class_vars( __CLASS__ ) );
@@ -130,12 +109,8 @@ class WP_Customize_Section {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Check if the theme supports the section and check user capabilities.
-=======
 	 * Checks required user capabilities and whether the theme has the
 	 * feature support required by the section.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -160,10 +135,6 @@ class WP_Customize_Section {
 		if ( ! $this->check_capabilities() )
 			return;
 
-<<<<<<< HEAD
-		do_action( 'customize_render_section', $this );
-		do_action( 'customize_render_section_' . $this->id );
-=======
 		/**
 		 * Fires before rendering a Customizer section.
 		 *
@@ -181,17 +152,12 @@ class WP_Customize_Section {
 		 * @since 3.4.0
 		 */
 		do_action( "customize_render_section_{$this->id}" );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$this->render();
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Render the section.
-=======
 	 * Render the section, and the controls that have been added to it.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 */

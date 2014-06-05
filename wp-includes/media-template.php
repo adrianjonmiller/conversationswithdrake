@@ -8,8 +8,6 @@
  */
 
 /**
-<<<<<<< HEAD
-=======
  * Output the markup for a audio tag to be used in an Underscore template
  * when data.model is passed.
  *
@@ -111,7 +109,6 @@ function wp_underscore_video_template() {
 }
 
 /**
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * Prints the templates used in the media manager.
  *
  * @since 3.5.0
@@ -145,15 +142,12 @@ function wp_print_media_templates() {
 		</div>
 	</script>
 
-<<<<<<< HEAD
-=======
 	<script type="text/html" id="tmpl-uploader-editor">
 		<div class="uploader-editor-content">
 			<div class="uploader-editor-title"><?php _e( 'Drop files to upload' ); ?></div>
 		</div>
 	</script>
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<script type="text/html" id="tmpl-uploader-inline">
 		<# var messageClass = data.message ? 'has-upload-message' : 'no-upload-message'; #>
 		<div class="uploader-inline-content {{ messageClass }}">
@@ -161,11 +155,7 @@ function wp_print_media_templates() {
 			<h3 class="upload-message">{{ data.message }}</h3>
 		<# } #>
 		<?php if ( ! _device_can_upload() ) : ?>
-<<<<<<< HEAD
-			<h3 class="upload-instructions"><?php printf( __('The web browser on your device cannot be used to upload files. You may be able to use the <a href="%s">native app for your device</a> instead.'), 'http://wordpress.org/mobile/' ); ?></h3>
-=======
 			<h3 class="upload-instructions"><?php printf( __('The web browser on your device cannot be used to upload files. You may be able to use the <a href="%s">native app for your device</a> instead.'), 'https://wordpress.org/mobile/' ); ?></h3>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		<?php elseif ( is_multisite() && ! is_upload_space_available() ) : ?>
 			<h3 class="upload-instructions"><?php _e( 'Upload Limit Exceeded' ); ?></h3>
 			<?php
@@ -216,20 +206,11 @@ function wp_print_media_templates() {
 					printf( __( 'Maximum upload file size: %d%s.' ), esc_html($upload_size_unit), esc_html($byte_sizes[$u]) );
 				?></p>
 
-<<<<<<< HEAD
-				<?php if ( ( $GLOBALS['is_IE'] || $GLOBALS['is_opera']) && $max_upload_size > 100 * 1024 * 1024 ) :
-					$browser_uploader = admin_url( 'media-new.php?browser-uploader&post_id=' ) . '{{ data.postId }}';
-					?>
-					<p class="big-file-warning"><?php printf( __( 'Your browser has some limitations uploading large files with the multi-file uploader. Please use the <a href="%1$s" target="%2$s">browser uploader</a> for files over 100MB.' ),
-						$browser_uploader, '_blank' ); ?></p>
-				<?php endif; ?>
-=======
 				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
 					<p class="suggested-dimensions">
 						<?php _e( 'Suggested image dimensions:' ); ?> {{data.suggestedWidth}} &times; {{data.suggestedHeight}}
 					</p>
 				<# } #>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				<?php
 				/** This action is documented in wp-admin/includes/media.php */
@@ -278,19 +259,11 @@ function wp_print_media_templates() {
 			<# } #>
 
 			<# if ( data.buttons.close ) { #>
-<<<<<<< HEAD
-				<a class="close media-modal-icon" href="#" title="<?php _e('Remove'); ?>"></a>
-			<# } #>
-
-			<# if ( data.buttons.check ) { #>
-				<a class="check" href="#" title="<?php _e('Deselect'); ?>"><div class="media-modal-icon"></div></a>
-=======
 				<a class="close media-modal-icon" href="#" title="<?php esc_attr_e('Remove'); ?>"></a>
 			<# } #>
 
 			<# if ( data.buttons.check ) { #>
 				<a class="check" href="#" title="<?php esc_attr_e('Deselect'); ?>"><div class="media-modal-icon"></div></a>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			<# } #>
 		</div>
 		<#
@@ -351,15 +324,11 @@ function wp_print_media_templates() {
 				<# } #>
 
 				<# if ( ! data.uploading && data.can.remove ) { #>
-<<<<<<< HEAD
-					<a class="delete-attachment" href="#"><?php _e( 'Delete Permanently' ); ?></a>
-=======
 					<?php if ( MEDIA_TRASH ): ?>
 						<a class="trash-attachment" href="#"><?php _e( 'Trash' ); ?></a>
 					<?php else: ?>
 						<a class="delete-attachment" href="#"><?php _e( 'Delete Permanently' ); ?></a>
 					<?php endif; ?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				<# } #>
 
 				<div class="compat-meta">
@@ -552,8 +521,6 @@ function wp_print_media_templates() {
 		</label>
 	</script>
 
-<<<<<<< HEAD
-=======
 	<script type="text/html" id="tmpl-playlist-settings">
 		<h3><?php _e( 'Playlist Settings' ); ?></h3>
 
@@ -588,7 +555,6 @@ function wp_print_media_templates() {
 		</label>
 	</script>
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<script type="text/html" id="tmpl-embed-link-settings">
 		<label class="setting">
 			<span><?php _e('Title'); ?></span>
@@ -678,12 +644,6 @@ function wp_print_media_templates() {
 			}
 		</style>
 	</script>
-<<<<<<< HEAD
-	<?php
-
-	/**
-	 * Prints the media manager custom media templates.
-=======
 
 	<script type="text/html" id="tmpl-image-details">
 		<div class="media-embed">
@@ -1099,7 +1059,6 @@ function wp_print_media_templates() {
 
 	/**
 	 * Fires when the custom Backbone media templates are printed.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.5.0
 	 */

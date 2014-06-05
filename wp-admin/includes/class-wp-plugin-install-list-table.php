@@ -129,11 +129,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 
 		$this->set_pagination_args( array(
 			'total_items' => $api->info['results'],
-<<<<<<< HEAD
-			'per_page' => $per_page,
-=======
 			'per_page' => $args['per_page'],
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		) );
 	}
 
@@ -249,11 +245,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 						break;
 					case 'update_available':
 						if ( $status['url'] )
-<<<<<<< HEAD
-							$action_links[] = '<a href="' . $status['url'] . '" title="' . esc_attr( sprintf( __( 'Update to version %s' ), $status['version'] ) ) . '">' . sprintf( __( 'Update Now' ), $status['version'] ) . '</a>';
-=======
 							$action_links[] = '<a href="' . $status['url'] . '" title="' . esc_attr( sprintf( __( 'Update to version %s' ), $status['version'] ) ) . '">' . __( 'Update Now' ) . '</a>';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 						break;
 					case 'latest_installed':
 					case 'newer_installed':

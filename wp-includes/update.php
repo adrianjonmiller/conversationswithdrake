@@ -13,10 +13,6 @@
  * WordPress server at api.wordpress.org server. Will only check if WordPress
  * isn't installing.
  *
-<<<<<<< HEAD
- * @package WordPress
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.3.0
  * @uses $wp_version Used to check against the newest WordPress version.
  *
@@ -120,11 +116,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 
 	$response = wp_remote_post( $url, $options );
 	if ( $ssl && is_wp_error( $response ) ) {
-<<<<<<< HEAD
-		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ) . ' ' . '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)', headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
-=======
 		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>.' ) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ), headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$response = wp_remote_post( $http_url, $options );
 	}
 
@@ -150,11 +142,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 				$offer[ $offer_key ] = esc_html( $value );
 		}
 		$offer = (object) array_intersect_key( $offer, array_fill_keys( array( 'response', 'download', 'locale',
-<<<<<<< HEAD
-			'packages', 'current', 'version', 'php_version', 'mysql_version', 'new_bundled', 'partial_version', 'notify_email' ), '' ) );
-=======
 			'packages', 'current', 'version', 'php_version', 'mysql_version', 'new_bundled', 'partial_version', 'notify_email', 'support_email' ), '' ) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	$updates = new stdClass();
@@ -165,9 +153,6 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	if ( isset( $body['translations'] ) )
 		$updates->translations = $body['translations'];
 
-<<<<<<< HEAD
-	set_site_transient( 'update_core',  $updates);
-=======
 	set_site_transient( 'update_core', $updates );
 
 	if ( ! empty( $body['ttl'] ) ) {
@@ -182,7 +167,6 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	if ( defined( 'DOING_CRON' ) && DOING_CRON && ! doing_action( 'wp_maybe_auto_update' ) ) {
 		do_action( 'wp_maybe_auto_update' );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -192,10 +176,6 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
  * all plugins installed. Checks against the WordPress server at
  * api.wordpress.org. Will only check if WordPress isn't installing.
  *
-<<<<<<< HEAD
- * @package WordPress
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.3.0
  * @uses $wp_version Used to notify the WordPress version.
  *
@@ -236,15 +216,11 @@ function wp_update_plugins( $extra_stats = array() ) {
 			$timeout = HOUR_IN_SECONDS;
 			break;
 		default :
-<<<<<<< HEAD
-			$timeout = 12 * HOUR_IN_SECONDS;
-=======
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				$timeout = 0;
 			} else {
 				$timeout = 12 * HOUR_IN_SECONDS;
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	$time_not_changed = isset( $current->last_checked ) && $timeout > ( time() - $current->last_checked );
@@ -308,11 +284,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 
 	$raw_response = wp_remote_post( $url, $options );
 	if ( $ssl && is_wp_error( $raw_response ) ) {
-<<<<<<< HEAD
-		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ) . ' ' . '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)', headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
-=======
 		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>.' ) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ), headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$raw_response = wp_remote_post( $http_url, $options );
 	}
 
@@ -343,10 +315,6 @@ function wp_update_plugins( $extra_stats = array() ) {
  * WordPress server at api.wordpress.org. Will only check if WordPress isn't
  * installing.
  *
-<<<<<<< HEAD
- * @package WordPress
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.7.0
  * @uses $wp_version Used to notify the WordPress version.
  *
@@ -398,15 +366,11 @@ function wp_update_themes( $extra_stats = array() ) {
 			$timeout = HOUR_IN_SECONDS;
 			break;
 		default :
-<<<<<<< HEAD
-			$timeout = 12 * HOUR_IN_SECONDS;
-=======
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				$timeout = 0;
 			} else {
 				$timeout = 12 * HOUR_IN_SECONDS;
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	$time_not_changed = isset( $last_update->last_checked ) && $timeout > ( time() - $last_update->last_checked );
@@ -468,11 +432,7 @@ function wp_update_themes( $extra_stats = array() ) {
 
 	$raw_response = wp_remote_post( $url, $options );
 	if ( $ssl && is_wp_error( $raw_response ) ) {
-<<<<<<< HEAD
-		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ) . ' ' . '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)', headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
-=======
 		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>.' ) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ), headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$raw_response = wp_remote_post( $http_url, $options );
 	}
 

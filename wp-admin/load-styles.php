@@ -134,11 +134,7 @@ foreach( $load as $handle ) {
 	}
 }
 
-<<<<<<< HEAD
-header('Content-Type: text/css');
-=======
 header('Content-Type: text/css; charset=UTF-8');
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 header('Expires: ' . gmdate( "D, d M Y H:i:s", time() + $expires_offset ) . ' GMT');
 header("Cache-Control: public, max-age=$expires_offset");
 

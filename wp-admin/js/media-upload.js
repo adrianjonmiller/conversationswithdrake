@@ -1,55 +1,8 @@
-<<<<<<< HEAD
-/* global tinymce, QTags, tb_remove */
-=======
 /* global tinymce, QTags */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 // send html to the post editor
 
 var wpActiveEditor, send_to_editor;
 
-<<<<<<< HEAD
-send_to_editor = function(h) {
-	var ed, mce = typeof(tinymce) != 'undefined', qt = typeof(QTags) != 'undefined';
-
-	if ( !wpActiveEditor ) {
-		if ( mce && tinymce.activeEditor ) {
-			ed = tinymce.activeEditor;
-			wpActiveEditor = ed.id;
-		} else if ( !qt ) {
-			return false;
-		}
-	} else if ( mce ) {
-		if ( tinymce.activeEditor && (tinymce.activeEditor.id == 'mce_fullscreen' || tinymce.activeEditor.id == 'wp_mce_fullscreen') )
-			ed = tinymce.activeEditor;
-		else
-			ed = tinymce.get(wpActiveEditor);
-	}
-
-	if ( ed && !ed.isHidden() ) {
-		// restore caret position on IE
-		if ( tinymce.isIE && ed.windowManager.insertimagebookmark )
-			ed.selection.moveToBookmark(ed.windowManager.insertimagebookmark);
-
-		if ( h.indexOf('[caption') !== -1 ) {
-			if ( ed.wpSetImgCaption )
-				h = ed.wpSetImgCaption(h);
-		} else if ( h.indexOf('[gallery') !== -1 ) {
-			if ( ed.plugins.wpgallery )
-				h = ed.plugins.wpgallery._do_gallery(h);
-		} else if ( h.indexOf('[embed') === 0 ) {
-			if ( ed.plugins.wordpress )
-				h = ed.plugins.wordpress._setEmbed(h);
-		}
-
-		ed.execCommand('mceInsertContent', false, h);
-	} else if ( qt ) {
-		QTags.insertContent(h);
-	} else {
-		document.getElementById(wpActiveEditor).value += h;
-	}
-
-	try{tb_remove();}catch(e){}
-=======
 send_to_editor = function( html ) {
 	var editor,
 		hasTinymce = typeof tinymce !== 'undefined',
@@ -78,7 +31,6 @@ send_to_editor = function( html ) {
 	if ( window.tb_remove ) {
 		try { window.tb_remove(); } catch( e ) {}
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 };
 
 // thickbox settings
@@ -91,13 +43,8 @@ var tb_position;
 			W = ( 720 < width ) ? 720 : width,
 			adminbar_height = 0;
 
-<<<<<<< HEAD
-		if ( $('body.admin-bar').length ) {
-			adminbar_height = parseInt( jQuery('#wpadminbar').css('height'), 10 );
-=======
 		if ( $('#wpadminbar').length ) {
 			adminbar_height = parseInt( $('#wpadminbar').css('height'), 10 );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 
 		if ( tbWindow.size() ) {
@@ -119,19 +66,4 @@ var tb_position;
 
 	$(window).resize(function(){ tb_position(); });
 
-<<<<<<< HEAD
-	// store caret position in IE
-	$(document).ready(function($){
-		$('a.thickbox').click(function(){
-			var ed;
-
-			if ( typeof(tinymce) != 'undefined' && tinymce.isIE && ( ed = tinymce.get(wpActiveEditor) ) && !ed.isHidden() ) {
-				ed.focus();
-				ed.windowManager.insertimagebookmark = ed.selection.getBookmark();
-			}
-		});
-	});
-
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 })(jQuery);

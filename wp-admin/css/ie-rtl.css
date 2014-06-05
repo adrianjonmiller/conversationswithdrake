@@ -50,11 +50,7 @@
 	width: 35%;
 }
 
-<<<<<<< HEAD
-#wp-fullscreen-title {
-=======
 .wp-fullscreen-title {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	width: 97%;
 }
 
@@ -216,10 +212,6 @@ ul#adminmenu {
 
 .theme-browser .theme .theme-screenshot {
 	height: 180px;
-<<<<<<< HEAD
-	min-width:
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .theme-browser .theme .theme-actions {
@@ -623,8 +615,6 @@ input[type="password"],
 	font-family: sans-serif;
 }
 
-<<<<<<< HEAD
-=======
 /* TinyMCE icons */
 .mce-btn i.mce-i-bold,
 .mce-btn i.mce-i-italic,
@@ -689,7 +679,6 @@ input[type="password"],
 }
 
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 /* IE6 leftovers */
 * html .row-actions {
 	visibility: visible;

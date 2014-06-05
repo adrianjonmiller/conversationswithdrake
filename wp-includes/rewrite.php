@@ -250,18 +250,11 @@ define( 'EP_ALL', EP_PERMALINK | EP_ATTACHMENT | EP_ROOT | EP_COMMENTS | EP_SEAR
  *
  * @param string $name Name of the endpoint.
  * @param int $places Endpoint mask describing the places the endpoint should be added.
-<<<<<<< HEAD
- */
-function add_rewrite_endpoint( $name, $places ) {
-	global $wp_rewrite;
-	$wp_rewrite->add_endpoint( $name, $places );
-=======
  * @param string $query_var Name of the corresponding query variable. Defaults to $name.
  */
 function add_rewrite_endpoint( $name, $places, $query_var = null ) {
 	global $wp_rewrite;
 	$wp_rewrite->add_endpoint( $name, $places, $query_var );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -296,9 +289,6 @@ function _wp_filter_taxonomy_base( $base ) {
 function url_to_postid($url) {
 	global $wp_rewrite;
 
-<<<<<<< HEAD
-	$url = apply_filters('url_to_postid', $url);
-=======
 	/**
 	 * Filter the URL to derive the post ID from.
 	 *
@@ -307,7 +297,6 @@ function url_to_postid($url) {
 	 * @param string $url The URL to derive the post ID from.
 	 */
 	$url = apply_filters( 'url_to_postid', $url );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	// First, check to see if there is a 'p=N' or 'page_id=N' to match against
 	if ( preg_match('#[?&](p|page_id|attachment_id)=(\d+)#', $url, $values) )	{
@@ -373,11 +362,7 @@ function url_to_postid($url) {
 		if ( !empty($url) && ($url != $request) && (strpos($match, $url) === 0) )
 			$request_match = $url . '/' . $request;
 
-<<<<<<< HEAD
-		if ( preg_match("!^$match!", $request_match, $matches) ) {
-=======
 		if ( preg_match("#^$match#", $request_match, $matches) ) {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			if ( $wp_rewrite->use_verbose_page_rules && preg_match( '/pagename=\$matches\[([0-9]+)\]/', $query, $varmatch ) ) {
 				// this is a verbose page match, lets check to be sure about it
@@ -1288,11 +1273,7 @@ class WP_Rewrite {
 				//match everything after the endpoint name, but allow for nothing to appear there
 				$epmatch = $endpoint[1] . '(/(.*))?/?$';
 				//this will be appended on to the rest of the query for each dir
-<<<<<<< HEAD
-				$epquery = '&' . $endpoint[1] . '=';
-=======
 				$epquery = '&' . $endpoint[2] . '=';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$ep_query_append[$epmatch] = array ( $endpoint[0], $epquery );
 			}
 		}
@@ -1585,38 +1566,6 @@ class WP_Rewrite {
 		}
 		$registration_pages['.*wp-register.php$'] = $this->index . '?register=true'; // Deprecated
 
-<<<<<<< HEAD
-		// Post
-		$post_rewrite = $this->generate_rewrite_rules( $this->permalink_structure, EP_PERMALINK );
-		$post_rewrite = apply_filters('post_rewrite_rules', $post_rewrite);
-
-		// Date
-		$date_rewrite = $this->generate_rewrite_rules($this->get_date_permastruct(), EP_DATE);
-		$date_rewrite = apply_filters('date_rewrite_rules', $date_rewrite);
-
-		// Root
-		$root_rewrite = $this->generate_rewrite_rules($this->root . '/', EP_ROOT);
-		$root_rewrite = apply_filters('root_rewrite_rules', $root_rewrite);
-
-		// Comments
-		$comments_rewrite = $this->generate_rewrite_rules($this->root . $this->comments_base, EP_COMMENTS, false, true, true, false);
-		$comments_rewrite = apply_filters('comments_rewrite_rules', $comments_rewrite);
-
-		// Search
-		$search_structure = $this->get_search_permastruct();
-		$search_rewrite = $this->generate_rewrite_rules($search_structure, EP_SEARCH);
-		$search_rewrite = apply_filters('search_rewrite_rules', $search_rewrite);
-
-		// Authors
-		$author_rewrite = $this->generate_rewrite_rules($this->get_author_permastruct(), EP_AUTHORS);
-		$author_rewrite = apply_filters('author_rewrite_rules', $author_rewrite);
-
-		// Pages
-		$page_rewrite = $this->page_rewrite_rules();
-		$page_rewrite = apply_filters('page_rewrite_rules', $page_rewrite);
-
-		// Extra permastructs
-=======
 		// Post rewrite rules.
 		$post_rewrite = $this->generate_rewrite_rules( $this->permalink_structure, EP_PERMALINK );
 
@@ -1716,7 +1665,6 @@ class WP_Rewrite {
 		$page_rewrite = apply_filters( 'page_rewrite_rules', $page_rewrite );
 
 		// Extra permastructs.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		foreach ( $this->extra_permastructs as $permastructname => $struct ) {
 			if ( is_array( $struct ) ) {
 				if ( count( $struct ) == 2 )
@@ -1727,11 +1675,6 @@ class WP_Rewrite {
 				$rules = $this->generate_rewrite_rules( $struct );
 			}
 
-<<<<<<< HEAD
-			$rules = apply_filters($permastructname . '_rewrite_rules', $rules);
-			if ( 'post_tag' == $permastructname )
-				$rules = apply_filters('tag_rewrite_rules', $rules);
-=======
 			/**
 			 * Filter rewrite rules used for individual permastructs.
 			 *
@@ -1756,7 +1699,6 @@ class WP_Rewrite {
 				 */
 				$rules = apply_filters( 'tag_rewrite_rules', $rules );
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			$this->extra_rules_top = array_merge($this->extra_rules_top, $rules);
 		}
@@ -1767,10 +1709,6 @@ class WP_Rewrite {
 		else
 			$this->rules = array_merge($this->extra_rules_top, $robots_rewrite, $deprecated_files, $registration_pages, $root_rewrite, $comments_rewrite, $search_rewrite,  $author_rewrite, $date_rewrite, $post_rewrite, $page_rewrite, $this->extra_rules);
 
-<<<<<<< HEAD
-		do_action_ref_array('generate_rewrite_rules', array(&$this));
-		$this->rules = apply_filters('rewrite_rules_array', $this->rules);
-=======
 		/**
 		 * Fires after the rewrite rules are generated.
 		 *
@@ -1788,7 +1726,6 @@ class WP_Rewrite {
 		 * @param array $this->rules The compiled array of rewrite rules.
 		 */
 		$this->rules = apply_filters( 'rewrite_rules_array', $this->rules );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		return $this->rules;
 	}
@@ -1896,10 +1833,6 @@ class WP_Rewrite {
 
 		$rules .= "</IfModule>\n";
 
-<<<<<<< HEAD
-		$rules = apply_filters('mod_rewrite_rules', $rules);
-		$rules = apply_filters('rewrite_rules', $rules);  // Deprecated
-=======
 		/**
 		 *
 		 * Filter the list of rewrite rules formatted for output to an .htaccess file.
@@ -1919,7 +1852,6 @@ class WP_Rewrite {
 		 * @param string $rules mod_rewrite Rewrite rules formatted for .htaccess.
 		 */
 		$rules = apply_filters( 'rewrite_rules', $rules );  // Deprecated
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		return $rules;
 	}
@@ -1965,9 +1897,6 @@ class WP_Rewrite {
 </configuration>';
 		}
 
-<<<<<<< HEAD
-		$rules = apply_filters('iis7_url_rewrite_rules', $rules);
-=======
 		/**
 		 * Filter the list of rewrite rules formatted for output to a web.config.
 		 *
@@ -1976,7 +1905,6 @@ class WP_Rewrite {
 		 * @param string $rules Rewrite rules formatted for IIS web.config.
 		 */
 		$rules = apply_filters( 'iis7_url_rewrite_rules', $rules );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		return $rules;
 	}
@@ -2027,22 +1955,6 @@ class WP_Rewrite {
 	/**
 	 * Add an endpoint, like /trackback/.
 	 *
-<<<<<<< HEAD
-	 * See {@link add_rewrite_endpoint()} for full documentation.
-	 *
-	 * @see add_rewrite_endpoint()
-	 * @since 2.1.0
-	 * @access public
-	 * @uses WP::add_query_var()
-	 *
-	 * @param string $name Name of the endpoint.
-	 * @param int $places Endpoint mask describing the places the endpoint should be added.
-	 */
-	function add_endpoint($name, $places) {
-		global $wp;
-		$this->endpoints[] = array ( $places, $name );
-		$wp->add_query_var($name);
-=======
 	 * @since 2.1.0
 	 * @since 3.9.0 $query_var parameter added.
 	 * @access public
@@ -2061,7 +1973,6 @@ class WP_Rewrite {
 		}
 		$this->endpoints[] = array( $places, $name, $query_var );
 		$wp->add_query_var( $query_var );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	/**
@@ -2140,19 +2051,12 @@ class WP_Rewrite {
 		 * A "hard" flush updates .htaccess (Apache) or web.config (IIS).
 		 *
 		 * @since 3.7.0
-<<<<<<< HEAD
-		 * @param bool $hard Defaults to true.
-		 */
-		if ( ! $hard || ! apply_filters( 'flush_rewrite_rules_hard', true ) )
-			return;
-=======
 		 *
 		 * @param bool $hard Whether to flush rewrite rules "hard". Default true.
 		 */
 		if ( ! $hard || ! apply_filters( 'flush_rewrite_rules_hard', true ) ) {
 			return;
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( function_exists( 'save_mod_rewrite_rules' ) )
 			save_mod_rewrite_rules();
 		if ( function_exists( 'iis7_save_url_rewrite_rules' ) )
@@ -2211,9 +2115,6 @@ class WP_Rewrite {
 			$old_permalink_structure = $this->permalink_structure;
 			update_option('permalink_structure', $permalink_structure);
 			$this->init();
-<<<<<<< HEAD
-			do_action('permalink_structure_changed', $old_permalink_structure, $permalink_structure);
-=======
 
 			/**
 			 * Fires after the permalink structure is updated.
@@ -2224,7 +2125,6 @@ class WP_Rewrite {
 			 * @param string $permalink_structure     The new permalink structure.
 			 */
 			do_action( 'permalink_structure_changed', $old_permalink_structure, $permalink_structure );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 	}
 

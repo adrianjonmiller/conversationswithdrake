@@ -24,19 +24,6 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	private $formats = array( 'aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery' );
 
 	/**
-<<<<<<< HEAD
-	 * Pluralized post format strings.
-	 *
-	 * @access private
-	 * @since Twenty Fourteen 1.0
-	 *
-	 * @var array
-	 */
-	private $format_strings;
-
-	/**
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * Constructor.
 	 *
 	 * @since Twenty Fourteen 1.0
@@ -46,26 +33,8 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	public function __construct() {
 		parent::__construct( 'widget_twentyfourteen_ephemera', __( 'Twenty Fourteen Ephemera', 'twentyfourteen' ), array(
 			'classname'   => 'widget_twentyfourteen_ephemera',
-<<<<<<< HEAD
-			'description' => __( 'Use this widget to list your recent Aside, Quote, Video, Audio, Image, Gallery, and Link posts', 'twentyfourteen' ),
-		) );
-
-		/*
-		 * @todo http://core.trac.wordpress.org/ticket/23257: Add plural versions of Post Format strings
-		 */
-		$this->format_strings = array(
-			'aside'   => __( 'Asides',    'twentyfourteen' ),
-			'image'   => __( 'Images',    'twentyfourteen' ),
-			'video'   => __( 'Videos',    'twentyfourteen' ),
-			'audio'   => __( 'Audio',     'twentyfourteen' ),
-			'quote'   => __( 'Quotes',    'twentyfourteen' ),
-			'link'    => __( 'Links',     'twentyfourteen' ),
-			'gallery' => __( 'Galleries', 'twentyfourteen' ),
-		);
-=======
 			'description' => __( 'Use this widget to list your recent Aside, Quote, Video, Audio, Image, Gallery, and Link posts.', 'twentyfourteen' ),
 		) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	/**
@@ -76,14 +45,6 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	 *
 	 * @param array $args     An array of standard parameters for widgets in this theme.
 	 * @param array $instance An array of settings for this widget instance.
-<<<<<<< HEAD
-	 * @return void Echoes its output.
-	 */
-	public function widget( $args, $instance ) {
-		$format = $instance['format'];
-		$number = empty( $instance['number'] ) ? 2 : absint( $instance['number'] );
-		$title  = apply_filters( 'widget_title', empty( $instance['title'] ) ? $this->format_strings[ $format ] : $instance['title'], $instance, $this->id_base );
-=======
 	 */
 	public function widget( $args, $instance ) {
 		$format = $instance['format'];
@@ -122,7 +83,6 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 
 		$number = empty( $instance['number'] ) ? 2 : absint( $instance['number'] );
 		$title  = apply_filters( 'widget_title', empty( $instance['title'] ) ? $format_string : $instance['title'], $instance, $this->id_base );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$ephemera = new WP_Query( array(
 			'order'          => 'DESC',
@@ -151,16 +111,12 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 			</h1>
 			<ol>
 
-<<<<<<< HEAD
-				<?php while ( $ephemera->have_posts() ) : $ephemera->the_post(); ?>
-=======
 				<?php
 					while ( $ephemera->have_posts() ) :
 						$ephemera->the_post();
 						$tmp_more = $GLOBALS['more'];
 						$GLOBALS['more'] = 0;
 				?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				<li>
 				<article <?php post_class(); ?>>
 					<div class="entry-content">
@@ -244,16 +200,12 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 				<?php endwhile; ?>
 
 			</ol>
-<<<<<<< HEAD
-			<a class="post-format-archive-link" href="<?php echo esc_url( get_post_format_link( $format ) ); ?>"><?php printf( __( 'More %s <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ), $this->format_strings[ $format ] ); ?></a>
-=======
 			<a class="post-format-archive-link" href="<?php echo esc_url( get_post_format_link( $format ) ); ?>">
 				<?php
 					/* translators: used with More archives link */
 					printf( __( '%s <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ), $format_string_more );
 				?>
 			</a>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			<?php
 
 			echo $args['after_widget'];
@@ -261,10 +213,7 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 			// Reset the post globals as this query will have stomped on it.
 			wp_reset_postdata();
 
-<<<<<<< HEAD
-=======
 			$GLOBALS['more']          = $tmp_more;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$GLOBALS['content_width'] = $tmp_content_width;
 
 		endif; // End check for ephemeral posts.
@@ -297,10 +246,6 @@ class Twenty_Fourteen_Ephemera_Widget extends WP_Widget {
 	 * @since Twenty Fourteen 1.0
 	 *
 	 * @param array $instance
-<<<<<<< HEAD
-	 * @return void
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	function form( $instance ) {
 		$title  = empty( $instance['title'] ) ? '' : esc_attr( $instance['title'] );

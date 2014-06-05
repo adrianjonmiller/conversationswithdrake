@@ -9,39 +9,22 @@
 /** WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
-<<<<<<< HEAD
-=======
 wp_enqueue_style( 'wp-mediaelement' );
 wp_enqueue_script( 'wp-playlist' );
 add_action( 'admin_footer', 'wp_underscore_playlist_templates', 0 );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 $title = __( 'About' );
 
 list( $display_version ) = explode( '-', $wp_version );
 
-<<<<<<< HEAD
-// Temporary 3.8 hack: We want to use user-profile for the color schemes but don't need the heavy zxcvbn.
-wp_deregister_script( 'zxcvbn-async' );
-wp_register_script( 'zxcvbn-async', false );
-wp_enqueue_script( 'user-profile' );
-
-include( ABSPATH . 'wp-admin/admin-header.php' );
-?>
-=======
 include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <!--[if lt IE 9]><script>document.createElement('audio');document.createElement('video');</script><![endif]-->
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <div class="wrap about-wrap">
 
 <h1><?php printf( __( 'Welcome to WordPress&nbsp;%s' ), $display_version ); ?></h1>
 
-<<<<<<< HEAD
-<div class="about-text"><?php printf( __( 'Thank you for updating to WordPress %s, the most beautiful WordPress&nbsp;yet.' ), $display_version ); ?></div>
-=======
 <div class="about-text"><?php printf( __( 'Thank you for updating! WordPress %s has lots of refinements we think you&#8217;ll love.' ), $display_version ); ?></div>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
@@ -56,86 +39,14 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 </h2>
 
 <div class="changelog point-releases">
-<<<<<<< HEAD
-	<h3><?php echo _n( 'Maintenance and Security Release', 'Maintenance and Security Releases', 3 ); ?></h3>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed %2$s bug.',
-		'<strong>Version %1$s</strong> addressed %2$s bugs.', 2 ), '3.8.3', number_format_i18n( 2 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.8.3' ); ?>
- 	</p>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
-         '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.', 9 ), '3.8.2', number_format_i18n( 9 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.8.2' ); ?>
- 	</p>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed %2$s bug.',
-		'<strong>Version %1$s</strong> addressed %2$s bugs.', 31 ), '3.8.1', number_format_i18n( 31 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.8.1' ); ?>
-=======
 	<h3><?php echo _n( 'Maintenance Release', 'Maintenance Releases', 1 ); ?></h3>
 	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed %2$s bug.',
          '<strong>Version %1$s</strong> addressed %2$s bugs.', 34 ), '3.9.1', number_format_i18n( 34 ) ); ?>
 		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.9.1' ); ?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  	</p>
 </div>
 
 <div class="changelog">
-<<<<<<< HEAD
-	<h2 class="about-headline-callout"><?php _e( 'Introducing a modern new&nbsp;design' ); ?></h2>
-	<img class="about-overview-img" src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/overview.png?1" />
-	<div class="feature-section col three-col about-updates">
-		<div class="col-1">
-			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/aesthetics.png?1" />
-			<h3><?php _e( 'Modern aesthetic' ); ?></h3>
-			<p><?php _e( 'The new WordPress dashboard has a fresh, uncluttered design that embraces clarity and simplicity.' ); ?></p>
-		</div>
-		<div class="col-2">
-			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/typography.png?1" />
-			<h3><?php _e( 'Clean typography' ); ?></h3>
-			<p><?php _e( 'The Open Sans typeface provides simple, friendly text that is optimized for both desktop and mobile viewing. It&#8217;s even open source, just like WordPress.' ); ?></p>
-		</div>
-		<div class="col-3 last-feature">
-			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/contrast.png?1" />
-			<h3><?php _e( 'Refined contrast' ); ?></h3>
-			<p><?php _e( 'We think beautiful design should never sacrifice legibility. With superior contrast and large, comfortable type, the new design is easy to read and a pleasure to navigate.' ); ?></p>
-		</div>
-	</div>
-</div>
-
-<hr>
-
-<div class="changelog">
-	<div class="feature-section col two-col">
-		<div>
-			<h3><?php _e( 'WordPress on every&nbsp;device' ); ?></h3>
-			<p><?php _e( 'We all access the internet in different ways. Smartphone, tablet, notebook, desktop &mdash; no matter what you use, WordPress will adapt and you&#8217;ll feel right at home.' ); ?></p>
-			<h4><?php _e( 'High definition at high&nbsp;speed' ); ?></h4>
-			<p><?php _e( 'WordPress is sharper than ever with new vector-based icons that scale to your screen. By ditching pixels, pages load significantly faster, too.' ); ?></p>
-		</div>
-		<div class="last-feature about-colors-img">
-			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/colors.png?1" />
-		</div>
-	</div>
-</div>
-
-<hr>
-
-<?php
-global $_wp_admin_css_colors;
-$new_colors = array( 'fresh', 'light', 'blue', 'midnight', 'sunrise', 'ectoplasm', 'ocean', 'coffee' );
-$_wp_admin_css_colors = array_intersect_key( $_wp_admin_css_colors, array_fill_keys( $new_colors, true ) );
-
-if ( count( $_wp_admin_css_colors ) > 1 && has_action( 'admin_color_scheme_picker' ) ) : ?>
-<div class="changelog about-colors">
-	<div class="feature-section col one-col">
-		<div>
-			<h3><?php _e( 'Pick a color' ); ?></h3>
-			<p><?php _e( 'We&#8217;ve included eight color schemes so you can pick your favorite. Choose from any of them below to change it instantly.' ); ?>
-				<?php
-				/** This action is documented in wp-admin/user-edit.php */
-				do_action( 'admin_color_scheme_picker' );
-				?>
-			<p><?php printf( __( 'To change your color scheme later, just <a href="%1$s">visit your profile</a>.' ), get_edit_profile_url( get_current_user_id() ) ); ?></p>
-=======
 	<div class="about-overview">
 	<?php
 	if ( ! is_ssl() && ( $locale = get_locale() ) && 'en_' === substr( $locale, 0, 3 ) ) : ?>
@@ -265,27 +176,11 @@ if ( count( $_wp_admin_css_colors ) > 1 && has_action( 'admin_color_scheme_picke
 			</div>
 			<h4><?php _e( 'Do more with audio and video' ); ?></h4>
 			<p><?php _e( 'Images have galleries; now we&#8217;ve added simple audio and video playlists, so you can showcase your music and clips.' ); ?></p>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		</div>
 	</div>
 </div>
 
 <hr>
-<<<<<<< HEAD
-<?php endif; ?>
-
-<div class="changelog">
-	<div class="feature-section col two-col">
-		<div>
-			<h3><?php _e( 'Refined theme management' ); ?></h3>
-			<p><?php _e( 'The new themes screen lets you survey your themes at a glance. Or want more information? Click to discover more. Then sit back and use your keyboard&#8217;s navigation arrows to flip through every theme you&#8217;ve got.' ); ?></p>
-			<h4><?php _e( 'Smoother widget experience' ); ?></h4>
-			<p><?php _e( 'Drag-drag-drag. Scroll-scroll-scroll. Widget management can be complicated. With the new design, we&#8217;ve worked to streamline the widgets&nbsp;screen.' ); ?></p>
-			<p><?php _e( 'Have a large monitor? Multiple widget areas stack side-by-side to use the available space. Using a tablet? Just tap a widget to add it.' ); ?></p>
-		</div>
-		<div class="last-feature about-themes-img">
-			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/themes.png?1" />
-=======
 
 <div class="changelog customize">
 	<div class="feature-section col two-col">
@@ -311,26 +206,12 @@ if ( count( $_wp_admin_css_colors ) > 1 && has_action( 'admin_color_scheme_picke
 		<?php if ( current_user_can( 'install_themes' ) ) { ?>
 			<p><a href="<?php echo network_admin_url( 'theme-install.php' ); ?>" class="button button-large button-primary"><?php _e( 'Browse Themes' ); ?></a></p>
 		<?php } ?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		</div>
 	</div>
 </div>
 
 <hr>
 
-<<<<<<< HEAD
-<div class="changelog about-twentyfourteen">
-	<h2 class="about-headline-callout"><?php _e( 'Twenty Fourteen, a sleek new magazine&nbsp;theme' ); ?></h2>
-	<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/twentyfourteen.jpg?1" />
-
-	<div class="feature-section col one-col center-col">
-		<div>
-			<h3><?php _e( 'Turn your blog into a&nbsp;magazine' ); ?></h3>
-			<p><?php _e( 'Create a beautiful magazine-style site with WordPress and Twenty Fourteen. Choose a grid or a slider to display featured content on your homepage. Customize your site with three widget areas or change your layout with two page templates.' ); ?></p>
-			<p><?php _e( 'With a striking design that does not compromise our trademark simplicity, Twenty Fourteen is our most intrepid default theme yet.' ); ?></p>
-		</div>
-	</div>
-=======
 <div class="changelog under-the-hood">
 	<h3><?php _e( 'Under the Hood' ); ?></h3>
 
@@ -354,7 +235,6 @@ if ( count( $_wp_admin_css_colors ) > 1 && has_action( 'admin_color_scheme_picke
 			<p><?php _e( 'Identify a hook in progress with <code>doing_action()</code> and <code>doing_filter()</code>, and manipulate custom image sizes with <code>has_image_size()</code> and <code>remove_image_size()</code>.' ); ?></p>
 			<p><?php _e( 'Plugins and themes registering custom image sizes can now register suggested cropping points. For example, prevent heads from being cropped out of photos with a top-center crop.' ); ?></p>
 		</div>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 </div>
 
 <hr>

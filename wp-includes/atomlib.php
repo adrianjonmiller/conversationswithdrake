@@ -7,11 +7,7 @@
  *
  * @author Elias Torres <elias@torrez.us>
  * @version 0.4
-<<<<<<< HEAD
- * @since 2.3
-=======
  * @since 2.3.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 
 /**

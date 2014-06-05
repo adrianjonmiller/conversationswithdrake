@@ -90,10 +90,7 @@ class WP_Media_List_Table extends WP_List_Table {
 		if ( 'top' == $which && !is_singular() && !$this->detached && !$this->is_trash ) {
 			$this->months_dropdown( 'attachment' );
 
-<<<<<<< HEAD
-=======
 			/** This action is documented in wp-admin/includes/class-wp-posts-list-table.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			do_action( 'restrict_manage_posts' );
 			submit_button( __( 'Filter' ), 'button', false, false, array( 'id' => 'post-query-submit' ) );
 		}
@@ -141,8 +138,6 @@ class WP_Media_List_Table extends WP_List_Table {
 		$taxonomies = get_taxonomies_for_attachments( 'objects' );
 		$taxonomies = wp_filter_object_list( $taxonomies, array( 'show_admin_column' => true ), 'and', 'name' );
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the taxonomy columns for attachments in the Media list table.
 		 *
@@ -151,7 +146,6 @@ class WP_Media_List_Table extends WP_List_Table {
 		 * @param array  $taxonomies An array of registered taxonomies to show for attachments.
 		 * @param string $post_type  The post type. Default 'attachment'.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$taxonomies = apply_filters( 'manage_taxonomies_for_attachment_columns', $taxonomies, 'attachment' );
 		$taxonomies = array_filter( $taxonomies, 'taxonomy_exists' );
 
@@ -170,12 +164,6 @@ class WP_Media_List_Table extends WP_List_Table {
 		if ( !$this->detached ) {
 			$posts_columns['parent'] = _x( 'Uploaded to', 'column name' );
 			if ( post_type_supports( 'attachment', 'comments' ) )
-<<<<<<< HEAD
-				$posts_columns['comments'] = '<span class="vers"><div title="' . esc_attr__( 'Comments' ) . '" class="comment-grey-bubble"></div></span>';
-		}
-		/* translators: column name */
-		$posts_columns['date'] = _x( 'Date', 'column name' );
-=======
 				$posts_columns['comments'] = '<span class="vers"><span title="' . esc_attr__( 'Comments' ) . '" class="comment-grey-bubble"></span></span>';
 		}
 		/* translators: column name */
@@ -189,7 +177,6 @@ class WP_Media_List_Table extends WP_List_Table {
 		 * @param bool  $detached      Whether the list table contains media not attached
 		 *                             to any posts. Default true.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$posts_columns = apply_filters( 'manage_media_columns', $posts_columns, $this->detached );
 
 		return $posts_columns;
@@ -222,11 +209,7 @@ class WP_Media_List_Table extends WP_List_Table {
 			$post_owner = ( get_current_user_id() == $post->post_author ) ? 'self' : 'other';
 			$att_title = _draft_or_post_title();
 ?>
-<<<<<<< HEAD
-	<tr id='post-<?php echo $post->ID; ?>' class='<?php echo trim( $alt . ' author-' . $post_owner . ' status-' . $post->post_status ); ?>' valign="top">
-=======
 	<tr id='post-<?php echo $post->ID; ?>' class='<?php echo trim( $alt . ' author-' . $post_owner . ' status-' . $post->post_status ); ?>'>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <?php
 
 list( $columns, $hidden ) = $this->get_column_info();
@@ -346,11 +329,7 @@ foreach ( $columns as $column_name => $column_display_name ) {
 			$parent_type = get_post_type_object( $parent->post_type );
 ?>
 			<td <?php echo $attributes ?>><strong>
-<<<<<<< HEAD
-				<?php if ( current_user_can( 'edit_post', $post->post_parent ) && $parent_type->show_ui ) { ?>
-=======
 				<?php if ( current_user_can( 'edit_post', $post->post_parent ) && $parent_type && $parent_type->show_ui ) { ?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					<a href="<?php echo get_edit_post_link( $post->post_parent ); ?>">
 						<?php echo $title ?></a><?php
 				} else {
@@ -422,8 +401,6 @@ foreach ( $columns as $column_name => $column_display_name ) {
 		}
 ?>
 		<td <?php echo $attributes ?>>
-<<<<<<< HEAD
-=======
 			<?php
 				/**
 				 * Fires for each custom column in the Media list table.
@@ -436,7 +413,6 @@ foreach ( $columns as $column_name => $column_display_name ) {
 				 * @param int    $post_id     Attachment ID.
 				 */
 			?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			<?php do_action( 'manage_media_custom_column', $column_name, $post->ID ); ?>
 		</td>
 <?php
@@ -484,8 +460,6 @@ foreach ( $columns as $column_name => $column_display_name ) {
 			}
 		}
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the action links for each attachment in the Media list table.
 		 *
@@ -497,7 +471,6 @@ foreach ( $columns as $column_name => $column_display_name ) {
 		 * @param bool    $detached Whether the list table contains media not attached
 		 *                          to any posts. Default true.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$actions = apply_filters( 'media_row_actions', $actions, $post, $this->detached );
 
 		return $actions;

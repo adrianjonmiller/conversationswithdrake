@@ -104,20 +104,11 @@ body.full-width .site-content {
 	position: relative;
 }
 .main-navigation li ul {
-<<<<<<< HEAD
-	display: none;
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	margin: 0;
 	padding: 0;
 	position: absolute;
 	top: 100%;
 	z-index: 1;
-<<<<<<< HEAD
-}
-.ie7 .main-navigation li ul {
-	left: 0;
-=======
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -128,17 +119,12 @@ body.full-width .site-content {
 	display: none;
 	left: 0;
 	overflow: visible;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 .main-navigation li ul ul,
 .ie7 .main-navigation li ul ul {
 	top: 0;
 	left: 100%;
 }
-<<<<<<< HEAD
-.main-navigation ul li:hover > ul {
-	border-left: 0;
-=======
 .main-navigation ul li:hover > ul,
 .main-navigation ul li:focus > ul,
 .main-navigation .focus > ul {
@@ -150,7 +136,6 @@ body.full-width .site-content {
 }
 .ie7 .main-navigation ul li:hover > ul,
 .ie7 .main-navigation ul li:focus > ul {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	display: block;
 }
 .main-navigation li ul li a {

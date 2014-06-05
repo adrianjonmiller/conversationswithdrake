@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/* global setUserSetting, ajaxurl, commonL10n, alert, confirm, toggleWithKeyboard, pagenow */
-=======
 /* global setUserSetting, ajaxurl, commonL10n, alert, confirm, pagenow */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 var showNotice, adminMenu, columns, validateForm, screenMeta;
 ( function( $, window, undefined ) {
 // Removed in 3.3.
@@ -232,14 +228,10 @@ $(document).ready( function() {
 		});
 
 		menu.find('a.wp-has-submenu').on( mobileEvent+'.wp-mobile-hover', function(e) {
-<<<<<<< HEAD
-			var el = $(this), parent = el.parent();
-=======
 			var b, h, o, f, menutop, wintop, maxtop,
 				el = $(this),
 				parent = el.parent(),
 				m = parent.find('.wp-submenu');
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			if ( menu.data('wp-responsive') ) {
 				return;
@@ -250,8 +242,6 @@ $(document).ready( function() {
 			//	- the submenu is not shown inline or the menu is not folded
 			if ( !parent.hasClass('opensub') && ( !parent.hasClass('wp-menu-open') || parent.width() < 40 ) ) {
 				e.preventDefault();
-<<<<<<< HEAD
-=======
 
 				menutop = parent.offset().top;
 				wintop = $(window).scrollTop();
@@ -276,7 +266,6 @@ $(document).ready( function() {
 					m.css('margin-top', '');
 				}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				menu.find('li.opensub').removeClass('opensub');
 				parent.addClass('opensub');
 			}
@@ -287,14 +276,9 @@ $(document).ready( function() {
 		over: function() {
 			var b, h, o, f, m = $(this).find('.wp-submenu'), menutop, wintop, maxtop, top = parseInt( m.css('top'), 10 );
 
-<<<<<<< HEAD
-			if ( isNaN(top) || top > -5 ) // meaning the submenu is visible
-				return;
-=======
 			if ( isNaN(top) || top > -5 ) { // meaning the submenu is visible
 				return;
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			if ( menu.data('wp-responsive') ) {
 				// The menu is in responsive mode, bail
@@ -310,18 +294,6 @@ $(document).ready( function() {
 			o = 60 + b - h;
 			f = $(window).height() + wintop - 15; // The fold
 
-<<<<<<< HEAD
-			if ( f < (b - o) )
-				o = b - f;
-
-			if ( o > maxtop )
-				o = maxtop;
-
-			if ( o > 1 )
-				m.css('margin-top', '-'+o+'px');
-			else
-				m.css('margin-top', '');
-=======
 			if ( f < (b - o) ) {
 				o = b - f;
 			}
@@ -335,7 +307,6 @@ $(document).ready( function() {
 			} else {
 				m.css('margin-top', '');
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			menu.find('li.menu-top').removeClass('opensub');
 			$(this).addClass('opensub');
@@ -406,34 +377,6 @@ $(document).ready( function() {
 		return true;
 	});
 
-<<<<<<< HEAD
-	$('thead, tfoot').find('.check-column :checkbox').click( function(e) {
-		var c = $(this).prop('checked'),
-			kbtoggle = 'undefined' == typeof toggleWithKeyboard ? false : toggleWithKeyboard,
-			toggle = e.shiftKey || kbtoggle;
-
-		$(this).closest( 'table' ).children( 'tbody' ).filter(':visible')
-		.children().children('.check-column').find(':checkbox')
-		.prop('checked', function() {
-			if ( $(this).is(':hidden') )
-				return false;
-			if ( toggle )
-				return $(this).prop( 'checked' );
-			else if (c)
-				return true;
-			return false;
-		});
-
-		$(this).closest('table').children('thead,  tfoot').filter(':visible')
-		.children().children('.check-column').find(':checkbox')
-		.prop('checked', function() {
-			if ( toggle )
-				return false;
-			else if (c)
-				return true;
-			return false;
-		});
-=======
 	$('thead, tfoot').find('.check-column :checkbox').on( 'click.wp-toggle-checkboxes', function( event ) {
 		var $this = $(this),
 			$table = $this.closest( 'table' ),
@@ -467,7 +410,6 @@ $(document).ready( function() {
 
 				return false;
 			});
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	});
 
 	// Show row actions on keyboard focus of its parent container element or any other elements contained within
@@ -790,18 +732,4 @@ $(document).ready( function() {
 	}
 })();
 
-<<<<<<< HEAD
-// internal use
-$(document).bind( 'wp_CloseOnEscape', function( e, data ) {
-	if ( typeof(data.cb) != 'function' )
-		return;
-
-	if ( typeof(data.condition) != 'function' || data.condition() )
-		data.cb();
-
-	return true;
-});
-
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }( jQuery, window ));

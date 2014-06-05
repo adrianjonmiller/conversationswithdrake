@@ -1,17 +1,9 @@
 === Akismet ===
-<<<<<<< HEAD
-Contributors: matt, ryan, andy, mdawaffe, tellyworth, josephscott, lessbloat, eoigal, automattic
-Tags: akismet, comments, spam
-Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 2.5.9
-=======
 Contributors: matt, ryan, andy, mdawaffe, tellyworth, josephscott, lessbloat, eoigal, cfinke, automattic
 Tags: akismet, comments, spam
 Requires at least: 3.0
 Tested up to: 3.9
 Stable tag: 3.0.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 License: GPLv2 or later
 
 Akismet checks your comments against the Akismet web service to see if they look like spam or not.
@@ -39,8 +31,6 @@ Upload the Akismet plugin to your blog, Activate it, then enter your [Akismet.co
 
 == Changelog ==
 
-<<<<<<< HEAD
-=======
 = 3.0.0 =
 * Move Akismet to Settings menu
 * Drop Akismet Stats menu
@@ -62,7 +52,6 @@ Upload the Akismet plugin to your blog, Activate it, then enter your [Akismet.co
 * Include X-Pingback-Forwarded-For header in outbound WordPress pingback verifications
 * Add pre-check for pingbacks, to stop spam before an outbound verification request is made
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 = 2.5.9 =
 * Update 'Already have a key' link to redirect page rather than depend on javascript
 * Fix some non-translatable strings to be translatable

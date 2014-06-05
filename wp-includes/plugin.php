@@ -16,11 +16,7 @@
  *
  * @package WordPress
  * @subpackage Plugin
-<<<<<<< HEAD
- * @since 1.5
-=======
  * @since 1.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 
 // Initialize the filter globals.
@@ -67,12 +63,6 @@ if ( ! isset( $wp_current_filter ) )
  * is valid. It is up to you to take care. This is done for optimization purposes,
  * so everything is as quick as possible.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- *
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @global array $wp_filter      A multidimensional array of all hooks and the callbacks hooked to them.
  * @global array $merged_filters Tracks the tags that need to be merged for later. If the hook is added, it doesn't need to run through that process.
  *
@@ -98,14 +88,8 @@ function add_filter( $tag, $function_to_add, $priority = 10, $accepted_args = 1 
 /**
  * Check if any filter has been registered for a hook.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.5
-=======
  * @since 2.5.0
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @global array $wp_filter Stores all of the filters
  *
  * @param string $tag The name of the filter hook.
@@ -158,12 +142,6 @@ function has_filter($tag, $function_to_check = false) {
  * $value = apply_filters( 'example_filter', 'filter me', $arg1, $arg2 );
  * </code>
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- *
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @global array $wp_filter         Stores all of the filters
  * @global array $merged_filters    Merges the filter hooks using this function.
  * @global array $wp_current_filter stores the list of current filters with the current one last
@@ -227,11 +205,6 @@ function apply_filters( $tag, $value ) {
  * @see apply_filters() This function is identical, but the arguments passed to the
  * functions hooked to <tt>$tag</tt> are supplied using an array.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 3.0.0
  * @global array $wp_filter Stores all of the filters
  * @global array $merged_filters Merges the filter hooks using this function.
@@ -291,13 +264,7 @@ function apply_filters_ref_array($tag, $args) {
  * when the hook was added. This goes for both filters and actions. No warning
  * will be given on removal failure.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 1.2
-=======
  * @since 1.2.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $tag The filter hook to which the function to be removed is hooked.
  * @param callback $function_to_remove The name of the function which should be removed.
@@ -323,11 +290,7 @@ function remove_filter( $tag, $function_to_remove, $priority = 10 ) {
 /**
  * Remove all of the hooks from a filter.
  *
-<<<<<<< HEAD
- * @since 2.7
-=======
  * @since 2.7.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $tag The filter to remove hooks from.
  * @param int $priority The priority number to remove.
@@ -352,13 +315,7 @@ function remove_all_filters($tag, $priority = false) {
 /**
  * Retrieve the name of the current filter or action.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.5
-=======
  * @since 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @return string Hook name of the current filter or action.
  */
@@ -368,8 +325,6 @@ function current_filter() {
 }
 
 /**
-<<<<<<< HEAD
-=======
  * Retrieve the name of the current action.
  *
  * @since 3.9.0
@@ -427,7 +382,6 @@ function doing_action( $action = null ) {
 }
 
 /**
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * Hooks a function on to a specific action.
  *
  * Actions are the hooks that the WordPress core launches at specific points
@@ -437,13 +391,7 @@ function doing_action( $action = null ) {
  *
  * @uses add_filter() Adds an action. Parameter list and functionality are the same.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 1.2
-=======
  * @since 1.2.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $tag The name of the action to which the $function_to_add is hooked.
  * @param callback $function_to_add The name of the function you wish to be called.
@@ -467,14 +415,8 @@ function add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1) 
  * @see apply_filters() This function works similar with the exception that
  * nothing is returned and only the functions or methods are called.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 1.2
-=======
  * @since 1.2.0
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @global array $wp_filter Stores all of the filters
  * @global array $wp_actions Increments the amount of times action was triggered.
  *
@@ -535,14 +477,8 @@ function do_action($tag, $arg = '') {
 /**
  * Retrieve the number of times an action is fired.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.1
-=======
  * @since 2.1.0
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @global array $wp_actions Increments the amount of times action was triggered.
  *
  * @param string $tag The name of the action hook.
@@ -563,14 +499,8 @@ function did_action($tag) {
  * @see do_action() This function is identical, but the arguments passed to the
  * functions hooked to <tt>$tag</tt> are supplied using an array.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.1
-=======
  * @since 2.1.0
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @global array $wp_filter Stores all of the filters
  * @global array $wp_actions Increments the amount of times action was triggered.
  *
@@ -623,14 +553,8 @@ function do_action_ref_array($tag, $args) {
 /**
  * Check if any action has been registered for a hook.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.5
-=======
  * @since 2.5.0
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @see has_filter() has_action() is an alias of has_filter().
  *
  * @param string $tag The name of the action hook.
@@ -651,13 +575,7 @@ function has_action($tag, $function_to_check = false) {
  * method can be used to remove default functions attached to a specific filter
  * hook and possibly replace them with a substitute.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 1.2
-=======
  * @since 1.2.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $tag The action hook to which the function to be removed is hooked.
  * @param callback $function_to_remove The name of the function which should be removed.
@@ -671,11 +589,7 @@ function remove_action( $tag, $function_to_remove, $priority = 10 ) {
 /**
  * Remove all of the hooks from an action.
  *
-<<<<<<< HEAD
- * @since 2.7
-=======
  * @since 2.7.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $tag The action to remove hooks from.
  * @param int $priority The priority number to remove them from.
@@ -694,13 +608,7 @@ function remove_all_actions($tag, $priority = false) {
  *
  * This method extracts the name of a plugin from its filename.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 1.5
-=======
  * @since 1.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @access private
  *
@@ -708,15 +616,6 @@ function remove_all_actions($tag, $priority = false) {
  * @return string The name of a plugin.
  * @uses WP_PLUGIN_DIR
  */
-<<<<<<< HEAD
-function plugin_basename($file) {
-	$file = str_replace('\\','/',$file); // sanitize for Win32 installs
-	$file = preg_replace('|/+|','/', $file); // remove any duplicate slash
-	$plugin_dir = str_replace('\\','/',WP_PLUGIN_DIR); // sanitize for Win32 installs
-	$plugin_dir = preg_replace('|/+|','/', $plugin_dir); // remove any duplicate slash
-	$mu_plugin_dir = str_replace('\\','/',WPMU_PLUGIN_DIR); // sanitize for Win32 installs
-	$mu_plugin_dir = preg_replace('|/+|','/', $mu_plugin_dir); // remove any duplicate slash
-=======
 function plugin_basename( $file ) {
 	global $wp_plugin_paths;
 
@@ -730,19 +629,12 @@ function plugin_basename( $file ) {
 	$plugin_dir = wp_normalize_path( WP_PLUGIN_DIR );
 	$mu_plugin_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$file = preg_replace('#^' . preg_quote($plugin_dir, '#') . '/|^' . preg_quote($mu_plugin_dir, '#') . '/#','',$file); // get relative path from plugins dir
 	$file = trim($file, '/');
 	return $file;
 }
 
 /**
-<<<<<<< HEAD
- * Gets the filesystem directory path (with trailing slash) for the plugin __FILE__ passed in
- * @package WordPress
- * @subpackage Plugin
- * @since 2.8
-=======
  * Register a plugin's real path.
  *
  * This is used in plugin_basename() to resolve symlinked paths.
@@ -782,7 +674,6 @@ function wp_register_plugin_realpath( $file ) {
  * Gets the filesystem directory path (with trailing slash) for the plugin __FILE__ passed in
  *
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $file The filename of the plugin (__FILE__)
  * @return string the filesystem path of the directory that contains the plugin
@@ -793,14 +684,8 @@ function plugin_dir_path( $file ) {
 
 /**
  * Gets the URL directory path (with trailing slash) for the plugin __FILE__ passed in
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.8
-=======
  *
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $file The filename of the plugin (__FILE__)
  * @return string the URL path of the directory that contains the plugin
@@ -822,13 +707,7 @@ function plugin_dir_url( $file ) {
  * wp-content/plugins/sample.php the name of this hook will be
  * 'activate_sample.php'.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.0
-=======
  * @since 2.0.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $file The filename of the plugin including the path.
  * @param callback $function the function hooked to the 'activate_PLUGIN' action.
@@ -851,13 +730,7 @@ function register_activation_hook($file, $function) {
  * wp-content/plugins/sample.php the name of this hook will be
  * 'deactivate_sample.php'.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.0
-=======
  * @since 2.0.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $file The filename of the plugin including the path.
  * @param callback $function the function hooked to the 'deactivate_PLUGIN' action.
@@ -887,11 +760,7 @@ function register_deactivation_hook($file, $function) {
  * should always check for the 'WP_UNINSTALL_PLUGIN' constant, before
  * executing.
  *
-<<<<<<< HEAD
- * @since 2.7
-=======
  * @since 2.7.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $file
  * @param callback $callback The callback to run when the hook is called. Must be a static method or function.
@@ -921,13 +790,7 @@ function register_uninstall_hook( $file, $callback ) {
  * functions. This function does not check for the existence of the all hook, so
  * it will fail unless the all hook exists prior to this function call.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
- * @since 2.5
-=======
  * @since 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @access private
  *
  * @uses $wp_filter Used to process all of the functions in the 'all' hook
@@ -963,11 +826,6 @@ function _wp_call_all_hook($args) {
  * Functions and static method callbacks are just returned as strings and
  * shouldn't have any speed penalty.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Plugin
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @access private
  * @since 2.2.3
  * @link http://trac.wordpress.org/ticket/3875

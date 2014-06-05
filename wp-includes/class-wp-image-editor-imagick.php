@@ -211,14 +211,6 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	/**
 	 * Resizes current image.
 	 *
-<<<<<<< HEAD
-	 * @since 3.5.0
-	 * @access public
-	 *
-	 * @param int $max_w
-	 * @param int $max_h
-	 * @param boolean $crop
-=======
 	 * At minimum, either a height or width must be provided.
 	 * If one of the two is set to null, the resize will
 	 * maintain aspect ratio according to the provided dimension.
@@ -229,7 +221,6 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * @param  int|null $max_w Image width.
 	 * @param  int|null $max_h Image height.
 	 * @param  boolean  $crop
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 * @return boolean|WP_Error
 	 */
 	public function resize( $max_w, $max_h, $crop = false ) {
@@ -268,15 +259,6 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * @param array $sizes {
 	 *     An array of image size arrays. Default sizes are 'small', 'medium', 'large'.
 	 *
-<<<<<<< HEAD
-	 *     @type array $size {
-	 *         @type int  $width  Image width.
-	 *         @type int  $height Image height.
-	 *         @type bool $crop   Optional. Whether to crop the image. Default false.
-	 *     }
-	 * }
-	 * @return array An array of resized images metadata by size.
-=======
 	 *     Either a height or width must be provided.
 	 *     If one of the two is set to null, the resize will
 	 *     maintain aspect ratio according to the provided dimension.
@@ -288,7 +270,6 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *     }
 	 * }
 	 * @return array An array of resized images' metadata by size.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function multi_resize( $sizes ) {
 		$metadata = array();
@@ -299,13 +280,6 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 			if ( ! $this->image )
 				$this->image = $orig_image->getImage();
 
-<<<<<<< HEAD
-			if ( ! ( isset( $size_data['width'] ) && isset( $size_data['height'] ) ) )
-				continue;
-
-			if ( ! isset( $size_data['crop'] ) )
-				$size_data['crop'] = false;
-=======
 			if ( ! isset( $size_data['width'] ) && ! isset( $size_data['height'] ) ) {
 				continue;
 			}
@@ -320,7 +294,6 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 			if ( ! isset( $size_data['crop'] ) ) {
 				$size_data['crop'] = false;
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			$resize_result = $this->resize( $size_data['width'], $size_data['height'], $size_data['crop'] );
 

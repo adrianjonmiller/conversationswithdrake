@@ -14,15 +14,10 @@ Description: Used to style the TinyMCE editor.
  * 5.0 - Alignment
  * 6.0 - Tables
  * 7.0 - Images
-<<<<<<< HEAD
- * 8.0 - Post Formats
- * 9.0 - RTL
-=======
  * 8.0 - Galleries
  * 9.0 - Audio/Video
  * 10.0 - Post Formats
  * 11.0 - RTL
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * ----------------------------------------------------------------------------
  */
 
@@ -349,30 +344,22 @@ img {
 	text-align: left;
 }
 
-<<<<<<< HEAD
-=======
 .html5-captions .wp-caption {
 	padding: 0;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-caption.alignleft {
 	margin: 5px 10px 5px 0;
 }
 
-<<<<<<< HEAD
-=======
 .html5-captions .wp-caption.alignleft {
 	margin-right: 20px;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-caption.alignright {
 	margin: 5px 0 5px 10px;
 }
 
-<<<<<<< HEAD
-=======
 .wp-caption.alignright img,
 .wp-caption.alignright .wp-caption-dd {
 	padding-left: 10px;
@@ -387,7 +374,6 @@ img {
 	padding: 0;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-caption-dt {
 	margin: 0;
 }
@@ -404,19 +390,12 @@ img {
 }
 
 .mceTemp + ul,
-<<<<<<< HEAD
-.mceTemp + ol  {
-=======
 .mceTemp + ol {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	list-style-position: inside;
 }
 
 
 /**
-<<<<<<< HEAD
- * 8.0 Post Formats
-=======
  * 8.0 Galleries
  * ----------------------------------------------------------------------------
  */
@@ -587,7 +566,6 @@ img {
 
 /**
  * 10.0 Post Formats
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * ----------------------------------------------------------------------------
  */
 
@@ -756,11 +734,7 @@ img {
 
 
 /**
-<<<<<<< HEAD
- * 9.0 RTL
-=======
  * 11.0 RTL
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * ----------------------------------------------------------------------------
  */
 

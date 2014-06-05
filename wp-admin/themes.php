@@ -56,11 +56,7 @@ if ( current_user_can( 'install_themes' ) ) {
 	if ( is_multisite() ) {
 		$help_install = '<p>' . __('Installing themes on Multisite can only be done from the Network Admin section.') . '</p>';
 	} else {
-<<<<<<< HEAD
-		$help_install = '<p>' . sprintf( __('If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href="%s" target="_blank">WordPress.org Theme Directory</a>. Themes in the WordPress.org Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!'), 'http://wordpress.org/themes/' ) . '</p>';
-=======
 		$help_install = '<p>' . sprintf( __('If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href="%s" target="_blank">WordPress.org Theme Directory</a>. Themes in the WordPress.org Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!'), 'https://wordpress.org/themes/' ) . '</p>';
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	get_current_screen()->add_help_tab( array(
@@ -87,11 +83,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 	'<p>' . __( '<a href="http://codex.wordpress.org/Using_Themes" target="_blank">Documentation on Using Themes</a>' ) . '</p>' .
-<<<<<<< HEAD
-	'<p>' . __( '<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
-=======
 	'<p>' . __( '<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 );
 
 if ( current_user_can( 'switch_themes' ) ) {
@@ -107,23 +99,12 @@ wp_localize_script( 'theme', '_wpThemeSettings', array(
 		'canInstall'    => ( ! is_multisite() && current_user_can( 'install_themes' ) ),
 		'installURI'    => ( ! is_multisite() && current_user_can( 'install_themes' ) ) ? admin_url( 'theme-install.php' ) : null,
 		'confirmDelete' => __( "Are you sure you want to delete this theme?\n\nClick 'Cancel' to go back, 'OK' to confirm the delete." ),
-<<<<<<< HEAD
-		'root'          => parse_url( admin_url( 'themes.php' ), PHP_URL_PATH ),
-		'theme'         => esc_html( $theme ),
-		'search'        => esc_html( $search ),
-
-=======
 		'adminUrl'      => parse_url( admin_url(), PHP_URL_PATH ),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	),
  	'l10n' => array(
  		'addNew' => __( 'Add New Theme' ),
  		'search'  => __( 'Search Installed Themes' ),
-<<<<<<< HEAD
- 		'searchPlaceholder' => __( 'Search installed themes...' ),
-=======
  		'searchPlaceholder' => __( 'Search installed themes...' ), // placeholder (no ellipsis)
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
   	),
 ) );
 
@@ -138,11 +119,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 	<h2><?php esc_html_e( 'Themes' ); ?>
 		<span class="theme-count"><?php echo count( $themes ); ?></span>
 	<?php if ( ! is_multisite() && current_user_can( 'install_themes' ) ) : ?>
-<<<<<<< HEAD
-		<a href="<?php echo admin_url( 'theme-install.php' ); ?>" class="add-new-h2"><?php echo esc_html( _x( 'Add New', 'Add new theme' ) ); ?></a>
-=======
 		<a href="<?php echo admin_url( 'theme-install.php' ); ?>" class="hide-if-no-js add-new-h2"><?php echo esc_html( _x( 'Add New', 'Add new theme' ) ); ?></a>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<?php endif; ?>
 	</h2>
 <?php

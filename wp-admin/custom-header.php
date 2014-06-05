@@ -43,11 +43,7 @@ class Custom_Image_Header {
 	var $default_headers = array();
 
 	/**
-<<<<<<< HEAD
-	 * Holds custom headers uploaded by the user
-=======
 	 * Holds custom headers uploaded by the user.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @var array
 	 * @since 3.2.0
@@ -77,14 +73,11 @@ class Custom_Image_Header {
 		$this->admin_image_div_callback = $admin_image_div_callback;
 
 		add_action( 'admin_menu', array( $this, 'init' ) );
-<<<<<<< HEAD
-=======
 
 		add_action( 'customize_save_after',         array( $this, 'customize_set_last_used' ) );
 		add_action( 'wp_ajax_custom-header-crop',   array( $this, 'ajax_header_crop'        ) );
 		add_action( 'wp_ajax_custom-header-add',    array( $this, 'ajax_header_add'         ) );
 		add_action( 'wp_ajax_custom-header-remove', array( $this, 'ajax_header_remove'      ) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	/**
@@ -105,10 +98,7 @@ class Custom_Image_Header {
 		add_action("admin_head-$page", array($this, 'js'), 50);
 		if ( $this->admin_header_callback )
 			add_action("admin_head-$page", $this->admin_header_callback, 51);
-<<<<<<< HEAD
-=======
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	/**
@@ -147,11 +137,7 @@ class Custom_Image_Header {
 		get_current_screen()->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 			'<p>' . __( '<a href="http://codex.wordpress.org/Appearance_Header_Screen" target="_blank">Documentation on Custom Header</a>' ) . '</p>' .
-<<<<<<< HEAD
-			'<p>' . __( '<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
-=======
 			'<p>' . __( '<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		);
 	}
 
@@ -197,11 +183,7 @@ class Custom_Image_Header {
 	/**
 	 * Set up the enqueue for the CSS files
 	 *
-<<<<<<< HEAD
-	 * @since 2.7
-=======
 	 * @since 2.7.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	function css_includes() {
 		$step = $this->step();
@@ -272,13 +254,10 @@ class Custom_Image_Header {
 		if ( !isset($_wp_default_headers) )
 			return;
 
-<<<<<<< HEAD
-=======
 		if ( ! empty( $this->default_headers ) ) {
 			return;
 		}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$this->default_headers = $_wp_default_headers;
 		$template_directory_uri = get_template_directory_uri();
 		$stylesheet_directory_uri = get_stylesheet_directory_uri();
@@ -286,10 +265,6 @@ class Custom_Image_Header {
 			$this->default_headers[$header]['url'] =  sprintf( $this->default_headers[$header]['url'], $template_directory_uri, $stylesheet_directory_uri );
 			$this->default_headers[$header]['thumbnail_url'] =  sprintf( $this->default_headers[$header]['thumbnail_url'], $template_directory_uri, $stylesheet_directory_uri );
 		}
-<<<<<<< HEAD
-
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	}
 
 	/**
@@ -484,11 +459,7 @@ class Custom_Image_Header {
 ?>
 
 <div class="wrap">
-<<<<<<< HEAD
-<h2><?php _e('Custom Header'); ?></h2>
-=======
 <h2><?php _e( 'Custom Header' ); ?></h2>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 <?php if ( ! empty( $this->updated ) ) { ?>
 <div id="message" class="updated">
@@ -502,20 +473,12 @@ class Custom_Image_Header {
 <tbody>
 
 <?php if ( get_custom_header() || display_header_text() ) : ?>
-<<<<<<< HEAD
-<tr valign="top">
-<th scope="row"><?php _e( 'Preview' ); ?></th>
-<td>
-	<?php if ( $this->admin_image_div_callback ) {
-	  call_user_func( $this->admin_image_div_callback );
-=======
 <tr>
 <th scope="row"><?php _e( 'Preview' ); ?></th>
 <td>
 	<?php
 	if ( $this->admin_image_div_callback ) {
 		call_user_func( $this->admin_image_div_callback );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	} else {
 		$custom_header = get_custom_header();
 		$header_image_style = 'background-image:url(' . esc_url( get_header_image() ) . ');';
@@ -540,11 +503,7 @@ class Custom_Image_Header {
 <?php endif; ?>
 
 <?php if ( current_theme_supports( 'custom-header', 'uploads' ) ) : ?>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Select Image' ); ?></th>
 <td>
 	<p><?php _e( 'You can select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. After selecting an image you will be able to crop it.' ); ?><br />
@@ -598,11 +557,7 @@ class Custom_Image_Header {
 <table class="form-table">
 <tbody>
 	<?php if ( get_uploaded_header_images() ) : ?>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Uploaded Images' ); ?></th>
 <td>
 	<p><?php _e( 'You can choose one of your previously uploaded headers, or show a random one.' ) ?></p>
@@ -613,11 +568,7 @@ class Custom_Image_Header {
 </tr>
 	<?php endif;
 	if ( ! empty( $this->default_headers ) ) : ?>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Default Images' ); ?></th>
 <td>
 <?php if ( current_theme_supports( 'custom-header', 'uploads' ) ) : ?>
@@ -632,11 +583,7 @@ class Custom_Image_Header {
 </tr>
 	<?php endif;
 	if ( get_header_image() ) : ?>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Remove Image' ); ?></th>
 <td>
 	<p><?php _e( 'This will remove the header image. You will not be able to restore any customizations.' ) ?></p>
@@ -647,11 +594,7 @@ class Custom_Image_Header {
 
 	$default_image = get_theme_support( 'custom-header', 'default-image' );
 	if ( $default_image && get_header_image() != $default_image ) : ?>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Reset Image' ); ?></th>
 <td>
 	<p><?php _e( 'This will restore the original header image. You will not be able to restore any customizations.' ) ?></p>
@@ -668,11 +611,7 @@ class Custom_Image_Header {
 
 <table class="form-table">
 <tbody>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Header Text' ); ?></th>
 <td>
 	<p>
@@ -681,11 +620,7 @@ class Custom_Image_Header {
 </td>
 </tr>
 
-<<<<<<< HEAD
-<tr valign="top" class="displaying-header-text">
-=======
 <tr class="displaying-header-text">
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 <th scope="row"><?php _e( 'Text Color' ); ?></th>
 <td>
 	<p>
@@ -893,34 +828,6 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 		$attachment_id = absint( $_POST['attachment_id'] );
 		$original = get_attached_file($attachment_id);
 
-<<<<<<< HEAD
-
-		$max_width = 0;
-		// For flex, limit size of image displayed to 1500px unless theme says otherwise
-		if ( current_theme_supports( 'custom-header', 'flex-width' ) )
-			$max_width = 1500;
-
-		if ( current_theme_supports( 'custom-header', 'max-width' ) )
-			$max_width = max( $max_width, get_theme_support( 'custom-header', 'max-width' ) );
-		$max_width = max( $max_width, get_theme_support( 'custom-header', 'width' ) );
-
-		if ( ( current_theme_supports( 'custom-header', 'flex-height' ) && ! current_theme_supports( 'custom-header', 'flex-width' ) ) || $_POST['width'] > $max_width )
-			$dst_height = absint( $_POST['height'] * ( $max_width / $_POST['width'] ) );
-		elseif ( current_theme_supports( 'custom-header', 'flex-height' ) && current_theme_supports( 'custom-header', 'flex-width' ) )
-			$dst_height = absint( $_POST['height'] );
-		else
-			$dst_height = get_theme_support( 'custom-header', 'height' );
-
-		if ( ( current_theme_supports( 'custom-header', 'flex-width' ) && ! current_theme_supports( 'custom-header', 'flex-height' ) ) || $_POST['width'] > $max_width )
-			$dst_width = absint( $_POST['width'] * ( $max_width / $_POST['width'] ) );
-		elseif ( current_theme_supports( 'custom-header', 'flex-width' ) && current_theme_supports( 'custom-header', 'flex-height' ) )
-			$dst_width = absint( $_POST['width'] );
-		else
-			$dst_width = get_theme_support( 'custom-header', 'width' );
-
-		if ( empty( $_POST['skip-cropping'] ) )
-			$cropped = wp_crop_image( $attachment_id, (int) $_POST['x1'], (int) $_POST['y1'], (int) $_POST['width'], (int) $_POST['height'], $dst_width, $dst_height );
-=======
 		$dimensions = $this->get_header_dimensions( array(
 			'height' => $_POST['height'],
 			'width'  => $_POST['width'],
@@ -930,7 +837,6 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 
 		if ( empty( $_POST['skip-cropping'] ) )
 			$cropped = wp_crop_image( $attachment_id, (int) $_POST['x1'], (int) $_POST['y1'], (int) $_POST['width'], (int) $_POST['height'], $width, $height );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		elseif ( ! empty( $_POST['create-new-attachment'] ) )
 			$cropped = _copy_image_file( $attachment_id );
 		else
@@ -942,42 +848,15 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 		/** This filter is documented in wp-admin/custom-header.php */
 		$cropped = apply_filters( 'wp_create_file_in_uploads', $cropped, $attachment_id ); // For replication
 
-<<<<<<< HEAD
-		$parent = get_post($attachment_id);
-		$parent_url = $parent->guid;
-		$url = str_replace( basename( $parent_url ), basename( $cropped ), $parent_url );
-
-		$size = @getimagesize( $cropped );
-		$image_type = ( $size ) ? $size['mime'] : 'image/jpeg';
-
-		// Construct the object array
-		$object = array(
-			'ID' => $attachment_id,
-			'post_title' => basename($cropped),
-			'post_content' => $url,
-			'post_mime_type' => $image_type,
-			'guid' => $url,
-			'context' => 'custom-header'
-		);
-=======
 		$object = $this->create_attachment_object( $cropped, $attachment_id );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( ! empty( $_POST['create-new-attachment'] ) )
 			unset( $object['ID'] );
 
 		// Update the attachment
-<<<<<<< HEAD
-		$attachment_id = wp_insert_attachment( $object, $cropped );
-		wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $cropped ) );
-
-		$width = $dst_width;
-		$height = $dst_height;
-=======
 		$attachment_id = $this->insert_attachment( $object, $cropped );
 
 		$url = $object['guid'];
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$this->set_header_image( compact( 'url', 'attachment_id', 'width', 'height' ) );
 
 		// cleanup
@@ -1138,8 +1017,6 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 		set_theme_mod( 'header_image', $default );
 		set_theme_mod( 'header_image_data', (object) $default_data );
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Calculate width and height based on what the currently selected theme supports.
@@ -1405,5 +1282,4 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 
 		return $header_images;
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }

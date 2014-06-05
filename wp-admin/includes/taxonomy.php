@@ -233,8 +233,6 @@ function get_terms_to_edit( $post_id, $taxonomy = 'post_tag' ) {
 		$tag_names[] = $tag->name;
 	$tags_to_edit = join( ',', $tag_names );
 	$tags_to_edit = esc_attr( $tags_to_edit );
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the comma-separated list of terms available to edit.
@@ -246,7 +244,6 @@ function get_terms_to_edit( $post_id, $taxonomy = 'post_tag' ) {
 	 * @param array  $tags_to_edit An array of terms.
 	 * @param string $taxonomy     The taxonomy for which to retrieve terms. Default 'post_tag'.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$tags_to_edit = apply_filters( 'terms_to_edit', $tags_to_edit, $taxonomy );
 
 	return $tags_to_edit;

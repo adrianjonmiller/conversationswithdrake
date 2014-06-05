@@ -8,22 +8,6 @@
 			position.my = 'right top';
 			position.at = 'right bottom';
 		}
-<<<<<<< HEAD
-		$( '.wp-suggest-user' ).autocomplete({
-			source:    ajaxurl + '?action=autocomplete-user&autocomplete_type=add' + id,
-			delay:     500,
-			minLength: 2,
-			position:  position,
-			open: function() {
-				$( this ).addClass( 'open' );
-			},
-			close: function() {
-				$( this ).removeClass( 'open' );
-			}
-		});
-	});
-})( jQuery );
-=======
 		$( '.wp-suggest-user' ).each( function(){
 			var $this = $( this ),
 				autocompleteType = ( typeof $this.data( 'autocompleteType' ) !== 'undefined' ) ? $this.data( 'autocompleteType' ) : 'add',
@@ -44,4 +28,3 @@
 		});
 	});
 })( jQuery );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

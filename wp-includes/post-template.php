@@ -96,11 +96,7 @@ function the_title_attribute( $args = '' ) {
  *
  * @since 0.71
  *
-<<<<<<< HEAD
- * @param int|object $post Optional. Post ID or object.
-=======
  * @param int|WP_Post $post Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @return string
  */
 function get_the_title( $post = 0 ) {
@@ -111,11 +107,6 @@ function get_the_title( $post = 0 ) {
 
 	if ( ! is_admin() ) {
 		if ( ! empty( $post->post_password ) ) {
-<<<<<<< HEAD
-			$protected_title_format = apply_filters( 'protected_title_format', __( 'Protected: %s' ) );
-			$title = sprintf( $protected_title_format, $title );
-		} else if ( isset( $post->post_status ) && 'private' == $post->post_status ) {
-=======
 
 			/**
 			 * Filter the text prepended to the post title for protected posts.
@@ -141,14 +132,11 @@ function get_the_title( $post = 0 ) {
 			 * @param string $prepend Text displayed before the post title.
 			 *                        Default 'Private: %s'.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$private_title_format = apply_filters( 'private_title_format', __( 'Private: %s' ) );
 			$title = sprintf( $private_title_format, $title );
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the post title.
 	 *
@@ -157,7 +145,6 @@ function get_the_title( $post = 0 ) {
 	 * @param string $title The post title.
 	 * @param int    $id    The post ID.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'the_title', $title, $id );
 }
 
@@ -172,11 +159,7 @@ function get_the_title( $post = 0 ) {
  *
  * @since 1.5.0
  *
-<<<<<<< HEAD
- * @param int $id Optional. Post ID.
-=======
  * @param int|WP_Post $id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function the_guid( $id = 0 ) {
 	echo esc_url( get_the_guid( $id ) );
@@ -191,19 +174,12 @@ function the_guid( $id = 0 ) {
  *
  * @since 1.5.0
  *
-<<<<<<< HEAD
- * @param int $id Optional. Post ID.
-=======
  * @param int|WP_Post $id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @return string
  */
 function get_the_guid( $id = 0 ) {
 	$post = get_post($id);
 
-<<<<<<< HEAD
-	return apply_filters('get_the_guid', $post->guid);
-=======
 	/**
 	 * Filter the Global Unique Identifier (guid) of the post.
 	 *
@@ -212,7 +188,6 @@ function get_the_guid( $id = 0 ) {
 	 * @param string $post_guid Global Unique Identifier (guid) of the post.
 	 */
 	return apply_filters( 'get_the_guid', $post->guid );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -225,8 +200,6 @@ function get_the_guid( $id = 0 ) {
  */
 function the_content( $more_link_text = null, $strip_teaser = false) {
 	$content = get_the_content( $more_link_text, $strip_teaser );
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the post content.
@@ -235,7 +208,6 @@ function the_content( $more_link_text = null, $strip_teaser = false) {
 	 *
 	 * @param string $content Content of the current post.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$content = apply_filters( 'the_content', $content );
 	$content = str_replace( ']]>', ']]&gt;', $content );
 	echo $content;
@@ -294,8 +266,6 @@ function get_the_content( $more_link_text = null, $strip_teaser = false ) {
 			$output .= '<span id="more-' . $post->ID . '"></span>' . $content[1];
 		} else {
 			if ( ! empty( $more_link_text ) )
-<<<<<<< HEAD
-=======
 
 				/**
 				 * Filter the Read More link text.
@@ -305,7 +275,6 @@ function get_the_content( $more_link_text = null, $strip_teaser = false ) {
 				 * @param string $more_link_element Read More link element.
 				 * @param string $more_link_text    Read More text.
 				 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$output .= apply_filters( 'the_content_more_link', ' <a href="' . get_permalink() . "#more-{$post->ID}\" class=\"more-link\">$more_link_text</a>", $more_link_text );
 			$output = force_balance_tags( $output );
 		}
@@ -333,12 +302,6 @@ function _convert_urlencoded_to_entities( $match ) {
  * Display the post excerpt.
  *
  * @since 0.71
-<<<<<<< HEAD
- * @uses apply_filters() Calls 'the_excerpt' hook on post excerpt.
- */
-function the_excerpt() {
-	echo apply_filters('the_excerpt', get_the_excerpt());
-=======
  */
 function the_excerpt() {
 
@@ -352,7 +315,6 @@ function the_excerpt() {
 	 * @param string $post_excerpt The post excerpt.
 	 */
 	echo apply_filters( 'the_excerpt', get_the_excerpt() );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -373,8 +335,6 @@ function get_the_excerpt( $deprecated = '' ) {
 		return __( 'There is no excerpt because this is a protected post.' );
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the retrieved post excerpt.
 	 *
@@ -382,7 +342,6 @@ function get_the_excerpt( $deprecated = '' ) {
 	 *
 	 * @param string $post_excerpt The post excerpt.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'get_the_excerpt', $post->post_excerpt );
 }
 
@@ -391,11 +350,7 @@ function get_the_excerpt( $deprecated = '' ) {
  *
  * @since 2.3.0
  *
-<<<<<<< HEAD
- * @param int $id Optional. Post ID.
-=======
  * @param int|WP_Post $id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @return bool
  */
 function has_excerpt( $id = 0 ) {
@@ -409,11 +364,7 @@ function has_excerpt( $id = 0 ) {
  * @since 2.7.0
  *
  * @param string|array $class One or more classes to add to the class list.
-<<<<<<< HEAD
- * @param int $post_id An optional post ID.
-=======
  * @param int|WP_Post $post_id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function post_class( $class = '', $post_id = null ) {
 	// Separates classes with a single space, collates classes for post DIV
@@ -423,14 +374,9 @@ function post_class( $class = '', $post_id = null ) {
 /**
  * Retrieve the classes for the post div as an array.
  *
-<<<<<<< HEAD
- * The class names are add are many. If the post is a sticky, then the 'sticky'
- * class name. The class 'hentry' is always added to each post. For each
-=======
  * The class names are many. If the post is a sticky, then the 'sticky'
  * class name. The class 'hentry' is always added to each post. If the post has a
  * post thumbnail, 'has-post-thumbnail' is added as a class. For each
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * category, the class will be added with 'category-' with category slug is
  * added. The tags are the same way as the categories with 'tag-' before the tag
  * slug. All classes are passed through the filter, 'post_class' with the list
@@ -440,11 +386,7 @@ function post_class( $class = '', $post_id = null ) {
  * @since 2.7.0
  *
  * @param string|array $class One or more classes to add to the class list.
-<<<<<<< HEAD
- * @param int $post_id An optional post ID.
-=======
  * @param int|WP_Post $post_id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @return array Array of classes.
  */
 function get_post_class( $class = '', $post_id = null ) {
@@ -471,11 +413,6 @@ function get_post_class( $class = '', $post_id = null ) {
 			$classes[] = 'format-standard';
 	}
 
-<<<<<<< HEAD
-	// post requires password
-	if ( post_password_required($post->ID) )
-		$classes[] = 'post-password-required';
-=======
 	// Post requires password
 	if ( post_password_required( $post->ID ) ) {
 		$classes[] = 'post-password-required';
@@ -483,7 +420,6 @@ function get_post_class( $class = '', $post_id = null ) {
 	} elseif ( ! is_attachment( $post ) && current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID ) ) {
 		$classes[] = 'has-post-thumbnail';
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	// sticky for Sticky Posts
 	if ( is_sticky($post->ID) && is_home() && !is_paged() )
@@ -518,9 +454,6 @@ function get_post_class( $class = '', $post_id = null ) {
 
 	$classes = array_map('esc_attr', $classes);
 
-<<<<<<< HEAD
-	return apply_filters('post_class', $classes, $class, $post->ID);
-=======
 	/**
 	 * Filter the list of CSS classes for the current post.
 	 *
@@ -531,7 +464,6 @@ function get_post_class( $class = '', $post_id = null ) {
 	 * @param int    $post_id The post ID.
 	 */
 	return apply_filters( 'post_class', $classes, $class, $post->ID );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -715,8 +647,6 @@ function get_body_class( $class = '' ) {
 
 	$classes = array_map( 'esc_attr', $classes );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the list of CSS body classes for the current post or page.
 	 *
@@ -725,7 +655,6 @@ function get_body_class( $class = '' ) {
 	 * @param array  $classes An array of body classes.
 	 * @param string $class   A comma-separated list of additional classes added to the body.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'body_class', $classes, $class );
 }
 
@@ -756,18 +685,9 @@ function post_password_required( $post = null ) {
 	return ! $hasher->CheckPassword( $post->post_password, $hash );
 }
 
-<<<<<<< HEAD
-/**
- * Page Template Functions for usage in Themes
- *
- * @package WordPress
- * @subpackage Template
- */
-=======
 //
 // Page Template Functions for usage in Themes
 //
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 /**
  * The formatted output of a list of pages.
@@ -819,8 +739,6 @@ function wp_link_pages( $args = '' ) {
 	);
 
 	$r = wp_parse_args( $args, $defaults );
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the arguments used in retrieving page links for paginated posts.
@@ -829,7 +747,6 @@ function wp_link_pages( $args = '' ) {
 	 *
 	 * @param array $r An array of arguments for page links for paginated posts.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$r = apply_filters( 'wp_link_pages_args', $r );
 	extract( $r, EXTR_SKIP );
 
@@ -843,8 +760,6 @@ function wp_link_pages( $args = '' ) {
 				$link = $link_before . str_replace( '%', $i, $pagelink ) . $link_after;
 				if ( $i != $page || ! $more && 1 == $page )
 					$link = _wp_link_page( $i ) . $link . '</a>';
-<<<<<<< HEAD
-=======
 
 				/**
 				 * Filter the HTML output of individual page number links.
@@ -854,7 +769,6 @@ function wp_link_pages( $args = '' ) {
 				 * @param string $link The page number HTML output.
 				 * @param int    $i    Page number for paginated posts' page links.
 				 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$link = apply_filters( 'wp_link_pages_link', $link, $i );
 				$output .= $separator . $link;
 			}
@@ -864,22 +778,16 @@ function wp_link_pages( $args = '' ) {
 			$i = $page - 1;
 			if ( $i ) {
 				$link = _wp_link_page( $i ) . $link_before . $previouspagelink . $link_after . '</a>';
-<<<<<<< HEAD
-=======
 
 				/** This filter is documented in wp-includes/post-template.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$link = apply_filters( 'wp_link_pages_link', $link, $i );
 				$output .= $separator . $link;
 			}
 			$i = $page + 1;
 			if ( $i <= $numpages ) {
 				$link = _wp_link_page( $i ) . $link_before . $nextpagelink . $link_after . '</a>';
-<<<<<<< HEAD
-=======
 
 				/** This filter is documented in wp-includes/post-template.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$link = apply_filters( 'wp_link_pages_link', $link, $i );
 				$output .= $separator . $link;
 			}
@@ -887,8 +795,6 @@ function wp_link_pages( $args = '' ) {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the HTML output of page links for paginated posts.
 	 *
@@ -897,7 +803,6 @@ function wp_link_pages( $args = '' ) {
 	 * @param string $output HTML output of paginated posts' page links.
 	 * @param array  $args   An array of arguments.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$output = apply_filters( 'wp_link_pages', $output, $args );
 
 	if ( $echo )
@@ -930,8 +835,6 @@ function _wp_link_page( $i ) {
 			$url = trailingslashit(get_permalink()) . user_trailingslashit($i, 'single_paged');
 	}
 
-<<<<<<< HEAD
-=======
 	if ( is_preview() ) {
 		$url = add_query_arg( array(
 			'preview' => 'true'
@@ -945,7 +848,6 @@ function _wp_link_page( $i ) {
 		}
 	}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return '<a href="' . esc_url( $url ) . '">';
 }
 
@@ -988,9 +890,6 @@ function the_meta() {
 				continue;
 			$values = array_map('trim', get_post_custom_values($key));
 			$value = implode($values,', ');
-<<<<<<< HEAD
-			echo apply_filters('the_meta_key', "<li><span class='post-meta-key'>$key:</span> $value</li>\n", $key, $value);
-=======
 
 			/**
 			 * Filter the HTML output of the li element in the post custom fields list.
@@ -1002,7 +901,6 @@ function the_meta() {
 			 * @param string $value Meta value.
 			 */
 			echo apply_filters( 'the_meta_key', "<li><span class='post-meta-key'>$key:</span> $value</li>\n", $key, $value );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 		echo "</ul>\n";
 	}
@@ -1048,9 +946,6 @@ function wp_dropdown_pages($args = '') {
 		$output .= "</select>\n";
 	}
 
-<<<<<<< HEAD
-	$output = apply_filters('wp_dropdown_pages', $output);
-=======
 	/**
 	 * Filter the HTML output of a list of pages as a drop down.
 	 *
@@ -1059,7 +954,6 @@ function wp_dropdown_pages($args = '') {
 	 * @param string $output HTML output for drop down list of pages.
 	 */
 	$output = apply_filters( 'wp_dropdown_pages', $output );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	if ( $echo )
 		echo $output;
@@ -1096,9 +990,6 @@ function wp_list_pages($args = '') {
 
 	// Allow plugins to filter an array of excluded pages (but don't put a nullstring into the array)
 	$exclude_array = ( $r['exclude'] ) ? explode(',', $r['exclude']) : array();
-<<<<<<< HEAD
-	$r['exclude'] = implode( ',', apply_filters('wp_list_pages_excludes', $exclude_array) );
-=======
 
 	/**
 	 * Filter the array of pages to exclude from the pages list.
@@ -1108,7 +999,6 @@ function wp_list_pages($args = '') {
 	 * @param array $exclude_array An array of page IDs to exclude.
 	 */
 	$r['exclude'] = implode( ',', apply_filters( 'wp_list_pages_excludes', $exclude_array ) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	// Query pages.
 	$r['hierarchical'] = 0;
@@ -1119,10 +1009,6 @@ function wp_list_pages($args = '') {
 			$output .= '<li class="pagenav">' . $r['title_li'] . '<ul>';
 
 		global $wp_query;
-<<<<<<< HEAD
-		if ( is_page() || is_attachment() || $wp_query->is_posts_page )
-			$current_page = $wp_query->get_queried_object_id();
-=======
 		if ( is_page() || is_attachment() || $wp_query->is_posts_page ) {
 			$current_page = get_queried_object_id();
 		} elseif ( is_singular() ) {
@@ -1132,16 +1018,12 @@ function wp_list_pages($args = '') {
 			}
 		}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$output .= walk_page_tree($pages, $r['depth'], $current_page, $r);
 
 		if ( $r['title_li'] )
 			$output .= '</ul></li>';
 	}
 
-<<<<<<< HEAD
-	$output = apply_filters('wp_list_pages', $output, $r);
-=======
 	/**
 	 * Filter the HTML output of the pages to list.
 	 *
@@ -1153,7 +1035,6 @@ function wp_list_pages($args = '') {
 	 * @param array  $r      An array of page-listing arguments.
 	 */
 	$output = apply_filters( 'wp_list_pages', $output, $r );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	if ( $r['echo'] )
 		echo $output;
@@ -1190,8 +1071,6 @@ function wp_list_pages($args = '') {
 function wp_page_menu( $args = array() ) {
 	$defaults = array('sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '');
 	$args = wp_parse_args( $args, $defaults );
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the arguments used to generate a page-based menu.
@@ -1202,7 +1081,6 @@ function wp_page_menu( $args = array() ) {
 	 *
 	 * @param array $args An array of page menu arguments.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$args = apply_filters( 'wp_page_menu_args', $args );
 
 	$menu = '';
@@ -1238,8 +1116,6 @@ function wp_page_menu( $args = array() ) {
 		$menu = '<ul>' . $menu . '</ul>';
 
 	$menu = '<div class="' . esc_attr($args['menu_class']) . '">' . $menu . "</div>\n";
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the HTML output of a page-based menu.
@@ -1251,7 +1127,6 @@ function wp_page_menu( $args = array() ) {
 	 * @param string $menu The HTML output.
 	 * @param array  $args An array of arguments.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$menu = apply_filters( 'wp_page_menu', $menu, $args );
 	if ( $args['echo'] )
 		echo $menu;
@@ -1305,10 +1180,6 @@ function walk_page_dropdown_tree() {
 /**
  * Create HTML list of pages.
  *
-<<<<<<< HEAD
- * @package WordPress
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.1.0
  * @uses Walker
  */
@@ -1388,8 +1259,6 @@ class Walker_Page extends Walker {
 			$css_class[] = 'current_page_parent';
 		}
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the list of CSS classes to include with each page item in the list.
 		 *
@@ -1404,7 +1273,6 @@ class Walker_Page extends Walker {
 		 * @param array   $args         An array of arguments.
 		 * @param int     $current_page ID of the current page.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
 
 		if ( '' === $page->post_title )
@@ -1441,10 +1309,6 @@ class Walker_Page extends Walker {
 /**
  * Create HTML dropdown list of pages.
  *
-<<<<<<< HEAD
- * @package WordPress
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.1.0
  * @uses Walker
  */
@@ -1481,9 +1345,6 @@ class Walker_PageDropdown extends Walker {
 		if ( $page->ID == $args['selected'] )
 			$output .= ' selected="selected"';
 		$output .= '>';
-<<<<<<< HEAD
-		$title = apply_filters( 'list_pages', $page->post_title, $page );
-=======
 
 		$title = $page->post_title;
 		if ( '' === $title ) {
@@ -1499,7 +1360,6 @@ class Walker_PageDropdown extends Walker {
 		 * @param object $page  Page data object.
 		 */
 		$title = apply_filters( 'list_pages', $title, $page );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$output .= $pad . esc_html( $title );
 		$output .= "</option>\n";
 	}
@@ -1514,11 +1374,7 @@ class Walker_PageDropdown extends Walker {
  *
  * @since 2.0.0
  *
-<<<<<<< HEAD
- * @param int $id Optional. Post ID.
-=======
  * @param int|WP_Post $id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @param bool $fullsize Optional, default is false. Whether to use full size.
  * @param bool $deprecated Deprecated. Not used.
  * @param bool $permalink Optional, default is false. Whether to include permalink.
@@ -1539,11 +1395,7 @@ function the_attachment_link( $id = 0, $fullsize = false, $deprecated = false, $
  * @since 2.5.0
  * @uses apply_filters() Calls 'wp_get_attachment_link' filter on HTML content with same parameters as function.
  *
-<<<<<<< HEAD
- * @param int $id Optional. Post ID.
-=======
  * @param int|WP_Post $id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @param string $size Optional, default is 'thumbnail'. Size of image, either array or string.
  * @param bool $permalink Optional, default is false. Whether to add permalink to image.
  * @param bool $icon Optional, default is false. Whether to include icon.
@@ -1572,8 +1424,6 @@ function wp_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = fals
 	if ( trim( $link_text ) == '' )
 		$link_text = $_post->post_title;
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter a retrieved attachment page link.
 	 *
@@ -1586,7 +1436,6 @@ function wp_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = fals
 	 * @param bool        $icon      Whether to include an icon. Default false.
 	 * @param string|bool $text      If string, will be link text. Default false.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'wp_get_attachment_link', "<a href='$url'>$link_text</a>", $id, $size, $permalink, $icon, $text );
 }
 
@@ -1594,10 +1443,6 @@ function wp_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = fals
  * Wrap attachment in <<p>> element before content.
  *
  * @since 2.0.0
-<<<<<<< HEAD
- * @uses apply_filters() Calls 'prepend_attachment' hook on HTML content.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $content
  * @return string
@@ -1608,13 +1453,6 @@ function prepend_attachment($content) {
 	if ( empty($post->post_type) || $post->post_type != 'attachment' )
 		return $content;
 
-<<<<<<< HEAD
-	$p = '<p class="attachment">';
-	// show the medium sized image representation of the attachment if available, and link to the raw file
-	$p .= wp_get_attachment_link(0, 'medium', false);
-	$p .= '</p>';
-	$p = apply_filters('prepend_attachment', $p);
-=======
 	if ( 0 === strpos( $post->post_mime_type, 'video' ) ) {
 		$meta = wp_get_attachment_metadata( get_the_ID() );
 		$atts = array( 'src' => wp_get_attachment_url() );
@@ -1642,7 +1480,6 @@ function prepend_attachment($content) {
 	 * @param string $p The attachment HTML output.
 	 */
 	$p = apply_filters( 'prepend_attachment', $p );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return "$p\n$content";
 }
@@ -1656,11 +1493,7 @@ function prepend_attachment($content) {
  *
  * @since 1.0.0
  * @uses apply_filters() Calls 'the_password_form' filter on output.
-<<<<<<< HEAD
- * @param int|WP_Post $post Optional. A post id or post object. Defaults to the current post when in The Loop, undefined otherwise.
-=======
  * @param int|WP_Post $post Optional. A post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @return string HTML content for password form for password protected post.
  */
 function get_the_password_form( $post = 0 ) {
@@ -1670,8 +1503,6 @@ function get_the_password_form( $post = 0 ) {
 	<p>' . __( 'This content is password protected. To view it please enter your password below:' ) . '</p>
 	<p><label for="' . $label . '">' . __( 'Password:' ) . ' <input name="post_password" id="' . $label . '" type="password" size="20" /></label> <input type="submit" name="Submit" value="' . esc_attr__( 'Submit' ) . '" /></p></form>
 	';
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Filter the HTML output for the protected post password form.
@@ -1684,7 +1515,6 @@ function get_the_password_form( $post = 0 ) {
 	 *
 	 * @param string $output The password form HTML output.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'the_password_form', $output );
 }
 
@@ -1741,11 +1571,6 @@ function get_page_template_slug( $post_id = null ) {
 /**
  * Retrieve formatted date timestamp of a revision (linked to that revisions's page).
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Post_Revisions
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.6.0
  *
  * @uses date_i18n()
@@ -1783,11 +1608,6 @@ function wp_post_revision_title( $revision, $link = true ) {
 /**
  * Retrieve formatted date timestamp of a revision (linked to that revisions's page).
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Post_Revisions
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 3.6.0
  *
  * @uses date_i18n()
@@ -1839,11 +1659,6 @@ function wp_post_revision_title_expanded( $revision, $link = true ) {
  * Can output either a UL with edit links or a TABLE with diff interface, and
  * restore action links.
  *
-<<<<<<< HEAD
- * @package WordPress
- * @subpackage Post_Revisions
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @since 2.6.0
  *
  * @uses wp_get_post_revisions()
@@ -1851,11 +1666,7 @@ function wp_post_revision_title_expanded( $revision, $link = true ) {
  * @uses get_edit_post_link()
  * @uses get_the_author_meta()
  *
-<<<<<<< HEAD
- * @param int|object $post_id Post ID or post object.
-=======
  * @param int|WP_Post $post_id Optional. Post ID or post object.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @param string $type 'all' (default), 'revision' or 'autosave'
  * @return null
  */
@@ -1890,25 +1701,3 @@ function wp_list_post_revisions( $post_id = 0, $type = 'all' ) {
 	echo $rows;
 	echo "</ul>";
 }
-<<<<<<< HEAD
-
-/**
- * Dashboard CSS fixes for 3.8.2.
- *
- * This function cheaply fixes #WP27082 and #WP26910 in lieu of
- * changing the massive wp-admin.css file in a point release.
- * This lucky includes file was already receiving an update.
- *
- * @since 3.8.2
- * @access private
- */
-function wp_382_css_hotfix() {
-	echo '<style type="text/css">
-#activity-widget #the-comment-list .comment-item { position: relative; }
-.tagsdiv .newtag { padding: 6px 10px; height: auto; }
-</style>
-';
-}
-add_action( 'admin_print_styles', 'wp_382_css_hotfix', 30 );
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5

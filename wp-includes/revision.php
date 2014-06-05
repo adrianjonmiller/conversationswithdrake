@@ -16,11 +16,6 @@
  * @since 2.6.0
  * @access private
  *
-<<<<<<< HEAD
- * @uses apply_filters() Calls '_wp_post_revision_fields' on 'title', 'content' and 'excerpt' fields.
- *
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @param array $post Optional a post array to be processed for insertion as a post revision.
  * @param bool $autosave optional Is the revision an autosave?
  * @return array Post array ready to be inserted as a post revision or array of fields that can be versioned.
@@ -36,9 +31,6 @@ function _wp_post_revision_fields( $post = null, $autosave = false ) {
 			'post_excerpt' => __( 'Excerpt' ),
 		);
 
-<<<<<<< HEAD
-		// Runs only once
-=======
 		/**
 		 * Filter the list of fields saved in post revisions.
 		 *
@@ -53,7 +45,6 @@ function _wp_post_revision_fields( $post = null, $autosave = false ) {
 		 * @param array $fields List of fields to revision. Contains 'post_title',
 		 *                      'post_content', and 'post_excerpt' by default.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$fields = apply_filters( '_wp_post_revision_fields', $fields );
 
 		// WP uses these internally either in versioning or elsewhere - they cannot be versioned
@@ -119,9 +110,6 @@ function wp_save_post_revision( $post_id ) {
 			}
 		}
 
-<<<<<<< HEAD
-		if ( isset( $last_revision ) && apply_filters( 'wp_save_post_revision_check_for_changes', true, $last_revision, $post ) ) {
-=======
 		/**
 		 * Filter whether the post has changed since the last revision.
 		 *
@@ -137,7 +125,6 @@ function wp_save_post_revision( $post_id ) {
 		 *
 		 */
 		if ( isset( $last_revision ) && apply_filters( 'wp_save_post_revision_check_for_changes', $check_for_changes = true, $last_revision, $post ) ) {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$post_has_changed = false;
 
 			foreach ( array_keys( _wp_post_revision_fields() ) as $field ) {
@@ -253,11 +240,7 @@ function wp_is_post_autosave( $post ) {
  *
  * @param int|object|array $post Post ID, post object OR post array.
  * @param bool $autosave Optional. Is the revision an autosave?
-<<<<<<< HEAD
- * @return mixed Null or 0 if error, new revision ID if success.
-=======
  * @return mixed WP_Error or 0 if error, new revision ID if success.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function _wp_put_post_revision( $post = null, $autosave = false ) {
 	if ( is_object($post) )
@@ -265,13 +248,8 @@ function _wp_put_post_revision( $post = null, $autosave = false ) {
 	elseif ( !is_array($post) )
 		$post = get_post($post, ARRAY_A);
 
-<<<<<<< HEAD
-	if ( !$post || empty($post['ID']) )
-		return;
-=======
 	if ( ! $post || empty($post['ID']) )
 		return new WP_Error( 'invalid_post', __( 'Invalid post ID' ) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	if ( isset($post['post_type']) && 'revision' == $post['post_type'] )
 		return new WP_Error( 'post_type', __( 'Cannot create a revision of a revision' ) );
@@ -284,10 +262,6 @@ function _wp_put_post_revision( $post = null, $autosave = false ) {
 	if ( is_wp_error($revision_id) )
 		return $revision_id;
 
-<<<<<<< HEAD
-	if ( $revision_id )
-		do_action( '_wp_put_post_revision', $revision_id );
-=======
 	if ( $revision_id ) {
 		/**
 		 * Fires once a revision has been saved.
@@ -298,7 +272,6 @@ function _wp_put_post_revision( $post = null, $autosave = false ) {
 		 */
 		do_action( '_wp_put_post_revision', $revision_id );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return $revision_id;
 }
@@ -316,18 +289,10 @@ function _wp_put_post_revision( $post = null, $autosave = false ) {
  * @return mixed Null if error or post object if success.
  */
 function wp_get_post_revision(&$post, $output = OBJECT, $filter = 'raw') {
-<<<<<<< HEAD
-	$null = null;
-	if ( !$revision = get_post( $post, OBJECT, $filter ) )
-		return $revision;
-	if ( 'revision' !== $revision->post_type )
-		return $null;
-=======
 	if ( !$revision = get_post( $post, OBJECT, $filter ) )
 		return $revision;
 	if ( 'revision' !== $revision->post_type )
 		return null;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	if ( $output == OBJECT ) {
 		return $revision;
@@ -351,11 +316,6 @@ function wp_get_post_revision(&$post, $output = OBJECT, $filter = 'raw') {
  *
  * @uses wp_get_post_revision()
  * @uses wp_update_post()
-<<<<<<< HEAD
- * @uses do_action() Calls 'wp_restore_post_revision' on post ID and revision ID if wp_update_post()
- *  is successful.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param int|object $revision_id Revision ID or revision object.
  * @param array $fields Optional. What fields to restore from. Defaults to all.
@@ -395,8 +355,6 @@ function wp_restore_post_revision( $revision_id, $fields = null ) {
 	// Update last edit user
 	update_post_meta( $post_id, '_edit_last', get_current_user_id() );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires after a post revision has been restored.
 	 *
@@ -405,7 +363,6 @@ function wp_restore_post_revision( $revision_id, $fields = null ) {
 	 * @param int $post_id     Post ID.
 	 * @param int $revision_id Post revision ID.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'wp_restore_post_revision', $post_id, $revision['ID'] );
 
 	return $post_id;
@@ -432,10 +389,6 @@ function wp_delete_post_revision( $revision_id ) {
 	if ( is_wp_error( $delete ) )
 		return $delete;
 
-<<<<<<< HEAD
-	if ( $delete )
-		do_action( 'wp_delete_post_revision', $revision->ID, $revision );
-=======
 	if ( $delete ) {
 		/**
 		 * Fires once a post revision has been deleted.
@@ -447,7 +400,6 @@ function wp_delete_post_revision( $revision_id ) {
 		 */
 		do_action( 'wp_delete_post_revision', $revision->ID, $revision );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return $delete;
 }
@@ -502,10 +454,6 @@ function wp_revisions_enabled( $post ) {
  * @since 3.6.0
  *
  * @uses post_type_supports()
-<<<<<<< HEAD
- * @uses apply_filters() Calls 'wp_revisions_to_keep' hook on the number of revisions.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param object $post The post object.
  * @return int The number of revisions to keep.
@@ -521,8 +469,6 @@ function wp_revisions_to_keep( $post ) {
 	if ( ! post_type_supports( $post->post_type, 'revisions' ) )
 		$num = 0;
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the number of revisions to save for the given post.
 	 *
@@ -533,7 +479,6 @@ function wp_revisions_to_keep( $post ) {
 	 * @param int     $num  Number of revisions to store.
 	 * @param WP_Post $post Post object.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return (int) apply_filters( 'wp_revisions_to_keep', $num, $post );
 }
 

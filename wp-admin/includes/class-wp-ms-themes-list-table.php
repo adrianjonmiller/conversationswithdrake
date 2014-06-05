@@ -49,8 +49,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		wp_reset_vars( array( 'orderby', 'order', 's' ) );
 
 		$themes = array(
-<<<<<<< HEAD
-=======
 			/**
 			 * Filter the full array of WP_Theme objects to list in the Multisite
 			 * themes list table.
@@ -59,7 +57,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 			 *
 			 * @param array $all An array of WP_Theme objects to display in the list table.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			'all' => apply_filters( 'all_themes', wp_get_themes() ),
 			'search' => array(),
 			'enabled' => array(),
@@ -295,9 +292,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		if ( ! $allowed && current_user_can( 'delete_themes' ) && ! $this->is_site_themes && $stylesheet != get_option( 'stylesheet' ) && $stylesheet != get_option( 'template' ) )
 			$actions['delete'] = '<a href="' . esc_url( wp_nonce_url( 'themes.php?action=delete-selected&amp;checked[]=' . $theme_key . '&amp;theme_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'bulk-themes' ) ) . '" title="' . esc_attr__( 'Delete this theme' ) . '" class="delete">' . __( 'Delete' ) . '</a>';
 
-<<<<<<< HEAD
-		$actions = apply_filters( 'theme_action_links', array_filter( $actions ), $theme, $context );
-=======
 		/**
 		 * Filter the action links displayed for each theme in the Multisite
 		 * themes list table.
@@ -336,7 +330,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		 * @param WP_Theme $theme   The current WP_Theme object.
 		 * @param string   $context Status of the theme.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$actions = apply_filters( "theme_action_links_$stylesheet", $actions, $theme, $context );
 
 		$class = ! $allowed ? 'inactive' : 'active';
@@ -385,8 +378,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 					if ( $theme->get('ThemeURI') )
 						$theme_meta[] = '<a href="' . $theme->display('ThemeURI') . '" title="' . esc_attr__( 'Visit theme homepage' ) . '">' . __( 'Visit Theme Site' ) . '</a>';
 
-<<<<<<< HEAD
-=======
 					/**
 					 * Filter the array of row meta for each theme in the Multisite themes
 					 * list table.
@@ -400,7 +391,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 					 * @param WP_Theme $theme      WP_Theme object.
 					 * @param string   $status     Status of the theme.
 					 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					$theme_meta = apply_filters( 'theme_row_meta', $theme_meta, $stylesheet, $theme, $status );
 					echo implode( ' | ', $theme_meta );
 
@@ -409,8 +399,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 				default:
 					echo "<td class='$column_name column-$column_name'$style>";
-<<<<<<< HEAD
-=======
 
 					/**
 					 * Fires inside each custom column of the Multisite themes list table.
@@ -421,7 +409,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 					 * @param string   $stylesheet  Directory name of the theme.
 					 * @param WP_Theme $theme       Current WP_Theme object.
 					 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					do_action( 'manage_themes_custom_column', $column_name, $stylesheet, $theme );
 					echo "</td>";
 			}
@@ -431,9 +418,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 		if ( $this->is_site_themes )
 			remove_action( "after_theme_row_$stylesheet", 'wp_theme_update_row' );
-<<<<<<< HEAD
-		do_action( 'after_theme_row', $stylesheet, $theme, $status );
-=======
 
 		/**
 		 * Fires after each row in the Multisite themes list table.
@@ -459,7 +443,6 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		 * @param WP_Theme $theme      Current WP_Theme object.
 		 * @param string   $status     Status of the theme.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( "after_theme_row_$stylesheet", $stylesheet, $theme, $status );
 	}
 }

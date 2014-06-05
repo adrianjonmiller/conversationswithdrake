@@ -340,19 +340,12 @@ window.wp = window.wp || {};
 		// The constructor for the `Views` manager.
 		Subviews: wp.Backbone.Subviews,
 
-<<<<<<< HEAD
-		constructor: function() {
-			this.views = new this.Subviews( this, this.views );
-			this.on( 'ready', this.ready, this );
-
-=======
 		constructor: function( options ) {
 			this.views = new this.Subviews( this, this.views );
 			this.on( 'ready', this.ready, this );
 
 			this.options = options || {};
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			Backbone.View.apply( this, arguments );
 		},
 

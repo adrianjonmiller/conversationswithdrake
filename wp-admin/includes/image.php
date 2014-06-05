@@ -97,17 +97,11 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 			else
 				$sizes[$s]['height'] = get_option( "{$s}_size_h" ); // For default sizes set in options
 			if ( isset( $_wp_additional_image_sizes[$s]['crop'] ) )
-<<<<<<< HEAD
-				$sizes[$s]['crop'] = intval( $_wp_additional_image_sizes[$s]['crop'] ); // For theme-added sizes
-=======
 				$sizes[$s]['crop'] = $_wp_additional_image_sizes[$s]['crop']; // For theme-added sizes
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			else
 				$sizes[$s]['crop'] = get_option( "{$s}_crop" ); // For default sizes set in options
 		}
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the image sizes automatically generated when uploading an image.
 		 *
@@ -115,7 +109,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 		 *
 		 * @param array $sizes An associative array of image sizes.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$sizes = apply_filters( 'intermediate_image_sizes_advanced', $sizes );
 
 		if ( $sizes ) {
@@ -134,36 +127,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 
 	} elseif ( preg_match( '#^video/#', get_post_mime_type( $attachment ) ) ) {
 		$metadata = wp_read_video_metadata( $file );
-<<<<<<< HEAD
-		$support = current_theme_supports( 'post-thumbnails', 'attachment:video' ) && post_type_supports( 'attachment:video', 'thumbnail' );
-	} elseif ( preg_match( '#^audio/#', get_post_mime_type( $attachment ) ) ) {
-		$metadata = wp_read_audio_metadata( $file );
-		$support = current_theme_supports( 'post-thumbnails', 'attachment:audio' ) && post_type_supports( 'attachment:audio', 'thumbnail' );
-	}
-
-	if ( $support && ! empty( $metadata['image']['data'] ) ) {
-		$ext = '.jpg';
-		switch ( $metadata['image']['mime'] ) {
-		case 'image/gif':
-			$ext = '.gif';
-			break;
-		case 'image/png':
-			$ext = '.png';
-			break;
-		}
-		$basename = str_replace( '.', '-', basename( $file ) ) . '-image' . $ext;
-		$uploaded = wp_upload_bits( $basename, '', $metadata['image']['data'] );
-		if ( false === $uploaded['error'] ) {
-			$attachment = array(
-				'post_mime_type' => $metadata['image']['mime'],
-				'post_type' => 'attachment',
-				'post_content' => '',
-			);
-			$sub_attachment_id = wp_insert_attachment( $attachment, $uploaded['file'] );
-			$attach_data = wp_generate_attachment_metadata( $sub_attachment_id, $uploaded['file'] );
-			wp_update_attachment_metadata( $sub_attachment_id, $attach_data );
-			update_post_meta( $attachment_id, '_thumbnail_id', $sub_attachment_id );
-=======
 		$support = current_theme_supports( 'post-thumbnails', 'attachment:video' ) || post_type_supports( 'attachment:video', 'thumbnail' );
 	} elseif ( preg_match( '#^audio/#', get_post_mime_type( $attachment ) ) ) {
 		$metadata = wp_read_audio_metadata( $file );
@@ -221,7 +184,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 				wp_update_attachment_metadata( $sub_attachment_id, $attach_data );
 				update_post_meta( $attachment_id, '_thumbnail_id', $sub_attachment_id );
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 	}
 
@@ -229,8 +191,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 	if ( isset( $metadata['image']['data'] ) )
 		unset( $metadata['image']['data'] );
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the generated attachment meta data.
 	 *
@@ -239,7 +199,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 	 * @param array $metadata      An array of attachment meta data.
 	 * @param int   $attachment_id Current attachment ID.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'wp_generate_attachment_metadata', $metadata, $attachment_id );
 }
 
@@ -353,9 +312,6 @@ function wp_read_image_metadata( $file ) {
 		 }
 	}
 
-<<<<<<< HEAD
-	// fetch additional info from exif if available
-=======
 	/**
 	 * Filter the image types to check for exif data.
 	 *
@@ -363,7 +319,6 @@ function wp_read_image_metadata( $file ) {
 	 *
 	 * @param array $image_types Image types to check for exif data.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	if ( is_callable( 'exif_read_data' ) && in_array( $sourceImageType, apply_filters( 'wp_read_image_metadata_types', array( IMAGETYPE_JPEG, IMAGETYPE_TIFF_II, IMAGETYPE_TIFF_MM ) ) ) ) {
 		$exif = @exif_read_data( $file );
 
@@ -411,8 +366,6 @@ function wp_read_image_metadata( $file ) {
 			$meta[ $key ] = utf8_encode( $meta[ $key ] );
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Filter the array of meta data read from an image's exif data.
 	 *
@@ -422,7 +375,6 @@ function wp_read_image_metadata( $file ) {
 	 * @param string $file            Path to image file.
 	 * @param int    $sourceImageType Type of image.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'wp_read_image_metadata', $meta, $file, $sourceImageType );
 
 }
@@ -444,10 +396,6 @@ function file_is_valid_image($path) {
  * Validate that file is suitable for displaying within a web page.
  *
  * @since 2.5.0
-<<<<<<< HEAD
- * @uses apply_filters() Calls 'file_is_displayable_image' on $result and $path.
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $path File path to test.
  * @return bool True if suitable, false if not suitable.
@@ -461,9 +409,6 @@ function file_is_displayable_image($path) {
 	else
 		$result = true;
 
-<<<<<<< HEAD
-	return apply_filters('file_is_displayable_image', $result, $path);
-=======
 	/**
 	 * Filter whether the current image is displayable in the browser.
 	 *
@@ -473,7 +418,6 @@ function file_is_displayable_image($path) {
 	 * @param string $path   Path to the image.
 	 */
 	return apply_filters( 'file_is_displayable_image', $result, $path );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /**
@@ -506,9 +450,6 @@ function load_image_to_edit( $attachment_id, $mime_type, $size = 'full' ) {
 			break;
 	}
 	if ( is_resource($image) ) {
-<<<<<<< HEAD
-		$image = apply_filters('load_image_to_edit', $image, $attachment_id, $size);
-=======
 		/**
 		 * Filter the current image being loaded for editing.
 		 *
@@ -519,7 +460,6 @@ function load_image_to_edit( $attachment_id, $mime_type, $size = 'full' ) {
 		 * @param string   $size          Image size.
 		 */
 		$image = apply_filters( 'load_image_to_edit', $image, $attachment_id, $size );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		if ( function_exists('imagealphablending') && function_exists('imagesavealpha') ) {
 			imagealphablending($image, false);
 			imagesavealpha($image, true);
@@ -546,14 +486,6 @@ function _load_image_to_edit_path( $attachment_id, $size = 'full' ) {
 
 	if ( $filepath && file_exists( $filepath ) ) {
 		if ( 'full' != $size && ( $data = image_get_intermediate_size( $attachment_id, $size ) ) ) {
-<<<<<<< HEAD
-			$filepath = apply_filters( 'load_image_to_edit_filesystempath', path_join( dirname( $filepath ), $data['file'] ), $attachment_id, $size );
-		}
-	} elseif ( function_exists( 'fopen' ) && function_exists( 'ini_get' ) && true == ini_get( 'allow_url_fopen' ) ) {
-		$filepath = apply_filters( 'load_image_to_edit_attachmenturl', wp_get_attachment_url( $attachment_id ), $attachment_id, $size );
-	}
-
-=======
 			/**
 			 * Filter the path to the current image.
 			 *
@@ -591,7 +523,6 @@ function _load_image_to_edit_path( $attachment_id, $size = 'full' ) {
 	 * @param string      $attachment_id Attachment ID.
 	 * @param string      $size          Size of the image.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'load_image_to_edit_path', $filepath, $attachment_id, $size );
 }
 

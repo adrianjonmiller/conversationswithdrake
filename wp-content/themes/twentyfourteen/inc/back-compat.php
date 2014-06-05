@@ -17,11 +17,6 @@
  * Switches to the default theme.
  *
  * @since Twenty Fourteen 1.0
-<<<<<<< HEAD
- *
- * @return void
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_switch_theme() {
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
@@ -37,11 +32,6 @@ add_action( 'after_switch_theme', 'twentyfourteen_switch_theme' );
  * Twenty Fourteen on WordPress versions prior to 3.6.
  *
  * @since Twenty Fourteen 1.0
-<<<<<<< HEAD
- *
- * @return void
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_upgrade_notice() {
 	$message = sprintf( __( 'Twenty Fourteen requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again.', 'twentyfourteen' ), $GLOBALS['wp_version'] );
@@ -52,11 +42,6 @@ function twentyfourteen_upgrade_notice() {
  * Prevent the Theme Customizer from being loaded on WordPress versions prior to 3.6.
  *
  * @since Twenty Fourteen 1.0
-<<<<<<< HEAD
- *
- * @return void
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_customize() {
 	wp_die( sprintf( __( 'Twenty Fourteen requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again.', 'twentyfourteen' ), $GLOBALS['wp_version'] ), '', array(
@@ -69,11 +54,6 @@ add_action( 'load-customize.php', 'twentyfourteen_customize' );
  * Prevent the Theme Preview from being loaded on WordPress versions prior to 3.4.
  *
  * @since Twenty Fourteen 1.0
-<<<<<<< HEAD
- *
- * @return void
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 function twentyfourteen_preview() {
 	if ( isset( $_GET['preview'] ) ) {

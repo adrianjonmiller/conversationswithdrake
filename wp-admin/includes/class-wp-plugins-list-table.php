@@ -40,8 +40,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		wp_reset_vars( array( 'orderby', 'order', 's' ) );
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the full array of plugins to list in the Plugins list table.
 		 *
@@ -51,7 +49,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 *
 		 * @param array $plugins An array of plugins to display in the list table.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$plugins = array(
 			'all' => apply_filters( 'all_plugins', get_plugins() ),
 			'search' => array(),
@@ -66,10 +63,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		$screen = $this->screen;
 
 		if ( ! is_multisite() || ( $screen->in_admin( 'network' ) && current_user_can( 'manage_network_plugins' ) ) ) {
-<<<<<<< HEAD
-			if ( apply_filters( 'show_advanced_plugins', true, 'mustuse' ) )
-				$plugins['mustuse'] = get_mu_plugins();
-=======
 
 			/**
 			 * Filter whether to display the advanced plugins list table.
@@ -91,7 +84,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			}
 
 			/** This action is documented in wp-admin/includes/class-wp-plugins-list-table.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			if ( apply_filters( 'show_advanced_plugins', true, 'dropins' ) )
 				$plugins['dropins'] = get_dropins();
 
@@ -119,18 +111,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		foreach ( (array) $plugins['all'] as $plugin_file => $plugin_data ) {
 			// Filter into individual sections
-<<<<<<< HEAD
-			if ( is_multisite() && ! $screen->in_admin( 'network' ) && is_network_only_plugin( $plugin_file ) ) {
-				unset( $plugins['all'][ $plugin_file ] );
-			} elseif ( ! $screen->in_admin( 'network' ) && is_plugin_active_for_network( $plugin_file ) ) {
-				unset( $plugins['all'][ $plugin_file ] );
-			} elseif ( ( ! $screen->in_admin( 'network' ) && is_plugin_active( $plugin_file ) )
-				|| ( $screen->in_admin( 'network' ) && is_plugin_active_for_network( $plugin_file ) ) ) {
-				$plugins['active'][ $plugin_file ] = $plugin_data;
-			} else {
-				if ( ! $screen->in_admin( 'network' ) && isset( $recently_activated[ $plugin_file ] ) ) // Was the plugin recently activated?
-					$plugins['recently_activated'][ $plugin_file ] = $plugin_data;
-=======
 			if ( is_multisite() && ! $screen->in_admin( 'network' ) && is_network_only_plugin( $plugin_file ) && ! is_plugin_active( $plugin_file ) ) {
 				// On the non-network screen, filter out network-only plugins as long as they're not individually activated
 				unset( $plugins['all'][ $plugin_file ] );
@@ -148,7 +128,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					$plugins['recently_activated'][ $plugin_file ] = $plugin_data;
 				}
 				// Populate the inactive list with plugins that aren't activated
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				$plugins['inactive'][ $plugin_file ] = $plugin_data;
 			}
 		}
@@ -198,17 +177,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		if ( is_null( $term ) )
 			$term = wp_unslash( $_REQUEST['s'] );
 
-<<<<<<< HEAD
-		foreach ( $plugin as $value )
-			if ( stripos( $value, $term ) !== false )
-				return true;
-=======
 		foreach ( $plugin as $value ) {
 			if ( false !== stripos( strip_tags( $value ), $term ) ) {
 				return true;
 			}
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		return false;
 	}
@@ -426,9 +399,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		} // end if $context
 
 		$prefix = $screen->in_admin( 'network' ) ? 'network_admin_' : '';
-<<<<<<< HEAD
-		$actions = apply_filters( $prefix . 'plugin_action_links', array_filter( $actions ), $plugin_file, $plugin_data, $context );
-=======
 
 		/**
 		 * Filter the action links displayed for each plugin in the Plugins list table.
@@ -476,7 +446,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 *                            'Inactive', 'Recently Activated', 'Upgrade',
 		 *                            'Must-Use', 'Drop-ins', 'Search'.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$actions = apply_filters( $prefix . "plugin_action_links_$plugin_file", $actions, $plugin_file, $plugin_data, $context );
 
 		$class = $is_active ? 'active' : 'inactive';
@@ -531,8 +500,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					if ( ! empty( $plugin_data['PluginURI'] ) )
 						$plugin_meta[] = '<a href="' . $plugin_data['PluginURI'] . '" title="' . esc_attr__( 'Visit plugin site' ) . '">' . __( 'Visit plugin site' ) . '</a>';
 
-<<<<<<< HEAD
-=======
 					/**
 					 * Filter the array of row meta for each plugin in the Plugins list table.
 					 *
@@ -547,7 +514,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					 *                            'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use',
 					 *                            'Drop-ins', 'Search'.
 					 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					$plugin_meta = apply_filters( 'plugin_row_meta', $plugin_meta, $plugin_file, $plugin_data, $status );
 					echo implode( ' | ', $plugin_meta );
 
@@ -555,8 +521,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					break;
 				default:
 					echo "<td class='$column_name column-$column_name'$style>";
-<<<<<<< HEAD
-=======
 
 					/**
 					 * Fires inside each custom column of the Plugins list table.
@@ -567,7 +531,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					 * @param string $plugin_file Path to the plugin file.
 					 * @param array  $plugin_data An array of plugin data.
 					 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					do_action( 'manage_plugins_custom_column', $column_name, $plugin_file, $plugin_data );
 					echo "</td>";
 			}
@@ -575,9 +538,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		echo "</tr>";
 
-<<<<<<< HEAD
-		do_action( 'after_plugin_row', $plugin_file, $plugin_data, $status );
-=======
 		/**
 		 * Fires after each row in the Plugins list table.
 		 *
@@ -605,7 +565,6 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 *                            'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use',
 		 *                            'Drop-ins', 'Search'.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( "after_plugin_row_$plugin_file", $plugin_file, $plugin_data, $status );
 	}
 }

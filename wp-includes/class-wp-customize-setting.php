@@ -2,23 +2,13 @@
 /**
  * Customize Setting Class.
  *
-<<<<<<< HEAD
-=======
  * Handles saving and sanitizing of settings.
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @package WordPress
  * @subpackage Customize
  * @since 3.4.0
  */
 class WP_Customize_Setting {
-<<<<<<< HEAD
-	public $manager;
-	public $id;
-
-	public $type            = 'theme_mod';
-	public $capability      = 'edit_theme_options';
-=======
 	/**
 	 * @access public
 	 * @var WP_Customize_Manager
@@ -50,26 +40,19 @@ class WP_Customize_Setting {
 	 * @access public
 	 * @var string
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	public $theme_supports  = '';
 	public $default         = '';
 	public $transport       = 'refresh';
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Server-side sanitization callback for the setting's value.
 	 *
 	 * @var callback
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	public $sanitize_callback    = '';
 	public $sanitize_js_callback = '';
 
 	protected $id_data = array();
-<<<<<<< HEAD
-	private $_post_value; // Cached, sanitized $_POST value.
-=======
 
 	/**
 	 * Cached and sanitized $_POST value for the setting.
@@ -78,20 +61,10 @@ class WP_Customize_Setting {
 	 * @var mixed
 	 */
 	private $_post_value;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-	 * @since 3.4.0
-	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param string $id An specific ID of the setting. Can be a
-	 *                   theme mod or option name.
-	 * @param array $args Setting arguments.
-	 * @return WP_Customize_Setting
-=======
 	 * Any supplied $args override class property defaults.
 	 *
 	 * @since 3.4.0
@@ -101,7 +74,6 @@ class WP_Customize_Setting {
 	 *                                      theme mod or option name.
 	 * @param array                $args    Setting arguments.
 	 * @return WP_Customize_Setting $setting
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	function __construct( $manager, $id, $args = array() ) {
 		$keys = array_keys( get_class_vars( __CLASS__ ) );
@@ -150,8 +122,6 @@ class WP_Customize_Setting {
 				}
 				break;
 			default :
-<<<<<<< HEAD
-=======
 
 				/**
 				 * Fires when the WP_Customize_Setting::preview() method is called for settings
@@ -161,7 +131,6 @@ class WP_Customize_Setting {
 				 *
 				 * @since 3.4.0
 				 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				do_action( 'customize_preview_' . $this->id );
 		}
 	}
@@ -180,12 +149,8 @@ class WP_Customize_Setting {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Set the value of the parameter for a specific theme.
-=======
 	 * Check user capabilities and theme supports, and then save
 	 * the value of the setting.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -197,8 +162,6 @@ class WP_Customize_Setting {
 		if ( ! $this->check_capabilities() || ! isset( $value ) )
 			return false;
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Fires when the WP_Customize_Setting::save() method is called for settings
 		 * not handled as theme_mods or options.
@@ -208,18 +171,13 @@ class WP_Customize_Setting {
 		 *
 		 * @since 3.4.0
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'customize_save_' . $this->id_data[ 'base' ] );
 
 		$this->update( $value );
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Fetches, validates, and sanitizes the $_POST value.
-=======
 	 * Fetch and sanitize the $_POST value for the setting.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -227,17 +185,11 @@ class WP_Customize_Setting {
 	 * @return mixed The default value on failure, otherwise the sanitized value.
 	 */
 	public final function post_value( $default = null ) {
-<<<<<<< HEAD
-		if ( isset( $this->_post_value ) )
-			return $this->_post_value;
-
-=======
 		// Check for a cached value
 		if ( isset( $this->_post_value ) )
 			return $this->_post_value;
 
 		// Call the manager for the post value
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$result = $this->manager->post_value( $this );
 
 		if ( isset( $result ) )
@@ -256,8 +208,6 @@ class WP_Customize_Setting {
 	 */
 	public function sanitize( $value ) {
 		$value = wp_unslash( $value );
-<<<<<<< HEAD
-=======
 
 		/**
 		 * Filter a Customize setting value in un-slashed form.
@@ -267,16 +217,11 @@ class WP_Customize_Setting {
 		 * @param mixed                $value Value of the setting.
 		 * @param WP_Customize_Setting $this  WP_Customize_Setting instance.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return apply_filters( "customize_sanitize_{$this->id}", $value, $this );
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Set the value of the parameter for a specific theme.
-=======
 	 * Save the value of the setting, using the related API.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -292,8 +237,6 @@ class WP_Customize_Setting {
 				return $this->_update_option( $value );
 				break;
 			default :
-<<<<<<< HEAD
-=======
 
 				/**
 				 * Fires when the WP_Customize_Setting::update() method is called for settings
@@ -305,7 +248,6 @@ class WP_Customize_Setting {
 				 *
 				 * @param mixed $value Value of the setting.
 				 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				return do_action( 'customize_update_' . $this->type, $value );
 		}
 	}
@@ -331,11 +273,7 @@ class WP_Customize_Setting {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Update the theme mod from the value of the parameter.
-=======
 	 * Update the option from the value of the setting.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -355,15 +293,6 @@ class WP_Customize_Setting {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Fetch the value of the parameter for a specific theme.
-	 *
-	 * @since 3.4.0
-	 *
-	 * @return mixed The requested value.
-	 */
-	public function value() {
-=======
 	 * Fetch the value of the setting.
 	 *
 	 * @since 3.4.0
@@ -372,7 +301,6 @@ class WP_Customize_Setting {
 	 */
 	public function value() {
 		// Get the callback that corresponds to the setting type.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		switch( $this->type ) {
 			case 'theme_mod' :
 				$function = 'get_theme_mod';
@@ -381,8 +309,6 @@ class WP_Customize_Setting {
 				$function = 'get_option';
 				break;
 			default :
-<<<<<<< HEAD
-=======
 
 				/**
 				 * Filter a Customize setting value not handled as a theme_mod or option.
@@ -397,7 +323,6 @@ class WP_Customize_Setting {
 				 *
 				 * @param mixed $default The setting default value. Default empty.
 				 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				return apply_filters( 'customize_value_' . $this->id_data[ 'base' ], $this->default );
 		}
 
@@ -411,19 +336,13 @@ class WP_Customize_Setting {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Escape the parameter's value for use in JavaScript.
-=======
 	 * Sanitize the setting's value for use in JavaScript.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
 	 * @return mixed The requested escaped value.
 	 */
 	public function js_value() {
-<<<<<<< HEAD
-=======
 
 		/**
 		 * Filter a Customize setting value for use in JavaScript.
@@ -435,7 +354,6 @@ class WP_Customize_Setting {
 		 * @param mixed                $value The setting value.
 		 * @param WP_Customize_Setting $this  WP_Customize_Setting instance.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$value = apply_filters( "customize_sanitize_js_{$this->id}", $this->value(), $this );
 
 		if ( is_string( $value ) )
@@ -445,11 +363,7 @@ class WP_Customize_Setting {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Check if the theme supports the setting and check user capabilities.
-=======
 	 * Validate user capabilities whether the theme supports the setting.
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 *
 	 * @since 3.4.0
 	 *
@@ -615,11 +529,8 @@ final class WP_Customize_Header_Image_Setting extends WP_Customize_Setting {
 }
 
 /**
-<<<<<<< HEAD
-=======
  * Class WP_Customize_Background_Image_Setting
  *
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @package WordPress
  * @subpackage Customize
  * @since 3.4.0

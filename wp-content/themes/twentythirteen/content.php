@@ -12,11 +12,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-<<<<<<< HEAD
-		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-=======
 		<?php if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
 		</div>

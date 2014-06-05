@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-# Copyright (C) 2013 the WordPress team
-# This file is distributed under the GNU General Public License v2 or later.
-msgid ""
-msgstr ""
-"Project-Id-Version: Twenty Fourteen 1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/twentyfourteen\n"
-"POT-Creation-Date: 2013-12-12 05:25:07+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
-=======
 # Copyright (C) 2014 the WordPress team
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
@@ -22,7 +9,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -99,31 +85,19 @@ msgstr ""
 
 #: content-aside.php:37 content-audio.php:37 content-gallery.php:37
 #: content-image.php:37 content-link.php:37 content-quote.php:37
-<<<<<<< HEAD
-#: content-video.php:37 content.php:38 inc/widgets.php:180
-=======
 #: content-video.php:37 content.php:38 inc/widgets.php:194
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "Leave a comment"
 msgstr ""
 
 #: content-aside.php:37 content-audio.php:37 content-gallery.php:37
 #: content-image.php:37 content-link.php:37 content-quote.php:37
-<<<<<<< HEAD
-#: content-video.php:37 content.php:38 inc/widgets.php:180
-=======
 #: content-video.php:37 content.php:38 inc/widgets.php:194
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "1 Comment"
 msgstr ""
 
 #: content-aside.php:37 content-audio.php:37 content-gallery.php:37
 #: content-image.php:37 content-link.php:37 content-quote.php:37
-<<<<<<< HEAD
-#: content-video.php:37 content.php:38 inc/widgets.php:180
-=======
 #: content-video.php:37 content.php:38 inc/widgets.php:194
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "% Comments"
 msgstr ""
 
@@ -136,11 +110,7 @@ msgstr ""
 
 #: content-aside.php:46 content-audio.php:46 content-gallery.php:46
 #: content-image.php:46 content-link.php:46 content-quote.php:46
-<<<<<<< HEAD
-#: content-video.php:46 content.php:54 inc/widgets.php:113 inc/widgets.php:158
-=======
 #: content-video.php:46 content.php:54 inc/widgets.php:127 inc/widgets.php:172
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
@@ -189,33 +159,6 @@ msgstr ""
 msgid "Secondary menu in left sidebar"
 msgstr ""
 
-<<<<<<< HEAD
-#: functions.php:175
-msgid "Primary Sidebar"
-msgstr ""
-
-#: functions.php:177
-msgid "Main sidebar that appears on the left."
-msgstr ""
-
-#: functions.php:184
-msgid "Content Sidebar"
-msgstr ""
-
-#: functions.php:186
-msgid "Additional sidebar that appears on the right."
-msgstr ""
-
-#: functions.php:193
-msgid "Footer Widget Area"
-msgstr ""
-
-#: functions.php:195
-msgid "Appears in the footer section of the site."
-msgstr ""
-
-#: functions.php:217
-=======
 #: functions.php:171
 msgid "Primary Sidebar"
 msgstr ""
@@ -241,22 +184,10 @@ msgid "Appears in the footer section of the site."
 msgstr ""
 
 #: functions.php:213
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgctxt "Lato font: on or off"
 msgid "on"
 msgstr ""
 
-<<<<<<< HEAD
-#: functions.php:260
-msgid "Previous"
-msgstr ""
-
-#: functions.php:261
-msgid "Next"
-msgstr ""
-
-#: functions.php:384
-=======
 #: functions.php:254
 msgid "Previous"
 msgstr ""
@@ -266,17 +197,12 @@ msgid "Next"
 msgstr ""
 
 #: functions.php:372
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "%d Article"
 msgid_plural "%d Articles"
 msgstr[0] ""
 msgstr[1] ""
 
-<<<<<<< HEAD
-#: functions.php:500
-=======
 #: functions.php:488
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "Page %s"
 msgstr ""
 
@@ -300,11 +226,7 @@ msgstr ""
 msgid "Next Image"
 msgstr ""
 
-<<<<<<< HEAD
-#: inc/back-compat.php:41 inc/back-compat.php:53 inc/back-compat.php:68
-=======
 #: inc/back-compat.php:37 inc/back-compat.php:47 inc/back-compat.php:60
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid ""
 "Twenty Fourteen requires at least WordPress version 3.6. You are running "
 "version %s. Please upgrade and try again."
@@ -326,27 +248,12 @@ msgstr ""
 msgid "Featured Content"
 msgstr ""
 
-<<<<<<< HEAD
-#: inc/customizer.php:36
-=======
 #: inc/customizer.php:36 inc/featured-content.php:409
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid ""
 "Use a <a href=\"%1$s\">tag</a> to feature your posts. If no posts match the "
 "tag, <a href=\"%2$s\">sticky posts</a> will be displayed instead."
 msgstr ""
 
-<<<<<<< HEAD
-#: inc/customizer.php:47
-msgid "Layout"
-msgstr ""
-
-#: inc/customizer.php:51
-msgid "Grid"
-msgstr ""
-
-#: inc/customizer.php:52
-=======
 #: inc/customizer.php:37 inc/customizer.php:102 inc/featured-content.php:410
 #: inc/featured-content.php:419 inc/featured-content.php:479
 msgctxt "featured content default tag slug"
@@ -362,28 +269,11 @@ msgid "Grid"
 msgstr ""
 
 #: inc/customizer.php:55
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "Slider"
 msgstr ""
 
 #. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.0)  #-#-#-#-#
 #. Theme Name of the plugin/theme
-<<<<<<< HEAD
-#: inc/customizer.php:98
-msgid "Twenty Fourteen"
-msgstr ""
-
-#: inc/customizer.php:101
-msgid ""
-"The home page features your choice of up to 6 posts prominently displayed in "
-"a grid or slider, controlled by the <a href=\"%1$s\">featured</a> tag; you "
-"can change the tag and layout in <a href=\"%2$s\">Appearance &rarr; "
-"Customize</a>. If no posts match the tag, <a href=\"%3$s\">sticky posts</a> "
-"will be displayed instead."
-msgstr ""
-
-#: inc/customizer.php:102
-=======
 #: inc/customizer.php:99
 msgid "Twenty Fourteen"
 msgstr ""
@@ -398,7 +288,6 @@ msgid ""
 msgstr ""
 
 #: inc/customizer.php:103
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid ""
 "Enhance your site design by using <a href=\"%s\">Featured Images</a> for "
 "posts you&rsquo;d like to stand out (also known as post thumbnails). This "
@@ -407,77 +296,12 @@ msgid ""
 "title&mdash;and in the Featured Content area on the home page."
 msgstr ""
 
-<<<<<<< HEAD
-#: inc/customizer.php:103
-=======
 #: inc/customizer.php:104
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid ""
 "For an in-depth tutorial, and more tips and tricks, visit the <a href=\"%s"
 "\">Twenty Fourteen documentation</a>."
 msgstr ""
 
-<<<<<<< HEAD
-#: inc/featured-content.php:409
-msgid ""
-"Use the <a href=\"%1$s\">\"featured\" tag</a> to feature your posts. You can "
-"change this to a tag of your choice; if no posts match the tag, <a href="
-"\"%2$s\">sticky posts</a> will be displayed instead."
-msgstr ""
-
-#: inc/featured-content.php:428
-msgid "Tag Name"
-msgstr ""
-
-#: inc/featured-content.php:433
-msgid "Don&rsquo;t display tag on front end."
-msgstr ""
-
-#: inc/template-tags.php:47
-msgid "&larr; Previous"
-msgstr ""
-
-#: inc/template-tags.php:48
-msgid "Next &rarr;"
-msgstr ""
-
-#: inc/template-tags.php:55
-msgid "Posts navigation"
-msgstr ""
-
-#: inc/template-tags.php:84
-msgid "Post navigation"
-msgstr ""
-
-#: inc/template-tags.php:88
-msgid "<span class=\"meta-nav\">Published In</span>%title"
-msgstr ""
-
-#: inc/template-tags.php:90
-msgid "<span class=\"meta-nav\">Previous Post</span>%title"
-msgstr ""
-
-#: inc/template-tags.php:91
-msgid "<span class=\"meta-nav\">Next Post</span>%title"
-msgstr ""
-
-#: inc/template-tags.php:110
-msgid "Sticky"
-msgstr ""
-
-#: inc/widgets.php:44
-msgid "Twenty Fourteen Ephemera"
-msgstr ""
-
-#: inc/widgets.php:46
-msgid ""
-"Use this widget to list your recent Aside, Quote, Video, Audio, Image, "
-"Gallery, and Link posts"
-msgstr ""
-
-#: inc/widgets.php:53 taxonomy-post_format.php:30
-msgid "Asides"
-=======
 #: inc/featured-content.php:431
 msgid "Tag Name"
 msgstr ""
@@ -526,36 +350,12 @@ msgstr ""
 msgid ""
 "Use this widget to list your recent Aside, Quote, Video, Audio, Image, "
 "Gallery, and Link posts."
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgstr ""
 
 #: inc/widgets.php:54 taxonomy-post_format.php:33
 msgid "Images"
 msgstr ""
 
-<<<<<<< HEAD
-#: inc/widgets.php:55 taxonomy-post_format.php:36
-msgid "Videos"
-msgstr ""
-
-#: inc/widgets.php:56 taxonomy-post_format.php:39
-msgid "Audio"
-msgstr ""
-
-#: inc/widgets.php:57 taxonomy-post_format.php:42
-msgid "Quotes"
-msgstr ""
-
-#: inc/widgets.php:58 taxonomy-post_format.php:45
-msgid "Links"
-msgstr ""
-
-#: inc/widgets.php:59 taxonomy-post_format.php:48
-msgid "Galleries"
-msgstr ""
-
-#: inc/widgets.php:148
-=======
 #: inc/widgets.php:55
 msgid "More images"
 msgstr ""
@@ -609,28 +409,12 @@ msgid "More asides"
 msgstr ""
 
 #: inc/widgets.php:162
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "This gallery contains <a href=\"%1$s\" rel=\"bookmark\">%2$s photo</a>."
 msgid_plural ""
 "This gallery contains <a href=\"%1$s\" rel=\"bookmark\">%2$s photos</a>."
 msgstr[0] ""
 msgstr[1] ""
 
-<<<<<<< HEAD
-#: inc/widgets.php:189
-msgid "More %s <span class=\"meta-nav\">&rarr;</span>"
-msgstr ""
-
-#: inc/widgets.php:236
-msgid "Title:"
-msgstr ""
-
-#: inc/widgets.php:239
-msgid "Number of posts to show:"
-msgstr ""
-
-#: inc/widgets.php:242
-=======
 #. translators: used with More archives link
 #: inc/widgets.php:206
 msgid "%s <span class=\"meta-nav\">&rarr;</span>"
@@ -645,7 +429,6 @@ msgid "Number of posts to show:"
 msgstr ""
 
 #: inc/widgets.php:261
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 msgid "Post format to show:"
 msgstr ""
 

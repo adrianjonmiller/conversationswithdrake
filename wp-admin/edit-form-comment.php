@@ -28,19 +28,11 @@ if ( !defined('ABSPATH') )
 <div class="inside">
 <table class="form-table editcomment">
 <tbody>
-<<<<<<< HEAD
-<tr valign="top">
-	<td class="first"><?php _e( 'Name:' ); ?></td>
-	<td><input type="text" name="newcomment_author" size="30" value="<?php echo esc_attr( $comment->comment_author ); ?>" id="name" /></td>
-</tr>
-<tr valign="top">
-=======
 <tr>
 	<td class="first"><?php _e( 'Name:' ); ?></td>
 	<td><input type="text" name="newcomment_author" size="30" value="<?php echo esc_attr( $comment->comment_author ); ?>" id="name" /></td>
 </tr>
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<td class="first">
 	<?php
 		if ( $comment->comment_author_email ) {
@@ -51,11 +43,7 @@ if ( !defined('ABSPATH') )
 ?></td>
 	<td><input type="text" name="newcomment_author_email" size="30" value="<?php echo $comment->comment_author_email; ?>" id="email" /></td>
 </tr>
-<<<<<<< HEAD
-<tr valign="top">
-=======
 <tr>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<td class="first">
 	<?php
 		if ( ! empty( $comment->comment_author_url ) && 'http://' != $comment->comment_author_url ) {
@@ -111,11 +99,7 @@ if ( !defined('ABSPATH') )
 
 <div class="misc-pub-section curtime misc-pub-curtime">
 <?php
-<<<<<<< HEAD
-// translators: Publish box date format, see http://php.net/date
-=======
 /* translators: Publish box date format, see http://php.net/date */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 $datef = __( 'M j, Y @ G:i' );
 $stamp = __('Submitted on: <b>%1$s</b>');
 $date = date_i18n( $datef, strtotime( $comment->comment_date ) );

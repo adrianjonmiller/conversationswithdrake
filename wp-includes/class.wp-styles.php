@@ -29,8 +29,6 @@ class WP_Styles extends WP_Dependencies {
 	var $default_dirs;
 
 	function __construct() {
-<<<<<<< HEAD
-=======
 		/**
 		 * Fires when the WP_Styles instance is initialized.
 		 *
@@ -38,7 +36,6 @@ class WP_Styles extends WP_Dependencies {
 		 *
 		 * @param WP_Styles &$this WP_Styles instance, passed by reference.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action_ref_array( 'wp_default_styles', array(&$this) );
 	}
 
@@ -72,11 +69,6 @@ class WP_Styles extends WP_Dependencies {
 			$media = 'all';
 
 		$href = $this->_css_href( $obj->src, $ver, $handle );
-<<<<<<< HEAD
-		$rel = isset($obj->extra['alt']) && $obj->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
-		$title = isset($obj->extra['title']) ? "title='" . esc_attr( $obj->extra['title'] ) . "'" : '';
-
-=======
 		if ( empty( $href ) ) {
 			// Turns out there is nothing to print.
 			return true;
@@ -92,7 +84,6 @@ class WP_Styles extends WP_Dependencies {
 		 * @param string         The link tag for the enqueued style.
 		 * @param string $handle The style's registered handle.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle );
 		if ( 'rtl' === $this->text_direction && isset($obj->extra['rtl']) && $obj->extra['rtl'] ) {
 			if ( is_bool( $obj->extra['rtl'] ) || 'replace' === $obj->extra['rtl'] ) {
@@ -102,8 +93,6 @@ class WP_Styles extends WP_Dependencies {
 				$rtl_href = $this->_css_href( $obj->extra['rtl'], $ver, "$handle-rtl" );
 			}
 
-<<<<<<< HEAD
-=======
 			/**
 			 * Filter the right-to-left (RTL) HTML link tag of an enqueued style.
 			 *
@@ -112,7 +101,6 @@ class WP_Styles extends WP_Dependencies {
 			 * @param string $rtl_style The right to left link tag for the enqueued style.
 			 * @param string $handle    The style's registered handle.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$rtl_tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-rtl-css' $title href='$rtl_href' type='text/css' media='$media' />\n", $handle );
 
 			if ( $obj->extra['rtl'] === 'replace' ) {
@@ -171,10 +159,6 @@ class WP_Styles extends WP_Dependencies {
 
 	function all_deps( $handles, $recursion = false, $group = false ) {
 		$r = parent::all_deps( $handles, $recursion );
-<<<<<<< HEAD
-		if ( !$recursion )
-			$this->to_do = apply_filters( 'print_styles_array', $this->to_do );
-=======
 		if ( !$recursion ) {
 			/**
 			 * Filter the array of enqueued styles before processing for output.
@@ -185,7 +169,6 @@ class WP_Styles extends WP_Dependencies {
 			 */
 			$this->to_do = apply_filters( 'print_styles_array', $this->to_do );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return $r;
 	}
 
@@ -196,8 +179,6 @@ class WP_Styles extends WP_Dependencies {
 
 		if ( !empty($ver) )
 			$src = add_query_arg('ver', $ver, $src);
-<<<<<<< HEAD
-=======
 
 		/**
 		 * Filter an enqueued style's fully-qualified URL.
@@ -207,7 +188,6 @@ class WP_Styles extends WP_Dependencies {
 		 * @param string $src    The source URL of the enqueued style.
 		 * @param string $handle The style's registered handle.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$src = apply_filters( 'style_loader_src', $src, $handle );
 		return esc_url( $src );
 	}

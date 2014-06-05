@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 /* globals _wpCustomizeHeader, _wpMediaViewsL10n */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 (function( exports, $ ){
 	var api = wp.customize;
 
@@ -310,8 +307,6 @@
 		}
 	});
 
-<<<<<<< HEAD
-=======
 	api.HeaderControl = api.Control.extend({
 		ready: function() {
 			this.btnRemove        = $('#customize-control-header_image .actions .remove');
@@ -522,7 +517,6 @@
 
 	});
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	// Change objects contained within the main customize object to Settings.
 	api.defaultConstructor = api.Setting;
 
@@ -903,12 +897,8 @@
 	api.controlConstructor = {
 		color:  api.ColorControl,
 		upload: api.UploadControl,
-<<<<<<< HEAD
-		image:  api.ImageControl
-=======
 		image:  api.ImageControl,
 		header: api.HeaderControl
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	};
 
 	$( function() {
@@ -927,15 +917,6 @@
 			body = $( document.body ),
 			overlay = body.children('.wp-full-overlay');
 
-<<<<<<< HEAD
-		// Prevent the form from saving when enter is pressed.
-		$('#customize-controls').on( 'keydown', function( e ) {
-			if ( $( e.target ).is('textarea') )
-				return;
-
-			if ( 13 === e.which ) // Enter
-				e.preventDefault();
-=======
 		// Prevent the form from saving when enter is pressed on an input or select element.
 		$('#customize-controls').on( 'keydown', function( e ) {
 			var isEnter = ( 13 === e.which ),
@@ -944,7 +925,6 @@
 			if ( isEnter && ( $el.is( 'input:not([type=button])' ) || $el.is( 'select' ) ) ) {
 				e.preventDefault();
 			}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		});
 
 		// Initialize Previewer
@@ -972,38 +952,6 @@
 					query = $.extend( this.query(), {
 						action: 'customize_save',
 						nonce:  this.nonce.save
-<<<<<<< HEAD
-					}),
-					request = $.post( api.settings.url.ajax, query );
-
-				api.trigger( 'save', request );
-
-				body.addClass('saving');
-
-				request.always( function() {
-					body.removeClass('saving');
-				});
-
-				request.done( function( response ) {
-					// Check if the user is logged out.
-					if ( '0' === response ) {
-						self.preview.iframe.hide();
-						self.login().done( function() {
-							self.save();
-							self.preview.iframe.show();
-						});
-						return;
-					}
-
-					// Check for cheaters.
-					if ( '-1' === response ) {
-						self.cheatin();
-						return;
-					}
-
-					api.trigger( 'saved' );
-				});
-=======
 					} ),
 					processing = api.state( 'processing' ),
 					submitWhenDoneProcessing,
@@ -1053,7 +1001,6 @@
 					api.state.bind( 'change', submitWhenDoneProcessing );
 				}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			}
 		});
 
@@ -1088,14 +1035,9 @@
 		// Save and activated states
 		(function() {
 			var state = new api.Values(),
-<<<<<<< HEAD
-				saved = state.create('saved'),
-				activated = state.create('activated');
-=======
 				saved = state.create( 'saved' ),
 				activated = state.create( 'activated' ),
 				processing = state.create( 'processing' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			state.bind( 'change', function() {
 				var save = $('#save'),
@@ -1118,10 +1060,7 @@
 			// Set default states.
 			saved( true );
 			activated( api.settings.theme.active );
-<<<<<<< HEAD
-=======
 			processing( 0 );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 			api.bind( 'change', function() {
 				state('saved').set( false );
@@ -1256,38 +1195,6 @@
 			});
 		});
 
-<<<<<<< HEAD
-		// Handle header image data
-		api.control( 'header_image', function( control ) {
-			control.setting.bind( function( to ) {
-				if ( to === control.params.removed )
-					control.settings.data.set( false );
-			});
-
-			control.library.on( 'click', 'a', function() {
-				control.settings.data.set( $(this).data('customizeHeaderImageData') );
-			});
-
-			control.uploader.success = function( attachment ) {
-				var data;
-
-				api.ImageControl.prototype.success.call( control, attachment );
-
-				data = {
-					attachment_id: attachment.get('id'),
-					url:           attachment.get('url'),
-					thumbnail_url: attachment.get('url'),
-					height:        attachment.get('height'),
-					width:         attachment.get('width')
-				};
-
-				attachment.element.data( 'customizeHeaderImageData', data );
-				control.settings.data.set( data );
-			};
-		});
-
-=======
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		api.trigger( 'ready' );
 
 		// Make sure left column gets focus

@@ -233,11 +233,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 					break;
 
 					case 'id':?>
-<<<<<<< HEAD
-						<th valign="top" scope="row">
-=======
 						<th scope="row">
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 							<?php echo $blog['blog_id'] ?>
 						</th>
 					<?php
@@ -310,11 +306,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 					break;
 
 					case 'lastupdated':
-<<<<<<< HEAD
-						echo "<td valign='top' class='$column_name column-$column_name'$style>";
-=======
 						echo "<td class='$column_name column-$column_name'$style>";
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 							if ( 'list' == $mode )
 								$date = 'Y/m/d';
 							else
@@ -324,11 +316,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 					<?php
 					break;
 				case 'registered':
-<<<<<<< HEAD
-						echo "<td valign='top' class='$column_name column-$column_name'$style>";
-=======
 						echo "<td class='$column_name column-$column_name'$style>";
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 						if ( $blog['registered'] == '0000-00-00 00:00:00' )
 							echo '&#x2014;';
 						else
@@ -338,11 +326,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 					<?php
 					break;
 				case 'users':
-<<<<<<< HEAD
-						echo "<td valign='top' class='$column_name column-$column_name'$style>";
-=======
 						echo "<td class='$column_name column-$column_name'$style>";
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 							$blogusers = get_users( array( 'blog_id' => $blog['blog_id'], 'number' => 6) );
 							if ( is_array( $blogusers ) ) {
 								$blogusers_warning = '';
@@ -366,11 +350,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 
 				case 'plugins': ?>
 					<?php if ( has_filter( 'wpmublogsaction' ) ) {
-<<<<<<< HEAD
-					echo "<td valign='top' class='$column_name column-$column_name'$style>";
-=======
 					echo "<td class='$column_name column-$column_name'$style>";
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 						/**
 						 * Fires inside the auxiliary 'Actions' column of the Sites list table.
 						 *

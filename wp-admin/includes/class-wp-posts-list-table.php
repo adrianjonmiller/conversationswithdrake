@@ -89,11 +89,8 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 		$post_type = $this->screen->post_type;
 		$per_page = $this->get_items_per_page( 'edit_' . $post_type . '_per_page' );
-<<<<<<< HEAD
-=======
 
 		/** This filter is documented in wp-admin/includes/post.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  		$per_page = apply_filters( 'edit_posts_per_page', $per_page, $post_type );
 
 		if ( $this->hierarchical_display )
@@ -220,9 +217,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 				);
 				wp_dropdown_categories( $dropdown_options );
 			}
-<<<<<<< HEAD
-			do_action( 'restrict_manage_posts' );
-=======
 
 			/**
 			 * Fires before the Filter button on the Posts and Pages list tables.
@@ -234,7 +228,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 			 */
 			do_action( 'restrict_manage_posts' );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			submit_button( __( 'Filter' ), 'button', false, false, array( 'id' => 'post-query-submit' ) );
 		}
 
@@ -284,8 +277,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
 		$taxonomies = wp_filter_object_list( $taxonomies, array( 'show_admin_column' => true ), 'and', 'name' );
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the taxonomy columns in the Posts list table.
 		 *
@@ -297,7 +288,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 		 * @param array  $taxonomies Array of taxonomies to show columns for.
 		 * @param string $post_type  The post type.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$taxonomies = apply_filters( "manage_taxonomies_for_{$post_type}_columns", $taxonomies, $post_type );
 		$taxonomies = array_filter( $taxonomies, 'taxonomy_exists' );
 
@@ -314,16 +304,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 		$post_status = !empty( $_REQUEST['post_status'] ) ? $_REQUEST['post_status'] : 'all';
 		if ( post_type_supports( $post_type, 'comments' ) && !in_array( $post_status, array( 'pending', 'draft', 'future' ) ) )
-<<<<<<< HEAD
-			$posts_columns['comments'] = '<span class="vers"><div title="' . esc_attr__( 'Comments' ) . '" class="comment-grey-bubble"></div></span>';
-
-		$posts_columns['date'] = __( 'Date' );
-
-		if ( 'page' == $post_type )
-			$posts_columns = apply_filters( 'manage_pages_columns', $posts_columns );
-		else
-			$posts_columns = apply_filters( 'manage_posts_columns', $posts_columns, $post_type );
-=======
 			$posts_columns['comments'] = '<span class="vers"><span title="' . esc_attr__( 'Comments' ) . '" class="comment-grey-bubble"></span></span>';
 
 		$posts_columns['date'] = __( 'Date' );
@@ -360,7 +340,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 		 *
 		 * @param array $post_columns An array of column names.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$posts_columns = apply_filters( "manage_{$post_type}_posts_columns", $posts_columns );
 
 		return $posts_columns;
@@ -418,11 +397,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 
 		/*
-<<<<<<< HEAD
-		 * arrange pages into two parts: top level pages and children_pages
-=======
 		 * Arrange pages into two parts: top level pages and children_pages
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		 * children_pages is two dimensional array, eg.
 		 * children_pages[10][] contains all sub-pages whose parent is 10.
 		 * It only takes O( N ) to arrange this and it takes O( 1 ) for subsequent lookup operations
@@ -575,11 +550,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		    $classes .= ' level-0';
 		}
 	?>
-<<<<<<< HEAD
-		<tr id="post-<?php echo $post->ID; ?>" class="<?php echo implode( ' ', get_post_class( $classes, $post->ID ) ); ?>" valign="top">
-=======
 		<tr id="post-<?php echo $post->ID; ?>" class="<?php echo implode( ' ', get_post_class( $classes, $post->ID ) ); ?>">
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	<?php
 
 		list( $columns, $hidden ) = $this->get_column_info();
@@ -685,24 +656,16 @@ class WP_Posts_List_Table extends WP_List_Table {
 				}
 				if ( $post_type_object->public ) {
 					if ( in_array( $post->post_status, array( 'pending', 'draft', 'future' ) ) ) {
-<<<<<<< HEAD
-						if ( $can_edit_post )
-							$actions['view'] = '<a href="' . esc_url( apply_filters( 'preview_post_link', set_url_scheme( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ) ) . '" title="' . esc_attr( sprintf( __( 'Preview &#8220;%s&#8221;' ), $title ) ) . '" rel="permalink">' . __( 'Preview' ) . '</a>';
-=======
 						if ( $can_edit_post ) {
 
 							/** This filter is documented in wp-admin/includes/meta-boxes.php */
 							$actions['view'] = '<a href="' . esc_url( apply_filters( 'preview_post_link', set_url_scheme( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ) ) . '" title="' . esc_attr( sprintf( __( 'Preview &#8220;%s&#8221;' ), $title ) ) . '" rel="permalink">' . __( 'Preview' ) . '</a>';
 						}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 					} elseif ( 'trash' != $post->post_status ) {
 						$actions['view'] = '<a href="' . get_permalink( $post->ID ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;' ), $title ) ) . '" rel="permalink">' . __( 'View' ) . '</a>';
 					}
 				}
 
-<<<<<<< HEAD
-				$actions = apply_filters( is_post_type_hierarchical( $post->post_type ) ? 'page_row_actions' : 'post_row_actions', $actions, $post );
-=======
 				if ( is_post_type_hierarchical( $post->post_type ) ) {
 
 					/**
@@ -735,7 +698,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 					$actions = apply_filters( 'post_row_actions', $actions, $post );
 				}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				echo $this->row_actions( $actions );
 
 				get_inline_data( $post );
@@ -760,12 +722,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 				}
 
 				echo '<td ' . $attributes . '>';
-<<<<<<< HEAD
-				if ( 'excerpt' == $mode )
-					echo apply_filters( 'post_date_column_time', $t_time, $post, $column_name, $mode );
-				else
-					echo '<abbr title="' . $t_time . '">' . apply_filters( 'post_date_column_time', $h_time, $post, $column_name, $mode ) . '</abbr>';
-=======
 				if ( 'excerpt' == $mode ) {
 
 					/**
@@ -788,7 +744,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 					/** This filter is documented in wp-admin/includes/class-wp-posts-list-table.php */
 					echo '<abbr title="' . $t_time . '">' . apply_filters( 'post_date_column_time', $h_time, $post, $column_name, $mode ) . '</abbr>';
 				}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				echo '<br />';
 				if ( 'publish' == $post->post_status ) {
 					_e( 'Published' );
@@ -867,12 +822,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 				}
 			?>
 			<td <?php echo $attributes ?>><?php
-<<<<<<< HEAD
-				if ( is_post_type_hierarchical( $post->post_type ) )
-					do_action( 'manage_pages_custom_column', $column_name, $post->ID );
-				else
-					do_action( 'manage_posts_custom_column', $column_name, $post->ID );
-=======
 				if ( is_post_type_hierarchical( $post->post_type ) ) {
 
 					/**
@@ -913,7 +862,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 				 * @param string $column_name The name of the column to display.
 				 * @param int    $post_id     The current post ID.
 				 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				do_action( "manage_{$post->post_type}_posts_custom_column", $column_name, $post->ID );
 			?></td>
 			<?php
@@ -1097,9 +1045,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 		if ( $bulk )
 			$dropdown_args['show_option_no_change'] =  __( '&mdash; No Change &mdash;' );
-<<<<<<< HEAD
-		$dropdown_args = apply_filters( 'quick_edit_dropdown_pages_args', $dropdown_args );
-=======
 
 		/**
 		 * Filter the arguments used to generate the Quick Edit page-parent drop-down.
@@ -1112,7 +1057,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 		 */
 		$dropdown_args = apply_filters( 'quick_edit_dropdown_pages_args', $dropdown_args );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		wp_dropdown_pages( $dropdown_args );
 	?>
 			</label>
@@ -1253,33 +1197,20 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 	<?php
 
-<<<<<<< HEAD
-	if ( $bulk && post_type_supports( $screen->post_type, 'post-formats' ) ) {
-		$all_post_formats = get_post_format_strings();
-=======
 	if ( $bulk && current_theme_supports( 'post-formats' ) && post_type_supports( $screen->post_type, 'post-formats' ) ) {
 		$post_formats = get_theme_support( 'post-formats' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		?>
 		<label class="alignleft" for="post_format">
 		<span class="title"><?php _ex( 'Format', 'post format' ); ?></span>
 		<select name="post_format">
 			<option value="-1"><?php _e( '&mdash; No Change &mdash;' ); ?></option>
-<<<<<<< HEAD
-			<?php
-
-			foreach ( $all_post_formats as $slug => $format ) {
-				?>
-				<option value="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $format ); ?></option>
-=======
 			<option value="0"><?php echo get_post_format_string( 'standard' ); ?></option>
 			<?php
 
 			foreach ( $post_formats[0] as $format ) {
 				?>
 				<option value="<?php echo esc_attr( $format ); ?>"><?php echo esc_html( get_post_format_string( $format ) ); ?></option>
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				<?php
 			}
 
@@ -1299,9 +1230,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 		foreach ( $columns as $column_name => $column_display_name ) {
 			if ( isset( $core_columns[$column_name] ) )
 				continue;
-<<<<<<< HEAD
-			do_action( $bulk ? 'bulk_edit_custom_box' : 'quick_edit_custom_box', $column_name, $screen->post_type );
-=======
 
 			if ( $bulk ) {
 
@@ -1327,7 +1255,6 @@ class WP_Posts_List_Table extends WP_List_Table {
 				do_action( 'quick_edit_custom_box', $column_name, $screen->post_type );
 			}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 	?>
 		<p class="submit inline-edit-save">

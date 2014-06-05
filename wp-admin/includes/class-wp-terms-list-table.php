@@ -46,12 +46,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 		$tags_per_page = $this->get_items_per_page( 'edit_' . $this->screen->taxonomy . '_per_page' );
 
 		if ( 'post_tag' == $this->screen->taxonomy ) {
-<<<<<<< HEAD
-			$tags_per_page = apply_filters( 'edit_tags_per_page', $tags_per_page );
-			$tags_per_page = apply_filters( 'tagsperpage', $tags_per_page ); // Old filter
-		} elseif ( 'category' == $this->screen->taxonomy ) {
-			$tags_per_page = apply_filters( 'edit_categories_per_page', $tags_per_page ); // Old filter
-=======
 			/**
 			 * Filter the number of terms displayed per page for the Tags list table.
 			 *
@@ -79,7 +73,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 			 * @param int $tags_per_page Number of categories to be displayed. Default 20.
 			 */
 			$tags_per_page = apply_filters( 'edit_categories_per_page', $tags_per_page );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 
 		$search = !empty( $_REQUEST['s'] ) ? trim( wp_unslash( $_REQUEST['s'] ) ) : '';
@@ -276,9 +269,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 		$default_term = get_option( 'default_' . $taxonomy );
 
 		$pad = str_repeat( '&#8212; ', max( 0, $this->level ) );
-<<<<<<< HEAD
-		$name = apply_filters( 'term_name', $pad . ' ' . $tag->name, $tag );
-=======
 
 		/**
 		 * Filter display of the term name in the terms list table.
@@ -295,7 +285,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 		 */
 		$name = apply_filters( 'term_name', $pad . ' ' . $tag->name, $tag );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$qe_data = get_term( $tag->term_id, $taxonomy, OBJECT, 'edit' );
 		$edit_link = esc_url( get_edit_term_link( $tag->term_id, $taxonomy, $this->screen->post_type ) );
 
@@ -311,9 +300,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 		if ( $tax->public )
 			$actions['view'] = '<a href="' . get_term_link( $tag ) . '">' . __( 'View' ) . '</a>';
 
-<<<<<<< HEAD
-		$actions = apply_filters( 'tag_row_actions', $actions, $tag );
-=======
 		/**
 		 * Filter the action links displayed for each term in the Tags list table.
 		 *
@@ -337,17 +323,13 @@ class WP_Terms_List_Table extends WP_List_Table {
 		 *                        'Edit', 'Quick Edit', 'Delete', and 'View'.
 		 * @param object $tag     Term object.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$actions = apply_filters( "{$taxonomy}_row_actions", $actions, $tag );
 
 		$out .= $this->row_actions( $actions );
 		$out .= '<div class="hidden" id="inline_' . $qe_data->term_id . '">';
 		$out .= '<div class="name">' . $qe_data->name . '</div>';
-<<<<<<< HEAD
-=======
 
 		/** This filter is documented in wp-admin/edit-tag-form.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$out .= '<div class="slug">' . apply_filters( 'editable_slug', $qe_data->slug ) . '</div>';
 		$out .= '<div class="parent">' . $qe_data->parent . '</div></div>';
 
@@ -359,10 +341,7 @@ class WP_Terms_List_Table extends WP_List_Table {
 	}
 
 	function column_slug( $tag ) {
-<<<<<<< HEAD
-=======
 		/** This filter is documented in wp-admin/edit-tag-form.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return apply_filters( 'editable_slug', $tag->slug );
 	}
 
@@ -398,8 +377,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 	}
 
 	function column_default( $tag, $column_name ) {
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the displayed columns in the terms list table.
 		 *
@@ -412,7 +389,6 @@ class WP_Terms_List_Table extends WP_List_Table {
 		 * @param string $column_name Name of the column.
 		 * @param int    $term_id     Term ID.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		return apply_filters( "manage_{$this->screen->taxonomy}_custom_column", '', $column_name, $tag->term_id );
 	}
 
@@ -455,10 +431,7 @@ class WP_Terms_List_Table extends WP_List_Table {
 			if ( isset( $core_columns[$column_name] ) )
 				continue;
 
-<<<<<<< HEAD
-=======
 			/** This action is documented in wp-admin/includes/class-wp-posts-list-table.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			do_action( 'quick_edit_custom_box', $column_name, 'edit-tags', $this->screen->taxonomy );
 		}
 

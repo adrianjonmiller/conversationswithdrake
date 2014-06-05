@@ -220,11 +220,6 @@ img.alignleft {
 	top: 40px;
 }
 
-<<<<<<< HEAD
-.ie7 .nav-menu li ul ul {
-	left: 100%;
-	top: 0;
-=======
 .ie7 .nav-menu .sub-menu,
 .ie7 .nav-menu .children {
 	display: none;
@@ -234,7 +229,6 @@ img.alignleft {
 .ie7 ul.nav-menu li:hover > ul,
 .ie7 .nav-menu ul li:hover > ul {
 	display: block;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 .ie7 .site-header .search-form [type="search"],

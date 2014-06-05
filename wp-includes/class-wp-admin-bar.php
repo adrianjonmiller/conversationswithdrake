@@ -81,15 +81,6 @@ class WP_Admin_Bar {
 	/**
 	 * Add a node to the menu.
 	 *
-<<<<<<< HEAD
-	 * @param array $args - The arguments for each node.
-	 * - id         - string    - The ID of the item.
-	 * - title      - string    - The title of the node.
-	 * - parent     - string    - The ID of the parent node. Optional.
-	 * - href       - string    - The link for the item. Optional.
-	 * - group      - boolean   - If the node is a group. Optional. Default false.
-	 * - meta       - array     - Meta data including the following keys: html, class, onclick, target, title, tabindex.
-=======
 	 * @param array $args {
 	 *     Arguments for adding a node.
 	 *
@@ -101,7 +92,6 @@ class WP_Admin_Bar {
 	 *     @type array  $meta   Meta data including the following keys: 'html', 'class', 'rel',
 	 *                          'onclick', 'target', 'title', 'tabindex'. Default empty.
 	 * }
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	public function add_node( $args ) {
 		// Shim for old method signature: add_node( $parent_id, $menu_obj, $args )
@@ -201,12 +191,6 @@ class WP_Admin_Bar {
 	 *
 	 * @since 3.3.0
 	 *
-<<<<<<< HEAD
-	 * @param array $args - The arguments for each node.
-	 * - id         - string    - The ID of the item.
-	 * - parent     - string    - The ID of the parent node. Optional. Default root.
-	 * - meta       - array     - Meta data including the following keys: class, onclick, target, title.
-=======
 	 * @param array $args {
 	 *     Array of arguments for adding a group.
 	 *
@@ -215,7 +199,6 @@ class WP_Admin_Bar {
 	 *     @type array  $meta   Meta data for the group including the following keys:
 	 *                         'class', 'onclick', 'target', and 'title'.
 	 * }
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	 */
 	final public function add_group( $args ) {
 		$args['group'] = true;
@@ -463,12 +446,9 @@ class WP_Admin_Bar {
 				if ( ! empty( $node->meta['title'] ) ) :
 					?> title="<?php echo esc_attr( $node->meta['title'] ); ?>"<?php
 				endif;
-<<<<<<< HEAD
-=======
 				if ( ! empty( $node->meta['rel'] ) ) :
 					?> rel="<?php echo esc_attr( $node->meta['rel'] ); ?>"<?php
 				endif;
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				?>><?php
 			else:
 				?><div class="ab-item ab-empty-item" <?php echo $aria_attributes;

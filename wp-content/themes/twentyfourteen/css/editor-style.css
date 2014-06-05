@@ -14,13 +14,9 @@ Description: Used to style the TinyMCE editor.
  * 5.0 - Alignment
  * 6.0 - Tables
  * 7.0 - Images
-<<<<<<< HEAD
- * 8.0 - RTL
-=======
  * 8.0 - Galleries
  * 9.0 - Audio/Video
  * 10.0 - RTL
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * ----------------------------------------------------------------------------
  */
 
@@ -393,30 +389,22 @@ img {
 	text-align: left;
 }
 
-<<<<<<< HEAD
-=======
 .html5-captions .wp-caption {
 	padding: 0;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-caption.alignleft {
 	margin: 7px 14px 7px 0;
 }
 
-<<<<<<< HEAD
-=======
 .html5-captions .wp-caption.alignleft {
 	margin-right: 24px;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-caption.alignright {
 	margin: 7px 0 7px 14px;
 }
 
-<<<<<<< HEAD
-=======
 .wp-caption.alignright img,
 .wp-caption.alignright .wp-caption-dd {
 	padding-left: 10px;
@@ -431,7 +419,6 @@ img {
 	padding: 0;
 }
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 .wp-caption.aligncenter {
 	margin: 7px 0;
 }
@@ -458,11 +445,6 @@ img {
 	list-style-position: inside;
 }
 
-<<<<<<< HEAD
-
-/**
- * 8.0 RTL
-=======
 /**
  * 8.0 Gallery
  * -----------------------------------------------------------------------------
@@ -638,7 +620,6 @@ img {
 
 /**
  * 10.0 RTL
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * ----------------------------------------------------------------------------
  */
 

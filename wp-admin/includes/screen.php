@@ -20,10 +20,6 @@ function get_column_headers( $screen ) {
 
 	static $column_headers = array();
 
-<<<<<<< HEAD
-	if ( ! isset( $column_headers[ $screen->id ] ) )
-		$column_headers[ $screen->id ] = apply_filters( 'manage_' . $screen->id . '_columns', array() );
-=======
 	if ( ! isset( $column_headers[ $screen->id ] ) ) {
 
 		/**
@@ -40,7 +36,6 @@ function get_column_headers( $screen ) {
 		 */
 		$column_headers[ $screen->id ] = apply_filters( 'manage_' . $screen->id . '_columns', array() );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return $column_headers[ $screen->id ];
 }
@@ -120,11 +115,6 @@ function get_hidden_meta_boxes( $screen ) {
 			else
 				$hidden = array( 'slugdiv' );
 		}
-<<<<<<< HEAD
-		$hidden = apply_filters( 'default_hidden_meta_boxes', $hidden, $screen );
-	}
-
-=======
 
 		/**
 		 * Filter the default list of hidden meta boxes.
@@ -147,7 +137,6 @@ function get_hidden_meta_boxes( $screen ) {
 	 * @param bool      $use_defaults Whether to show the default meta boxes.
 	 *                                Default true.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return apply_filters( 'hidden_meta_boxes', $hidden, $screen, $use_defaults );
 }
 
@@ -546,8 +535,6 @@ final class WP_Screen {
 		$current_screen = $this;
 		$taxnow = $this->taxonomy;
 		$typenow = $this->post_type;
-<<<<<<< HEAD
-=======
 
 		/**
 		 * Fires after the current screen has been set.
@@ -556,7 +543,6 @@ final class WP_Screen {
 		 *
 		 * @param WP_Screen $current_screen Current WP_Screen object.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'current_screen', $current_screen );
 	}
 
@@ -802,12 +788,6 @@ final class WP_Screen {
 	 */
 	public function render_screen_meta() {
 
-<<<<<<< HEAD
-		// Call old contextual_help_list filter.
-		self::$_old_compat_help = apply_filters( 'contextual_help_list', self::$_old_compat_help, $this );
-
-		$old_help = isset( self::$_old_compat_help[ $this->id ] ) ? self::$_old_compat_help[ $this->id ] : '';
-=======
 		/**
 		 * Filter the legacy contextual help list.
 		 *
@@ -834,13 +814,10 @@ final class WP_Screen {
 		 * @param WP_Screen $this      Current WP_Screen instance.
 		 *
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$old_help = apply_filters( 'contextual_help', $old_help, $this->id, $this );
 
 		// Default help only if there is no old-style block of text and no new-style help tabs.
 		if ( empty( $old_help ) && ! $this->get_help_tabs() ) {
-<<<<<<< HEAD
-=======
 
 			/**
 			 * Filter the default legacy contextual help text.
@@ -851,7 +828,6 @@ final class WP_Screen {
 			 *
 			 * @param string $old_help_default Default contextual help text.
 			 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$default_help = apply_filters( 'default_contextual_help', '' );
 			if ( $default_help )
 				$old_help = '<p>' . $default_help . '</p>';
@@ -932,9 +908,6 @@ final class WP_Screen {
 		<?php
 		// Setup layout columns
 
-<<<<<<< HEAD
-		// Back compat for plugins using the filter instead of add_screen_option()
-=======
 		/**
 		 * Filter the array of screen layout columns.
 		 *
@@ -947,7 +920,6 @@ final class WP_Screen {
 		 * @param string    $screen_id     Screen ID.
 		 * @param WP_Screen $this          Current WP_Screen instance.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$columns = apply_filters( 'screen_layout_columns', array(), $this->id, $this );
 
 		if ( ! empty( $columns ) && isset( $columns[ $this->id ] ) )
@@ -1004,8 +976,6 @@ final class WP_Screen {
 				break;
 		}
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the screen settings text displayed in the Screen Options tab.
 		 *
@@ -1017,14 +987,11 @@ final class WP_Screen {
 		 * @param string    $screen_settings Screen settings.
 		 * @param WP_Screen $this            WP_Screen object.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$this->_screen_settings = apply_filters( 'screen_settings', $this->_screen_settings, $this );
 
 		if ( $this->_screen_settings || $this->_options )
 			$show_screen = true;
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter whether to show the Screen Options tab.
 		 *
@@ -1034,7 +1001,6 @@ final class WP_Screen {
 		 *                               Default true.
 		 * @param WP_Screen $this        Current WP_Screen instance.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$this->_show_screen_options = apply_filters( 'screen_options_show_screen', $show_screen, $this );
 		return $this->_show_screen_options;
 	}
@@ -1172,12 +1138,6 @@ final class WP_Screen {
 
 		if ( 'edit_comments_per_page' == $option ) {
 			$comment_status = isset( $_REQUEST['comment_status'] ) ? $_REQUEST['comment_status'] : 'all';
-<<<<<<< HEAD
-			$per_page = apply_filters( 'comments_per_page', $per_page, $comment_status );
-		} elseif ( 'categories_per_page' == $option ) {
-			$per_page = apply_filters( 'edit_categories_per_page', $per_page );
-		} else {
-=======
 
 			/** This filter is documented in wp-admin/includes/class-wp-comments-list-table.php */
 			$per_page = apply_filters( 'comments_per_page', $per_page, $comment_status );
@@ -1186,20 +1146,14 @@ final class WP_Screen {
 			$per_page = apply_filters( 'edit_categories_per_page', $per_page );
 		} else {
 			/** This filter is documented in wp-admin/includes/class-wp-list-table.php */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 			$per_page = apply_filters( $option, $per_page );
 		}
 
 		// Back compat
-<<<<<<< HEAD
-		if ( isset( $this->post_type ) )
-			$per_page = apply_filters( 'edit_posts_per_page', $per_page, $this->post_type );
-=======
 		if ( isset( $this->post_type ) ) {
 			/** This filter is documented in wp-admin/includes/class-wp-posts-list-table.php */
 			$per_page = apply_filters( 'edit_posts_per_page', $per_page, $this->post_type );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		?>
 		<div class="screen-options">

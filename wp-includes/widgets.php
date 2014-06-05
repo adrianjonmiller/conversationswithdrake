@@ -19,11 +19,7 @@
  *
  * @package WordPress
  * @subpackage Widgets
-<<<<<<< HEAD
- * @since 2.8
-=======
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class WP_Widget {
 
@@ -167,8 +163,6 @@ class WP_Widget {
 		return array($this, 'form_callback');
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Determine if we're in the Customizer; if true, then the object cache gets
 	 * suspended and widgets should check this to decide whether they should
@@ -184,7 +178,6 @@ class WP_Widget {
 		return ( isset( $wp_customize ) && $wp_customize->is_preview() ) ;
 	}
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	/** Generate the actual widget content.
 	 *	Just finds the instance and calls widget().
 	 *	Do NOT over-ride this function. */
@@ -198,24 +191,6 @@ class WP_Widget {
 
 		if ( array_key_exists( $this->number, $instance ) ) {
 			$instance = $instance[$this->number];
-<<<<<<< HEAD
-			// filters the widget's settings, return false to stop displaying the widget
-			$instance = apply_filters('widget_display_callback', $instance, $this, $args);
-			if ( false !== $instance )
-				$this->widget($args, $instance);
-		}
-	}
-
-	/** Deal with changed settings.
-	 *	Do NOT over-ride this function. */
-	function update_callback( $widget_args = 1 ) {
-		global $wp_registered_widgets;
-
-		if ( is_numeric($widget_args) )
-			$widget_args = array( 'number' => $widget_args );
-
-		$widget_args = wp_parse_args( $widget_args, array( 'number' => -1 ) );
-=======
 
 			/**
 			 * Filter the settings for a particular widget instance.
@@ -257,7 +232,6 @@ class WP_Widget {
 	function update_callback( $deprecated = 1 ) {
 		global $wp_registered_widgets;
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$all_instances = $this->get_settings();
 
 		// We need to update the data
@@ -295,14 +269,6 @@ class WP_Widget {
 
 				$old_instance = isset($all_instances[$number]) ? $all_instances[$number] : array();
 
-<<<<<<< HEAD
-				$instance = $this->update($new_instance, $old_instance);
-
-				// filters the widget's settings before saving, return false to cancel saving (keep the old settings if updating)
-				$instance = apply_filters('widget_update_callback', $instance, $new_instance, $old_instance, $this);
-				if ( false !== $instance )
-					$all_instances[$number] = $instance;
-=======
 				$was_cache_addition_suspended = wp_suspend_cache_addition();
 				if ( $this->is_preview() && ! $was_cache_addition_suspended ) {
 					wp_suspend_cache_addition( true );
@@ -331,7 +297,6 @@ class WP_Widget {
 				if ( false !== $instance ) {
 					$all_instances[$number] = $instance;
 				}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 				break; // run only once
 			}
@@ -341,16 +306,11 @@ class WP_Widget {
 		$this->updated = true;
 	}
 
-<<<<<<< HEAD
-	/** Generate the control form.
-	 *	Do NOT over-ride this function. */
-=======
 	/**
 	 * Generate the control form.
 	 *
 	 * Do NOT over-ride this function.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	function form_callback( $widget_args = 1 ) {
 		if ( is_numeric($widget_args) )
 			$widget_args = array( 'number' => $widget_args );
@@ -367,10 +327,6 @@ class WP_Widget {
 			$instance = $all_instances[ $widget_args['number'] ];
 		}
 
-<<<<<<< HEAD
-		// filters the widget admin form before displaying, return false to stop displaying it
-		$instance = apply_filters('widget_form_callback', $instance, $this);
-=======
 		/**
 		 * Filter the widget instance's settings before displaying the control form.
 		 *
@@ -382,16 +338,10 @@ class WP_Widget {
 		 * @param WP_Widget $this     The current widget instance.
 		 */
 		$instance = apply_filters( 'widget_form_callback', $instance, $this );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		$return = null;
 		if ( false !== $instance ) {
 			$return = $this->form($instance);
-<<<<<<< HEAD
-			// add extra fields in the widget form - be sure to set $return to null if you add any
-			// if the widget has no form the text echoed from the default form method can be hidden using css
-			do_action_ref_array( 'in_widget_form', array(&$this, &$return, $instance) );
-=======
 
 			/**
 			 * Fires at the end of the widget control form.
@@ -410,7 +360,6 @@ class WP_Widget {
 			 * @param array     $instance An array of the widget's settings.
 			 */
 			do_action_ref_array( 'in_widget_form', array( &$this, &$return, $instance ) );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		}
 		return $return;
 	}
@@ -451,11 +400,7 @@ class WP_Widget {
  *
  * @package WordPress
  * @subpackage Widgets
-<<<<<<< HEAD
- * @since 2.8
-=======
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 class WP_Widget_Factory {
 	var $widgets = array();
@@ -529,13 +474,8 @@ $_wp_sidebars_widgets = array();
 /**
  * Private
  */
-<<<<<<< HEAD
- $GLOBALS['_wp_deprecated_widgets_callbacks'] = array(
- 	'wp_widget_pages',
-=======
 $GLOBALS['_wp_deprecated_widgets_callbacks'] = array(
 	'wp_widget_pages',
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	'wp_widget_pages_control',
 	'wp_widget_calendar',
 	'wp_widget_calendar_control',
@@ -557,11 +497,7 @@ $GLOBALS['_wp_deprecated_widgets_callbacks'] = array(
 	'wp_widget_rss_control',
 	'wp_widget_recent_comments',
 	'wp_widget_recent_comments_control'
-<<<<<<< HEAD
- );
-=======
 );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 /* Template tags & API functions */
 
@@ -724,8 +660,6 @@ function register_sidebar($args = array()) {
 
 	add_theme_support('widgets');
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires once a sidebar has been registered.
 	 *
@@ -733,7 +667,6 @@ function register_sidebar($args = array()) {
 	 *
 	 * @param array $sidebar Parsed arguments for the registered sidebar.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'register_sidebar', $sidebar );
 
 	return $sidebar['id'];
@@ -807,8 +740,6 @@ function wp_register_sidebar_widget($id, $name, $output_callback, $options = arr
 	$widget = array_merge($widget, $options);
 
 	if ( is_callable($output_callback) && ( !isset($wp_registered_widgets[$id]) || did_action( 'widgets_init' ) ) ) {
-<<<<<<< HEAD
-=======
 
 		/**
 		 * Fires once for each registered widget.
@@ -817,7 +748,6 @@ function wp_register_sidebar_widget($id, $name, $output_callback, $options = arr
 		 *
 		 * @param array $widget An array of default widget arguments.
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		do_action( 'wp_register_sidebar_widget', $widget );
 		$wp_registered_widgets[$id] = $widget;
 	}
@@ -874,8 +804,6 @@ function wp_sidebar_description( $id ) {
  * @param int|string $id Widget ID.
  */
 function wp_unregister_sidebar_widget($id) {
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Fires just before a widget is removed from a sidebar.
@@ -884,7 +812,6 @@ function wp_unregister_sidebar_widget($id) {
 	 *
 	 * @param int $id The widget ID.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'wp_unregister_sidebar_widget', $id );
 
 	wp_register_sidebar_widget($id, '', '');
@@ -1044,11 +971,6 @@ function dynamic_sidebar($index = 1) {
 
 	$sidebars_widgets = wp_get_sidebars_widgets();
 	if ( empty( $wp_registered_sidebars[ $index ] ) || empty( $sidebars_widgets[ $index ] ) || ! is_array( $sidebars_widgets[ $index ] ) ) {
-<<<<<<< HEAD
-		return false;
-	}
-
-=======
 		/** This action is documented in wp-includes/widgets.php */
 		do_action( 'dynamic_sidebar_before', $index, false );
 		/** This action is documented in wp-includes/widgets.php */
@@ -1070,7 +992,6 @@ function dynamic_sidebar($index = 1) {
 	 *                                Default true.
 	 */
 	do_action( 'dynamic_sidebar_before', $index, true );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	$sidebar = $wp_registered_sidebars[$index];
 
 	$did_one = false;
@@ -1094,8 +1015,6 @@ function dynamic_sidebar($index = 1) {
 		$classname_ = ltrim($classname_, '_');
 		$params[0]['before_widget'] = sprintf($params[0]['before_widget'], $id, $classname_);
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Filter the parameters passed to a widget's display callback.
 		 *
@@ -1128,14 +1047,10 @@ function dynamic_sidebar($index = 1) {
 		 *     }
 		 * }
 		 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 		$params = apply_filters( 'dynamic_sidebar_params', $params );
 
 		$callback = $wp_registered_widgets[$id]['callback'];
 
-<<<<<<< HEAD
-		do_action( 'dynamic_sidebar', $wp_registered_widgets[$id] );
-=======
 		/**
 		 * Fires before a widget's display callback is called.
 		 *
@@ -1162,7 +1077,6 @@ function dynamic_sidebar($index = 1) {
 		 * }
 		 */
 		do_action( 'dynamic_sidebar', $wp_registered_widgets[ $id ] );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		if ( is_callable($callback) ) {
 			call_user_func_array($callback, $params);
@@ -1170,8 +1084,6 @@ function dynamic_sidebar($index = 1) {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires after widgets are rendered in a dynamic sidebar.
 	 *
@@ -1201,7 +1113,6 @@ function dynamic_sidebar($index = 1) {
 
 	$did_one = apply_filters( 'dynamic_sidebar_has_widgets', $did_one, $index );
 
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $did_one;
 }
 
@@ -1272,11 +1183,7 @@ function is_dynamic_sidebar() {
 /**
  * Whether a sidebar is in use.
  *
-<<<<<<< HEAD
- * @since 2.8
-=======
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param mixed $index Sidebar name, id or number to check.
  * @return bool true if the sidebar is in use, false otherwise.
@@ -1285,9 +1192,6 @@ function is_active_sidebar( $index ) {
 	$index = ( is_int($index) ) ? "sidebar-$index" : sanitize_title($index);
 	$sidebars_widgets = wp_get_sidebars_widgets();
 	$is_active_sidebar = ! empty( $sidebars_widgets[$index] );
-<<<<<<< HEAD
-	return $is_active_sidebar;
-=======
 
 	/**
 	 * Filter whether a dynamic sidebar is considered "active".
@@ -1299,7 +1203,6 @@ function is_active_sidebar( $index ) {
 	 * @param int|string $index             Index, name, or ID of the dynamic sidebar.
 	 */
 	return apply_filters( 'is_active_sidebar', $is_active_sidebar, $index );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 }
 
 /* Internal Functions */
@@ -1336,9 +1239,6 @@ function wp_get_sidebars_widgets($deprecated = true) {
 	if ( is_array( $sidebars_widgets ) && isset($sidebars_widgets['array_version']) )
 		unset($sidebars_widgets['array_version']);
 
-<<<<<<< HEAD
-	$sidebars_widgets = apply_filters('sidebars_widgets', $sidebars_widgets);
-=======
 	/**
 	 * Filter the list of sidebars and their widgets.
 	 *
@@ -1347,7 +1247,6 @@ function wp_get_sidebars_widgets($deprecated = true) {
 	 * @param array $sidebars_widgets An associative array of sidebars and their widgets.
 	 */
 	$sidebars_widgets = apply_filters( 'sidebars_widgets', $sidebars_widgets );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	return $sidebars_widgets;
 }
 
@@ -1443,15 +1342,9 @@ function wp_convert_widget_settings($base_name, $option_name, $settings) {
 }
 
 /**
-<<<<<<< HEAD
- * Output an arbitrary widget as a template tag
- *
- * @since 2.8
-=======
  * Output an arbitrary widget as a template tag.
  *
  * @since 2.8.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  *
  * @param string $widget the widget's PHP class name (see default-widgets.php)
  * @param array $instance the widget's instance settings
@@ -1471,8 +1364,6 @@ function the_widget($widget, $instance = array(), $args = array()) {
 	$args = wp_parse_args($args, $default_args);
 	$instance = wp_parse_args($instance);
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Fires before rendering the requested widget.
 	 *
@@ -1482,7 +1373,6 @@ function the_widget($widget, $instance = array(), $args = array()) {
 	 * @param array  $instance The current widget instance's settings.
 	 * @param array  $args     An array of the widget's sidebar arguments.
 	 */
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	do_action( 'the_widget', $widget, $instance, $args );
 
 	$widget_obj->_set(-1);
@@ -1511,10 +1401,6 @@ function _wp_sidebars_changed() {
 	retrieve_widgets(true);
 }
 
-<<<<<<< HEAD
-// look for "lost" widgets, this has to run at least on each theme change
-function retrieve_widgets($theme_changed = false) {
-=======
 /**
  * Look for "lost" widgets, this has to run at least on each theme change.
  *
@@ -1525,7 +1411,6 @@ function retrieve_widgets($theme_changed = false) {
  * @return array
  */
 function retrieve_widgets( $theme_changed = false ) {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	global $wp_registered_sidebars, $sidebars_widgets, $wp_registered_widgets;
 
 	$registered_sidebar_keys = array_keys( $wp_registered_sidebars );
@@ -1535,14 +1420,10 @@ function retrieve_widgets( $theme_changed = false ) {
 	if ( is_array( $old_sidebars_widgets ) ) {
 		// time() that sidebars were stored is in $old_sidebars_widgets['time']
 		$_sidebars_widgets = $old_sidebars_widgets['data'];
-<<<<<<< HEAD
-		remove_theme_mod( 'sidebars_widgets' );
-=======
 
 		if ( 'customize' !== $theme_changed ) {
 			remove_theme_mod( 'sidebars_widgets' );
 		}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 		foreach ( $_sidebars_widgets as $sidebar => $widgets ) {
 			if ( 'wp_inactive_widgets' == $sidebar || 'orphaned_widgets' == substr( $sidebar, 0, 16 ) )
@@ -1625,13 +1506,9 @@ function retrieve_widgets( $theme_changed = false ) {
 	}
 
 	$sidebars_widgets['wp_inactive_widgets'] = array_merge($lost_widgets, (array) $sidebars_widgets['wp_inactive_widgets']);
-<<<<<<< HEAD
-	wp_set_sidebars_widgets($sidebars_widgets);
-=======
 	if ( 'customize' !== $theme_changed ) {
 		wp_set_sidebars_widgets( $sidebars_widgets );
 	}
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	return $sidebars_widgets;
 }

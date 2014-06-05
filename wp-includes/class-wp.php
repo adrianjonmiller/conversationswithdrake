@@ -25,11 +25,7 @@ class WP {
 	 * @since 2.0.0
 	 * @var array
 	 */
-<<<<<<< HEAD
-	var $private_query_vars = array( 'offset', 'posts_per_page', 'posts_per_archive_page', 'showposts', 'nopaging', 'post_type', 'post_status', 'category__in', 'category__not_in', 'category__and', 'tag__in', 'tag__not_in', 'tag__and', 'tag_slug__in', 'tag_slug__and', 'tag_id', 'post_mime_type', 'perm', 'comments_per_page', 'post__in', 'post__not_in', 'post_parent__in', 'post_parent__not_in' );
-=======
 	var $private_query_vars = array( 'offset', 'posts_per_page', 'posts_per_archive_page', 'showposts', 'nopaging', 'post_type', 'post_status', 'category__in', 'category__not_in', 'category__and', 'tag__in', 'tag__not_in', 'tag__and', 'tag_slug__in', 'tag_slug__and', 'tag_id', 'post_mime_type', 'perm', 'comments_per_page', 'post__in', 'post__not_in', 'post_parent', 'post_parent__in', 'post_parent__not_in' );
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 
 	/**
 	 * Extra query variables set by the user.
@@ -572,10 +568,6 @@ class WP {
 		// We will 404 for paged queries, as no posts were found.
 		if ( ! is_paged() ) {
 
-<<<<<<< HEAD
-			// Don't 404 for these queries if they matched an object.
-			if ( ( is_tag() || is_category() || is_tax() || is_author() || is_post_type_archive() ) && $wp_query->get_queried_object() ) {
-=======
 			// Don't 404 for authors without posts as long as they matched an author on this site.
 			$author = get_query_var( 'author' );
 			if ( is_author() && is_numeric( $author ) && $author > 0 && is_user_member_of_blog( $author ) ) {
@@ -585,7 +577,6 @@ class WP {
 
 			// Don't 404 for these queries if they matched an object.
 			if ( ( is_tag() || is_category() || is_tax() || is_post_type_archive() ) && get_queried_object() ) {
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 				status_header( 200 );
 				return;
 			}

@@ -57,11 +57,7 @@ if ( !function_exists('get_user_by_email') ) :
 /**
  * Retrieve user info by email.
  *
-<<<<<<< HEAD
- * @since 2.5
-=======
  * @since 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @deprecated 3.3.0
  * @deprecated Use get_user_by('email')
  *
@@ -78,13 +74,8 @@ if ( !function_exists('wp_setcookie') ) :
 /**
  * Sets a cookie for a user who just logged in. This function is deprecated.
  *
-<<<<<<< HEAD
- * @since 1.5
- * @deprecated 2.5
-=======
  * @since 1.5.0
  * @deprecated 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @deprecated Use wp_set_auth_cookie()
  * @see wp_set_auth_cookie()
  *
@@ -108,13 +99,8 @@ if ( !function_exists('wp_clearcookie') ) :
 /**
  * Clears the authentication cookie, logging the user out. This function is deprecated.
  *
-<<<<<<< HEAD
- * @since 1.5
- * @deprecated 2.5
-=======
  * @since 1.5.0
  * @deprecated 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @deprecated Use wp_clear_auth_cookie()
  * @see wp_clear_auth_cookie()
  */
@@ -134,11 +120,7 @@ if ( !function_exists('wp_get_cookie_login') ):
  * used anywhere in WordPress. Also, plugins shouldn't use it either.
  *
  * @since 2.0.3
-<<<<<<< HEAD
- * @deprecated 2.5
-=======
  * @deprecated 2.5.0
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  * @deprecated No alternative
  *
  * @return bool Always returns false
@@ -195,11 +177,7 @@ endif;
  *
  * @since 2.2.0
  * @deprecated 3.5.0
-<<<<<<< HEAD
- * @link http://wordpress.org/plugins/atom-publishing-protocol/
-=======
  * @link https://wordpress.org/plugins/atom-publishing-protocol/
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
  */
 if ( ! class_exists( 'wp_atom_server' ) ) {
 	class wp_atom_server {

@@ -127,11 +127,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 		'parent'    => 'wp-logo-external',
 		'id'        => 'wporg',
 		'title'     => __('WordPress.org'),
-<<<<<<< HEAD
-		'href'      => __('http://wordpress.org/'),
-=======
 		'href'      => __('https://wordpress.org/'),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	) );
 
 	// Add codex link
@@ -147,11 +143,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 		'parent'    => 'wp-logo-external',
 		'id'        => 'support-forums',
 		'title'     => __('Support Forums'),
-<<<<<<< HEAD
-		'href'      => __('http://wordpress.org/support/'),
-=======
 		'href'      => __('https://wordpress.org/support/'),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	) );
 
 	// Add feedback link
@@ -159,11 +151,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 		'parent'    => 'wp-logo-external',
 		'id'        => 'feedback',
 		'title'     => __('Feedback'),
-<<<<<<< HEAD
-		'href'      => __('http://wordpress.org/support/forum/requests-and-feedback'),
-=======
 		'href'      => __('https://wordpress.org/support/forum/requests-and-feedback'),
->>>>>>> aaf7130cc2c2505efce9574ab828fca95caf51e5
 	) );
 }
 
