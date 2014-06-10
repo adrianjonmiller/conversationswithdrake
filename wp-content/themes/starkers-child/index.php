@@ -19,7 +19,7 @@
 <article>
 <?php while ( have_posts() ) : the_post(); ?>
 	<article class="module post">
-		<h3 class="post-header"><span><?php the_title(); ?></span></h3>
+		<h3 class="post-header"><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 		<?php the_content(); ?>
 		<time class="post-date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time>
 	</article>
