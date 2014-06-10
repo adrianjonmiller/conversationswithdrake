@@ -1,0 +1,23 @@
+{
+  "name": "Conversations With Drake",
+  "version": "0.0.0",
+  "authors": [
+    "Adrian Miller <adrianjonmiller@gmail.com>"
+  ],
+  "description": "Theme for conversations with Drake",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ionicons": "~1.4.1",
+    "normalize-css": "~3.0.1",
+    "jsbehave": "https://github.com/adrianjonmiller/jsbehave.git",
+    "dont_over_think_it": "https://github.com/adrianjonmiller/dont_over_think_it.git#~0.0.1"
+  }
+}

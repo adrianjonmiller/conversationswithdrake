@@ -1,0 +1,243 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+
+@import "bourbon/bourbon";
+@import "vars";
+@import "resets";
+
+* {
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	line-height: 1.5em;
+	color: #444;
+}
+
+[role="main"] {
+	padding-top: 350px+$pad;
+	background-color: #f6f6f6;
+}
+
+
+a {
+	text-decoration: none;
+	color: $color-light_green;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+#header {
+	width: 100%;
+	height: 350px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow: hidden;
+
+	.header_image {
+		position: absolute;
+		margin: 0 auto;
+		height: 350px;
+	}
+	> .container {
+		position: relative;
+		height: 100%;
+	}
+}
+
+#header-logo {
+		position: absolute;
+		bottom: 30px;
+		left: 0;
+		display: block;
+		line-height: auto;
+		background-color: white;
+		box-shadow: 0 0 3px rgba(black, 0.2);
+
+	> a { 
+		color: $color-green;
+		line-height: 36px;
+		font-size: 36px;
+		padding: $pad;
+		display: block;
+		font-weight: 300;
+		text-decoration: none;
+		position: relative;
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 75%;
+			width: 21px;
+			height: 21px;
+
+			background-image: url(../img/carat.png);
+			background-repeat: no-repeat;
+			background-position: top left;
+			// box-shadow: 0px 0px 2px rgba(black, 0.6);
+		}
+	}
+}
+
+.container {
+	max-width: 1080px;
+	margin: 0 auto;
+}
+
+#sidebar-right {
+	padding: $pad;
+	border-top: solid thin #eee;
+	border-bottom: solid thin #ddd;
+	background-color: #fff;
+	border-radius: $pad;
+}
+
+.module {
+	padding: $pad;
+	border-top: solid thin #eee;
+	border-bottom: solid thin #ddd;
+}
+
+.widget {
+	padding: $pad 0;
+	border-top: solid thin #eee;
+	border-bottom: solid thin #ddd;
+	&:first-of-type		{
+		padding-top: 0; 
+		border-top: none; 
+	}
+	&:last-of-type 		{ 
+		padding-bottom: 0;
+		border-bottom: none; 
+	}
+}
+
+.widget-title {
+	font-weight: 300;
+	color: $color-orange;
+	font-size: 18px;
+	margin-bottom: $pad/2;
+}
+
+.post {
+	background-color: #fff;
+	border-radius: $pad;
+	margin-bottom: $pad*2;
+	position: relative;
+	padding-bottom: $pad*2;
+	font-weight: 300;
+
+	// &:after {
+	// 	content: "";
+	// 	position: absolute;
+	// 	top: 100%;
+	// 	left: 75%;
+	// 	width: 21px;
+	// 	height: 21px;
+
+	// 	background-image: url(../img/carat.png);
+	// 	background-repeat: no-repeat;
+	// 	background-position: top left;
+	// 	// box-shadow: 0px 0px 2px rgba(black, 0.6);
+	// }
+	strong {
+		color: $color-gray;
+		font-weight: normal;
+	}
+}
+
+.post-header {
+	
+
+	> * {
+		color: $color-orange;
+		text-decoration: none;
+		font-weight: normal;
+		font-weight: 300;
+		font-size: 20px;
+		line-height: 20px;
+	}
+}
+
+.post-date {
+	font-size: 10px;
+	position: absolute;
+	bottom: $pad/2;
+	right: $pad;
+	color: gray;
+}
+
+.widget_archive {
+	> ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		> li {
+			margin: 0;
+			padding: 0;
+			color: #ccc;
+			a {
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.page-numbers {
+	padding: 4px 8px;
+}
+
+.page-numbers, .page-numbers > * {
+	font-size: 14px;
+	line-height: 14px;
+	color: #fff;
+	text-decoration: none;
+	background-color: $color-light_green;
+	display: inline-block;
+	&.current {
+		color: #aaa;
+		background-color: #ddd;
+	}
+	.screen-reader-text {
+		display: none;
+	}
+}
+
+.pagination {
+	float: right;
+}
+
+#footer {
+	background-color: $color-gray;
+}
+
+.copyright {
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #fff;
+}
+
+.page-header {
+	font-weight: 400;
+	color: #aaa;
+	text-shadow: 0 1px #fff;
+	font-size: 20px;
+	line-height: 24px;
+	padding-left: $pad*2;
+	margin-bottom: $pad;
+	text-transform: uppercase;
+	letter-spacing: .02em;
+	> .calendar {
+		position: absolute;
+		line-height: 24px;
+		left: 0;
+		top: 0;
+		color: #aaa;
+		font-size: 24px;
+	}
+}

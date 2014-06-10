@@ -1,0 +1,1 @@
+DLN.Behaviors.header_collapse=function(o){var e=o.height();$(document).on("scroll",function(){var h=$(this).scrollTop();o.height(h>=0?e-h:e)})};
