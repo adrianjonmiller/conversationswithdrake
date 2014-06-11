@@ -18,7 +18,7 @@
 		<?php the_content(); ?>
 		<time class="post-date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time>
 	</article>
-
+<a href="<?php print $_SERVER['HTTP_REFERER'];?>">&lt;&lt; Back</a>
 
 <?php endwhile; ?>
 
