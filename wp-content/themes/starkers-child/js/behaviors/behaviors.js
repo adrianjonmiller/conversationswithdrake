@@ -11,15 +11,16 @@ DLN.Behaviors.header_collapse = function(container){
 			offset_header();
 		});
 	}
+	
 	function offset_header() {
-			var offset = $(this).scrollTop();
+		var offset = $(this).scrollTop();
 
-			if(offset >= 0) {
-				container.height(container_height - offset);
-			} else {
-				container.height(container_height);
-			}
+		if(offset >= 0) {
+			container.height(container_height - offset);
+		} else {
+			container.height(container_height);
 		}
+	}
 };
 
 

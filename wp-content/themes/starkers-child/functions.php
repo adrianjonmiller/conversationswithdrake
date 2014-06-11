@@ -12,7 +12,7 @@
 		wp_register_script( 'jsbehave', get_stylesheet_directory_uri().'/bower_components/jsbehave/application.js', array( 'jquery' ) );
 		wp_enqueue_script( 'jsbehave' );
 
-		wp_register_script( 'behaviors', get_stylesheet_directory_uri().'/js/behaviors/behaviors.js', array( 'jquery' ) );
+		wp_register_script( 'behaviors', get_stylesheet_directory_uri().'/js/behaviors/behaviors.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'behaviors' );
 
 		wp_register_style( 'dont-over-think-it', get_stylesheet_directory_uri().'/bower_components/dont_over_think_it/css/grid.css', '', '', 'screen' );

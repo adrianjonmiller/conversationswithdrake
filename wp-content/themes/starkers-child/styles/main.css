@@ -64,15 +64,15 @@ h1, h2, h3, h4, h5, p, ul, li {
   line-height: 1.5em;
   color: #444; }
 
-[role="main"] {
-  padding-top: 368px;
-  background-color: #f6f6f6; }
-
 a {
   text-decoration: none;
   color: #7bcdcb; }
   a:hover {
     text-decoration: underline; }
+
+[role="main"] {
+  padding-top: 368px;
+  background-color: #f6f6f6; }
 
 #header {
   width: 100%;
@@ -118,10 +118,6 @@ a {
       background-repeat: no-repeat;
       background-position: top left; }
 
-.container {
-  max-width: 1080px;
-  margin: 0 auto; }
-
 #sidebar-right {
   padding: 18px;
   border-top: solid thin #eee;
@@ -129,27 +125,17 @@ a {
   background-color: #fff;
   border-radius: 18px; }
 
+#footer {
+  background-color: #424242; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto; }
+
 .module {
   padding: 18px;
   border-top: solid thin #eee;
   border-bottom: solid thin #ddd; }
-
-.widget {
-  padding: 18px 0;
-  border-top: solid thin #eee;
-  border-bottom: solid thin #ddd; }
-  .widget:first-of-type {
-    padding-top: 0;
-    border-top: none; }
-  .widget:last-of-type {
-    padding-bottom: 0;
-    border-bottom: none; }
-
-.widget-title {
-  font-weight: 300;
-  color: #f37945;
-  font-size: 18px;
-  margin-bottom: 9px; }
 
 .post {
   background-color: #fff;
@@ -176,6 +162,23 @@ a {
   bottom: 9px;
   right: 18px;
   color: gray; }
+
+.widget {
+  padding: 18px 0;
+  border-top: solid thin #eee;
+  border-bottom: solid thin #ddd; }
+  .widget:first-of-type {
+    padding-top: 0;
+    border-top: none; }
+  .widget:last-of-type {
+    padding-bottom: 0;
+    border-bottom: none; }
+
+.widget-title {
+  font-weight: 300;
+  color: #f37945;
+  font-size: 18px;
+  margin-bottom: 9px; }
 
 .widget_archive > ul {
   margin: 0;
@@ -209,15 +212,6 @@ a {
 .pagination {
   float: right; }
 
-#footer {
-  background-color: #424242; }
-
-.copyright {
-  height: 30px;
-  line-height: 30px;
-  font-size: 14px;
-  color: #fff; }
-
 .page-header {
   font-weight: 400;
   color: #aaa;
@@ -236,6 +230,12 @@ a {
     color: #aaa;
     font-size: 24px; }
 
+.copyright {
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #fff; }
+
 @media all and (max-width: 640px) {
   #sidebar-right {
     display: none; }
@@ -248,5 +248,3 @@ a {
 
   [role="main"] {
     padding-top: 183px; } }
-#wpstats {
-  display: none; }
