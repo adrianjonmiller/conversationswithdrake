@@ -241,3 +241,20 @@ a {
 		font-size: 24px;
 	}
 }
+
+@media all and (max-width: 480px) {
+
+	#sidebar-right {
+		display: none;
+	}
+
+	#header {
+		height: 165px;
+		.header-image {
+			height: 165px;
+		}
+	}
+	[role="main"] {
+		padding-top: 165+$pad;
+	}
+}
