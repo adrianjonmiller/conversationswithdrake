@@ -1,1 +1,1 @@
-DLN.Behaviors.header_collapse=function(i){if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){var e=i.height();$(document).on("scroll",function(){var o=$(this).scrollTop();i.height(o>=0?e-o:e)})}};
+DLN.Behaviors.header_collapse=function(o){function i(){var i=$(this).scrollTop();o.height(i>=0?n-i:n)}var n=o.height();/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||($(document).on("scroll",function(){i()}),$(document).on("load",function(){i()}))};

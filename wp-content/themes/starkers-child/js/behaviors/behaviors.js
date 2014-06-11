@@ -1,8 +1,17 @@
 DLN.Behaviors.header_collapse = function(container){
+	var container_height = container.height();
+
 	if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		var container_height = container.height();
 
 		$(document).on("scroll", function(){
+			offset_header();
+		});
+
+		$(document).on("load", function(){
+			offset_header();
+		});
+	}
+	function offset_header() {
 			var offset = $(this).scrollTop();
 
 			if(offset >= 0) {
@@ -10,8 +19,7 @@ DLN.Behaviors.header_collapse = function(container){
 			} else {
 				container.height(container_height);
 			}
-		});
-	}
+		}
 };
 
 
