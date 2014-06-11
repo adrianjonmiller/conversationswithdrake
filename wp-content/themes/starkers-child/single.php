@@ -20,8 +20,8 @@
 	</article>
 	<a href="<?php print $_SERVER['HTTP_REFERER'];?>">&lt;&lt; Back</a>
 
-	<?php comments_template( '', true ); ?>
-	
 <?php endwhile; ?>
+
+<?php comments_template( '', true ); ?>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

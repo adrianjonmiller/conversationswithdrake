@@ -1,0 +1,32 @@
+#comments {
+	margin-top: $pad;
+}
+
+.comments {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 0;
+		margin: 0;
+		background-color: #fff;
+		border-radius: $pad;
+		padding: $pad;
+		margin-bottom: $pad;
+		.commentor-name {
+			color: gray;
+			.comment-by {
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				border-radius: 8px;
+				line-height: 16px;
+				text-align: center;
+				background-color: $color-orange;
+				color: #fff;
+				font-size: 10px;
+			}
+		}
+	}
+}

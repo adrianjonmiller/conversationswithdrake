@@ -55,4 +55,18 @@
 	}
 
 	add_action( 'widgets_init', 'my_register_sidebars' );
+
 ?>
+<?php
+function starkers_comment( $comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment; 
+		?>
+		<?php if ( $comment->comment_approved == '1' ): ?>	
+		<li>
+			<article id="comment-<?php comment_ID() ?>">
+				<time><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a></time><span class="commentor-name"> <em class="comment-by">by</em> <?php comment_author_link() ?></span>
+				<?php comment_text() ?>
+			</article>
+		<?php endif;
+	}
+	?>

@@ -32,11 +32,11 @@ test
 
 	<?php if ( have_comments() ) : ?>
 
-	<h2><?php comments_number(); ?></h2>
+	<!-- <span class="comment-count"><?php comments_number(); ?></span> -->
 
-	<ol>
+	<ul class="comments">
 		<?php wp_list_comments( array( 'callback' => 'starkers_comment' ) ); ?>
-	</ol>
+	</ul>
 
 	<?php
 		/* If there are no comments and comments are closed, let's leave a little note, shall we?

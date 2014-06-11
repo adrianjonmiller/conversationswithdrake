@@ -31,6 +31,33 @@ h1, h2, h3, h4, h5, p, ul, li {
     .comment-form input[type="submit"]:hover {
       background-color: #a0dbda; }
 
+#comments {
+  margin-top: 18px; }
+
+.comments {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .comments li {
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 18px; }
+    .comments li .commentor-name {
+      color: gray; }
+      .comments li .commentor-name .comment-by {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        line-height: 16px;
+        text-align: center;
+        background-color: #f37945;
+        color: #fff;
+        font-size: 10px; }
+
 * {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
