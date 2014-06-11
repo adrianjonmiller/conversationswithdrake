@@ -18,8 +18,10 @@
 		<?php the_content(); ?>
 		<time class="post-date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time>
 	</article>
-<a href="<?php print $_SERVER['HTTP_REFERER'];?>">&lt;&lt; Back</a>
+	<a href="<?php print $_SERVER['HTTP_REFERER'];?>">&lt;&lt; Back</a>
 
+	<?php comments_template( '', true ); ?>
+	
 <?php endwhile; ?>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
