@@ -1,1 +1,1 @@
-DLN.Behaviors.header_collapse=function(o){var e=o.height();$(document).on("scroll",function(){var h=$(this).scrollTop();o.height(h>=0?e-h:e)})};
+DLN.Behaviors.header_collapse=function(i){if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){var e=i.height();$(document).on("scroll",function(){var o=$(this).scrollTop();i.height(o>=0?e-o:e)})}};

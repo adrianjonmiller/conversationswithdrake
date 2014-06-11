@@ -180,12 +180,13 @@ a {
     color: #aaa;
     font-size: 24px; }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 640px) {
   #sidebar-right {
     display: none; }
 
   #header {
-    height: 165px; }
+    height: 165px;
+    position: absolute; }
     #header .header-image {
       height: 165px; }
 

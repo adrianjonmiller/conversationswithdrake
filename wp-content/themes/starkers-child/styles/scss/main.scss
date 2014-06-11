@@ -242,7 +242,7 @@ a {
 	}
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 640px) {
 
 	#sidebar-right {
 		display: none;
@@ -253,6 +253,7 @@ a {
 		.header-image {
 			height: 165px;
 		}
+		position: absolute;
 	}
 	[role="main"] {
 		padding-top: 165+$pad;
